@@ -1,6 +1,6 @@
 {
-	"@version": "2.11.1",
-	"@generated": "Sun, 23 Oct 2022 06:29:53",
+	"@version": "2.12.0",
+	"@generated": "Sun, 30 Oct 2022 05:25:34",
 	"site":[ 
 		{
 			"@name": "https://www.francenum.gouv.fr",
@@ -87,9 +87,23 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/newsletter/subscribe\">"
+						},
+						{
+							"uri": "https://www.francenum.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"header-searchbar\" data-drupal-selector=\"header-searchbar\" action=\"/recherche\" method=\"GET\" id=\"header-searchbar\" accept-charset=\"UTF-8\" data-drupal-form-fields=\"edit-search,edit-valider\">"
+						},
+						{
+							"uri": "https://www.francenum.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/newsletter/subscribe\">"
 						}
 					],
-					"count": "10",
+					"count": "12",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
@@ -441,13 +455,6 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.francenum.gouv.fr/search",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
 							"uri": "https://www.francenum.gouv.fr/search/",
 							"method": "GET",
 							"param": "",
@@ -455,39 +462,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
 					"otherinfo": "<p>Location header URI length: 41 [https://www.francenum.gouv.fr/filter/tips].</p><p>Predicted response size: 341.</p><p>Response Body Length: 410.</p>",
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "173"
-				},
-				{
-					"pluginid": "10110",
-					"alertRef": "10110",
-					"alert": "Dangerous JS Functions",
-					"name": "Dangerous JS Functions",
-					"riskcode": "1",
-					"confidence": "1",
-					"riskdesc": "Low (Low)",
-					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_eFg7EV1kxSlavQDpmEE-OSKBjrGikkUScm_PNvKOeDs.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Eval"
-						}
-					],
-					"count": "1",
-					"solution": "<p>See the references for security advice on the use of these functions.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://angular.io/guide/security</p>",
-					"cweid": "749",
-					"wascid": "-1",
-					"sourceid": "825"
+					"sourceid": "170"
 				},
 				{
 					"pluginid": "10063",
@@ -507,42 +488,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_eFg7EV1kxSlavQDpmEE-OSKBjrGikkUScm_PNvKOeDs.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_LkQLN5Lds17JAVHDEtNn5a0HtBrLD1MYEjJvdshrhhk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
 							"uri": "https://www.francenum.gouv.fr/profiles/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/profiles/custom/design_system_profile/themes/design_system/js/dsfr.module.min.js?v=0.6.0",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/profiles/custom/design_system_profile/themes/design_system/js/dsfr.nomodule.min.js?v=0.6.0",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -556,13 +502,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "8",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "144"
+					"sourceid": "143"
 				},
 				{
 					"pluginid": "10035",
@@ -652,7 +598,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.francenum.gouv.fr/profiles/*.js$",
+							"uri": "https://www.francenum.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -666,144 +612,6 @@
 					"cweid": "319",
 					"wascid": "15",
 					"sourceid": "126"
-				},
-				{
-					"pluginid": "10096",
-					"alertRef": "10096",
-					"alert": "Timestamp Disclosure - Unix",
-					"name": "Timestamp Disclosure - Unix",
-					"riskcode": "1",
-					"confidence": "1",
-					"riskdesc": "Low (Low)",
-					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1416354905"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1444681467"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1473231341"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1502002290"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1530992060"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1560198380"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1700485571"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1732584193"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1732584194"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1735328473"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1770035416"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1804603682"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1839030562"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1873313359"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1894986606"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1926607734"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/files/js/js_01ZdCgTEO0ez9eNr7Xt0U5fcfr7M2YhboE9dGxFDWXk.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1958414417"
-						}
-					],
-					"count": "17",
-					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1416354905, which evaluates to: 2014-11-18 23:55:05</p>",
-					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
-					"cweid": "200",
-					"wascid": "13",
-					"sourceid": "833"
 				},
 				{
 					"pluginid": "10094",
@@ -858,7 +666,7 @@
 							"evidence": "/files/css/css_vhJ8OAzIik5cwzHAHA0EkRV3B5KUtriS09rxlFPDNFs"
 						},
 						{
-							"uri": "https://www.francenum.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.francenum.gouv.fr/index.php/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -925,7 +733,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "147"
+					"sourceid": "152"
 				},
 				{
 					"pluginid": "10027",
@@ -1083,6 +891,13 @@
 							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Page non trouv\u00E9e</a>"
 						},
 						{
+							"uri": "https://www.francenum.gouv.fr/index.php/node/add/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Acc\u00E8s refus\u00E9</a>"
+						},
+						{
 							"uri": "https://www.francenum.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -1111,7 +926,7 @@
 							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Page non trouv\u00E9e</a>"
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
 					"reference": "",
@@ -1674,7 +1489,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "189"
+					"sourceid": "200"
 				}
 			]
 		}
