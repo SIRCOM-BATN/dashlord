@@ -1,6 +1,6 @@
 {
 	"@version": "2.12.0",
-	"@generated": "Sun, 30 Oct 2022 05:47:39",
+	"@generated": "Sun, 6 Nov 2022 05:12:13",
 	"site":[ 
 		{
 			"@name": "https://www.tarifs-bancaires.gouv.fr",
@@ -61,13 +61,6 @@
 							"evidence": "<form action=\"/user\" method=\"post\" id=\"user-login\" accept-charset=\"UTF-8\">"
 						},
 						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/user/login/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form action=\"/user/login/\" method=\"post\" id=\"user-login\" accept-charset=\"UTF-8\">"
-						},
-						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/user/password",
 							"method": "GET",
 							"param": "",
@@ -89,6 +82,13 @@
 							"evidence": "<form action=\"/\" method=\"post\" id=\"comparateurtarifs-search-form\" accept-charset=\"UTF-8\">"
 						},
 						{
+							"uri": "https://www.tarifs-bancaires.gouv.fr/?q=user/password/",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/?q=user/password/\" method=\"post\" id=\"user-pass\" accept-charset=\"UTF-8\">"
+						},
+						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/user/password/",
 							"method": "POST",
 							"param": "",
@@ -102,7 +102,7 @@
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "45"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -129,13 +129,6 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/user/login/",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
-						},
-						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/user/password/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -143,13 +136,13 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>script-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "45"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -176,13 +169,6 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/user/login/",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
-						},
-						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/user/password/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -190,7 +176,7 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -223,13 +209,6 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/user/login/",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
-						},
-						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/user/password/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -237,7 +216,7 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -285,6 +264,13 @@
 						},
 						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/INSTALL.sqlite.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.tarifs-bancaires.gouv.fr/INSTALL.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -340,13 +326,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header, to achieve optimal browser support: \"Content-Security-Policy\" for Chrome 25+, Firefox 23+ and Safari 7+, \"X-Content-Security-Policy\" for Firefox 4.0+ and Internet Explorer 10+, and \"X-WebKit-CSP\" for Chrome 14+ and Safari 6+.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "89"
+					"sourceid": "88"
 				},
 				{
 					"pluginid": "10098",
@@ -360,6 +346,13 @@
 					"instances":[ 
 						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
+							"uri": "https://www.tarifs-bancaires.gouv.fr/?q=filter/tips/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -415,13 +408,6 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/user/login/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *"
-						},
-						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/user/password/",
 							"method": "GET",
 							"param": "",
@@ -468,7 +454,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "223"
+					"sourceid": "220"
 				},
 				{
 					"pluginid": "90003",
@@ -489,6 +475,13 @@
 						},
 						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/?q=admin/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"profile\" href=\"http://www.w3.org/1999/xhtml/vocab\" />"
+						},
+						{
+							"uri": "https://www.tarifs-bancaires.gouv.fr/?q=comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -524,13 +517,6 @@
 						},
 						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"profile\" href=\"http://www.w3.org/1999/xhtml/vocab\" />"
-						},
-						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/user/login/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -590,7 +576,7 @@
 					"reference": "<p>https://github.com/jquery/jquery/issues/2432</p><p>http://blog.jquery.com/2016/01/08/jquery-2-2-and-1-12-released/</p><p>http://research.insecurelabs.org/jquery/test/</p><p>https://blog.jquery.com/2019/04/10/jquery-3-4-0-released/</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-11358</p><p>https://nvd.nist.gov/vuln/detail/CVE-2015-9251</p><p>https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b</p><p>https://bugs.jquery.com/ticket/11974</p><p>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "193"
+					"sourceid": "187"
 				},
 				{
 					"pluginid": "10017",
@@ -611,6 +597,13 @@
 						},
 						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/?q=admin/",
+							"method": "GET",
+							"param": "//html5shiv.googlecode.com/svn/trunk/html5.js",
+							"attack": "",
+							"evidence": "<script src=\"//html5shiv.googlecode.com/svn/trunk/html5.js\"></script>"
+						},
+						{
+							"uri": "https://www.tarifs-bancaires.gouv.fr/?q=comment/reply/",
 							"method": "GET",
 							"param": "//html5shiv.googlecode.com/svn/trunk/html5.js",
 							"attack": "",
@@ -646,13 +639,6 @@
 						},
 						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "//html5shiv.googlecode.com/svn/trunk/html5.js",
-							"attack": "",
-							"evidence": "<script src=\"//html5shiv.googlecode.com/svn/trunk/html5.js\"></script>"
-						},
-						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/user/login/",
 							"method": "GET",
 							"param": "//html5shiv.googlecode.com/svn/trunk/html5.js",
 							"attack": "",
@@ -726,7 +712,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "193"
+					"sourceid": "187"
 				},
 				{
 					"pluginid": "10063",
@@ -829,7 +815,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "89"
+					"sourceid": "88"
 				},
 				{
 					"pluginid": "10035",
@@ -932,7 +918,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "89"
+					"sourceid": "88"
 				},
 				{
 					"pluginid": "10021",
@@ -959,7 +945,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/accessibilite",
+							"uri": "https://www.tarifs-bancaires.gouv.fr/files/css/css_2ylWHo57m9CdrkauV2jEv0zufVAa8pzo-DwChzGIq3I.css",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
@@ -980,14 +966,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/files/js/js_R9UbiVw2xuTUI0GZoaqMDOdX0lrZtgX-ono8RVOUEVc.js",
-							"method": "GET",
-							"param": "X-Content-Type-Options",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/les-tarifs-bancaires",
+							"uri": "https://www.tarifs-bancaires.gouv.fr/files/js/js_mU9FH0Xz6-RQW4-2LXMomS4NKdzgapjHC90Jxgw65Rk.js",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
@@ -1002,6 +981,13 @@
 						},
 						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.tarifs-bancaires.gouv.fr/mes-donnees-personnelles",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
@@ -1055,6 +1041,13 @@
 							"evidence": "fr/files/css/css_lQaZfjVpwP_oGNqdtWCSpJT1EMqXdMiU84ekLLxQnc4"
 						},
 						{
+							"uri": "https://www.tarifs-bancaires.gouv.fr/?q=comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "fr/files/css/css_lQaZfjVpwP_oGNqdtWCSpJT1EMqXdMiU84ekLLxQnc4"
+						},
+						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/comment/reply/",
 							"method": "GET",
 							"param": "",
@@ -1084,13 +1077,6 @@
 						},
 						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "fr/files/css/css_lQaZfjVpwP_oGNqdtWCSpJT1EMqXdMiU84ekLLxQnc4"
-						},
-						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/user/login/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1193,7 +1179,7 @@
 							"evidence": "user"
 						},
 						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/user/logout/",
+							"uri": "https://www.tarifs-bancaires.gouv.fr/user/password/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1213,7 +1199,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "45"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10109",
@@ -1234,6 +1220,13 @@
 						},
 						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/?q=admin/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a name=\"top\"></a>"
+						},
+						{
+							"uri": "https://www.tarifs-bancaires.gouv.fr/?q=comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1275,13 +1268,6 @@
 							"evidence": "<a name=\"top\"></a>"
 						},
 						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/user/login/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a name=\"top\"></a>"
-						},
-						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/user/logout/",
 							"method": "GET",
 							"param": "",
@@ -1309,7 +1295,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "45"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1330,6 +1316,13 @@
 						},
 						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/includes/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "403"
+						},
+						{
+							"uri": "https://www.tarifs-bancaires.gouv.fr/INSTALL.mysql.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1371,13 +1364,13 @@
 							"evidence": "403"
 						}
 					],
-					"count": "7",
+					"count": "8",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "89"
+					"sourceid": "88"
 				},
 				{
 					"pluginid": "10015",
@@ -1391,6 +1384,13 @@
 					"instances":[ 
 						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=600, public"
+						},
+						{
+							"uri": "https://www.tarifs-bancaires.gouv.fr/",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
@@ -1447,13 +1447,6 @@
 						},
 						{
 							"uri": "https://www.tarifs-bancaires.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=600, public"
-						},
-						{
-							"uri": "https://www.tarifs-bancaires.gouv.fr/user/login/",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
@@ -1684,7 +1677,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "207"
+					"sourceid": "204"
 				}
 			]
 		}
