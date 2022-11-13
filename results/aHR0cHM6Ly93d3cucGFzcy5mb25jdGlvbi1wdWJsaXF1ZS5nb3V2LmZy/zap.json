@@ -1,6 +1,6 @@
 {
 	"@version": "2.12.0",
-	"@generated": "Sun, 6 Nov 2022 05:01:37",
+	"@generated": "Sun, 13 Nov 2022 02:10:47",
 	"site":[ 
 		{
 			"@name": "https://www.pass.fonction-publique.gouv.fr",
@@ -222,7 +222,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10038",
@@ -312,7 +312,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -353,13 +353,6 @@
 						},
 						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *"
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/index.php/admin/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -408,6 +401,13 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/user/register",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/web.config",
 							"method": "GET",
 							"param": "",
@@ -422,32 +422,6 @@
 					"cweid": "264",
 					"wascid": "14",
 					"sourceid": "1"
-				},
-				{
-					"pluginid": "90022",
-					"alertRef": "90022",
-					"alert": "Application Error Disclosure",
-					"name": "Application Error Disclosure",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/sitemap",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "HTTP/1.1 500 Internal Server Error"
-						}
-					],
-					"count": "1",
-					"solution": "<p>Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.</p>",
-					"otherinfo": "",
-					"reference": "",
-					"cweid": "200",
-					"wascid": "13",
-					"sourceid": "269"
 				},
 				{
 					"pluginid": "10044",
@@ -543,33 +517,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "1722"
-				},
-				{
-					"pluginid": "10017",
-					"alertRef": "10017",
-					"alert": "Cross-Domain JavaScript Source File Inclusion",
-					"name": "Cross-Domain JavaScript Source File Inclusion",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/sitemap",
-							"method": "GET",
-							"param": "//html5shiv.googlecode.com/svn/trunk/html5.js",
-							"attack": "",
-							"evidence": "<script src=\"//html5shiv.googlecode.com/svn/trunk/html5.js\"></script>"
-						}
-					],
-					"count": "1",
-					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
-					"otherinfo": "",
-					"reference": "",
-					"cweid": "829",
-					"wascid": "15",
-					"sourceid": "269"
+					"sourceid": "1731"
 				},
 				{
 					"pluginid": "10110",
@@ -603,7 +551,7 @@
 							"evidence": "eval"
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/libraries/tarteaucitron/tarteaucitron.js?rkb066",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/libraries/tarteaucitron/tarteaucitron.js?rkz0ok",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -616,7 +564,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "1633"
+					"sourceid": "1642"
 				},
 				{
 					"pluginid": "10063",
@@ -643,14 +591,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/assets/vendor/once/once.min.js?v=1.0.1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/assets/vendor/once/once.min.js?v=1.0.1",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/misc/drupal.init.js?v=9.3.8",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -685,7 +633,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/files/languages/fr_0qJuj9jv6YcqP8IW6d1_6mR4s7HeGxBA-dxASPGnaC8.js?rkb066",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/files/languages/fr_0qJuj9jv6YcqP8IW6d1_6mR4s7HeGxBA-dxASPGnaC8.js?rkz0ok",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/modules/tarteaucitron/js/load.js?rkz0ok",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -704,13 +659,6 @@
 							"param": "",
 							"attack": "",
 							"evidence": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/sitemap",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
 						}
 					],
 					"count": "12",
@@ -719,7 +667,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "155"
+					"sourceid": "154"
 				},
 				{
 					"pluginid": "10035",
@@ -905,13 +853,6 @@
 							"evidence": "/files/languages/fr_0qJuj9jv6YcqP8IW6d1_6mR4s7HeGxBA-dxASPGnaC8"
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/user/login",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM"
-						},
-						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/user/password",
 							"method": "GET",
 							"param": "",
@@ -919,7 +860,7 @@
 							"evidence": "form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM"
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\u04A2n\uFFFD\uFFFD\uFFFD\uFFFD*?\uFFFD\\x0016\uFFFD\uFFFD\uFFFDdx\uFFFD\uFFFD\uFFFD\\x001b\\x0010@\uFFFD\uFFFD@H\uFFFDh/</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
@@ -951,7 +892,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "157"
+					"sourceid": "160"
 				},
 				{
 					"pluginid": "10027",
@@ -1036,7 +977,7 @@
 					],
 					"count": "10",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script src=\"/themes/custom/pass/js/a11y/select-a11y.min.js?rkb066\"></script>\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script src=\"/themes/custom/pass/js/a11y/select-a11y.min.js?rkz0ok\"></script>\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
@@ -1245,14 +1186,14 @@
 							"evidence": "max-age=600, public"
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/offre-de-stage-pole-deontologie-de-la-securite-1er-semestre-2023",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/offre-de-stage-cpr-auvergne-rhone-alpes-01-2023",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
 							"evidence": "max-age=600, public"
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/stage-au-service-economique-de-vienne-antenne-ljubljana-0",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/offre-de-stage-stage-la-direction-protection-des-droits-et-affaires-judiciaires-et-au-pole-0",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
@@ -1436,7 +1377,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "1672"
+					"sourceid": "1681"
 				}
 			]
 		}
