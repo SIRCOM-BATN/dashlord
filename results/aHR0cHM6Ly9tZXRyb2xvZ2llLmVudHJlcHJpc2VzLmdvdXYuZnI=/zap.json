@@ -1,6 +1,6 @@
 {
 	"@version": "2.12.0",
-	"@generated": "Sun, 6 Nov 2022 04:17:35",
+	"@generated": "Sun, 13 Nov 2022 01:22:09",
 	"site":[ 
 		{
 			"@name": "https://metrologie.entreprises.gouv.fr",
@@ -19,6 +19,20 @@
 					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
 					"instances":[ 
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/faq",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-bef-auto-submit-full-form=\"\" data-bef-auto-submit=\"\" data-bef-auto-submit-delay=\"500\" data-drupal-selector=\"views-exposed-form-foire-aux-questions-page-1\" action=\"/fr/faq\" method=\"get\" id=\"views-exposed-form-foire-aux-questions-page-1\" accept-charset=\"UTF-8\">"
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/question-sur-la-metrologie-legale-ou-industrielle",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"webform-submission-form webform-submission-add-form webform-submission-courrier-form webform-submission-courrier-add-form webform-submission-courrier-paragraph-58-form webform-submission-courrier-paragraph-58-add-form js-webform-details-toggle webform-details-toggle\" data-drupal-selector=\"webform-submission-courrier-paragraph-58-add-form\" action=\"/fr/question-sur-la-metrologie-legale-ou-industrielle\" method=\"post\" id=\"webform-submission-courrier-paragraph-58-add-form\" accept-charset=\"UTF-8\">"
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche",
 							"method": "GET",
 							"param": "",
@@ -26,13 +40,13 @@
 							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/fr/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
 						}
 					],
-					"count": "1",
+					"count": "3",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
-					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ].</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-submit-foire-aux-questions\" \"edit-title\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "290"
+					"sourceid": "1148"
 				},
 				{
 					"pluginid": "10055",
@@ -178,7 +192,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "234"
+					"sourceid": "279"
 				},
 				{
 					"pluginid": "10098",
@@ -205,13 +219,6 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/qui-fait-quoi/cofrac",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *"
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/qui-fait-quoi/laboratoire-national-de-metrologie-et-d-essais",
 							"method": "GET",
 							"param": "",
@@ -226,7 +233,7 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-de-masse",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-geometriques",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -275,7 +282,7 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
 					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
@@ -329,6 +336,13 @@
 							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-37\"></script>"
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-calorifiques",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-37\"></script>"
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-de-masse",
 							"method": "GET",
 							"param": "",
@@ -337,13 +351,6 @@
 						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-de-temps",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-37\"></script>"
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-electriques",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -410,7 +417,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "234"
+					"sourceid": "279"
 				},
 				{
 					"pluginid": "10044",
@@ -430,6 +437,27 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/accueil/point-histoire/etymologie-des-noms-unites",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/accueil/point-histoire/histoire-du-metre",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/accueil/systeme-si-unites-de-mesure",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -437,13 +465,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "2",
+					"count": "5",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
 					"otherinfo": "<p>Location header URI length: 41 [https://metrologie.entreprises.gouv.fr/fr].</p><p>Predicted response size: 341.</p><p>Response Body Length: 410.</p>",
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10017",
@@ -579,7 +607,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "234"
+					"sourceid": "279"
 				},
 				{
 					"pluginid": "10035",
@@ -592,6 +620,83 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/assets/vendor/jquery.ui/themes/base/core.css?rhs1xs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/themes/stable/css/system/components/ajax-progress.module.css?rhs1xs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/themes/stable/css/system/components/align.module.css?rhs1xs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/themes/stable/css/system/components/autocomplete-loading.module.css?rhs1xs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/themes/stable/css/system/components/clearfix.module.css?rhs1xs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/themes/stable/css/system/components/container-inline.module.css?rhs1xs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/themes/stable/css/system/components/details.module.css?rhs1xs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/themes/stable/css/system/components/fieldgroup.module.css?rhs1xs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/themes/stable/css/system/components/hidden.module.css?rhs1xs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/files_metrologie/favicon-marianne_4.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/libraries/slick/slick/slick.css?rhs1xs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -599,13 +704,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "1",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "234"
+					"sourceid": "1204"
 				},
 				{
 					"pluginid": "10096",
@@ -630,9 +735,16 @@
 							"param": "",
 							"attack": "",
 							"evidence": "1359083803"
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/presse/controle-des-instruments-de-pesage-non-automatiques-de-forte-portee",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1359083803"
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1359083803, which evaluates to: 2013-01-25 03:16:43</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
@@ -686,14 +798,14 @@
 							"evidence": "/files_metrologie/languages/fr_ccugSZhUOao9TmHbPw0wv-oa9Ady4fIrqsfNNfvdNuA"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-de-masse",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-calorifiques",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "/files_metrologie/languages/fr_ccugSZhUOao9TmHbPw0wv-oa9Ady4fIrqsfNNfvdNuA"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-de-temps",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-de-masse",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -892,14 +1004,14 @@
 							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-de-masse",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-calorifiques",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-de-temps",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-de-masse",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -973,7 +1085,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "234"
+					"sourceid": "279"
 				},
 				{
 					"pluginid": "10015",
@@ -1110,13 +1222,6 @@
 							"evidence": "max-age=600"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=600"
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-geometriques",
 							"method": "GET",
 							"param": "",
@@ -1166,7 +1271,7 @@
 							"evidence": "max-age=600"
 						}
 					],
-					"count": "11",
+					"count": "10",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
