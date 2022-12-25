@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 18 Dec 2022 01:18:20",
+	"@generated": "Sun, 25 Dec 2022 01:26:58",
 	"site":[ 
 		{
 			"@name": "https://sbdu.entreprises.gouv.fr",
@@ -90,6 +90,20 @@
 							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/fr/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
 						},
 						{
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=6&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/fr/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
+						},
+						{
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=7&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/fr/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
+						},
+						{
 							"uri": "https://sbdu.entreprises.gouv.fr/fr/sanctions-pays/crise-ukraine-contacter-service-des-biens-double-usage",
 							"method": "GET",
 							"param": "",
@@ -104,7 +118,7 @@
 							"evidence": "<form class=\"webform-submission-form webform-submission-add-form webform-submission-formations-form webform-submission-formations-add-form webform-submission-formations-paragraph-186-form webform-submission-formations-paragraph-186-add-form\" data-drupal-selector=\"webform-submission-formations-paragraph-186-add-form\" action=\"/fr/sbdu/notre-mission-d-information\" method=\"post\" id=\"webform-submission-formations-paragraph-186-add-form\" accept-charset=\"UTF-8\">"
 						}
 					],
-					"count": "12",
+					"count": "14",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-submit-foire-aux-questions\" \"edit-title\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
@@ -243,6 +257,13 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
+							"uri": "https://sbdu.entreprises.gouv.fr/%C2%A0%C2%BB.",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://sbdu.entreprises.gouv.fr/fr/demarches/ai-je-besoin-d-autorisation-aupres-du-sbdu",
 							"method": "GET",
 							"param": "",
@@ -264,13 +285,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header, to achieve optimal browser support: \"Content-Security-Policy\" for Chrome 25+, Firefox 23+ and Safari 7+, \"X-Content-Security-Policy\" for Firefox 4.0+ and Internet Explorer 10+, and \"X-WebKit-CSP\" for Chrome 14+ and Safari 6+.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "397"
+					"sourceid": "1085"
 				},
 				{
 					"pluginid": "10098",
@@ -305,13 +326,6 @@
 						},
 						{
 							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *"
-						},
-						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/reglementation-des-biens-double-usage/reglement-europeen",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -367,7 +381,7 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
 					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
@@ -399,7 +413,7 @@
 					"reference": "<p>http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "924"
+					"sourceid": "929"
 				},
 				{
 					"pluginid": "90003",
@@ -440,14 +454,14 @@
 							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-32\"></script>"
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/reglementation-des-biens-double-usage/guides-externes",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/reglementation-des-biens-double-usage/bien-est-est-il-double-usage",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-32\"></script>"
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/reglementation-des-biens-double-usage/la-reglementation-nationale",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/reglementation-des-biens-double-usage/guides-externes",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -574,6 +588,34 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://sbdu.entreprises.gouv.fr/crise-ukraine-contacter-service-des-biens-double-usage",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://sbdu.entreprises.gouv.fr/donnees-personnelles",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://sbdu.entreprises.gouv.fr/en/node/382",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://sbdu.entreprises.gouv.fr/en/node/463",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://sbdu.entreprises.gouv.fr/en/node/474",
 							"method": "GET",
 							"param": "",
@@ -588,7 +630,28 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://sbdu.entreprises.gouv.fr/en/node/480",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://sbdu.entreprises.gouv.fr/en/node/487",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://sbdu.entreprises.gouv.fr/en/node/496",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/demandes-ligne/dossiers-hors-licence-dhl-poser-question-au-sbdu",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -602,7 +665,7 @@
 							"evidence": ""
 						}
 					],
-					"count": "5",
+					"count": "12",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
 					"otherinfo": "<p>Location header URI length: 35 [https://sbdu.entreprises.gouv.fr/fr].</p><p>Predicted response size: 335.</p><p>Response Body Length: 386.</p>",
 					"reference": "",
@@ -677,14 +740,14 @@
 							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-32\"></script>"
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/notre-mission-de-controle-export",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/notre-mission-d-information",
 							"method": "GET",
 							"param": "//tag.aticdn.net/615757/smarttag.js",
 							"attack": "",
 							"evidence": "<script src=\"//tag.aticdn.net/615757/smarttag.js\" async=\"async\"></script>"
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/notre-mission-de-controle-export",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/notre-mission-d-information",
 							"method": "GET",
 							"param": "https://www.googletagmanager.com/gtag/js?id=UA-41292125-32",
 							"attack": "",
@@ -759,7 +822,7 @@
 							"evidence": "eval"
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/libraries/tarteaucitron/tarteaucitron.js?rgr9zc",
+							"uri": "https://sbdu.entreprises.gouv.fr/libraries/tarteaucitron/tarteaucitron.js?rn4q5z",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -834,7 +897,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/files_sbdu/languages/fr_6REFtngiBsCTHVjIVNQWCTe-x61B5_1OX3yiDDIdz0E.js?rgr9zc",
+							"uri": "https://sbdu.entreprises.gouv.fr/files_sbdu/languages/fr_6REFtngiBsCTHVjIVNQWCTe-x61B5_1OX3yiDDIdz0E.js?rn4q5z",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -848,14 +911,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/modules/custom/tarteaucitron/js/load.js?rgr9zc",
+							"uri": "https://sbdu.entreprises.gouv.fr/modules/custom/tarteaucitron/js/load.js?rn4q5z",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/modules/custom/tarteaucitron/js/tarteaucitron.js?rgr9zc",
+							"uri": "https://sbdu.entreprises.gouv.fr/modules/custom/tarteaucitron/js/tarteaucitron.js?rn4q5z",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -888,56 +951,56 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/core/assets/vendor/jquery.ui/themes/base/core.css?rgr9zc",
+							"uri": "https://sbdu.entreprises.gouv.fr/core/assets/vendor/jquery.ui/themes/base/core.css?rn4q5z",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/ajax-progress.module.css?rgr9zc",
+							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/ajax-progress.module.css?rn4q5z",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/align.module.css?rgr9zc",
+							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/align.module.css?rn4q5z",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/autocomplete-loading.module.css?rgr9zc",
+							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/autocomplete-loading.module.css?rn4q5z",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/clearfix.module.css?rgr9zc",
+							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/clearfix.module.css?rn4q5z",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/container-inline.module.css?rgr9zc",
+							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/container-inline.module.css?rn4q5z",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/details.module.css?rgr9zc",
+							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/details.module.css?rn4q5z",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/fieldgroup.module.css?rgr9zc",
+							"uri": "https://sbdu.entreprises.gouv.fr/core/themes/stable/css/system/components/fieldgroup.module.css?rn4q5z",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -958,7 +1021,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/libraries/slick/slick/slick.css?rgr9zc",
+							"uri": "https://sbdu.entreprises.gouv.fr/libraries/slick/slick/slick.css?rn4q5z",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1080,7 +1143,7 @@
 							"evidence": "/files_sbdu/languages/fr_6REFtngiBsCTHVjIVNQWCTe-x61B5_1OX3yiDDIdz0E"
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/reglementation-des-biens-double-usage/la-reglementation-nationale",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/reglementation-des-biens-double-usage/guides-externes",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1183,7 +1246,14 @@
 							"evidence": "user"
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/notre-mission-de-controle-export",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/notre-mission-d-information",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user"
+						},
+						{
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/partenaires",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1225,7 +1295,14 @@
 							"evidence": "TODO"
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/notre-mission-de-controle-export",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/notre-mission-d-information",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "TODO"
+						},
+						{
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/partenaires",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1239,7 +1316,7 @@
 							"evidence": "TODO"
 						}
 					],
-					"count": "12",
+					"count": "14",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -1286,7 +1363,7 @@
 							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>"
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/reglementation-des-biens-double-usage/la-reglementation-nationale",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/reglementation-des-biens-double-usage/guides-externes",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1532,14 +1609,14 @@
 							"evidence": "max-age=600"
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/notre-mission-d-information",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/notre-mission-de-controle-export",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "max-age=600"
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/notre-mission-de-controle-export",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/sbdu/partenaires",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1579,104 +1656,118 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "sort_by",
 							"attack": "",
 							"evidence": ""
 						}
 					],
-					"count": "13",
+					"count": "15",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
-					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [title] attribute </p><p></p><p>The user input found was:</p><p>publie_depuis=All</p><p></p><p>The user-controlled value was:</p><p>aller \u00E0 la derni\u00E8re page</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://sbdu.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [title] attribute </p><p></p><p>The user input found was:</p><p>publie_depuis=All</p><p></p><p>The user-controlled value was:</p><p>aller \u00E0 la derni\u00E8re page</p>",
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "840"
+					"sourceid": "841"
 				}
 			]
 		}
