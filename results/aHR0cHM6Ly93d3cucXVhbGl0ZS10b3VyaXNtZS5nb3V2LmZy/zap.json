@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 1 Jan 2023 01:38:10",
+	"@generated": "Sun, 1 Jan 2023 13:51:06",
 	"site":[ 
 		{
 			"@name": "https://www.qualite-tourisme.gouv.fr",
@@ -102,29 +102,15 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/fr/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=4&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/fr/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=5&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/fr/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
 						}
 					],
-					"count": "14",
+					"count": "12",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "792"
+					"sourceid": "789"
 				},
 				{
 					"pluginid": "10055",
@@ -164,7 +150,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -204,7 +190,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -244,7 +230,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10038",
@@ -257,6 +243,20 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
+							"uri": "https://www.qualite-tourisme.gouv.fr/es/moteur-de-recherche-qualite-tourisme",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.qualite-tourisme.gouv.fr/fr/nous-contacter",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://www.qualite-tourisme.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -264,13 +264,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "1",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header, to achieve optimal browser support: \"Content-Security-Policy\" for Chrome 25+, Firefox 23+ and Safari 7+, \"X-Content-Security-Policy\" for Firefox 4.0+ and Internet Explorer 10+, and \"X-WebKit-CSP\" for Chrome 14+ and Safari 6+.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "183"
+					"sourceid": "960"
 				},
 				{
 					"pluginid": "10098",
@@ -366,7 +366,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90003",
@@ -528,7 +528,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "183"
+					"sourceid": "12"
 				},
 				{
 					"pluginid": "10044",
@@ -548,7 +548,21 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://www.qualite-tourisme.gouv.fr/en/node/193",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://www.qualite-tourisme.gouv.fr/en/node/304",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.qualite-tourisme.gouv.fr/es/node/193",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -569,7 +583,7 @@
 							"evidence": ""
 						}
 					],
-					"count": "4",
+					"count": "6",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
 					"otherinfo": "<p>Location header URI length: 39 [https://www.qualite-tourisme.gouv.fr/fr].</p><p>Predicted response size: 339.</p><p>Response Body Length: 402.</p>",
 					"reference": "",
@@ -801,6 +815,13 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://www.qualite-tourisme.gouv.fr/core/assets/vendor/jquery.ui/ui/disable-selection-min.js?v=1.12.1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://www.qualite-tourisme.gouv.fr/core/assets/vendor/jquery.ui/ui/version-min.js?v=1.12.1",
 							"method": "GET",
 							"param": "",
@@ -864,7 +885,7 @@
 							"evidence": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
@@ -953,20 +974,6 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/core/themes/stable/css/system/components/js.module.css?rgr9xr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/core/themes/stable/css/system/components/nowrap.module.css?rgr9xr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
 							"uri": "https://www.qualite-tourisme.gouv.fr/files_qt/favicon-marianne_8.png",
 							"method": "GET",
 							"param": "",
@@ -981,13 +988,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "14",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "569"
+					"sourceid": "568"
 				},
 				{
 					"pluginid": "10094",
@@ -1131,6 +1138,13 @@
 							"evidence": "user"
 						},
 						{
+							"uri": "https://www.qualite-tourisme.gouv.fr/fr/faq-particulier",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user"
+						},
+						{
 							"uri": "https://www.qualite-tourisme.gouv.fr/fr/la-marque-etat-qualite-tourisme",
 							"method": "GET",
 							"param": "",
@@ -1180,6 +1194,13 @@
 							"evidence": "TODO"
 						},
 						{
+							"uri": "https://www.qualite-tourisme.gouv.fr/fr/faq-particulier",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "TODO"
+						},
+						{
 							"uri": "https://www.qualite-tourisme.gouv.fr/fr/la-marque-etat-qualite-tourisme",
 							"method": "GET",
 							"param": "",
@@ -1201,7 +1222,7 @@
 							"evidence": "TODO"
 						}
 					],
-					"count": "14",
+					"count": "16",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -1336,7 +1357,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "183"
+					"sourceid": "12"
 				},
 				{
 					"pluginid": "10015",
@@ -1371,6 +1392,13 @@
 						},
 						{
 							"uri": "https://www.qualite-tourisme.gouv.fr/fr",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=600, public"
+						},
+						{
+							"uri": "https://www.qualite-tourisme.gouv.fr/fr/espace-pro/referentiels-qualite-tourisme",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
@@ -1433,7 +1461,7 @@
 							"evidence": "max-age=600, public"
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
@@ -1480,6 +1508,13 @@
 							"evidence": "max-age=600"
 						},
 						{
+							"uri": "https://www.qualite-tourisme.gouv.fr/fr/faq-particulier",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=600"
+						},
+						{
 							"uri": "https://www.qualite-tourisme.gouv.fr/fr/la-marque-etat-qualite-tourisme",
 							"method": "GET",
 							"param": "",
@@ -1488,13 +1523,6 @@
 						},
 						{
 							"uri": "https://www.qualite-tourisme.gouv.fr/fr/moteur-de-recherche-qualite-tourisme",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=600"
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1528,7 +1556,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10031",
@@ -1540,97 +1568,6 @@
 					"riskdesc": "Informational (Low)",
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "sort_by",
-							"attack": "",
-							"evidence": ""
-						},
 						{
 							"uri": "https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
@@ -1737,13 +1674,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "28",
+					"count": "15",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
-					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [title] attribute </p><p></p><p>The user input found was:</p><p>publie_depuis=All</p><p></p><p>The user-controlled value was:</p><p>aller \u00E0 la derni\u00E8re page</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.qualite-tourisme.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [title] attribute </p><p></p><p>The user input found was:</p><p>publie_depuis=All</p><p></p><p>The user-controlled value was:</p><p>aller \u00E0 la derni\u00E8re page</p>",
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "871"
+					"sourceid": "872"
 				}
 			]
 		}
