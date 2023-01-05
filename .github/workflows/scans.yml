@@ -76,7 +76,7 @@ jobs:
           
       - name: Déclaration RGPD
         continue-on-error: true
-        uses: SocialGouv/dashlord-actions/declaration-rgpd@v1
+        uses: "SIRCOM-BATN/dashlord-actions/declaration-rgpd@436bd8fa57faf355bb17179a1a62676bd3c8fac5"
         if: ${{ matrix.sites.tools['declaration-rgpd'] }}
         with:
           thirdparties: ${{ steps.thirdparties.outputs.json }}
@@ -231,7 +231,17 @@ jobs:
           token: ${{ secrets.CODESCANALERTS_TOKEN }}
           repositories: ${{ join(matrix.sites.repositories) }}
           output: scans/codescanalerts.json
-
+      
+      - name: Uptrends checks
+        continue-on-error: true
+        timeout-minutes: 10
+        uses: "SIRCOM-BATN/dashlord-actions/uptrends@4b9c90fa0b57bb9c823e153a447624b9ea2d9543"
+        if: ${{ matrix.sites.tools.uptrends }}
+        with:
+          api_secrets: ${{ secrets.UPTRENDS_API_KEY }}
+          url: ${{ matrix.sites.url }}
+          output: scans/uptrends.json
+          
       - uses: SocialGouv/dashlord-actions/save@main
         with:
           url: ${{ matrix.sites.url }}
