@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 1 Jan 2023 13:30:38",
+	"@generated": "Thu, 5 Jan 2023 14:28:48",
 	"site":[ 
 		{
 			"@name": "https://cnac.entreprises.gouv.fr",
@@ -32,15 +32,64 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=2&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=3&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=4&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=5&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=6&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
 						}
 					],
-					"count": "2",
+					"count": "9",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"captcha_sid\" \"captcha_token\" \"edit-captcha-response\" \"edit-consentement-form\" \"edit-objet-de-votre-message\" \"edit-send-submit\" \"edit-url\" \"edit-votre-courriel-mail-1\" \"edit-votre-courriel-mail-2\" \"edit-votre-nom\" \"form_build_id\" \"form_id\" \"honeypot_time\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "458"
+					"sourceid": "469"
 				},
 				{
 					"pluginid": "10055",
@@ -120,7 +169,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -243,7 +292,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.js",
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -455,7 +504,7 @@
 					"reference": "<p>https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10003",
@@ -658,6 +707,20 @@
 							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-31\"></script>"
 						},
 						{
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "//tag.aticdn.net/615754/smarttag.js",
+							"attack": "",
+							"evidence": "<script src=\"//tag.aticdn.net/615754/smarttag.js\" async=\"async\"></script>"
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "https://www.googletagmanager.com/gtag/js?id=UA-41292125-31",
+							"attack": "",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-31\"></script>"
+						},
+						{
 							"uri": "https://cnac.entreprises.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "//html5shiv.googlecode.com/svn/trunk/html5.js",
@@ -665,7 +728,7 @@
 							"evidence": "<script src=\"//html5shiv.googlecode.com/svn/trunk/html5.js\"></script>"
 						}
 					],
-					"count": "11",
+					"count": "13",
 					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
 					"otherinfo": "",
 					"reference": "",
@@ -725,7 +788,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "645"
+					"sourceid": "642"
 				},
 				{
 					"pluginid": "10063",
@@ -746,13 +809,6 @@
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.3",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -801,6 +857,13 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://cnac.entreprises.gouv.fr/modules/custom/tarteaucitron/js/tarteaucitron.js?rgr9r8",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://cnac.entreprises.gouv.fr/profiles/",
 							"method": "GET",
 							"param": "",
@@ -828,7 +891,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "249"
+					"sourceid": "248"
 				},
 				{
 					"pluginid": "10035",
@@ -897,14 +960,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.svg",
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.css",
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1053,7 +1116,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "251"
+					"sourceid": "252"
 				},
 				{
 					"pluginid": "10027",
@@ -1115,14 +1178,14 @@
 							"evidence": "user"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.css$",
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.css$",
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1157,7 +1220,7 @@
 							"evidence": "TODO"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.css$",
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1430,7 +1493,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1477,7 +1540,194 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10031",
+					"alertRef": "10031",
+					"alert": "User Controllable HTML Element Attribute (Potential XSS)",
+					"name": "User Controllable HTML Element Attribute (Potential XSS)",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
+					"instances":[ 
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "sort_by",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "sort_by",
+							"attack": "",
+							"evidence": ""
+						}
+					],
+					"count": "24",
+					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://cnac.entreprises.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [title] attribute </p><p></p><p>The user input found was:</p><p>publie_depuis=All</p><p></p><p>The user-controlled value was:</p><p>aller \u00E0 la derni\u00E8re page</p>",
+					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
+					"cweid": "20",
+					"wascid": "20",
+					"sourceid": "758"
 				}
 			]
 		}
