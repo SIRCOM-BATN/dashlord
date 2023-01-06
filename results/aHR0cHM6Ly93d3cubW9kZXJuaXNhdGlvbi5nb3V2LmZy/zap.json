@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Thu, 5 Jan 2023 15:11:55",
+	"@generated": "Fri, 6 Jan 2023 09:21:51",
 	"site":[ 
 		{
 			"@name": "https://www.modernisation.gouv.fr",
@@ -320,6 +320,13 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://www.modernisation.gouv.fr/profiles/*.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://www.modernisation.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
@@ -327,13 +334,39 @@
 							"evidence": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header, to achieve optimal browser support: \"Content-Security-Policy\" for Chrome 25+, Firefox 23+ and Safari 7+, \"X-Content-Security-Policy\" for Firefox 4.0+ and Internet Explorer 10+, and \"X-WebKit-CSP\" for Chrome 14+ and Safari 6+.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "1101"
+				},
+				{
+					"pluginid": "90022",
+					"alertRef": "90022",
+					"alert": "Application Error Disclosure",
+					"name": "Application Error Disclosure",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.modernisation.gouv.fr/flux-rss",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 500 Service unavailable (with message)"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1764"
 				},
 				{
 					"pluginid": "10044",
@@ -404,6 +437,53 @@
 					"sourceid": "1165"
 				},
 				{
+					"pluginid": "10110",
+					"alertRef": "10110",
+					"alert": "Dangerous JS Functions",
+					"name": "Dangerous JS Functions",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.modernisation.gouv.fr/core/assets/vendor/jquery-form/jquery.form.min.js?v=4.3.0",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval"
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Eval"
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/libraries/shariff/shariff.complete.js?v=9.4.8",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval"
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/libraries/tarteaucitron/tarteaucitron.js?ro0pk6",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval"
+						}
+					],
+					"count": "4",
+					"solution": "<p>See the references for security advice on the use of these functions.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://angular.io/guide/security</p>",
+					"cweid": "749",
+					"wascid": "-1",
+					"sourceid": "1952"
+				},
+				{
 					"pluginid": "10063",
 					"alertRef": "10063-1",
 					"alert": "Permissions Policy Header Not Set",
@@ -421,6 +501,76 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://www.modernisation.gouv.fr/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.3",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/core/assets/vendor/once/once.min.js?v=1.0.1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/core/misc/drupal.init.js?v=9.4.8",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/core/misc/drupal.js?v=9.4.8",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/core/misc/drupalSettingsLoader.js?v=9.4.8",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/core/misc/polyfills/element.matches.js?v=9.4.8",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/core/misc/polyfills/object.assign.js?v=9.4.8",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/flux-rss",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/modules/custom/ds_tarteaucitron/js/load.js?ro0pk6",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://www.modernisation.gouv.fr/profiles/",
 							"method": "GET",
 							"param": "",
@@ -428,7 +578,7 @@
 							"evidence": ""
 						}
 					],
-					"count": "2",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
@@ -517,14 +667,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/profiles/*.css$",
+							"uri": "https://www.modernisation.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/profiles/*.js$",
+							"uri": "https://www.modernisation.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -913,14 +1063,14 @@
 							"evidence": "private"
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/core/*.js$",
+							"uri": "https://www.modernisation.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "private"
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/core/*.png",
+							"uri": "https://www.modernisation.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
