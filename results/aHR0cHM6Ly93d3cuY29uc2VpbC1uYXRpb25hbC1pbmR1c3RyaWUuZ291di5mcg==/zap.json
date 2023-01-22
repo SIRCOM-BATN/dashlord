@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 15 Jan 2023 01:38:42",
+	"@generated": "Sun, 22 Jan 2023 01:37:19",
 	"site":[ 
 		{
 			"@name": "https://www.conseil-national-industrie.gouv.fr",
@@ -40,7 +40,7 @@
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "872"
+					"sourceid": "874"
 				},
 				{
 					"pluginid": "10055",
@@ -250,6 +250,27 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.gif",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -257,7 +278,7 @@
 							"evidence": ""
 						}
 					],
-					"count": "12",
+					"count": "15",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header, to achieve optimal browser support: \"Content-Security-Policy\" for Chrome 25+, Firefox 23+ and Safari 7+, \"X-Content-Security-Policy\" for Firefox 4.0+ and Internet Explorer 10+, and \"X-WebKit-CSP\" for Chrome 14+ and Safari 6+.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
@@ -304,13 +325,6 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *"
-						},
-						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -333,6 +347,13 @@
 						},
 						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/user/logout/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/user/password/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -414,7 +435,7 @@
 							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-30\"></script>"
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -520,21 +541,7 @@
 					"desc": "<p>The server has responded with a redirect that seems to provide a large response. This may indicate that although the server sent a redirect it also responded with body content (which may include sensitive details, PII, etc.).</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/page-non-trouvee",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -548,13 +555,6 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/search",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/search/",
 							"method": "GET",
 							"param": "",
@@ -562,13 +562,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "6",
+					"count": "3",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
-					"otherinfo": "<p>Location header URI length: 47 [https://www.conseil-national-industrie.gouv.fr/].</p><p>Predicted response size: 347.</p><p>Response Body Length: 434.</p>",
+					"otherinfo": "<p>Location header URI length: 58 [https://www.conseil-national-industrie.gouv.fr/filter/tips].</p><p>Predicted response size: 358.</p><p>Response Body Length: 478.</p>",
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "1170"
+					"sourceid": "329"
 				},
 				{
 					"pluginid": "10017",
@@ -664,7 +664,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10110",
@@ -745,13 +745,6 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/core/misc/drupal.init.js?v=9.2.8",
 							"method": "GET",
 							"param": "",
@@ -788,6 +781,13 @@
 						},
 						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/modules/custom/tarteaucitron/js/load.js?rm3un9",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/modules/custom/tarteaucitron/js/tarteaucitron.js?rm3un9",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -897,14 +897,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css$",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1046,7 +1046,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10019",
@@ -1168,7 +1168,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10109",
@@ -1264,7 +1264,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1319,13 +1319,6 @@
 							"evidence": "private"
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "private"
-						},
-						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1333,7 +1326,7 @@
 							"evidence": "500"
 						}
 					],
-					"count": "8",
+					"count": "7",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
@@ -1380,7 +1373,7 @@
 							"evidence": "max-age=600, public"
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/cni-action/des-actions-transverses/conseil-national-de-l-hydrogene",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/cni-action/des-actions-transverses/conseil-pour-la-mixite-et-l-egalite-professionnelle-dans-l-industrie",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
