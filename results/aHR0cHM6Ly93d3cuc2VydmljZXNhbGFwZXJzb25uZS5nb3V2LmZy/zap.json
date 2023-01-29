@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 22 Jan 2023 01:50:38",
+	"@generated": "Sun, 29 Jan 2023 01:44:56",
 	"site":[ 
 		{
 			"@name": "https://www.servicesalapersonne.gouv.fr",
@@ -73,7 +73,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -113,7 +113,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -153,7 +153,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10038",
@@ -243,6 +243,20 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -250,13 +264,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "12",
+					"count": "14",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header, to achieve optimal browser support: \"Content-Security-Policy\" for Chrome 25+, Firefox 23+ and Safari 7+, \"X-Content-Security-Policy\" for Firefox 4.0+ and Internet Explorer 10+, and \"X-WebKit-CSP\" for Chrome 14+ and Safari 6+.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "266"
+					"sourceid": "270"
 				},
 				{
 					"pluginid": "10098",
@@ -352,7 +366,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90003",
@@ -448,7 +462,33 @@
 					"reference": "<p>https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10003",
+					"alertRef": "10003",
+					"alert": "Vulnerable JS Library",
+					"name": "Vulnerable JS Library",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>The identified library jquery, version 1-7-min is vulnerable.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/core/assets/vendor/jquery.ui/ui/jquery-1-7-min.js?v=1.12.1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "jquery-1-7-min.js"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Please upgrade to the latest version of jquery.</p>",
+					"otherinfo": "<p>CVE-2020-11023</p><p>CVE-2020-11022</p><p>CVE-2015-9251</p><p>CVE-2019-11358</p><p>CVE-2012-6708</p><p></p>",
+					"reference": "<p>https://nvd.nist.gov/vuln/detail/CVE-2012-6708</p><p>https://github.com/jquery/jquery/issues/2432</p><p>http://research.insecurelabs.org/jquery/test/</p><p>http://blog.jquery.com/2016/01/08/jquery-2-2-and-1-12-released/</p><p>http://bugs.jquery.com/ticket/11290</p><p>https://blog.jquery.com/2019/04/10/jquery-3-4-0-released/</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-11358</p><p>https://nvd.nist.gov/vuln/detail/CVE-2015-9251</p><p>https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b</p><p>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</p><p></p>",
+					"cweid": "829",
+					"wascid": "-1",
+					"sourceid": "876"
 				},
 				{
 					"pluginid": "90022",
@@ -597,6 +637,20 @@
 							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-36\"></script>"
 						},
 						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "//tag.aticdn.net/615394/smarttag.js",
+							"attack": "",
+							"evidence": "<script src=\"//tag.aticdn.net/615394/smarttag.js\" async=\"async\"></script>"
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "https://www.googletagmanager.com/gtag/js?id=UA-41292125-36",
+							"attack": "",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-36\"></script>"
+						},
+						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "//html5shiv.googlecode.com/svn/trunk/html5.js",
@@ -604,13 +658,13 @@
 							"evidence": "<script src=\"//html5shiv.googlecode.com/svn/trunk/html5.js\"></script>"
 						}
 					],
-					"count": "11",
+					"count": "13",
 					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
 					"otherinfo": "",
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10110",
@@ -623,11 +677,25 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/core/assets/vendor/jquery-form/jquery.form.min.js?v=4.3.0",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval"
+						},
+						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "Eval"
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/libraries/shariff/shariff.complete.js?v=9.2.8",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval"
 						},
 						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/libraries/tarteaucitron/tarteaucitron.js",
@@ -644,13 +712,13 @@
 							"evidence": "eval"
 						}
 					],
-					"count": "3",
+					"count": "5",
 					"solution": "<p>See the references for security advice on the use of these functions.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "850"
+					"sourceid": "925"
 				},
 				{
 					"pluginid": "10063",
@@ -671,13 +739,6 @@
 						},
 						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.3",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -706,6 +767,13 @@
 						},
 						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/files_sap/languages/fr_Xa4ahax4c9wKoyz_GLtBT_qoFmHxr3rZy1XyHYv-HGM.js?rhdo4r",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/libraries/blazy/blazy.js?v=1.x",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -753,7 +821,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "287"
+					"sourceid": "288"
 				},
 				{
 					"pluginid": "10035",
@@ -836,7 +904,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.css$",
+							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -856,7 +924,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "266"
+					"sourceid": "270"
 				},
 				{
 					"pluginid": "10094",
@@ -952,7 +1020,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10019",
@@ -1040,20 +1108,6 @@
 							"evidence": "user"
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from"
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user"
-						},
-						{
 							"uri": "https://www.servicesalapersonne.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -1080,22 +1134,15 @@
 							"param": "",
 							"attack": "",
 							"evidence": "TODO"
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "TODO"
 						}
 					],
-					"count": "14",
+					"count": "11",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10109",
@@ -1150,7 +1197,7 @@
 							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>"
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.servicesalapersonne.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1191,7 +1238,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1259,7 +1306,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "266"
+					"sourceid": "270"
 				},
 				{
 					"pluginid": "10015",
@@ -1293,14 +1340,14 @@
 							"evidence": "max-age=600, public"
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/beneficier-des-sap/comment-utiliser-services-la-personne/etre-particulier-employeur",
+							"uri": "https://www.servicesalapersonne.gouv.fr/beneficier-des-sap/cesu/cheque-emploi-service-universel-prefinance-qu-est-que-c-est",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
 							"evidence": "max-age=600, public"
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/beneficier-des-sap/comment-utiliser-services-la-personne/recourir-organisme",
+							"uri": "https://www.servicesalapersonne.gouv.fr/beneficier-des-sap/comment-utiliser-services-la-personne/etre-particulier-employeur",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
@@ -1355,7 +1402,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1402,7 +1449,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				}
 			]
 		}
