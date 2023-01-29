@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 22 Jan 2023 01:16:57",
+	"@generated": "Sun, 29 Jan 2023 01:15:00",
 	"site":[ 
 		{
 			"@name": "https://www.entreprises.gouv.fr",
@@ -62,6 +62,13 @@
 							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">"
 						},
 						{
+							"uri": "https://www.entreprises.gouv.fr/fr/commerce-et-artisanat/acteurs/etablissements-d-enseignement-superieur-consulaires",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">"
+						},
+						{
 							"uri": "https://www.entreprises.gouv.fr/fr/commerce-et-artisanat/acteurs/reseau-des-chambres-de-metiers-et-de-l-artisanat-cma",
 							"method": "GET",
 							"param": "",
@@ -104,7 +111,7 @@
 							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">"
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-thematique-filter-target-id-1043\" \"edit-field-thematique-filter-target-id-1046\" \"edit-field-thematique-filter-target-id-1049\" \"edit-field-thematique-filter-target-id-1052\" \"edit-field-thematique-filter-target-id-1055\" \"edit-field-thematique-filter-target-id-1058\" \"edit-field-thematique-filter-target-id-1285\" \"edit-submit-l-information-en-continu\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
@@ -130,7 +137,7 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr",
+							"uri": "https://www.entreprises.gouv.fr/en",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -150,7 +157,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10055",
@@ -170,7 +177,7 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr",
+							"uri": "https://www.entreprises.gouv.fr/en",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -190,7 +197,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10055",
@@ -210,7 +217,7 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr",
+							"uri": "https://www.entreprises.gouv.fr/en",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -230,7 +237,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10038",
@@ -263,7 +270,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "643"
+					"sourceid": "636"
 				},
 				{
 					"pluginid": "10098",
@@ -291,13 +298,6 @@
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *"
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/fr/commerce-et-artisanat/acteurs/reseau-des-chambres-de-metiers-et-de-l-artisanat-cma",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -346,6 +346,13 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
+							"uri": "https://www.entreprises.gouv.fr/fr/toutes-les-etudes-commerce-artisanat",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
 							"uri": "https://www.entreprises.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -359,7 +366,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90003",
@@ -488,7 +495,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "361"
+					"sourceid": "383"
 				},
 				{
 					"pluginid": "10044",
@@ -699,7 +706,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "361"
+					"sourceid": "383"
 				},
 				{
 					"pluginid": "10035",
@@ -732,7 +739,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "643"
+					"sourceid": "636"
 				},
 				{
 					"pluginid": "10096",
@@ -759,6 +766,13 @@
 							"evidence": "1369278807"
 						},
 						{
+							"uri": "https://www.entreprises.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1388388697"
+						},
+						{
 							"uri": "https://www.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
@@ -773,11 +787,25 @@
 							"evidence": "1369278807"
 						},
 						{
+							"uri": "https://www.entreprises.gouv.fr/fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1388388697"
+						},
+						{
 							"uri": "https://www.entreprises.gouv.fr/fr/france-2030-faire-emerger-futurs-champions-dans-filieres-d-excellence",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "1369278807"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/fr/industrie-entreprise",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1388388697"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/fr/prix-de-l-energie-aides-destinees-aux-entreprises",
@@ -808,7 +836,7 @@
 							"evidence": "1640013215"
 						}
 					],
-					"count": "9",
+					"count": "12",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1367884174, which evaluates to: 2013-05-06 23:49:34</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
@@ -958,14 +986,14 @@
 							"evidence": "user"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr/place-des-entreprises-tpe/pme-face-problematique-contactez-conseiller",
+							"uri": "https://www.entreprises.gouv.fr/fr/recherche",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr/recherche",
+							"uri": "https://www.entreprises.gouv.fr/fr/toutes-les-etudes-commerce-artisanat",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1000,14 +1028,14 @@
 							"evidence": "TODO"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr/place-des-entreprises-tpe/pme-face-problematique-contactez-conseiller",
+							"uri": "https://www.entreprises.gouv.fr/fr/recherche",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "TODO"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr/recherche",
+							"uri": "https://www.entreprises.gouv.fr/fr/toutes-les-etudes-commerce-artisanat",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1140,7 +1168,7 @@
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
-							"evidence": "max-age=300"
+							"evidence": "max-age=600, public"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/en",
@@ -1203,7 +1231,7 @@
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
-							"evidence": "max-age=600, public"
+							"evidence": "max-age=300"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/fr/rss/actualites",
@@ -1243,13 +1271,6 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "max-age=300"
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
 							"evidence": "max-age=600"
 						},
 						{
@@ -1281,13 +1302,6 @@
 							"evidence": "max-age=600"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr/place-des-entreprises-tpe/pme-face-problematique-contactez-conseiller",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=300"
-						},
-						{
 							"uri": "https://www.entreprises.gouv.fr/fr/recherche",
 							"method": "GET",
 							"param": "",
@@ -1299,10 +1313,17 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "max-age=600"
+							"evidence": "max-age=300"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/fr/rss/actualites",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=300"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/fr/toutes-les-etudes-commerce-artisanat",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1323,13 +1344,13 @@
 							"evidence": "max-age=300"
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				}
 			]
 		}
