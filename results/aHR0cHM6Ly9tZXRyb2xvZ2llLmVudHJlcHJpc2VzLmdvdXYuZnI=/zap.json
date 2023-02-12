@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 5 Feb 2023 01:19:24",
+	"@generated": "Sun, 12 Feb 2023 01:20:48",
 	"site":[ 
 		{
 			"@name": "https://metrologie.entreprises.gouv.fr",
@@ -39,9 +39,23 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/fr/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/fr/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/fr/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
 						}
 					],
-					"count": "3",
+					"count": "5",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-submit-foire-aux-questions\" \"edit-title\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
@@ -235,7 +249,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1478"
+					"sourceid": "1477"
 				},
 				{
 					"pluginid": "10098",
@@ -262,6 +276,13 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/qui-fait-quoi/cofrac",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/qui-fait-quoi/laboratoire-national-de-metrologie-et-d-essais",
 							"method": "GET",
 							"param": "",
@@ -270,20 +291,6 @@
 						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *"
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-de-masse",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *"
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-geometriques",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -332,7 +339,7 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
 					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
@@ -547,7 +554,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10017",
@@ -724,21 +731,14 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/assets/vendor/css-escape/css.escape.js?v=1.5.1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.3",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/core/assets/vendor/jquery.ui/ui/data-min.js?v=1.12.1",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/core/assets/vendor/jquery.ui/ui/version-min.js?v=1.12.1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -787,6 +787,13 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/libraries/tarteaucitron/tarteaucitron.js?rhs1xs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/modules/custom/tarteaucitron/js/load.js?rhs1xs",
 							"method": "GET",
 							"param": "",
@@ -814,7 +821,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1334"
+					"sourceid": "1349"
 				},
 				{
 					"pluginid": "10035",
@@ -883,7 +890,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/core/themes/stable/css/system/components/nowrap.module.css?rhs1xs",
+							"uri": "https://metrologie.entreprises.gouv.fr/core/themes/stable/css/system/components/item-list.module.css?rhs1xs",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -972,14 +979,14 @@
 							"evidence": "/files_metrologie/languages/fr_ccugSZhUOao9TmHbPw0wv-oa9Ady4fIrqsfNNfvdNuA"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-geometriques",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-de-temps",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "/files_metrologie/languages/fr_ccugSZhUOao9TmHbPw0wv-oa9Ady4fIrqsfNNfvdNuA"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-mecaniques",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-geometriques",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1178,14 +1185,14 @@
 							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-geometriques",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-de-temps",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-mecaniques",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-geometriques",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1307,6 +1314,13 @@
 							"evidence": "max-age=600, public"
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-de-temps",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=600, public"
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/la-metrologie/systeme-si-d-unites-de-mesure/unites-geometriques",
 							"method": "GET",
 							"param": "Cache-Control",
@@ -1349,7 +1363,7 @@
 							"evidence": "max-age=600, public"
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
@@ -1445,6 +1459,116 @@
 					"cweid": "524",
 					"wascid": "13",
 					"sourceid": "1"
+				},
+				{
+					"pluginid": "10031",
+					"alertRef": "10031",
+					"alert": "User Controllable HTML Element Attribute (Potential XSS)",
+					"name": "User Controllable HTML Element Attribute (Potential XSS)",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
+					"instances":[ 
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "sort_by",
+							"attack": "",
+							"evidence": ""
+						}
+					],
+					"count": "13",
+					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://metrologie.entreprises.gouv.fr/fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [title] attribute </p><p></p><p>The user input found was:</p><p>publie_depuis=All</p><p></p><p>The user-controlled value was:</p><p>aller \u00E0 la derni\u00E8re page</p>",
+					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
+					"cweid": "20",
+					"wascid": "20",
+					"sourceid": "1484"
 				}
 			]
 		}
