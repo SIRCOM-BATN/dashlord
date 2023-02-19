@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 12 Feb 2023 01:07:26",
+	"@generated": "Sun, 19 Feb 2023 01:05:35",
 	"site":[ 
 		{
 			"@name": "https://www.collectivites-locales.gouv.fr",
@@ -40,7 +40,7 @@
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -80,7 +80,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -120,7 +120,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -160,7 +160,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10038",
@@ -359,7 +359,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10063",
@@ -482,14 +482,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.collectivites-locales.gouv.fr/profiles/*.gif",
+							"uri": "https://www.collectivites-locales.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.collectivites-locales.gouv.fr/profiles/*.js",
+							"uri": "https://www.collectivites-locales.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -503,6 +503,67 @@
 					"cweid": "319",
 					"wascid": "15",
 					"sourceid": "1422"
+				},
+				{
+					"pluginid": "10096",
+					"alertRef": "10096",
+					"alert": "Timestamp Disclosure - Unix",
+					"name": "Timestamp Disclosure - Unix",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.collectivites-locales.gouv.fr/institutions/la-responsabilite-penale-des-elus",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1393470590"
+						},
+						{
+							"uri": "https://www.collectivites-locales.gouv.fr/institutions/la-responsabilite-penale-des-elus",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1554031557"
+						},
+						{
+							"uri": "https://www.collectivites-locales.gouv.fr/institutions/la-responsabilite-penale-des-elus",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1757720243"
+						},
+						{
+							"uri": "https://www.collectivites-locales.gouv.fr/institutions/la-responsabilite-penale-des-elus",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1916340480"
+						},
+						{
+							"uri": "https://www.collectivites-locales.gouv.fr/institutions/la-responsabilite-penale-des-elus",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1942304509"
+						},
+						{
+							"uri": "https://www.collectivites-locales.gouv.fr/institutions/la-responsabilite-penale-des-elus",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1956152018"
+						}
+					],
+					"count": "6",
+					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
+					"otherinfo": "<p>1393470590, which evaluates to: 2014-02-27 03:09:50</p>",
+					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1926"
 				},
 				{
 					"pluginid": "10094",
@@ -713,7 +774,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10109",
@@ -871,7 +932,7 @@
 							"evidence": "private"
 						},
 						{
-							"uri": "https://www.collectivites-locales.gouv.fr/profiles/*.css",
+							"uri": "https://www.collectivites-locales.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -980,7 +1041,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1020,7 +1081,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				}
 			]
 		}
