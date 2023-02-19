@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 12 Feb 2023 01:04:58",
+	"@generated": "Sun, 19 Feb 2023 01:03:34",
 	"site":[ 
 		{
 			"@name": "https://www.budget.gouv.fr",
@@ -33,7 +33,7 @@
 					"reference": "",
 					"cweid": "359",
 					"wascid": "13",
-					"sourceid": "2417"
+					"sourceid": "1909"
 				},
 				{
 					"pluginid": "10202",
@@ -51,13 +51,6 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/rechercher\" method=\"get\" id=\"views-exposed-form-rechercher-es-page-1\" accept-charset=\"UTF-8\">"
-						},
-						{
-							"uri": "https://www.budget.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form action=\"/download_csv/timeline/donn\u00E9es_.csv\" method=\"POST\">"
 						},
 						{
 							"uri": "https://www.budget.gouv.fr",
@@ -109,7 +102,7 @@
 							"evidence": "<form action=\"/rechercher\" method=\"get\" id=\"views-exposed-form-rechercher-es-page-1\" accept-charset=\"UTF-8\">"
 						}
 					],
-					"count": "9",
+					"count": "8",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-tags-target-id\" \"edit-query\" \"edit-submit-rechercher-es\" \"f[0]\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
@@ -325,7 +318,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/profiles/*.js",
+							"uri": "https://www.budget.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -437,58 +430,6 @@
 					"sourceid": "49"
 				},
 				{
-					"pluginid": "10020",
-					"alertRef": "10020-1",
-					"alert": "Missing Anti-clickjacking Header",
-					"name": "Missing Anti-clickjacking Header",
-					"riskcode": "2",
-					"confidence": "2",
-					"riskdesc": "Medium (Medium)",
-					"desc": "<p>The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.budget.gouv.fr/ressources-documentaires/budgetek",
-							"method": "GET",
-							"param": "X-Frame-Options",
-							"attack": "",
-							"evidence": ""
-						}
-					],
-					"count": "1",
-					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
-					"cweid": "1021",
-					"wascid": "15",
-					"sourceid": "2777"
-				},
-				{
-					"pluginid": "90003",
-					"alertRef": "90003",
-					"alert": "Sub Resource Integrity Attribute Missing",
-					"name": "Sub Resource Integrity Attribute Missing",
-					"riskcode": "2",
-					"confidence": "3",
-					"riskdesc": "Medium (High)",
-					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
-					"instances":[ 
-						{
-							"uri": "https://www.budget.gouv.fr/ressources-documentaires/budgetek",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>"
-						}
-					],
-					"count": "1",
-					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity</p>",
-					"cweid": "345",
-					"wascid": "15",
-					"sourceid": "2777"
-				},
-				{
 					"pluginid": "10044",
 					"alertRef": "10044",
 					"alert": "Big Redirect Detected (Potential Sensitive Information Leak)",
@@ -519,33 +460,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "320"
-				},
-				{
-					"pluginid": "10017",
-					"alertRef": "10017",
-					"alert": "Cross-Domain JavaScript Source File Inclusion",
-					"name": "Cross-Domain JavaScript Source File Inclusion",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.budget.gouv.fr/ressources-documentaires/budgetek",
-							"method": "GET",
-							"param": "//html5shiv.googlecode.com/svn/trunk/html5.js",
-							"attack": "",
-							"evidence": "<script src=\"//html5shiv.googlecode.com/svn/trunk/html5.js\"></script>"
-						}
-					],
-					"count": "1",
-					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
-					"otherinfo": "",
-					"reference": "",
-					"cweid": "829",
-					"wascid": "15",
-					"sourceid": "2777"
+					"sourceid": "316"
 				},
 				{
 					"pluginid": "10063",
@@ -577,16 +492,9 @@
 							"param": "",
 							"attack": "",
 							"evidence": ""
-						},
-						{
-							"uri": "https://www.budget.gouv.fr/ressources-documentaires/budgetek",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
@@ -682,7 +590,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/profiles/*.js",
+							"uri": "https://www.budget.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -791,7 +699,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "49"
 				},
 				{
 					"pluginid": "10019",
@@ -906,7 +814,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "49"
 				},
 				{
 					"pluginid": "10109",
@@ -923,77 +831,77 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>"
+							"evidence": "<a href=\"\" title=\"Accueil\" rel=\"home\">budget.gouv.fr</a>"
 						},
 						{
 							"uri": "https://www.budget.gouv.fr/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>"
+							"evidence": "<a href=\"\" title=\"Accueil\" rel=\"home\">budget.gouv.fr</a>"
 						},
 						{
 							"uri": "https://www.budget.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>"
+							"evidence": "<a href=\"\" title=\"Accueil\" rel=\"home\">budget.gouv.fr</a>"
 						},
 						{
 							"uri": "https://www.budget.gouv.fr/core/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>"
+							"evidence": "<a href=\"\" title=\"Accueil\" rel=\"home\">budget.gouv.fr</a>"
 						},
 						{
 							"uri": "https://www.budget.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>"
+							"evidence": "<a href=\"\" title=\"Accueil\" rel=\"home\">budget.gouv.fr</a>"
 						},
 						{
 							"uri": "https://www.budget.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>"
+							"evidence": "<a href=\"\" title=\"Accueil\" rel=\"home\">budget.gouv.fr</a>"
 						},
 						{
 							"uri": "https://www.budget.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>"
+							"evidence": "<a href=\"\" title=\"Accueil\" rel=\"home\">budget.gouv.fr</a>"
 						},
 						{
 							"uri": "https://www.budget.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>"
+							"evidence": "<a href=\"\" title=\"Accueil\" rel=\"home\">budget.gouv.fr</a>"
 						},
 						{
 							"uri": "https://www.budget.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>"
+							"evidence": "<a href=\"\" title=\"Accueil\" rel=\"home\">budget.gouv.fr</a>"
 						},
 						{
 							"uri": "https://www.budget.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>"
+							"evidence": "<a href=\"\" title=\"Accueil\" rel=\"home\">budget.gouv.fr</a>"
 						},
 						{
 							"uri": "https://www.budget.gouv.fr/profiles/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>"
+							"evidence": "<a href=\"\" title=\"Accueil\" rel=\"home\">budget.gouv.fr</a>"
 						}
 					],
 					"count": "11",
@@ -1050,14 +958,14 @@
 							"evidence": "max-age=600, public"
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/panorama-finances-publique/etat-et-organismes-divers-dadministration-centrale-odac",
+							"uri": "https://www.budget.gouv.fr/panorama-finances-publique/administrations-de-securite-sociale-asso",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
 							"evidence": "max-age=600, public"
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/panorama-finances-publiques",
+							"uri": "https://www.budget.gouv.fr/panorama-finances-publique/etat-et-organismes-divers-dadministration-centrale-odac",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
@@ -1098,7 +1006,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "49"
 				},
 				{
 					"pluginid": "10049",
@@ -1138,7 +1046,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "49"
 				},
 				{
 					"pluginid": "10049",
