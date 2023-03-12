@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 5 Mar 2023 01:52:05",
+	"@generated": "Sun, 12 Mar 2023 01:57:08",
 	"site":[ 
 		{
 			"@name": "https://www.semaine-industrie.gouv.fr",
@@ -48,14 +48,7 @@
 							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=3&publie_depuis=All&sort_by=search_api_relevance",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=2&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -111,13 +104,13 @@
 							"evidence": "<form class=\"user-register-form user-form\" data-user-info-from-browser data-drupal-selector=\"user-register-form\" action=\"/user/register\" method=\"post\" id=\"user-register-form\" accept-charset=\"UTF-8\">"
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-submit-foire-aux-questions\" \"edit-title\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "516"
+					"sourceid": "521"
 				},
 				{
 					"pluginid": "10055",
@@ -157,7 +150,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10055",
@@ -197,7 +190,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10055",
@@ -237,7 +230,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10038",
@@ -306,6 +299,13 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
@@ -313,14 +313,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js$",
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -367,14 +360,14 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/filter/tips",
+							"uri": "https://www.semaine-industrie.gouv.fr/index.php/admin/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/index.php/admin/",
+							"uri": "https://www.semaine-industrie.gouv.fr/index.php/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -462,7 +455,7 @@
 					"reference": "<p>http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "1069"
+					"sourceid": "1060"
 				},
 				{
 					"pluginid": "90003",
@@ -517,7 +510,7 @@
 							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-28\"></script>"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/index.php/node/add/",
+							"uri": "https://www.semaine-industrie.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -591,7 +584,7 @@
 					"reference": "<p>https://nvd.nist.gov/vuln/detail/CVE-2012-6708</p><p>https://github.com/jquery/jquery/issues/2432</p><p>http://research.insecurelabs.org/jquery/test/</p><p>http://blog.jquery.com/2016/01/08/jquery-2-2-and-1-12-released/</p><p>http://bugs.jquery.com/ticket/11290</p><p>https://blog.jquery.com/2019/04/10/jquery-3-4-0-released/</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-11358</p><p>https://nvd.nist.gov/vuln/detail/CVE-2015-9251</p><p>https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b</p><p>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "673"
+					"sourceid": "677"
 				},
 				{
 					"pluginid": "90022",
@@ -803,20 +796,6 @@
 							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-28\"></script>"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "//tag.aticdn.net/615398/smarttag.js",
-							"attack": "",
-							"evidence": "<script src=\"//tag.aticdn.net/615398/smarttag.js\" async=\"async\"></script>"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "https://www.googletagmanager.com/gtag/js?id=UA-41292125-28",
-							"attack": "",
-							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-28\"></script>"
-						},
-						{
 							"uri": "https://www.semaine-industrie.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "//html5shiv.googlecode.com/svn/trunk/html5.js",
@@ -824,7 +803,7 @@
 							"evidence": "<script src=\"//html5shiv.googlecode.com/svn/trunk/html5.js\"></script>"
 						}
 					],
-					"count": "13",
+					"count": "11",
 					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
 					"otherinfo": "",
 					"reference": "",
@@ -884,7 +863,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "720"
+					"sourceid": "725"
 				},
 				{
 					"pluginid": "10063",
@@ -905,13 +884,6 @@
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.3",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/assets/vendor/jquery.ui/ui/version-min.js?v=1.12.1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -940,6 +912,13 @@
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/files_sedi/languages/fr_00pooAdKQC4Uz88bF6D6G8YzB5WpJ5F6bf7Q8igHOh0.js?rn71ed",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/libraries/blazy/blazy.js?v=1.x",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -987,7 +966,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "262"
+					"sourceid": "261"
 				},
 				{
 					"pluginid": "10035",
@@ -1116,7 +1095,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1158"
+					"sourceid": "1160"
 				},
 				{
 					"pluginid": "10094",
@@ -1212,7 +1191,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10019",
@@ -1238,7 +1217,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "265"
+					"sourceid": "262"
 				},
 				{
 					"pluginid": "10027",
@@ -1532,7 +1511,7 @@
 							"evidence": "max-age=600, public, no-cache"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/espace-enseignants",
+							"uri": "https://www.semaine-industrie.gouv.fr/accueil/comment-inscrire-evenement-pour-la-semaine-de-l-industrie",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
@@ -1614,7 +1593,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.js$",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1627,7 +1606,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "247"
+					"sourceid": "240"
 				},
 				{
 					"pluginid": "10049",
@@ -1660,7 +1639,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10031",
@@ -1840,7 +1819,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "839"
+					"sourceid": "840"
 				}
 			]
 		}
