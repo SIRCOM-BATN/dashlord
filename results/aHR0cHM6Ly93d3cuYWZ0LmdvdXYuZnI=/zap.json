@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Mon, 13 Mar 2023 09:37:55",
+	"@generated": "Sun, 19 Mar 2023 00:49:32",
 	"site":[ 
 		{
 			"@name": "https://www.aft.gouv.fr",
@@ -48,11 +48,11 @@
 							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-404-page-1\" action=\"/fr/404\" method=\"get\" id=\"views-exposed-form-recherche-404-page-1\" accept-charset=\"UTF-8\">"
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/en/files/webform/",
+							"uri": "https://www.aft.gouv.fr/files/webform/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-404-page-1\" action=\"/en/404\" method=\"get\" id=\"views-exposed-form-recherche-404-page-1\" accept-charset=\"UTF-8\">"
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-404-page-1\" action=\"/fr/404\" method=\"get\" id=\"views-exposed-form-recherche-404-page-1\" accept-charset=\"UTF-8\">"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/index.php/comment/reply/",
@@ -90,6 +90,13 @@
 							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-404-page-1\" action=\"/fr/404\" method=\"get\" id=\"views-exposed-form-recherche-404-page-1\" accept-charset=\"UTF-8\">"
 						},
 						{
+							"uri": "https://www.aft.gouv.fr/recherche-avancee",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-page-1\" action=\"/fr/recherche-avancee\" method=\"get\" id=\"views-exposed-form-recherche-page-1\" accept-charset=\"UTF-8\">"
+						},
+						{
 							"uri": "https://www.aft.gouv.fr/search/",
 							"method": "GET",
 							"param": "",
@@ -104,13 +111,13 @@
 							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-404-page-1\" action=\"/fr/404\" method=\"get\" id=\"views-exposed-form-recherche-404-page-1\" accept-charset=\"UTF-8\">"
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-changed\" \"edit-changed-1\" \"edit-search-api-fulltext\" \"edit-search-api-language-ar\" \"edit-search-api-language-en\" \"edit-search-api-language-es\" \"edit-search-api-language-fr\" \"edit-search-api-language-ja\" \"edit-search-api-language-ru\" \"edit-search-api-language-zh-hans\" \"edit-submit-recherche-404\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "392"
+					"sourceid": "426"
 				},
 				{
 					"pluginid": "10055",
@@ -271,6 +278,13 @@
 							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-28315037-1\"></script>"
 						},
 						{
+							"uri": "https://www.aft.gouv.fr/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-28315037-1\"></script>"
+						},
+						{
 							"uri": "https://www.aft.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
@@ -321,13 +335,6 @@
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/profiles/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-28315037-1\"></script>"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/search/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -483,7 +490,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "323"
+					"sourceid": "409"
 				},
 				{
 					"pluginid": "10096",
@@ -496,55 +503,41 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.aft.gouv.fr/fr/cadre-juridique-budget",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1379448247"
-						},
-						{
 							"uri": "https://www.aft.gouv.fr/fr/contact",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1678700227"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/presentation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1756338842"
+							"evidence": "1679186926"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/fr/recevoir-nos-publications",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1678700227"
+							"evidence": "1679186926"
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/fr/tresorerie-cadre-juridique",
+							"uri": "https://www.aft.gouv.fr/index.php/fr/cadre-juridique-budget",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1629897596"
+							"evidence": "1379448247"
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/fr/tresorerie-cadre-juridique",
+							"uri": "https://www.aft.gouv.fr/index.php/fr/presentation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1884101225"
+							"evidence": "1756338842"
 						}
 					],
-					"count": "6",
+					"count": "4",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1379448247, which evaluates to: 2013-09-17 20:04:07</p>",
+					"otherinfo": "<p>1679186926, which evaluates to: 2023-03-19 00:48:46</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1587"
+					"sourceid": "1454"
 				},
 				{
 					"pluginid": "10094",
@@ -562,6 +555,13 @@
 							"param": "",
 							"attack": "",
 							"evidence": "/files/css/css_ZQhezKiJksnzoNObMvCO6KBc4Bt-kvLRg4xpjrES5zA"
+						},
+						{
+							"uri": "https://www.aft.gouv.fr/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files/css/css_D94g4S8ntCedBcTdhBn71JBCpVv9i3v3y2nNPdsaT_w"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/core/*.css$",
@@ -634,7 +634,7 @@
 							"evidence": "/files/css/css_D94g4S8ntCedBcTdhBn71JBCpVv9i3v3y2nNPdsaT_w"
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFDB\\x0017\uFFFD*\"d\uFFFD|\uFFFD4\uFFFD\u033C#\uFFFD(\\x00178\\x0006\u07E4\uFFFD\uFFFD`\uFFFD\\x001ac\uFFFDD\uFFFD\uFFFD</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
@@ -654,6 +654,13 @@
 					"instances":[ 
 						{
 							"uri": "https://www.aft.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user"
+						},
+						{
+							"uri": "https://www.aft.gouv.fr/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -682,13 +689,6 @@
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -756,6 +756,13 @@
 							"evidence": "<a href=\"/fr/contact\" target=\"_self\" data-drupal-link-system-path=\"node/82\">Contact</a>"
 						},
 						{
+							"uri": "https://www.aft.gouv.fr/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a href=\"/fr/contact\" target=\"_self\" data-drupal-link-system-path=\"node/82\">Contact</a>"
+						},
+						{
 							"uri": "https://www.aft.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
@@ -778,13 +785,6 @@
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"/fr/contact\" target=\"_self\" data-drupal-link-system-path=\"node/82\">Contact</a>"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1030,6 +1030,13 @@
 							"evidence": "max-age=300"
 						},
 						{
+							"uri": "https://www.aft.gouv.fr/core/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=300"
+						},
+						{
 							"uri": "https://www.aft.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1044,67 +1051,13 @@
 							"evidence": "max-age=300"
 						}
 					],
-					"count": "4",
+					"count": "5",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
 					"sourceid": "1"
-				},
-				{
-					"pluginid": "10031",
-					"alertRef": "10031",
-					"alert": "User Controllable HTML Element Attribute (Potential XSS)",
-					"name": "User Controllable HTML Element Attribute (Potential XSS)",
-					"riskcode": "0",
-					"confidence": "1",
-					"riskdesc": "Informational (Low)",
-					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.aft.gouv.fr/en/404?_exception_statuscode=404&destination=/fr",
-							"method": "GET",
-							"param": "destination",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/es/404?_exception_statuscode=404&destination=/fr",
-							"method": "GET",
-							"param": "destination",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/ja/404?_exception_statuscode=404&destination=/fr",
-							"method": "GET",
-							"param": "destination",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/ru/404?_exception_statuscode=404&destination=/fr",
-							"method": "GET",
-							"param": "destination",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/zh-hans/404?_exception_statuscode=404&destination=/fr",
-							"method": "GET",
-							"param": "destination",
-							"attack": "",
-							"evidence": ""
-						}
-					],
-					"count": "5",
-					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
-					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.aft.gouv.fr/en/404?_exception_statuscode=404&destination=/fr</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [href] attribute </p><p></p><p>The user input found was:</p><p>destination=/fr</p><p></p><p>The user-controlled value was:</p><p>/fr/404?_exception_statuscode=404&destination=/fr</p>",
-					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
-					"cweid": "20",
-					"wascid": "20",
-					"sourceid": "1445"
 				}
 			]
 		}
