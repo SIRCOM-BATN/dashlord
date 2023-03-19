@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Mon, 13 Mar 2023 09:27:54",
+	"@generated": "Sun, 19 Mar 2023 00:48:18",
 	"site":[ 
 		{
 			"@name": "https://cnnumerique.fr",
@@ -62,6 +62,13 @@
 							"evidence": "<form action=\"/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">"
 						},
 						{
+							"uri": "https://cnnumerique.fr/index.php/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">"
+						},
+						{
 							"uri": "https://cnnumerique.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -97,7 +104,7 @@
 							"evidence": "<form action=\"/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">"
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
@@ -123,7 +130,7 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://cnnumerique.fr/filter/tips",
+							"uri": "https://cnnumerique.fr/index.php/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -163,7 +170,7 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://cnnumerique.fr/filter/tips",
+							"uri": "https://cnnumerique.fr/index.php/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -203,7 +210,7 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://cnnumerique.fr/filter/tips",
+							"uri": "https://cnnumerique.fr/index.php/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -299,7 +306,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://cnnumerique.fr/profiles/*.gif",
+							"uri": "https://cnnumerique.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -313,6 +320,13 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://cnnumerique.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://cnnumerique.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -320,7 +334,7 @@
 							"evidence": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
@@ -353,14 +367,14 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://cnnumerique.fr/filter/tips",
+							"uri": "https://cnnumerique.fr/index.php/admin/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://cnnumerique.fr/index.php/admin/",
+							"uri": "https://cnnumerique.fr/index.php/search/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -462,7 +476,7 @@
 					"reference": "<p>http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "1394"
+					"sourceid": "1449"
 				},
 				{
 					"pluginid": "10044",
@@ -502,7 +516,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "239"
+					"sourceid": "238"
 				},
 				{
 					"pluginid": "10110",
@@ -542,7 +556,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "856"
+					"sourceid": "872"
 				},
 				{
 					"pluginid": "10063",
@@ -645,7 +659,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "191"
+					"sourceid": "190"
 				},
 				{
 					"pluginid": "10035",
@@ -761,6 +775,20 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
 						{
+							"uri": "https://cnnumerique.fr/cenum-la-lettre-du-conseil-44-faconner-un-numerique-plus-egalitaire",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1676299751"
+						},
+						{
+							"uri": "https://cnnumerique.fr/cenum-la-lettre-du-conseil-44-faconner-un-numerique-plus-egalitaire",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1676633823"
+						},
+						{
 							"uri": "https://cnnumerique.fr/cenum-lettre-dinformation-conseil-national-de-la-refondation",
 							"method": "GET",
 							"param": "",
@@ -780,6 +808,20 @@
 							"param": "",
 							"attack": "",
 							"evidence": "1593517083"
+						},
+						{
+							"uri": "https://cnnumerique.fr/index.php/cenum-la-lettre-du-conseil-44-faconner-un-numerique-plus-egalitaire",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1676299751"
+						},
+						{
+							"uri": "https://cnnumerique.fr/index.php/cenum-la-lettre-du-conseil-44-faconner-un-numerique-plus-egalitaire",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1676633823"
 						},
 						{
 							"uri": "https://cnnumerique.fr/index.php/deplacement-nancy-echanges-autour-des-exosquelettes-et-des-systemes-robotises",
@@ -859,13 +901,13 @@
 							"evidence": "1959829130"
 						}
 					],
-					"count": "14",
+					"count": "18",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1647043374, which evaluates to: 2022-03-12 00:02:54</p>",
+					"otherinfo": "<p>1676299751, which evaluates to: 2023-02-13 14:49:11</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "975"
+					"sourceid": "410"
 				},
 				{
 					"pluginid": "10094",
@@ -913,7 +955,7 @@
 							"evidence": "/files/uploads/2022/Logo_de_PeerTube"
 						},
 						{
-							"uri": "https://cnnumerique.fr/filter/tips",
+							"uri": "https://cnnumerique.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -961,7 +1003,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10019",
@@ -987,7 +1029,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "193"
+					"sourceid": "195"
 				},
 				{
 					"pluginid": "10027",
@@ -1104,7 +1146,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10109",
@@ -1152,7 +1194,7 @@
 							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>"
 						},
 						{
-							"uri": "https://cnnumerique.fr/filter/tips",
+							"uri": "https://cnnumerique.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1200,7 +1242,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1214,6 +1256,13 @@
 					"instances":[ 
 						{
 							"uri": "https://cnnumerique.fr/core/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "private"
+						},
+						{
+							"uri": "https://cnnumerique.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1256,13 +1305,6 @@
 						},
 						{
 							"uri": "https://cnnumerique.fr/core/*.png",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "private"
-						},
-						{
-							"uri": "https://cnnumerique.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1411,7 +1453,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10031",
@@ -1472,7 +1514,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "888"
+					"sourceid": "947"
 				}
 			]
 		}
