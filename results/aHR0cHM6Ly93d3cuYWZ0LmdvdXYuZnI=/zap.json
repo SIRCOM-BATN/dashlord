@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Fri, 31 Mar 2023 08:45:42",
+	"@generated": "Sun, 2 Apr 2023 00:45:33",
 	"site":[ 
 		{
 			"@name": "https://www.aft.gouv.fr",
@@ -110,7 +110,7 @@
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "354"
+					"sourceid": "359"
 				},
 				{
 					"pluginid": "10055",
@@ -127,38 +127,24 @@
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
+							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self'; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self'; script-src 'self' 'unsafe-inline' https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/core/*.css",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/*.js",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
+							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self'; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self'; script-src 'self' 'unsafe-inline' https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
+							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self'; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self'; script-src 'self' 'unsafe-inline' https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
 						}
 					],
-					"count": "5",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>form-action</p><p></p><p>The directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -181,38 +167,24 @@
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
+							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self'; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self'; script-src 'self' 'unsafe-inline' https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/core/*.css",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/*.js",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
+							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self'; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self'; script-src 'self' 'unsafe-inline' https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
+							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self'; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self'; script-src 'self' 'unsafe-inline' https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
 						}
 					],
-					"count": "5",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -235,38 +207,24 @@
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
+							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self'; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self'; script-src 'self' 'unsafe-inline' https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/core/*.css",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/*.js",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
+							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self'; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self'; script-src 'self' 'unsafe-inline' https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self' https://stats.g.doubleclick.net/j/collect https://www.google-analytics.com/j/collect; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self' https://logs1187.xiti.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtag/js https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
+							"evidence": "default-src 'none'; upgrade-insecure-requests; frame-ancestors 'none'; connect-src 'self'; font-src 'self'; frame-src https://www.youtube.com https://player.ausha.co; img-src 'self'; script-src 'self' 'unsafe-inline' https://player.ausha.co/ausha-player.js; style-src 'self' 'unsafe-inline'"
 						}
 					],
-					"count": "5",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -371,32 +329,6 @@
 					"sourceid": "1"
 				},
 				{
-					"pluginid": "10003",
-					"alertRef": "10003",
-					"alert": "Vulnerable JS Library",
-					"name": "Vulnerable JS Library",
-					"riskcode": "2",
-					"confidence": "2",
-					"riskdesc": "Medium (Medium)",
-					"desc": "<p>The identified library jquery-ui, version 1.12.1 is vulnerable.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.aft.gouv.fr/themes/custom/aft/js/datepicker.js?v=9.3.22",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/*! jQuery UI - v1.12.1"
-						}
-					],
-					"count": "1",
-					"solution": "<p>Please upgrade to the latest version of jquery-ui.</p>",
-					"otherinfo": "<p>CVE-2021-41184</p><p>CVE-2021-41183</p><p>CVE-2021-41182</p><p>CVE-2022-31160</p><p></p>",
-					"reference": "<p>https://github.com/advisories/GHSA-h6gj-6jjq-h8g9</p><p>https://bugs.jqueryui.com/ticket/15284</p><p>https://github.com/jquery/jquery-ui/commit/8cc5bae1caa1fcf96bf5862c5646c787020ba3f9</p><p>https://nvd.nist.gov/vuln/detail/CVE-2022-31160</p><p>https://github.com/jquery/jquery-ui/security/advisories/GHSA-h6gj-6jjq-h8g9</p><p>https://github.com/jquery/jquery-ui/security/advisories/GHSA-gpqq-952q-5327</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-41184</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-41183</p><p>https://github.com/jquery/jquery-ui/security/advisories/GHSA-9gj3-hwp5-pmwc</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-41182</p><p>https://github.com/jquery/jquery-ui/issues/2101</p><p></p>",
-					"cweid": "829",
-					"wascid": "-1",
-					"sourceid": "2256"
-				},
-				{
 					"pluginid": "10017",
 					"alertRef": "10017",
 					"alert": "Cross-Domain JavaScript Source File Inclusion",
@@ -497,33 +429,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "10110",
-					"alertRef": "10110",
-					"alert": "Dangerous JS Functions",
-					"name": "Dangerous JS Functions",
-					"riskcode": "1",
-					"confidence": "1",
-					"riskdesc": "Low (Low)",
-					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.aft.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Eval"
-						}
-					],
-					"count": "1",
-					"solution": "<p>See the references for security advice on the use of these functions.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://angular.io/guide/security</p>",
-					"cweid": "749",
-					"wascid": "-1",
-					"sourceid": "2236"
+					"sourceid": "64"
 				},
 				{
 					"pluginid": "10063",
@@ -543,90 +449,20 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.3",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/assets/vendor/once/once.min.js?v=1.0.1",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/misc/drupal.init.js?v=9.3.22",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/misc/drupal.js?v=9.3.22",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/misc/drupalSettingsLoader.js?v=9.3.22",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/misc/jquery.once.bc.js?v=9.3.22",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/misc/polyfills/element.matches.js?v=9.3.22",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/misc/polyfills/object.assign.js?v=9.3.22",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/files/languages/fr_UiWFBKNqnpwyeRffQWnYgDoZkQViE9_DwqjpJ2PdLbo.js?rrxf43",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
 							"uri": "https://www.aft.gouv.fr/profiles/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/themes/custom/aft/js/scripts.js?v=9.3.22",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						}
 					],
-					"count": "12",
+					"count": "2",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "326"
+					"sourceid": "334"
 				},
 				{
 					"pluginid": "10096",
@@ -650,7 +486,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1680252286"
+							"evidence": "1680396281"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/fr/presentation",
@@ -664,7 +500,14 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1680252287"
+							"evidence": "1680396282"
+						},
+						{
+							"uri": "https://www.aft.gouv.fr/fr/titre/fr0127613513",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1968000000"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/fr/tresorerie-cadre-juridique",
@@ -679,13 +522,6 @@
 							"param": "",
 							"attack": "",
 							"evidence": "1884101225"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/index.php/fr/titre/fr0127613513",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1968000000"
 						}
 					],
 					"count": "7",
@@ -694,7 +530,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1598"
+					"sourceid": "1625"
 				},
 				{
 					"pluginid": "10094",
@@ -777,6 +613,13 @@
 							"evidence": "/files/css/css_D94g4S8ntCedBcTdhBn71JBCpVv9i3v3y2nNPdsaT_w"
 						},
 						{
+							"uri": "https://www.aft.gouv.fr/search/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files/css/css_D94g4S8ntCedBcTdhBn71JBCpVv9i3v3y2nNPdsaT_w"
+						},
+						{
 							"uri": "https://www.aft.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -784,7 +627,7 @@
 							"evidence": "/files/css/css_D94g4S8ntCedBcTdhBn71JBCpVv9i3v3y2nNPdsaT_w"
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFDB\\x0017\uFFFD*\"d\uFFFD|\uFFFD4\uFFFD\u033C#\uFFFD(\\x00178\\x0006\u07E4\uFFFD\uFFFD`\uFFFD\\x001ac\uFFFDD\uFFFD\uFFFD</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
@@ -873,6 +716,13 @@
 							"evidence": "user"
 						},
 						{
+							"uri": "https://www.aft.gouv.fr/search/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user"
+						},
+						{
 							"uri": "https://www.aft.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -880,7 +730,7 @@
 							"evidence": "user"
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script type=\"text/javascript\"></p><p>  xtnv = document;        //parent.document or top.document or document         </p><p>  xtsd = \"https\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -1057,7 +907,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "63"
+					"sourceid": "65"
 				},
 				{
 					"pluginid": "10015",
@@ -1112,13 +962,6 @@
 							"evidence": "max-age=300, public"
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/ja/recherche-avancee",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=300, public"
-						},
-						{
 							"uri": "https://www.aft.gouv.fr/recherche-avancee",
 							"method": "GET",
 							"param": "Cache-Control",
@@ -1131,6 +974,13 @@
 							"param": "Cache-Control",
 							"attack": "",
 							"evidence": ""
+						},
+						{
+							"uri": "https://www.aft.gouv.fr/ru/recherche-avancee",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=300, public"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/web.config",
@@ -1227,56 +1077,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/en/404?_exception_statuscode=404&destination=/fr",
-							"method": "GET",
-							"param": "destination",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/en/404?_exception_statuscode=404&destination=/fr",
-							"method": "GET",
-							"param": "destination",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/en/404?_exception_statuscode=404&destination=/fr",
-							"method": "GET",
-							"param": "destination",
-							"attack": "",
-							"evidence": ""
-						},
-						{
 							"uri": "https://www.aft.gouv.fr/es/404?_exception_statuscode=404&destination=/fr",
-							"method": "GET",
-							"param": "destination",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/ja/404?_exception_statuscode=404&destination=/fr",
-							"method": "GET",
-							"param": "destination",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/ja/404?_exception_statuscode=404&destination=/fr",
-							"method": "GET",
-							"param": "destination",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/ja/404?_exception_statuscode=404&destination=/fr",
-							"method": "GET",
-							"param": "destination",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/ja/404?_exception_statuscode=404&destination=/fr",
 							"method": "GET",
 							"param": "destination",
 							"attack": "",
@@ -1304,13 +1105,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "12",
+					"count": "5",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
 					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.aft.gouv.fr/en/404?_exception_statuscode=404&destination=/fr</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [href] attribute </p><p></p><p>The user input found was:</p><p>destination=/fr</p><p></p><p>The user-controlled value was:</p><p>/fr/404?_exception_statuscode=404&destination=/fr</p>",
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "2285"
+					"sourceid": "1491"
 				}
 			]
 		}
