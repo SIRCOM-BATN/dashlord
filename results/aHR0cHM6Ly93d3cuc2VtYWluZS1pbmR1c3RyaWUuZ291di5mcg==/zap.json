@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Fri, 31 Mar 2023 10:00:16",
+	"@generated": "Sun, 2 Apr 2023 01:39:42",
 	"site":[ 
 		{
 			"@name": "https://www.semaine-industrie.gouv.fr",
@@ -69,13 +69,6 @@
 							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=3&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">"
-						},
-						{
 							"uri": "https://www.semaine-industrie.gouv.fr/rechercher-evenement",
 							"method": "GET",
 							"param": "",
@@ -109,22 +102,15 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form class=\"user-register-form user-form\" data-user-info-from-browser data-drupal-selector=\"user-register-form\" action=\"/user/register\" method=\"post\" id=\"user-register-form\" accept-charset=\"UTF-8\">"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/login",
-							"method": "POST",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"user-login-form\" data-drupal-selector=\"user-login-form\" action=\"/user/login\" method=\"post\" id=\"user-login-form\" accept-charset=\"UTF-8\">"
 						}
 					],
-					"count": "14",
+					"count": "12",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-submit-foire-aux-questions\" \"edit-title\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "501"
+					"sourceid": "506"
 				},
 				{
 					"pluginid": "10055",
@@ -151,7 +137,7 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/search/",
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -191,7 +177,7 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/search/",
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -231,7 +217,7 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/search/",
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -327,20 +313,6 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.gif",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
 							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
@@ -355,13 +327,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "14",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "148"
+					"sourceid": "219"
 				},
 				{
 					"pluginid": "10098",
@@ -483,7 +455,7 @@
 					"reference": "<p>http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "1005"
+					"sourceid": "1041"
 				},
 				{
 					"pluginid": "90003",
@@ -538,7 +510,7 @@
 							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-41292125-28\"></script>"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/index.php/node/add/",
+							"uri": "https://www.semaine-industrie.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -612,7 +584,7 @@
 					"reference": "<p>https://nvd.nist.gov/vuln/detail/CVE-2012-6708</p><p>https://github.com/jquery/jquery/issues/2432</p><p>http://research.insecurelabs.org/jquery/test/</p><p>http://blog.jquery.com/2016/01/08/jquery-2-2-and-1-12-released/</p><p>http://bugs.jquery.com/ticket/11290</p><p>https://blog.jquery.com/2019/04/10/jquery-3-4-0-released/</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-11358</p><p>https://nvd.nist.gov/vuln/detail/CVE-2015-9251</p><p>https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b</p><p>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "672"
+					"sourceid": "677"
 				},
 				{
 					"pluginid": "90022",
@@ -638,7 +610,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "155"
+					"sourceid": "170"
 				},
 				{
 					"pluginid": "10044",
@@ -650,13 +622,6 @@
 					"riskdesc": "Low (Medium)",
 					"desc": "<p>The server has responded with a redirect that seems to provide a large response. This may indicate that although the server sent a redirect it also responded with body content (which may include sensitive details, PII, etc.).</p>",
 					"instances":[ 
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/index.php/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/index.php/filter/tips",
 							"method": "GET",
@@ -742,13 +707,13 @@
 							"evidence": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
-					"otherinfo": "<p>Location header URI length: 38 [https://www.semaine-industrie.gouv.fr/].</p><p>Predicted response size: 338.</p><p>Response Body Length: 398.</p>",
+					"otherinfo": "<p>Location header URI length: 49 [https://www.semaine-industrie.gouv.fr/filter/tips].</p><p>Predicted response size: 349.</p><p>Response Body Length: 442.</p>",
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "830"
+					"sourceid": "315"
 				},
 				{
 					"pluginid": "10017",
@@ -898,7 +863,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "733"
+					"sourceid": "738"
 				},
 				{
 					"pluginid": "10063",
@@ -919,13 +884,6 @@
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.3",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -954,6 +912,13 @@
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/files_sedi/languages/fr_00pooAdKQC4Uz88bF6D6G8YzB5WpJ5F6bf7Q8igHOh0.js?rri85g",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/libraries/blazy/blazy.js?v=1.x",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1001,7 +966,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "265"
+					"sourceid": "264"
 				},
 				{
 					"pluginid": "10035",
@@ -1070,14 +1035,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.gif",
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1104,7 +1069,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "148"
+					"sourceid": "219"
 				},
 				{
 					"pluginid": "10096",
@@ -1130,7 +1095,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1108"
+					"sourceid": "1130"
 				},
 				{
 					"pluginid": "10094",
@@ -1252,7 +1217,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "267"
+					"sourceid": "270"
 				},
 				{
 					"pluginid": "10027",
@@ -1314,20 +1279,6 @@
 							"evidence": "user"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user"
-						},
-						{
 							"uri": "https://www.semaine-industrie.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -1354,16 +1305,9 @@
 							"param": "",
 							"attack": "",
 							"evidence": "TODO"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "TODO"
 						}
 					],
-					"count": "14",
+					"count": "11",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -1520,6 +1464,13 @@
 							"evidence": "private"
 						},
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "private"
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1527,13 +1478,13 @@
 							"evidence": "500"
 						}
 					],
-					"count": "7",
+					"count": "8",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "148"
+					"sourceid": "219"
 				},
 				{
 					"pluginid": "10015",
@@ -1647,16 +1598,9 @@
 							"param": "",
 							"attack": "",
 							"evidence": "max-age=300"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=300"
 						}
 					],
-					"count": "2",
+					"count": "1",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
@@ -1799,6 +1743,111 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "publie_depuis",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "sort_by",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=2&publie_depuis=All&sort_by=search_api_relevance",
 							"method": "GET",
 							"param": "publie_depuis",
@@ -1909,44 +1958,9 @@
 							"param": "sort_by",
 							"attack": "",
 							"evidence": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/login",
-							"method": "POST",
-							"param": "form_id",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/login",
-							"method": "POST",
-							"param": "name",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/login",
-							"method": "POST",
-							"param": "op",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/login",
-							"method": "POST",
-							"param": "op",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/login",
-							"method": "POST",
-							"param": "pass",
-							"attack": "",
-							"evidence": ""
 						}
 					],
-					"count": "34",
+					"count": "44",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
 					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=0&publie_depuis=All&sort_by=search_api_relevance</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [title] attribute </p><p></p><p>The user input found was:</p><p>publie_depuis=All</p><p></p><p>The user-controlled value was:</p><p>aller \u00E0 la derni\u00E8re page</p>",
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
