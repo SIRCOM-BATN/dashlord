@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Fri, 31 Mar 2023 08:55:48",
+	"@generated": "Sun, 2 Apr 2023 00:57:56",
 	"site":[ 
 		{
 			"@name": "https://www.bercynumerique.finances.gouv.fr",
@@ -21,13 +21,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"header-searchbar\" data-drupal-selector=\"header-searchbar\" action=\"/recherche\" method=\"GET\" id=\"header-searchbar\" accept-charset=\"UTF-8\" data-drupal-form-fields=\"edit-search,edit-valider\">"
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -63,6 +56,13 @@
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"header-searchbar\" data-drupal-selector=\"header-searchbar\" action=\"/recherche\" method=\"GET\" id=\"header-searchbar\" accept-charset=\"UTF-8\" data-drupal-form-fields=\"edit-search,edit-valider\">"
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -123,14 +123,14 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -163,14 +163,14 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -203,14 +203,14 @@
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -318,15 +318,22 @@
 							"param": "",
 							"attack": "",
 							"evidence": ""
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "185"
+					"sourceid": "215"
 				},
 				{
 					"pluginid": "10098",
@@ -340,13 +347,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *"
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -395,7 +395,14 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/user/logout",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/user/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/user/password",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -462,7 +469,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "1222"
+					"sourceid": "1148"
 				},
 				{
 					"pluginid": "10110",
@@ -488,7 +495,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "1300"
+					"sourceid": "1324"
 				},
 				{
 					"pluginid": "10063",
@@ -556,7 +563,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1117"
+					"sourceid": "1121"
 				},
 				{
 					"pluginid": "10035",
@@ -639,7 +646,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.css$",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -659,7 +666,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "185"
+					"sourceid": "215"
 				},
 				{
 					"pluginid": "10096",
@@ -692,7 +699,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1196"
+					"sourceid": "1282"
 				},
 				{
 					"pluginid": "10094",
@@ -706,13 +713,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files/css/css_LpSgefLKzibtyk8NO-I3qu28a_PZJ7DrX9xbfcSLI8Q"
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -748,6 +748,13 @@
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files/css/css__6dydWxHuJJXL-JlM6qrjWjmFGNSC8-d1tR_304iPYE"
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -814,7 +821,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "1124"
+					"sourceid": "1123"
 				},
 				{
 					"pluginid": "10027",
@@ -828,13 +835,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user"
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -870,6 +870,13 @@
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user"
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -930,13 +937,6 @@
 							"evidence": "<a id=\"contenu\" tabindex=\"-1\"></a>"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"contenu\" tabindex=\"-1\"></a>"
-						},
-						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/comment/reply/",
 							"method": "GET",
 							"param": "",
@@ -970,6 +970,13 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Astuces de r\u00E9daction</a>"
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Page non trouv\u00E9e</a>"
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/node/add/",
@@ -1074,7 +1081,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "185"
+					"sourceid": "215"
 				},
 				{
 					"pluginid": "10015",
@@ -1190,6 +1197,13 @@
 							"evidence": "max-age=600"
 						},
 						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.css$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=600"
+						},
+						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.js$",
 							"method": "GET",
 							"param": "",
@@ -1211,7 +1225,7 @@
 							"evidence": "max-age=600"
 						}
 					],
-					"count": "4",
+					"count": "5",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
