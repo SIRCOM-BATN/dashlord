@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 16 Apr 2023 01:34:57",
+	"@generated": "Sun, 23 Apr 2023 01:33:07",
 	"site":[ 
 		{
 			"@name": "https://www.semaine-industrie.gouv.fr",
@@ -9,6 +9,41 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10062",
+					"alertRef": "10062",
+					"alert": "PII Disclosure",
+					"name": "PII Disclosure",
+					"riskcode": "3",
+					"confidence": "3",
+					"riskdesc": "High (High)",
+					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4546363760420",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 454636\nBrand: VISA\nCategory: CLASSIC\nIssuer: BANCO PROVINCIAL S.A.I.C.A. - S.A.C.A."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4546363760420",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 454636\nBrand: VISA\nCategory: CLASSIC\nIssuer: BANCO PROVINCIAL S.A.I.C.A. - S.A.C.A."
+						}
+					],
+					"count": "2",
+					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
+					"otherinfo": "<p>Credit Card Type detected: Visa</p><p>Bank Identification Number: 454636</p><p>Brand: VISA</p><p>Category: CLASSIC</p><p>Issuer: BANCO PROVINCIAL S.A.I.C.A. - S.A.C.A.</p>",
+					"reference": "",
+					"cweid": "359",
+					"wascid": "13",
+					"sourceid": "47"
+				},
 				{
 					"pluginid": "10202",
 					"alertRef": "10202",
@@ -68,6 +103,14 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ]."
 						},
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=4&publie_depuis=All&sort_by=search_api_relevance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ]."
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/rechercher-evenement",
 							"method": "GET",
 							"param": "",
@@ -114,15 +157,23 @@
 							"attack": "",
 							"evidence": "<form class=\"user-login-form\" data-drupal-selector=\"user-login-form\" action=\"/user/login\" method=\"post\" id=\"user-login-form\" accept-charset=\"UTF-8\">",
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-name\" \"edit-pass\" \"edit-submit\" \"form_build_id\" \"form_id\" ]."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"user-register-form user-form\" data-user-info-from-browser data-drupal-selector=\"user-register-form\" action=\"/user/register\" method=\"post\" id=\"user-register-form\" accept-charset=\"UTF-8\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"captcha_sid\" \"captcha_token\" \"edit-captcha-response\" \"edit-field-facebook-0-uri\" \"edit-field-linkedin-0-uri\" \"edit-field-nom-0-value\" \"edit-field-organisation-0-value\" \"edit-field-prenom-0-value\" \"edit-field-rgpd-value\" \"edit-field-site-web-0-uri\" \"edit-field-telephone-0-value\" \"edit-field-twitter-0-uri\" \"edit-mail\" \"edit-name\" \"edit-submit\" \"edit-url\" \"form_build_id\" \"form_id\" \"honeypot_time\" ]."
 						}
 					],
-					"count": "12",
+					"count": "14",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-submit-foire-aux-questions\" \"edit-title\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "515"
+					"sourceid": "508"
 				},
 				{
 					"pluginid": "10055",
@@ -143,7 +194,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/search/",
+							"uri": "https://www.semaine-industrie.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -186,7 +237,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/search/",
+							"uri": "https://www.semaine-industrie.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -229,7 +280,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/search/",
+							"uri": "https://www.semaine-industrie.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -358,23 +409,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "241"
+					"sourceid": "153"
 				},
 				{
 					"pluginid": "10098",
@@ -411,14 +454,6 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/index.php/admin/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
 							"uri": "https://www.semaine-industrie.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -436,6 +471,14 @@
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/login/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -508,7 +551,7 @@
 					"reference": "<p>http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "1030"
+					"sourceid": "1098"
 				},
 				{
 					"pluginid": "90003",
@@ -520,6 +563,14 @@
 					"riskdesc": "Medium (High)",
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
 					"instances":[ 
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/actualites/etincel-quand-l-ecole-et-l-industrie-se-rencontrent",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>",
+							"otherinfo": ""
+						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/modules/custom/linkedin/js/linkedin.js?v=9.2.8",
 							"method": "GET",
@@ -537,13 +588,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "695"
+					"sourceid": "1488"
 				},
 				{
 					"pluginid": "10003",
@@ -562,15 +613,23 @@
 							"attack": "",
 							"evidence": "jquery-1-7-min.js",
 							"otherinfo": "CVE-2020-11023\nCVE-2020-11022\nCVE-2015-9251\nCVE-2019-11358\nCVE-2012-6708\n"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/modules/contrib/jquery_ui_accordion/jquery.ui/ui/widgets/accordion-min.js?v=1.12.1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/*! jQuery UI - v1.12.1",
+							"otherinfo": "CVE-2021-41184\nCVE-2021-41183\nCVE-2021-41182\nCVE-2022-31160\n"
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>Please upgrade to the latest version of jquery.</p>",
 					"otherinfo": "<p>CVE-2020-11023</p><p>CVE-2020-11022</p><p>CVE-2015-9251</p><p>CVE-2019-11358</p><p>CVE-2012-6708</p><p></p>",
 					"reference": "<p>https://nvd.nist.gov/vuln/detail/CVE-2012-6708</p><p>https://github.com/jquery/jquery/issues/2432</p><p>http://research.insecurelabs.org/jquery/test/</p><p>http://blog.jquery.com/2016/01/08/jquery-2-2-and-1-12-released/</p><p>http://bugs.jquery.com/ticket/11290</p><p>https://blog.jquery.com/2019/04/10/jquery-3-4-0-released/</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-11358</p><p>https://nvd.nist.gov/vuln/detail/CVE-2015-9251</p><p>https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b</p><p>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "679"
+					"sourceid": "677"
 				},
 				{
 					"pluginid": "10044",
@@ -685,7 +744,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "314"
+					"sourceid": "313"
 				},
 				{
 					"pluginid": "10017",
@@ -698,6 +757,14 @@
 					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
 					"instances":[ 
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/actualites/etincel-quand-l-ecole-et-l-industrie-se-rencontrent",
+							"method": "GET",
+							"param": "https://platform.twitter.com/widgets.js",
+							"attack": "",
+							"evidence": "<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/video-l-industrie-vue-par-influenceurs-melan-batzair-et-laury",
 							"method": "GET",
 							"param": "https://www.tiktok.com/embed.js",
@@ -706,13 +773,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
 					"otherinfo": "",
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "1146"
+					"sourceid": "1488"
 				},
 				{
 					"pluginid": "10110",
@@ -771,7 +838,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "737"
+					"sourceid": "732"
 				},
 				{
 					"pluginid": "10063",
@@ -793,14 +860,6 @@
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.3",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -856,6 +915,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/modules/internal/tarteaucitron/js/tarteaucitron.js?rri85g",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/profiles/",
 							"method": "GET",
 							"param": "",
@@ -886,7 +953,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "264"
+					"sourceid": "263"
 				},
 				{
 					"pluginid": "10035",
@@ -963,14 +1030,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
@@ -980,6 +1039,14 @@
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.gif",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.jpg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1001,7 +1068,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "241"
+					"sourceid": "153"
 				},
 				{
 					"pluginid": "10096",
@@ -1028,7 +1095,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1146"
+					"sourceid": "1169"
 				},
 				{
 					"pluginid": "10094",
@@ -1097,6 +1164,14 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFDM)\uFFFD\uFFFD\\x001d)\\x0000\uFFFDS?<l^\uFFFD\uFFFDo\\x0018\uFFFD\\x001eV\uFFFD\uFFFDE\uFFFD\uFFFDC\u0220\\x001c\uFFFDt"
 						},
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/index.php/node/add/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files_sedi/languages/fr_00pooAdKQC4Uz88bF6D6G8YzB5WpJ5F6bf7Q8igHOh0",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFDM)\uFFFD\uFFFD\\x001d)\\x0000\uFFFDS?<l^\uFFFD\uFFFDo\\x0018\uFFFD\\x001eV\uFFFD\uFFFDE\uFFFD\uFFFDC\u0220\\x001c\uFFFDt"
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -1129,13 +1204,13 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFDM)\uFFFD\uFFFD\\x001d)\\x0000\uFFFDS?<l^\uFFFD\uFFFDo\\x0018\uFFFD\\x001eV\uFFFD\uFFFDE\uFFFD\uFFFDC\u0220\\x001c\uFFFDt"
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFDM)\uFFFD\uFFFD\\x001d)\\x0000\uFFFDS?<l^\uFFFD\uFFFDo\\x0018\uFFFD\\x001eV\uFFFD\uFFFDE\uFFFD\uFFFDC\u0220\\x001c\uFFFDt</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10019",
@@ -1162,7 +1237,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "270"
+					"sourceid": "264"
 				},
 				{
 					"pluginid": "10027",
@@ -1215,14 +1290,6 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
 							"uri": "https://www.semaine-industrie.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -1261,17 +1328,9 @@
 							"attack": "",
 							"evidence": "TODO",
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "TODO",
-							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "12",
+					"count": "10",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -1346,6 +1405,14 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/index.php/node/add/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -1378,7 +1445,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
 					"reference": "",
@@ -1459,7 +1526,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "241"
+					"sourceid": "153"
 				},
 				{
 					"pluginid": "10015",
@@ -1488,7 +1555,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/espace-enseignants",
+							"uri": "https://www.semaine-industrie.gouv.fr/accueil/comment-inscrire-evenement-pour-la-semaine-de-l-industrie",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
@@ -1657,126 +1724,6 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [title] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\naller \u00E0 la derni\u00E8re page"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [title] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\naller \u00E0 la page 1"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [title] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\naller \u00E0 la page 3"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [title] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\naller \u00E0 la page 4"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [title] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\naller \u00E0 la page 5"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [title] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\naller \u00E0 la page 6"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [title] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\naller \u00E0 la page 7"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [title] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\naller \u00E0 la page 8"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [title] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\naller \u00E0 la page 9"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [title] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\naller \u00E0 la page pr\u00E9c\u00E9dente"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [title] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\naller \u00E0 la page suivante"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [title] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\naller \u00E0 la premi\u00E8re page"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [link] tag [media] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\nall"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "publie_depuis",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [option] tag [value] attribute \r\n\r\nThe user input found was:\r\npublie_depuis=All\r\n\r\nThe user-controlled value was:\r\nall"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance",
-							"method": "GET",
-							"param": "sort_by",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nsort_by=search_api_relevance\r\n\r\nThe user-controlled value was:\r\nsearch_api_relevance"
-						},
-						{
 							"uri": "https://www.semaine-industrie.gouv.fr/user/login",
 							"method": "POST",
 							"param": "form_id",
@@ -1815,15 +1762,159 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/login\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\npass=ZAP\r\n\r\nThe user-controlled value was:\r\nzap"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "captcha_response",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\ncaptcha_response=ZAP\r\n\r\nThe user-controlled value was:\r\nzap"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "captcha_sid",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\ncaptcha_sid=278841\r\n\r\nThe user-controlled value was:\r\n278841"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "captcha_token",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\ncaptcha_token=TCjHZCqio4G8bUUDw5vDSKWTVO_TZEYk6BYXOokuZO4\r\n\r\nThe user-controlled value was:\r\ntcjhzcqio4g8buudw5vdskwtvo_tzeyk6byxookuzo4"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "field_facebook[0][uri]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_facebook[0][uri]=http://www.example.com\r\n\r\nThe user-controlled value was:\r\nhttp://www.example.com"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "field_linkedin[0][uri]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_linkedin[0][uri]=http://www.example.com\r\n\r\nThe user-controlled value was:\r\nhttp://www.example.com"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "field_nom[0][value]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_nom[0][value]=ZAP\r\n\r\nThe user-controlled value was:\r\nzap"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "field_organisation[0][value]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_organisation[0][value]=ZAP\r\n\r\nThe user-controlled value was:\r\nzap"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "field_prenom[0][value]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_prenom[0][value]=ZAP\r\n\r\nThe user-controlled value was:\r\nzap"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "field_site_web[0][uri]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_site_web[0][uri]=http://www.example.com\r\n\r\nThe user-controlled value was:\r\nhttp://www.example.com"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "field_telephone[0][value]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_telephone[0][value]=ZAP\r\n\r\nThe user-controlled value was:\r\nzap"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "field_twitter[0][uri]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_twitter[0][uri]=http://www.example.com\r\n\r\nThe user-controlled value was:\r\nhttp://www.example.com"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "form_id",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nform_id=user_register_form\r\n\r\nThe user-controlled value was:\r\nuser_register_form"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "honeypot_time",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nhoneypot_time=dHsrryd20XS7_MEOTP6jQLXLjK-SAR7cLUzKliWAQKs\r\n\r\nThe user-controlled value was:\r\ndhsrryd20xs7_meotp6jqlxljk-sar7cluzkliwaqks"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "mail",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nmail=foo-bar@example.com\r\n\r\nThe user-controlled value was:\r\nfoo-bar@example.com"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "name",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nname=ZAP\r\n\r\nThe user-controlled value was:\r\nzap"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "op",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nop=Cr\u00E9er un compte\r\n\r\nThe user-controlled value was:\r\ncr\u00E9er un compte"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "op",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [li] tag [title] attribute \r\n\r\nThe user input found was:\r\nop=Cr\u00E9er un compte\r\n\r\nThe user-controlled value was:\r\ncr\u00E9er un compte<span class=\"visually-hidden\">(onglet actif)</span> - page active"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"method": "POST",
+							"param": "url",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.semaine-industrie.gouv.fr/user/register\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nurl=https://zap.example.com\r\n\r\nThe user-controlled value was:\r\nhttps://zap.example.com"
 						}
 					],
-					"count": "20",
+					"count": "23",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
-					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.semaine-industrie.gouv.fr/recherche?date_0&date_1&keys&page=1&publie_depuis=All&sort_by=search_api_relevance</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [title] attribute </p><p></p><p>The user input found was:</p><p>publie_depuis=All</p><p></p><p>The user-controlled value was:</p><p>aller \u00E0 la derni\u00E8re page</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.semaine-industrie.gouv.fr/user/login</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>form_id=user_login_form</p><p></p><p>The user-controlled value was:</p><p>user_login_form</p>",
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "869"
+					"sourceid": "857"
 				}
 			]
 		}
