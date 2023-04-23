@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 16 Apr 2023 02:11:49",
+	"@generated": "Sun, 23 Apr 2023 02:11:28",
 	"site":[ 
 		{
 			"@name": "https://www.transformation.gouv.fr",
@@ -25,7 +25,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form block=\"block-formulairederecherche\" action=\"/search/resultat\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit--2\" ]."
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/comment/reply/",
@@ -61,6 +61,14 @@
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/filter/tips",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form block=\"block-formulairederecherche\" action=\"/search/resultat\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -108,13 +116,13 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
-					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ].</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit--2\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10055",
@@ -328,7 +336,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/profiles/*.css",
+							"uri": "https://www.transformation.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -336,7 +344,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/profiles/*.css$",
+							"uri": "https://www.transformation.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -358,7 +366,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "160"
+					"sourceid": "159"
 				},
 				{
 					"pluginid": "10098",
@@ -465,7 +473,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "48"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10099",
@@ -580,7 +588,7 @@
 					"reference": "<p>http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "1121"
+					"sourceid": "1296"
 				},
 				{
 					"pluginid": "10003",
@@ -607,7 +615,7 @@
 					"reference": "<p>https://nvd.nist.gov/vuln/detail/CVE-2012-6708</p><p>https://github.com/jquery/jquery/issues/2432</p><p>http://research.insecurelabs.org/jquery/test/</p><p>http://blog.jquery.com/2016/01/08/jquery-2-2-and-1-12-released/</p><p>http://bugs.jquery.com/ticket/11290</p><p>https://blog.jquery.com/2019/04/10/jquery-3-4-0-released/</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-11358</p><p>https://nvd.nist.gov/vuln/detail/CVE-2015-9251</p><p>https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b</p><p>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "800"
+					"sourceid": "816"
 				},
 				{
 					"pluginid": "10044",
@@ -714,7 +722,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "321"
+					"sourceid": "315"
 				},
 				{
 					"pluginid": "10110",
@@ -773,7 +781,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "800"
+					"sourceid": "816"
 				},
 				{
 					"pluginid": "10063",
@@ -802,7 +810,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/core/assets/vendor/once/once.min.js?v=1.0.1",
+							"uri": "https://www.transformation.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -810,7 +818,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/core/misc/drupal.init.js?v=9.4.8",
+							"uri": "https://www.transformation.gouv.fr/core/assets/vendor/once/once.min.js?v=1.0.1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -888,7 +896,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "177"
+					"sourceid": "178"
 				},
 				{
 					"pluginid": "10035",
@@ -973,7 +981,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/profiles/*.css",
+							"uri": "https://www.transformation.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -981,7 +989,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/profiles/*.css$",
+							"uri": "https://www.transformation.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1003,7 +1011,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "160"
+					"sourceid": "159"
 				},
 				{
 					"pluginid": "10096",
@@ -1015,86 +1023,6 @@
 					"riskdesc": "Low (Low)",
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
-						{
-							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-03",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1680505200",
-							"otherinfo": "1680505200, which evaluates to: 2023-04-03 07:00:00"
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-03",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1680590700",
-							"otherinfo": "1680590700, which evaluates to: 2023-04-04 06:45:00"
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-03",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1680591600",
-							"otherinfo": "1680591600, which evaluates to: 2023-04-04 07:00:00"
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-03",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1680595200",
-							"otherinfo": "1680595200, which evaluates to: 2023-04-04 08:00:00"
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-03",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1680603300",
-							"otherinfo": "1680603300, which evaluates to: 2023-04-04 10:15:00"
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-03",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1680613200",
-							"otherinfo": "1680613200, which evaluates to: 2023-04-04 13:00:00"
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-03",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1680620400",
-							"otherinfo": "1680620400, which evaluates to: 2023-04-04 15:00:00"
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-03",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1680681600",
-							"otherinfo": "1680681600, which evaluates to: 2023-04-05 08:00:00"
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-03",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1680699600",
-							"otherinfo": "1680699600, which evaluates to: 2023-04-05 13:00:00"
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-03",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1680708600",
-							"otherinfo": "1680708600, which evaluates to: 2023-04-05 15:30:00"
-						},
 						{
 							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-10",
 							"method": "GET",
@@ -1174,15 +1102,95 @@
 							"attack": "",
 							"evidence": "1681372800",
 							"otherinfo": "1681372800, which evaluates to: 2023-04-13 08:00:00"
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-17",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1681720200",
+							"otherinfo": "1681720200, which evaluates to: 2023-04-17 08:30:00"
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-17",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1681741800",
+							"otherinfo": "1681741800, which evaluates to: 2023-04-17 14:30:00"
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-17",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1681800300",
+							"otherinfo": "1681800300, which evaluates to: 2023-04-18 06:45:00"
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-17",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1681812000",
+							"otherinfo": "1681812000, which evaluates to: 2023-04-18 10:00:00"
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-17",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1681886700",
+							"otherinfo": "1681886700, which evaluates to: 2023-04-19 06:45:00"
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-17",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1681891200",
+							"otherinfo": "1681891200, which evaluates to: 2023-04-19 08:00:00"
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-17",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1681898400",
+							"otherinfo": "1681898400, which evaluates to: 2023-04-19 10:00:00"
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-17",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1681907400",
+							"otherinfo": "1681907400, which evaluates to: 2023-04-19 12:30:00"
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-17",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1681918200",
+							"otherinfo": "1681918200, which evaluates to: 2023-04-19 15:30:00"
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/ministre/agenda-ministre/export/ical?date=2023-04-17",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1681979400",
+							"otherinfo": "1681979400, which evaluates to: 2023-04-20 08:30:00"
 						}
 					],
 					"count": "20",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1680505200, which evaluates to: 2023-04-03 07:00:00</p>",
+					"otherinfo": "<p>1681192800, which evaluates to: 2023-04-11 06:00:00</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1274"
+					"sourceid": "1266"
 				},
 				{
 					"pluginid": "10094",
@@ -1243,6 +1251,14 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0001;\uFFFD\uFFFD3\rT\\x000e\uFFFD\uFFFD\uFFFDH\uFFFD\u0513\\x000bp\\x0019\uFFFDz\\x000bmL.y\uFFFDX\uFFFD4;"
 						},
 						{
+							"uri": "https://www.transformation.gouv.fr/index.php/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files/languages/fr_1wE74fK3Mw1UDriuvUjO1JMLcBn9egttTC55-FjuNDs",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0001;\uFFFD\uFFFD3\rT\\x000e\uFFFD\uFFFD\uFFFDH\uFFFD\u0513\\x000bp\\x0019\uFFFDz\\x000bmL.y\uFFFDX\uFFFD4;"
+						},
+						{
 							"uri": "https://www.transformation.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -1283,13 +1299,13 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0001;\uFFFD\uFFFD3\rT\\x000e\uFFFD\uFFFD\uFFFDH\uFFFD\u0513\\x000bp\\x0019\uFFFDz\\x000bmL.y\uFFFDX\uFFFD4;"
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0001;\uFFFD\uFFFD3\rT\\x000e\uFFFD\uFFFD\uFFFDH\uFFFD\u0513\\x000bp\\x0019\uFFFDz\\x000bmL.y\uFFFDX\uFFFD4;</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10019",
@@ -1377,6 +1393,14 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://www.transformation.gouv.fr/index.php/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/index.php\\/\",\"scriptPath\":null\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://www.transformation.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -1417,13 +1441,13 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10109",
@@ -1530,7 +1554,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10049",
@@ -1589,23 +1613,15 @@
 							"attack": "",
 							"evidence": "private",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/profiles/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "private",
-							"otherinfo": ""
 						}
 					],
-					"count": "7",
+					"count": "6",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "160"
+					"sourceid": "159"
 				},
 				{
 					"pluginid": "10015",
@@ -1658,7 +1674,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/france-services",
+							"uri": "https://www.transformation.gouv.fr/le-ministere/directions",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
@@ -1712,7 +1728,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10049",
@@ -1741,6 +1757,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.transformation.gouv.fr/core/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=300",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.transformation.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1757,13 +1781,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "5",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10031",
@@ -1862,7 +1886,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "683"
+					"sourceid": "682"
 				}
 			]
 		}
