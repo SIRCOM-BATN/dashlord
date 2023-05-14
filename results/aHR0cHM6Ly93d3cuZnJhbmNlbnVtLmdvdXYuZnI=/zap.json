@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 7 May 2023 01:43:22",
+	"@generated": "Sun, 14 May 2023 01:48:37",
 	"site":[ 
 		{
 			"@name": "https://www.francenum.gouv.fr",
@@ -366,7 +366,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "98"
+					"sourceid": "200"
 				},
 				{
 					"pluginid": "10098",
@@ -396,6 +396,14 @@
 						},
 						{
 							"uri": "https://www.francenum.gouv.fr/filter/tips",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.francenum.gouv.fr/index.php/admin/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -467,7 +475,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
 					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
@@ -500,7 +508,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1347"
+					"sourceid": "1355"
 				},
 				{
 					"pluginid": "10044",
@@ -529,14 +537,6 @@
 							"otherinfo": "Location header URI length: 36 [https://www.francenum.gouv.fr/search].\nPredicted response size: 336.\nResponse Body Length: 390."
 						},
 						{
-							"uri": "https://www.francenum.gouv.fr/magazine-du-numerique?edit-date-monthFrom=01&edit-date-monthTo=01&edit-date-yearFrom=2023&edit-date-yearTo=2023&field_localisation=All&field_niveau_expertise=All&field_thematiques%5B231333%5D=231333&field_thematiques%5B231335%5D=231335&field_thematiques%5B231337%5D=231337&field_thematiques%5B231339%5D=231339&field_thematiques%5B231341%5D=231341&field_thematiques%5B231343%5D=231343&field_thematiques%5B231345%5D=231345&field_thematiques%5B231347%5D=231347&field_thematiques%5B231349%5D=231349&field_thematiques%5B231351%5D=231351&field_thematiques%5B231353%5D=231353&field_thematiques%5B231355%5D=231355&field_thematiques%5B231357%5D=231357&field_thematiques%5B231359%5D=231359&field_thematiques%5B231361%5D=231361&field_thematiques%5B231363%5D=231363&field_thematiques%5B231365%5D=231365&field_thematiques%5B231367%5D=231367&field_thematiques%5B231369%5D=231369&field_thematiques%5B231371%5D=231371&field_thematiques%5B231373%5D=231373&field_thematiques%5B231375%5D=231375&field_thematiques%5B231377%5D=231377&field_thematiques%5B231379%5D=231379&field_thematiques%5B231381%5D=231381&field_thematiques%5B231383%5D=231383&field_thematiques%5B231385%5D=231385&field_thematiques%5B231387%5D=231387&field_thematiques%5B231389%5D=231389&field_thematiques%5B231391%5D=231391&field_thematiques%5B231393%5D=231393&field_thematiques%5B231395%5D=231395&field_thematiques%5B231397%5D=231397&field_thematiques%5B231399%5D=231399&field_thematiques%5B231401%5D=231401&field_thematiques%5B231403%5D=231403&field_thematiques%5B231405%5D=231405&field_thematiques%5B231407%5D=231407&field_thematiques%5B231409%5D=231409&field_thematiques%5B231411%5D=231411&field_thematiques%5B231413%5D=231413&field_thematiques%5B231415%5D=231415&field_thematiques%5B231417%5D=231417&field_thematiques%5B231419%5D=231419&field_thematiques%5B231421%5D=231421&field_thematiques%5B231423%5D=231423&field_thematiques%5B231425%5D=231425&field_thematiques%5B231427%5D=231427&field_thematiques%5B231429%5D=231429&field_thematiques%5B246669%5D=246669&items_per_page=10&op=Supprimer+les+filtres&search_api_fulltext&secteurs=231183&sort_by=date_desc&type_1%5Bactualite%5D=actualite&type_1%5Bevenement%5D=evenement",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "Location header URI length: 51 [https://www.francenum.gouv.fr/magazine-du-numerique].\nPredicted response size: 351.\nResponse Body Length: 450."
-						},
-						{
 							"uri": "https://www.francenum.gouv.fr/search",
 							"method": "GET",
 							"param": "",
@@ -553,7 +553,7 @@
 							"otherinfo": "Location header URI length: 36 [https://www.francenum.gouv.fr/search].\nPredicted response size: 336.\nResponse Body Length: 390."
 						}
 					],
-					"count": "5",
+					"count": "4",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
 					"otherinfo": "<p>Location header URI length: 41 [https://www.francenum.gouv.fr/filter/tips].</p><p>Predicted response size: 341.</p><p>Response Body Length: 410.</p>",
 					"reference": "",
@@ -586,7 +586,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "1317"
+					"sourceid": "1324"
 				},
 				{
 					"pluginid": "10063",
@@ -671,7 +671,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.francenum.gouv.fr/profiles/*.css",
+							"uri": "https://www.francenum.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -679,7 +679,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.francenum.gouv.fr/profiles/*.js",
+							"uri": "https://www.francenum.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -800,23 +800,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "98"
+					"sourceid": "200"
 				},
 				{
 					"pluginid": "10096",
@@ -1006,7 +998,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1347"
+					"sourceid": "1355"
 				},
 				{
 					"pluginid": "10094",
@@ -1020,6 +1012,14 @@
 					"instances":[ 
 						{
 							"uri": "https://www.francenum.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files/js/js_EnPg0XXQbY4M4JaLpJU0XMJyRH_bcP9r_lN8s3Zo2Ns",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDI\u03C3E\uFFFDA\uFFFD83\uFFFDZ.\uFFFDT\uFFFDs\t\uFFFD\\x0011\uFFFDm\uFFFD\uFFFD\uFFFD\uFFFDM\uFFFD\uFFFD\u0663cl"
+						},
+						{
+							"uri": "https://www.francenum.gouv.fr/*/media/oembed",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1060,14 +1060,6 @@
 						},
 						{
 							"uri": "https://www.francenum.gouv.fr/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files/js/js_EnPg0XXQbY4M4JaLpJU0XMJyRH_bcP9r_lN8s3Zo2Ns",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDI\u03C3E\uFFFDA\uFFFD83\uFFFDZ.\uFFFDT\uFFFDs\t\uFFFD\\x0011\uFFFDm\uFFFD\uFFFD\uFFFD\uFFFDM\uFFFD\uFFFD\u0663cl"
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1161,6 +1153,14 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://www.francenum.gouv.fr/*/media/oembed",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://www.francenum.gouv.fr/comment/reply/",
 							"method": "GET",
 							"param": "",
@@ -1199,14 +1199,6 @@
 							"attack": "",
 							"evidence": "user",
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/index.php/comment/reply/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/index.php\\/\",\"scriptPath\":null\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://www.francenum.gouv.fr/node/add/",
@@ -1268,6 +1260,14 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
+							"uri": "https://www.francenum.gouv.fr/*/media/oembed",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Page non trouv\u00E9e</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
 							"uri": "https://www.francenum.gouv.fr/comment/reply/",
 							"method": "GET",
 							"param": "",
@@ -1305,14 +1305,6 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Astuces de r\u00E9daction</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://www.francenum.gouv.fr/index.php/comment/reply/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Page non trouv\u00E9e</a>",
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
@@ -1381,7 +1373,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "144"
+					"sourceid": "52"
 				},
 				{
 					"pluginid": "10015",
@@ -1466,14 +1458,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.francenum.gouv.fr/magazine-du-numerique?search_api_fulltext&sort_by=date_desc",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=600, public",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.francenum.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Cache-Control",
@@ -1490,7 +1474,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
@@ -1557,14 +1541,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.francenum.gouv.fr/profiles/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=3600",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.francenum.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1573,7 +1549,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "8",
+					"count": "7",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
@@ -1622,7 +1598,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "201"
+					"sourceid": "204"
 				},
 				{
 					"pluginid": "10031",
@@ -2041,7 +2017,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "309"
+					"sourceid": "392"
 				}
 			]
 		}
