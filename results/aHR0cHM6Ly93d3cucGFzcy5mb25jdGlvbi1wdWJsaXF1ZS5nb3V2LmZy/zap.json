@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 4 Jun 2023 02:06:09",
+	"@generated": "Sun, 11 Jun 2023 02:03:04",
 	"site":[ 
 		{
 			"@name": "https://www.pass.fonction-publique.gouv.fr",
@@ -135,7 +135,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/filter/tips",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -143,7 +143,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/search/",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/user/password",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -178,7 +178,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/filter/tips",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -186,7 +186,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/search/",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/user/password",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -221,7 +221,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/filter/tips",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -229,7 +229,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/search/",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/user/password",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -344,7 +344,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js$",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -358,7 +358,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "145"
+					"sourceid": "144"
 				},
 				{
 					"pluginid": "10098",
@@ -396,14 +396,6 @@
 						},
 						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/index.php/admin/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/index.php/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -467,13 +459,13 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
 					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "1"
+					"sourceid": "48"
 				},
 				{
 					"pluginid": "10044",
@@ -580,7 +572,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "1074"
+					"sourceid": "1095"
 				},
 				{
 					"pluginid": "10110",
@@ -631,7 +623,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "1007"
+					"sourceid": "1014"
 				},
 				{
 					"pluginid": "10063",
@@ -653,14 +645,6 @@
 						},
 						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.3",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -748,13 +732,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "162"
+					"sourceid": "161"
 				},
 				{
 					"pluginid": "10035",
@@ -847,7 +831,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.gif",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.jpg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -869,7 +853,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "145"
+					"sourceid": "144"
 				},
 				{
 					"pluginid": "10094",
@@ -922,14 +906,6 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\tu\uFFFDEjc\uFFFDF\uFFFD\uFFFD\uFFFD-\uFFFD\u8942hz'f\uFFFD3@\uFFFD^}\uFFFD\uFFFD\u047D+\\x000c"
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files/languages/fr_CXX1RWpj7Ea3kqAt6Oilgmh6J2bbM0ClXn3-s9G9Kww",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\tu\uFFFDEjc\uFFFDF\uFFFD\uFFFD\uFFFD-\uFFFD\u8942hz'f\uFFFD3@\uFFFD^}\uFFFD\uFFFD\u047D+\\x000c"
-						},
-						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/index.php/node/add/",
 							"method": "GET",
 							"param": "",
@@ -968,15 +944,31 @@
 							"attack": "",
 							"evidence": "/files/languages/fr_CXX1RWpj7Ea3kqAt6Oilgmh6J2bbM0ClXn3-s9G9Kww",
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\tu\uFFFDEjc\uFFFDF\uFFFD\uFFFD\uFFFD-\uFFFD\u8942hz'f\uFFFD3@\uFFFD^}\uFFFD\uFFFD\u047D+\\x000c"
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/user/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM",
+							"otherinfo": "~\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDou\uFFFDTns4_\uFFFD,c\u04FD\uFFFD\uFFFD\t\uFFFD7\uFFFD\u0299a,\\x001c}\uFFFDv\uFFFD3"
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/user/password",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM",
+							"otherinfo": "~\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDou\uFFFDTns4_\uFFFD,c\u04FD\uFFFD\uFFFD\t\uFFFD7\uFFFD\u0299a,\\x001c}\uFFFDv\uFFFD3"
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\tu\uFFFDEjc\uFFFDF\uFFFD\uFFFD\uFFFD-\uFFFD\u8942hz'f\uFFFD3@\uFFFD^}\uFFFD\uFFFD\u047D+\\x000c</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "48"
 				},
 				{
 					"pluginid": "10019",
@@ -1003,7 +995,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "163"
+					"sourceid": "168"
 				},
 				{
 					"pluginid": "10027",
@@ -1171,14 +1163,6 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -1212,6 +1196,14 @@
 						},
 						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/user/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/user/password",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1286,7 +1278,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.js$",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1294,7 +1286,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.png",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1308,7 +1300,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "145"
+					"sourceid": "144"
 				},
 				{
 					"pluginid": "10015",
@@ -1345,7 +1337,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/apprentie-moa-informatique-2",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/apprenti-integrateur-correspondant-applicatif",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
@@ -1353,7 +1345,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/apprentissage-sur-le-chantier-dautomatisation-de-tests-sur-lapplication-artene",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/apprenti-redacteur-reforme-des-prix-et-de-la-fiscalite-dans-les-outre-mer-accompagnement",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
@@ -1361,7 +1353,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/stage-long-ambassade-de-france-prague-republique-tcheque-1",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/stage-promotion-marketing",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
@@ -1415,7 +1407,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "48"
 				},
 				{
 					"pluginid": "10049",
@@ -1589,7 +1581,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "1049"
+					"sourceid": "1055"
 				}
 			]
 		}
