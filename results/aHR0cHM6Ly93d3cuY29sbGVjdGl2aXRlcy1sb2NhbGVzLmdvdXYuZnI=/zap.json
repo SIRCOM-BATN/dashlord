@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 25 Jun 2023 01:21:18",
+	"@generated": "Sun, 2 Jul 2023 01:17:32",
 	"site":[ 
 		{
 			"@name": "https://www.collectivites-locales.gouv.fr",
@@ -436,7 +436,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1416"
+					"sourceid": "1415"
 				},
 				{
 					"pluginid": "10035",
@@ -529,7 +529,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.collectivites-locales.gouv.fr/profiles/*.gif",
+							"uri": "https://www.collectivites-locales.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -760,7 +760,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "1419"
+					"sourceid": "1418"
 				},
 				{
 					"pluginid": "10027",
@@ -1027,7 +1027,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.collectivites-locales.gouv.fr/core/*.js$",
+							"uri": "https://www.collectivites-locales.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1035,7 +1035,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.collectivites-locales.gouv.fr/core/*.png",
+							"uri": "https://www.collectivites-locales.gouv.fr/profiles/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "private",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.collectivites-locales.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1043,7 +1051,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "8",
+					"count": "9",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
@@ -1126,6 +1134,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.collectivites-locales.gouv.fr/institutions/la-responsabilite-penale-des-elus",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=600, public",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.collectivites-locales.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Cache-Control",
@@ -1135,14 +1151,6 @@
 						},
 						{
 							"uri": "https://www.collectivites-locales.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=600, public",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.collectivites-locales.gouv.fr/texte-pa",
 							"method": "GET",
 							"param": "Cache-Control",
 							"attack": "",
