@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.13.0",
-	"@generated": "Sun, 23 Jul 2023 02:02:02",
+	"@generated": "Sun, 30 Jul 2023 02:01:12",
 	"site":[ 
 		{
 			"@name": "https://www.pass.fonction-publique.gouv.fr",
@@ -52,12 +52,12 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"captcha_sid\" \"captcha_token\" \"edit-actions-submit\" \"edit-adresse-mail\" \"edit-captcha-response\" \"edit-nom\" \"edit-prenom\" \"form_build_id\" \"form_id\" ]."
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/recherche-offre?combine=ZAP&field_administration_de_rattache_target_id%5B%5D=1127&field_departement_target_id%5B%5D=870&field_domaine_d_activite_target_id%5B%5D=1082&field_niveau_de_diplome_prepare_target_id=All&field_pays_target_id%5B%5D=625&field_region_target_id%5B%5D=858&field_type_de_contrat_value%5Bapprentissage%5D=apprentissage&field_type_de_contrat_value%5Bstage%5D=stage&geo_boundary%5Bgroup%5D%5Blat_north_east%5D=ZAP&geo_boundary%5Bgroup%5D%5Blat_south_west%5D=ZAP&geo_boundary%5Bgroup%5D%5Blng_north_east%5D=ZAP&geo_boundary%5Bgroup%5D%5Blng_south_west%5D=ZAP&op=Rechercher+toutes+les+offres",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/recherche-offre",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/recherche-offre\" method=\"get\" id=\"views-exposed-form-recherche-offre-page-1\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-combine--3\" \"edit-field-type-de-contrat-value-apprentissage--2\" \"edit-field-type-de-contrat-value-stage--2\" \"edit-geo-boundary-group-lat-north-east--2\" \"edit-geo-boundary-group-lat-south-west--2\" \"edit-geo-boundary-group-lng-north-east--2\" \"edit-geo-boundary-group-lng-south-west--2\" \"edit-loadall--2\" \"edit-reset--2\" \"edit-submit-recherche-offre--2\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-combine--3\" \"edit-field-type-de-contrat-value-apprentissage--2\" \"edit-field-type-de-contrat-value-stage--2\" \"edit-geo-boundary-group-lat-north-east--2\" \"edit-geo-boundary-group-lat-south-west--2\" \"edit-geo-boundary-group-lng-north-east--2\" \"edit-geo-boundary-group-lng-south-west--2\" \"edit-loadall--2\" \"edit-submit-recherche-offre--2\" ]."
 						},
 						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/ressources",
@@ -320,6 +320,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
@@ -342,14 +350,6 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
 					"count": "12",
@@ -358,7 +358,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "145"
+					"sourceid": "141"
 				},
 				{
 					"pluginid": "10098",
@@ -403,14 +403,6 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/index.php/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -428,6 +420,14 @@
 						},
 						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/user/login",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -572,7 +572,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "1020"
+					"sourceid": "1047"
 				},
 				{
 					"pluginid": "10110",
@@ -623,7 +623,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "954"
+					"sourceid": "966"
 				},
 				{
 					"pluginid": "10063",
@@ -815,6 +815,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
@@ -837,14 +845,6 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
 					"count": "12",
@@ -853,7 +853,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "145"
+					"sourceid": "141"
 				},
 				{
 					"pluginid": "10094",
@@ -1048,7 +1048,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css$",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1056,7 +1056,7 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script src=\"/themes/custom/pass/js/a11y/select-a11y.min.js?ry1h1j\"></script>\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css$",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1064,7 +1064,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js$",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1072,7 +1072,7 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script src=\"/themes/custom/pass/js/a11y/select-a11y.min.js?ry1h1j\"></script>\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js$",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1260,7 +1260,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "145"
+					"sourceid": "141"
 				},
 				{
 					"pluginid": "10015",
@@ -1297,7 +1297,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/apprentie-assistant-de-direction-1",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/assistant-de-direction-11",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1305,7 +1305,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/stage-au-sein-du-bureau-union-economique-et-monetaire-europe-1-dg-tresor",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/charge-de-communication-en-apprentissage-fh-1",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600, s-maxage=600, public, must-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/presidence-de-la-republique-developpeur-web-offre-de-stage-6-mois",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1346,14 +1354,6 @@
 						},
 						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/user/register",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600, public",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/user/register/candidat",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1552,11 +1552,11 @@
 					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/user/password",
-							"method": "POST",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/morgan.paulodossantosdias%40elysee.fr%20",
+							"method": "GET",
 							"param": "SSESS2a1f1276ff98ddb188463ac6fbc68a5d",
 							"attack": "",
-							"evidence": "hJuRaWgOLwHRrV6MquwhaP6kbVXBEFqGyftOY-HmJjZGjnOD",
+							"evidence": "7XyS1NcCqUdRACcxcWg6qZtn8WYRUzj%2CBUbY2sgqHaP3qC42",
 							"otherinfo": "\ncookie:SSESS2a1f1276ff98ddb188463ac6fbc68a5d"
 						},
 						{
@@ -1564,7 +1564,7 @@
 							"method": "POST",
 							"param": "SSESS2a1f1276ff98ddb188463ac6fbc68a5d",
 							"attack": "",
-							"evidence": "hJuRaWgOLwHRrV6MquwhaP6kbVXBEFqGyftOY-HmJjZGjnOD",
+							"evidence": "7XyS1NcCqUdRACcxcWg6qZtn8WYRUzj%2CBUbY2sgqHaP3qC42",
 							"otherinfo": "\ncookie:SSESS2a1f1276ff98ddb188463ac6fbc68a5d"
 						}
 					],
@@ -1574,7 +1574,7 @@
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1019"
+					"sourceid": "1054"
 				},
 				{
 					"pluginid": "10049",
@@ -1764,7 +1764,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "994"
+					"sourceid": "1008"
 				}
 			]
 		}
