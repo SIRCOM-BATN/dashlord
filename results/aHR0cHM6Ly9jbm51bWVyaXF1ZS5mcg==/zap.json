@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.13.0",
-	"@generated": "Sun, 6 Aug 2023 00:41:14",
+	"@generated": "Sun, 13 Aug 2023 00:39:19",
 	"site":[ 
 		{
 			"@name": "https://cnnumerique.fr",
@@ -60,7 +60,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
 						},
 						{
-							"uri": "https://cnnumerique.fr/filter/tips",
+							"uri": "https://cnnumerique.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -68,7 +68,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
 						},
 						{
-							"uri": "https://cnnumerique.fr/index.php/comment/reply/",
+							"uri": "https://cnnumerique.fr/index.php/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -358,7 +358,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "158"
+					"sourceid": "102"
 				},
 				{
 					"pluginid": "10098",
@@ -468,6 +468,33 @@
 					"sourceid": "1"
 				},
 				{
+					"pluginid": "10099",
+					"alertRef": "10099",
+					"alert": "Source Code Disclosure - Perl",
+					"name": "Source Code Disclosure - Perl",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>Application Source Code was disclosed by the web server - Perl</p>",
+					"instances":[ 
+						{
+							"uri": "https://cnnumerique.fr/files/uploads/2023/Itineraires_numeriques_Le_Temps_du_debat_Versionweb.pdf",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "$#K3hZ",
+							"otherinfo": "$#K3hZ"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that application Source Code is not available with alternative extensions, and ensure that source code is not present within other files or data deployed to the web server, or served by the web server. </p>",
+					"otherinfo": "<p>$#K3hZ</p>",
+					"reference": "<p>http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</p>",
+					"cweid": "540",
+					"wascid": "13",
+					"sourceid": "1263"
+				},
+				{
 					"pluginid": "90003",
 					"alertRef": "90003",
 					"alert": "Sub Resource Integrity Attribute Missing",
@@ -492,7 +519,7 @@
 					"reference": "<p>https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "370"
+					"sourceid": "350"
 				},
 				{
 					"pluginid": "10044",
@@ -504,6 +531,22 @@
 					"riskdesc": "Low (Medium)",
 					"desc": "<p>The server has responded with a redirect that seems to provide a large response. This may indicate that although the server sent a redirect it also responded with body content (which may include sensitive details, PII, etc.).</p>",
 					"instances":[ 
+						{
+							"uri": "https://cnnumerique.fr/comment-perenniser-les-communs-numeriques-echange-avec-judith-rochfeld",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 103 [http://cnnumerique.fr/paroles-de/comment-perenniser-les-communs-numeriques-echange-avec-judith-rochfeld].\nPredicted response size: 403.\nResponse Body Length: 658."
+						},
+						{
+							"uri": "https://cnnumerique.fr/ess-et-communs-numeriques-echange-avec-vincent-bachelet",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 88 [http://cnnumerique.fr/paroles-de/ess-et-communs-numeriques-echange-avec-vincent-bachelet].\nPredicted response size: 388.\nResponse Body Length: 598."
+						},
 						{
 							"uri": "https://cnnumerique.fr/index.php/filter/tips",
 							"method": "GET",
@@ -529,21 +572,45 @@
 							"otherinfo": "Location header URI length: 28 [http://cnnumerique.fr/search].\nPredicted response size: 328.\nResponse Body Length: 358."
 						},
 						{
+							"uri": "https://cnnumerique.fr/la-priorite-cest-le-changement-de-societe-echange-avec-angie-gaudion",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 101 [http://cnnumerique.fr/paroles-de/la-priorite-cest-le-changement-de-societe-echange-avec-angie-gaudion].\nPredicted response size: 401.\nResponse Body Length: 650."
+						},
+						{
+							"uri": "https://cnnumerique.fr/le-cnnum-et-le-blog-binaire-explorent-ensemble-les-communs-numeriques",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 99 [http://cnnumerique.fr/annonce/le-cnnum-et-le-blog-binaire-explorent-ensemble-les-communs-numeriques].\nPredicted response size: 399.\nResponse Body Length: 642."
+						},
+						{
 							"uri": "https://cnnumerique.fr/search/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "Location header URI length: 28 [http://cnnumerique.fr/search].\nPredicted response size: 328.\nResponse Body Length: 358."
+						},
+						{
+							"uri": "https://cnnumerique.fr/une-vie-numerique-sans-gafam-est-elle-possible-echange-avec-corinne-vercher-chaptal",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 116 [http://cnnumerique.fr/paroles-de/une-vie-numerique-sans-gafam-est-elle-possible-echange-avec-corinne-vercher-chaptal].\nPredicted response size: 416.\nResponse Body Length: 710."
 						}
 					],
-					"count": "4",
+					"count": "9",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
-					"otherinfo": "<p>Location header URI length: 33 [http://cnnumerique.fr/filter/tips].</p><p>Predicted response size: 333.</p><p>Response Body Length: 378.</p>",
+					"otherinfo": "<p>Location header URI length: 103 [http://cnnumerique.fr/paroles-de/comment-perenniser-les-communs-numeriques-echange-avec-judith-rochfeld].</p><p>Predicted response size: 403.</p><p>Response Body Length: 658.</p>",
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "208"
+					"sourceid": "1314"
 				},
 				{
 					"pluginid": "10017",
@@ -570,7 +637,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "370"
+					"sourceid": "350"
 				},
 				{
 					"pluginid": "10110",
@@ -583,11 +650,11 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
-							"uri": "https://cnnumerique.fr/files/js/js_bKvZQLU1h--SGN2AMbQ0aiHnpmT5_QI6OJYCCdjrrZM.js",
+							"uri": "https://cnnumerique.fr/files/js/js_LJ3HbIrV_ZPk-ENgicLG0mHfIVNXZTMLhgj6KlgWSuo.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Eval",
+							"evidence": "eval",
 							"otherinfo": ""
 						},
 						{
@@ -613,7 +680,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "643"
+					"sourceid": "1042"
 				},
 				{
 					"pluginid": "10063",
@@ -698,7 +765,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnnumerique.fr/profiles/*.css",
+							"uri": "https://cnnumerique.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -706,7 +773,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnnumerique.fr/profiles/*.js",
+							"uri": "https://cnnumerique.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -835,7 +902,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "158"
+					"sourceid": "102"
 				},
 				{
 					"pluginid": "10096",
@@ -856,6 +923,70 @@
 							"otherinfo": "1679920906, which evaluates to: 2023-03-27 12:41:46"
 						},
 						{
+							"uri": "https://cnnumerique.fr/cenum-la-lettre-du-conseil-44-faconner-un-numerique-plus-egalitaire",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1676299751",
+							"otherinfo": "1676299751, which evaluates to: 2023-02-13 14:49:11"
+						},
+						{
+							"uri": "https://cnnumerique.fr/cenum-la-lettre-du-conseil-44-faconner-un-numerique-plus-egalitaire",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1676633823",
+							"otherinfo": "1676633823, which evaluates to: 2023-02-17 11:37:03"
+						},
+						{
+							"uri": "https://cnnumerique.fr/cenum-la-lettre-du-conseil-45-education-aux-medias",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1679403217",
+							"otherinfo": "1679403217, which evaluates to: 2023-03-21 12:53:37"
+						},
+						{
+							"uri": "https://cnnumerique.fr/cenum-la-lettre-du-conseil-45-education-aux-medias",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1679918760",
+							"otherinfo": "1679918760, which evaluates to: 2023-03-27 12:06:00"
+						},
+						{
+							"uri": "https://cnnumerique.fr/cenum-la-lettre-du-conseil-45-education-aux-medias",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1680247991",
+							"otherinfo": "1680247991, which evaluates to: 2023-03-31 07:33:11"
+						},
+						{
+							"uri": "https://cnnumerique.fr/files/uploads/2023/Itineraires_numeriques_Le_Temps_du_debat_Versionweb.pdf",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1596876428",
+							"otherinfo": "1596876428, which evaluates to: 2020-08-08 08:47:08"
+						},
+						{
+							"uri": "https://cnnumerique.fr/files/uploads/2023/Itineraires_numeriques_Le_Temps_du_debat_Versionweb.pdf",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1687292877",
+							"otherinfo": "1687292877, which evaluates to: 2023-06-20 20:27:57"
+						},
+						{
+							"uri": "https://cnnumerique.fr/lettre-dinformation/cenum-la-lettre-du-conseil-46-chatgpt-repenser-notre-rapport-lia",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1679918760",
+							"otherinfo": "1679918760, which evaluates to: 2023-03-27 12:06:00"
+						},
+						{
 							"uri": "https://cnnumerique.fr/lettre-dinformation/cenum-la-lettre-du-conseil-51-recherche-et-manipulation-de-linformation-en",
 							"method": "GET",
 							"param": "",
@@ -864,13 +995,13 @@
 							"otherinfo": "1687691726, which evaluates to: 2023-06-25 11:15:26"
 						}
 					],
-					"count": "2",
+					"count": "10",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1679920906, which evaluates to: 2023-03-27 12:41:46</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "605"
+					"sourceid": "604"
 				},
 				{
 					"pluginid": "10094",
@@ -967,8 +1098,8 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "fr/keynote-de-benoit-thieulin-IGF-2015",
-							"otherinfo": "~\uFFFD\uFFFD{)\uFFFD\uFFFD{\uFFFD\u079E\uFFFD\uFFFD\uFFFD\uFFFDbz\uFFFDb\uFFFD\uFFFD\\x0006\\x0017\uFFFD\uFFFD"
+							"evidence": "php/keynote-de-benoit-thieulin-IGF-2015",
+							"otherinfo": "\uFFFD\\x001a\uFFFD\uC9E2\u05FEu\uFFFDzz\"\uFFFD\uFFFDa\uFFFD\uB94A\uFFFD\\x0018_\uFFFD\uFFFD^"
 						}
 					],
 					"count": "11",
@@ -1004,7 +1135,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "183"
+					"sourceid": "182"
 				},
 				{
 					"pluginid": "10027",
@@ -1148,7 +1279,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://cnnumerique.fr/filter/tips",
+							"uri": "https://cnnumerique.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1156,7 +1287,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://cnnumerique.fr/index.php/comment/reply/",
+							"uri": "https://cnnumerique.fr/index.php/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1231,14 +1362,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnnumerique.fr/cenum",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600, public",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://cnnumerique.fr/filter/tips",
 							"method": "GET",
 							"param": "cache-control",
@@ -1248,6 +1371,14 @@
 						},
 						{
 							"uri": "https://cnnumerique.fr/framagenda",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600, public",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://cnnumerique.fr/inscription-la-liste-de-diffusion-du-conseil-national-du-numerique",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1330,6 +1461,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://cnnumerique.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://cnnumerique.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1338,7 +1477,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1365,6 +1504,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://cnnumerique.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://cnnumerique.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1373,7 +1520,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1400,6 +1547,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://cnnumerique.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://cnnumerique.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1408,7 +1563,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1435,6 +1590,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://cnnumerique.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://cnnumerique.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1443,7 +1606,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1639,15 +1802,71 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://cnnumerique.fr/nos-travaux-precedents?date=All&field_mandature_target_id=All&field_tags_target_id%5B%5D=114&items_per_page=12&sort_by=dates_desc\r\n\r\nappears to include user input in: \r\n\r\na(n) [option] tag [value] attribute \r\n\r\nThe user input found was:\r\nsort_by=dates_desc\r\n\r\nThe user-controlled value was:\r\ndates_desc"
+						},
+						{
+							"uri": "https://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc",
+							"method": "GET",
+							"param": "field_tags_target_id[]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc\r\n\r\nappears to include user input in: \r\n\r\na(n) [option] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_tags_target_id[]=114\r\n\r\nThe user-controlled value was:\r\n114"
+						},
+						{
+							"uri": "https://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc",
+							"method": "GET",
+							"param": "field_typologie_target_id",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc\r\n\r\nappears to include user input in: \r\n\r\na(n) [link] tag [media] attribute \r\n\r\nThe user input found was:\r\nfield_typologie_target_id=All\r\n\r\nThe user-controlled value was:\r\nall"
+						},
+						{
+							"uri": "https://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc",
+							"method": "GET",
+							"param": "field_typologie_target_id",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc\r\n\r\nappears to include user input in: \r\n\r\na(n) [option] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_typologie_target_id=All\r\n\r\nThe user-controlled value was:\r\nall"
+						},
+						{
+							"uri": "https://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc",
+							"method": "GET",
+							"param": "items_per_page",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [maxlength] attribute \r\n\r\nThe user input found was:\r\nitems_per_page=12\r\n\r\nThe user-controlled value was:\r\n128"
+						},
+						{
+							"uri": "https://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc",
+							"method": "GET",
+							"param": "items_per_page",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc\r\n\r\nappears to include user input in: \r\n\r\na(n) [option] tag [value] attribute \r\n\r\nThe user input found was:\r\nitems_per_page=12\r\n\r\nThe user-controlled value was:\r\n12"
+						},
+						{
+							"uri": "https://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc",
+							"method": "GET",
+							"param": "items_per_page",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc\r\n\r\nappears to include user input in: \r\n\r\na(n) [option] tag [value] attribute \r\n\r\nThe user input found was:\r\nitems_per_page=12\r\n\r\nThe user-controlled value was:\r\n123"
+						},
+						{
+							"uri": "https://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc",
+							"method": "GET",
+							"param": "sort_by",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://cnnumerique.fr/toutes-nos-actions?field_tags_target_id%5B%5D=114&field_typologie_target_id=All&items_per_page=12&sort_by=dates_desc\r\n\r\nappears to include user input in: \r\n\r\na(n) [option] tag [value] attribute \r\n\r\nThe user input found was:\r\nsort_by=dates_desc\r\n\r\nThe user-controlled value was:\r\ndates_desc"
 						}
 					],
-					"count": "9",
+					"count": "16",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
 					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://cnnumerique.fr/nos-travaux-precedents?date=All&field_mandature_target_id=All&field_tags_target_id%5B%5D=114&items_per_page=12&sort_by=dates_desc</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [link] tag [media] attribute </p><p></p><p>The user input found was:</p><p>date=All</p><p></p><p>The user-controlled value was:</p><p>all</p>",
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "978"
+					"sourceid": "1007"
 				}
 			]
 		}
