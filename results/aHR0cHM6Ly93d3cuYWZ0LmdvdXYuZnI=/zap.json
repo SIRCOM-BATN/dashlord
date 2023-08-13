@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.13.0",
-	"@generated": "Sun, 6 Aug 2023 00:41:41",
+	"@generated": "Sun, 13 Aug 2023 00:38:39",
 	"site":[ 
 		{
 			"@name": "https://www.aft.gouv.fr",
@@ -9,33 +9,6 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
-				{
-					"pluginid": "10062",
-					"alertRef": "10062",
-					"alert": "PII Disclosure",
-					"name": "PII Disclosure",
-					"riskcode": "3",
-					"confidence": "3",
-					"riskdesc": "High (High)",
-					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.aft.gouv.fr/fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "4118584851907",
-							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 411858\nBrand: VISA\nCategory: PLATINUM\nIssuer: BFC BANCO FONDO COMUN, C.A. BANCO UNIVERS.A.L."
-						}
-					],
-					"count": "1",
-					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
-					"otherinfo": "<p>Credit Card Type detected: Visa</p><p>Bank Identification Number: 411858</p><p>Brand: VISA</p><p>Category: PLATINUM</p><p>Issuer: BFC BANCO FONDO COMUN, C.A. BANCO UNIVERS.A.L.</p>",
-					"reference": "",
-					"cweid": "359",
-					"wascid": "13",
-					"sourceid": "1484"
-				},
 				{
 					"pluginid": "10202",
 					"alertRef": "10202",
@@ -72,6 +45,14 @@
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-404-page-1\" action=\"/fr/404\" method=\"get\" id=\"views-exposed-form-recherche-404-page-1\" accept-charset=\"UTF-8\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-changed\" \"edit-changed-1\" \"edit-search-api-fulltext\" \"edit-search-api-language-ar\" \"edit-search-api-language-en\" \"edit-search-api-language-es\" \"edit-search-api-language-fr\" \"edit-search-api-language-ja\" \"edit-search-api-language-ru\" \"edit-search-api-language-zh-hans\" \"edit-submit-recherche-404\" ]."
+						},
+						{
+							"uri": "https://www.aft.gouv.fr/files/webform/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -119,14 +100,6 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-changed\" \"edit-changed-1\" \"edit-search-api-fulltext\" \"edit-search-api-language-ar\" \"edit-search-api-language-en\" \"edit-search-api-language-es\" \"edit-search-api-language-fr\" \"edit-search-api-language-ja\" \"edit-search-api-language-ru\" \"edit-search-api-language-zh-hans\" \"edit-submit-recherche-404\" ]."
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/recherche-avancee",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-page-1\" action=\"/fr/recherche-avancee\" method=\"get\" id=\"views-exposed-form-recherche-page-1\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-changed\" \"edit-changed-1\" \"edit-keys\" \"edit-search-api-language-ar\" \"edit-search-api-language-en\" \"edit-search-api-language-es\" \"edit-search-api-language-fr\" \"edit-search-api-language-ja\" \"edit-search-api-language-ru\" \"edit-search-api-language-zh-hans\" \"edit-submit-recherche\" ]."
-						},
-						{
 							"uri": "https://www.aft.gouv.fr/search/",
 							"method": "GET",
 							"param": "",
@@ -149,7 +122,7 @@
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "356"
+					"sourceid": "354"
 				},
 				{
 					"pluginid": "10055",
@@ -412,7 +385,7 @@
 					"reference": "<p>https://github.com/advisories/GHSA-h6gj-6jjq-h8g9</p><p>https://bugs.jqueryui.com/ticket/15284</p><p>https://github.com/jquery/jquery-ui/commit/8cc5bae1caa1fcf96bf5862c5646c787020ba3f9</p><p>https://nvd.nist.gov/vuln/detail/CVE-2022-31160</p><p>https://github.com/jquery/jquery-ui/security/advisories/GHSA-h6gj-6jjq-h8g9</p><p>https://github.com/jquery/jquery-ui/security/advisories/GHSA-gpqq-952q-5327</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-41184</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-41183</p><p>https://github.com/jquery/jquery-ui/security/advisories/GHSA-9gj3-hwp5-pmwc</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-41182</p><p>https://github.com/jquery/jquery-ui/issues/2101</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "2400"
+					"sourceid": "2513"
 				},
 				{
 					"pluginid": "10017",
@@ -546,7 +519,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "2353"
+					"sourceid": "2491"
 				},
 				{
 					"pluginid": "10063",
@@ -567,14 +540,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/core/assets/vendor/css-escape/css.escape.js?v=1.5.1",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.aft.gouv.fr/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.3",
 							"method": "GET",
 							"param": "",
@@ -583,7 +548,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/core/assets/vendor/jquery.ui/ui/version-min.js?v=1.13.1",
+							"uri": "https://www.aft.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -591,7 +556,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
+							"uri": "https://www.aft.gouv.fr/core/assets/vendor/once/once.min.js?v=1.0.1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -647,6 +612,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.aft.gouv.fr/files/languages/fr_0NcwHPQ8Zt36IUlYMlNG834sLKPXkKjLge2cSuPfpL0.js?rvkik0",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.aft.gouv.fr/profiles/",
 							"method": "GET",
 							"param": "",
@@ -661,7 +634,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "340"
+					"sourceid": "337"
 				},
 				{
 					"pluginid": "10096",
@@ -673,14 +646,6 @@
 					"riskdesc": "Low (Low)",
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
-						{
-							"uri": "https://www.aft.gouv.fr/en/titre/fr0011982776",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1832714789",
-							"otherinfo": "1832714789, which evaluates to: 2028-01-28 23:26:29"
-						},
 						{
 							"uri": "https://www.aft.gouv.fr/fr/cadre-juridique-budget",
 							"method": "GET",
@@ -694,8 +659,8 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1691282447",
-							"otherinfo": "1691282447, which evaluates to: 2023-08-06 00:40:47"
+							"evidence": "1691887066",
+							"otherinfo": "1691887066, which evaluates to: 2023-08-13 00:37:46"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/fr/presentation",
@@ -710,16 +675,8 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1691282447",
-							"otherinfo": "1691282447, which evaluates to: 2023-08-06 00:40:47"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/titre/fr0011982776",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1832714789",
-							"otherinfo": "1832714789, which evaluates to: 2028-01-28 23:26:29"
+							"evidence": "1691887066",
+							"otherinfo": "1691887066, which evaluates to: 2023-08-13 00:37:46"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/fr/tresorerie-cadre-juridique",
@@ -738,13 +695,13 @@
 							"otherinfo": "1884101225, which evaluates to: 2029-09-14 17:27:05"
 						}
 					],
-					"count": "8",
+					"count": "6",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1832714789, which evaluates to: 2028-01-28 23:26:29</p>",
+					"otherinfo": "<p>1379448247, which evaluates to: 2013-09-17 20:04:07</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "2123"
+					"sourceid": "1694"
 				},
 				{
 					"pluginid": "10094",
@@ -1094,14 +1051,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/core/*.jpeg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "private",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.aft.gouv.fr/core/*.jpg",
 							"method": "GET",
 							"param": "",
@@ -1134,13 +1083,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "7",
+					"count": "6",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "74"
+					"sourceid": "67"
 				},
 				{
 					"pluginid": "10015",
@@ -1201,14 +1150,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/ja/recherche-avancee",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=300, public",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.aft.gouv.fr/recherche-avancee",
 							"method": "GET",
 							"param": "cache-control",
@@ -1222,6 +1163,14 @@
 							"param": "cache-control",
 							"attack": "",
 							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.aft.gouv.fr/ru/recherche-avancee",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=300, public",
 							"otherinfo": ""
 						},
 						{
@@ -1268,7 +1217,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/core/*.css",
+							"uri": "https://www.aft.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1276,7 +1225,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/robots.txt",
+							"uri": "https://www.aft.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1311,7 +1260,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/core/*.css",
+							"uri": "https://www.aft.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1319,7 +1268,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/robots.txt",
+							"uri": "https://www.aft.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1354,7 +1303,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/core/*.css",
+							"uri": "https://www.aft.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1362,7 +1311,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/robots.txt",
+							"uri": "https://www.aft.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1397,7 +1346,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/core/*.css",
+							"uri": "https://www.aft.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1405,7 +1354,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/robots.txt",
+							"uri": "https://www.aft.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1448,6 +1397,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.aft.gouv.fr/core/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=300",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.aft.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1464,7 +1421,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "5",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
@@ -1499,182 +1456,6 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/es/404?_exception_statuscode=404&destination=/fr\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [href] attribute \r\n\r\nThe user input found was:\r\ndestination=/fr\r\n\r\nThe user-controlled value was:\r\n/fr/404?_exception_statuscode=404&destination=/fr"
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "changed",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nchanged=ZAP\r\n\r\nThe user-controlled value was:\r\nzap"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "changed_1",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nchanged_1=ZAP\r\n\r\nThe user-controlled value was:\r\nzap"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_fulltext",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nsearch_api_fulltext=ZAP\r\n\r\nThe user-controlled value was:\r\nzap"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[ar]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[ar]=ar\r\n\r\nThe user-controlled value was:\r\nar"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[en]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [hreflang] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[en]=en\r\n\r\nThe user-controlled value was:\r\nen"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[en]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[en]=en\r\n\r\nThe user-controlled value was:\r\nen"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[en]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [li] tag [class] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[en]=en\r\n\r\nThe user-controlled value was:\r\nen"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[es]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [hreflang] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[es]=es\r\n\r\nThe user-controlled value was:\r\nes"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[es]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[es]=es\r\n\r\nThe user-controlled value was:\r\nes"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[es]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [li] tag [class] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[es]=es\r\n\r\nThe user-controlled value was:\r\nes"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[fr]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [html] tag [lang] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[fr]=fr\r\n\r\nThe user-controlled value was:\r\nfr"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[fr]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[fr]=fr\r\n\r\nThe user-controlled value was:\r\nfr"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[fr]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [li] tag [class] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[fr]=fr\r\n\r\nThe user-controlled value was:\r\nfr"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[ja]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [hreflang] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[ja]=ja\r\n\r\nThe user-controlled value was:\r\nja"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[ja]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[ja]=ja\r\n\r\nThe user-controlled value was:\r\nja"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[ja]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [li] tag [class] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[ja]=ja\r\n\r\nThe user-controlled value was:\r\nja"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[ru]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [hreflang] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[ru]=ru\r\n\r\nThe user-controlled value was:\r\nru"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[ru]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[ru]=ru\r\n\r\nThe user-controlled value was:\r\nru"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[ru]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [li] tag [class] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[ru]=ru\r\n\r\nThe user-controlled value was:\r\nru"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[zh-hans]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [hreflang] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[zh-hans]=zh-hans\r\n\r\nThe user-controlled value was:\r\nzh-hans"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[zh-hans]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[zh-hans]=zh-hans\r\n\r\nThe user-controlled value was:\r\nzh-hans"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans",
-							"method": "GET",
-							"param": "search_api_language[zh-hans]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/fr/404?changed=ZAP&changed_1=ZAP&search_api_fulltext=ZAP&search_api_language%5Bar%5D=ar&search_api_language%5Ben%5D=en&search_api_language%5Bes%5D=es&search_api_language%5Bfr%5D=fr&search_api_language%5Bja%5D=ja&search_api_language%5Bru%5D=ru&search_api_language%5Bzh-hans%5D=zh-hans\r\n\r\nappears to include user input in: \r\n\r\na(n) [li] tag [class] attribute \r\n\r\nThe user input found was:\r\nsearch_api_language[zh-hans]=zh-hans\r\n\r\nThe user-controlled value was:\r\nzh-hans"
-						},
-						{
 							"uri": "https://www.aft.gouv.fr/ja/404?_exception_statuscode=404&destination=/fr",
 							"method": "GET",
 							"param": "destination",
@@ -1699,13 +1480,13 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.aft.gouv.fr/zh-hans/404?_exception_statuscode=404&destination=/fr\r\n\r\nappears to include user input in: \r\n\r\na(n) [a] tag [href] attribute \r\n\r\nThe user input found was:\r\ndestination=/fr\r\n\r\nThe user-controlled value was:\r\n/fr/404?_exception_statuscode=404&destination=/fr"
 						}
 					],
-					"count": "27",
+					"count": "5",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
 					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.aft.gouv.fr/en/404?_exception_statuscode=404&destination=/fr</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [href] attribute </p><p></p><p>The user input found was:</p><p>destination=/fr</p><p></p><p>The user-controlled value was:</p><p>/fr/404?_exception_statuscode=404&destination=/fr</p>",
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "1455"
+					"sourceid": "1587"
 				}
 			]
 		}
