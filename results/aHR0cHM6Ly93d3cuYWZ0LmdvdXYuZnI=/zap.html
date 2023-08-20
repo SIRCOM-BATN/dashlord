@@ -127,7 +127,7 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Sun, 13 Aug 2023 00:38:38
+		Generated on Sun, 20 Aug 2023 00:38:35
 	</h3>
 
 	<h3>
@@ -148,7 +148,7 @@ td {
 					<div>High</div>
 				</td>
 				<td align="center">
-					<div>0</div>
+					<div>1</div>
 				</td>
 			</tr>
 			<tr>
@@ -198,6 +198,11 @@ td {
 					align="center">Number of Instances</th>
 			</tr>
 			<tr>
+				<td><a href="#10062">PII Disclosure</a></td>
+				<td align="center" class="risk-3">High</td>
+				<td align="center">1</td>
+			</tr>
+			<tr>
 				<td><a href="#10202">Absence of Anti-CSRF Tokens</a></td>
 				<td align="center" class="risk-2">Medium</td>
 				<td align="center">12</td>
@@ -245,7 +250,7 @@ td {
 			<tr>
 				<td><a href="#10096">Timestamp Disclosure - Unix</a></td>
 				<td align="center" class="risk-1">Low</td>
-				<td align="center">6</td>
+				<td align="center">9</td>
 			</tr>
 			<tr>
 				<td><a href="#10094">Base64 Disclosure</a></td>
@@ -300,7 +305,7 @@ td {
 			<tr>
 				<td><a href="#10031">User Controllable HTML Element Attribute (Potential XSS)</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">5</td>
+				<td align="center">27</td>
 			</tr>
 		</table>
 		<div class="spacer-lg"></div>
@@ -308,6 +313,87 @@ td {
 
 	
 		<h3>Alert Detail</h3>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-3"><a
+						id="10062"></a>
+						<div>High</div></th>
+					<th class="risk-3">PII Disclosure</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/core/*.css$?_exception_statuscode=404&amp;changed&amp;changed_1&amp;destination=/fr&amp;page=7&amp;search_api_fulltext">https://www.aft.gouv.fr/core/*.css$?_exception_statuscode=404&amp;changed&amp;changed_1&amp;destination=/fr&amp;page=7&amp;search_api_fulltext</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">2355218013192096</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Credit Card Type detected: Mastercard</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/359.html">359</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10062/">10062</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
 		
 			<table class="results">
 				<tr height="24">
@@ -370,6 +456,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;form class=&quot;views-exposed-form bef-exposed-form&quot; data-drupal-selector=&quot;views-exposed-form-recherche-404-page-1&quot; action=&quot;/fr/404&quot; method=&quot;get&quot; id=&quot;views-exposed-form-recherche-404-page-1&quot; accept-charset=&quot;UTF-8&quot;&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;edit-changed&quot; &quot;edit-changed-1&quot; &quot;edit-search-api-fulltext&quot; &quot;edit-search-api-language-ar&quot; &quot;edit-search-api-language-en&quot; &quot;edit-search-api-language-es&quot; &quot;edit-search-api-language-fr&quot; &quot;edit-search-api-language-ja&quot; &quot;edit-search-api-language-ru&quot; &quot;edit-search-api-language-zh-hans&quot; &quot;edit-submit-recherche-404&quot; ].</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -395,6 +486,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;form class=&quot;views-exposed-form bef-exposed-form&quot; data-drupal-selector=&quot;views-exposed-form-recherche-404-page-1&quot; action=&quot;/fr/404&quot; method=&quot;get&quot; id=&quot;views-exposed-form-recherche-404-page-1&quot; accept-charset=&quot;UTF-8&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;edit-changed&quot; &quot;edit-changed-1&quot; &quot;edit-search-api-fulltext&quot; &quot;edit-search-api-language-ar&quot; &quot;edit-search-api-language-en&quot; &quot;edit-search-api-language-es&quot; &quot;edit-search-api-language-fr&quot; &quot;edit-search-api-language-ja&quot; &quot;edit-search-api-language-ru&quot; &quot;edit-search-api-language-zh-hans&quot; &quot;edit-submit-recherche-404&quot; ].</td>
 					</tr>
 				
 					<tr>
@@ -422,6 +518,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;form class=&quot;views-exposed-form bef-exposed-form&quot; data-drupal-selector=&quot;views-exposed-form-recherche-404-page-1&quot; action=&quot;/fr/404&quot; method=&quot;get&quot; id=&quot;views-exposed-form-recherche-404-page-1&quot; accept-charset=&quot;UTF-8&quot;&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;edit-changed&quot; &quot;edit-changed-1&quot; &quot;edit-search-api-fulltext&quot; &quot;edit-search-api-language-ar&quot; &quot;edit-search-api-language-en&quot; &quot;edit-search-api-language-es&quot; &quot;edit-search-api-language-fr&quot; &quot;edit-search-api-language-ja&quot; &quot;edit-search-api-language-ru&quot; &quot;edit-search-api-language-zh-hans&quot; &quot;edit-submit-recherche-404&quot; ].</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -447,6 +548,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;form class=&quot;views-exposed-form bef-exposed-form&quot; data-drupal-selector=&quot;views-exposed-form-recherche-404-page-1&quot; action=&quot;/fr/404&quot; method=&quot;get&quot; id=&quot;views-exposed-form-recherche-404-page-1&quot; accept-charset=&quot;UTF-8&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;edit-changed&quot; &quot;edit-changed-1&quot; &quot;edit-search-api-fulltext&quot; &quot;edit-search-api-language-ar&quot; &quot;edit-search-api-language-en&quot; &quot;edit-search-api-language-es&quot; &quot;edit-search-api-language-fr&quot; &quot;edit-search-api-language-ja&quot; &quot;edit-search-api-language-ru&quot; &quot;edit-search-api-language-zh-hans&quot; &quot;edit-submit-recherche-404&quot; ].</td>
 					</tr>
 				
 					<tr>
@@ -474,6 +580,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;form class=&quot;views-exposed-form bef-exposed-form&quot; data-drupal-selector=&quot;views-exposed-form-recherche-404-page-1&quot; action=&quot;/fr/404&quot; method=&quot;get&quot; id=&quot;views-exposed-form-recherche-404-page-1&quot; accept-charset=&quot;UTF-8&quot;&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;edit-changed&quot; &quot;edit-changed-1&quot; &quot;edit-search-api-fulltext&quot; &quot;edit-search-api-language-ar&quot; &quot;edit-search-api-language-en&quot; &quot;edit-search-api-language-es&quot; &quot;edit-search-api-language-fr&quot; &quot;edit-search-api-language-ja&quot; &quot;edit-search-api-language-ru&quot; &quot;edit-search-api-language-zh-hans&quot; &quot;edit-submit-recherche-404&quot; ].</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -499,6 +610,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;form class=&quot;views-exposed-form bef-exposed-form&quot; data-drupal-selector=&quot;views-exposed-form-recherche-404-page-1&quot; action=&quot;/index.php/fr/404&quot; method=&quot;get&quot; id=&quot;views-exposed-form-recherche-404-page-1&quot; accept-charset=&quot;UTF-8&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;edit-changed&quot; &quot;edit-changed-1&quot; &quot;edit-search-api-fulltext&quot; &quot;edit-search-api-language-ar&quot; &quot;edit-search-api-language-en&quot; &quot;edit-search-api-language-es&quot; &quot;edit-search-api-language-fr&quot; &quot;edit-search-api-language-ja&quot; &quot;edit-search-api-language-ru&quot; &quot;edit-search-api-language-zh-hans&quot; &quot;edit-submit-recherche-404&quot; ].</td>
 					</tr>
 				
 					<tr>
@@ -526,6 +642,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;form class=&quot;views-exposed-form bef-exposed-form&quot; data-drupal-selector=&quot;views-exposed-form-recherche-404-page-1&quot; action=&quot;/index.php/fr/404&quot; method=&quot;get&quot; id=&quot;views-exposed-form-recherche-404-page-1&quot; accept-charset=&quot;UTF-8&quot;&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;edit-changed&quot; &quot;edit-changed-1&quot; &quot;edit-search-api-fulltext&quot; &quot;edit-search-api-language-ar&quot; &quot;edit-search-api-language-en&quot; &quot;edit-search-api-language-es&quot; &quot;edit-search-api-language-fr&quot; &quot;edit-search-api-language-ja&quot; &quot;edit-search-api-language-ru&quot; &quot;edit-search-api-language-zh-hans&quot; &quot;edit-submit-recherche-404&quot; ].</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -551,6 +672,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;form class=&quot;views-exposed-form bef-exposed-form&quot; data-drupal-selector=&quot;views-exposed-form-recherche-404-page-1&quot; action=&quot;/fr/404&quot; method=&quot;get&quot; id=&quot;views-exposed-form-recherche-404-page-1&quot; accept-charset=&quot;UTF-8&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;edit-changed&quot; &quot;edit-changed-1&quot; &quot;edit-search-api-fulltext&quot; &quot;edit-search-api-language-ar&quot; &quot;edit-search-api-language-en&quot; &quot;edit-search-api-language-es&quot; &quot;edit-search-api-language-fr&quot; &quot;edit-search-api-language-ja&quot; &quot;edit-search-api-language-ru&quot; &quot;edit-search-api-language-zh-hans&quot; &quot;edit-submit-recherche-404&quot; ].</td>
 					</tr>
 				
 					<tr>
@@ -578,6 +704,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;form class=&quot;views-exposed-form bef-exposed-form&quot; data-drupal-selector=&quot;views-exposed-form-recherche-404-page-1&quot; action=&quot;/fr/404&quot; method=&quot;get&quot; id=&quot;views-exposed-form-recherche-404-page-1&quot; accept-charset=&quot;UTF-8&quot;&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;edit-changed&quot; &quot;edit-changed-1&quot; &quot;edit-search-api-fulltext&quot; &quot;edit-search-api-language-ar&quot; &quot;edit-search-api-language-en&quot; &quot;edit-search-api-language-es&quot; &quot;edit-search-api-language-fr&quot; &quot;edit-search-api-language-ja&quot; &quot;edit-search-api-language-ru&quot; &quot;edit-search-api-language-zh-hans&quot; &quot;edit-submit-recherche-404&quot; ].</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -603,6 +734,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;form class=&quot;views-exposed-form bef-exposed-form&quot; data-drupal-selector=&quot;views-exposed-form-recherche-404-page-1&quot; action=&quot;/fr/404&quot; method=&quot;get&quot; id=&quot;views-exposed-form-recherche-404-page-1&quot; accept-charset=&quot;UTF-8&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;edit-changed&quot; &quot;edit-changed-1&quot; &quot;edit-search-api-fulltext&quot; &quot;edit-search-api-language-ar&quot; &quot;edit-search-api-language-en&quot; &quot;edit-search-api-language-es&quot; &quot;edit-search-api-language-fr&quot; &quot;edit-search-api-language-ja&quot; &quot;edit-search-api-language-ru&quot; &quot;edit-search-api-language-zh-hans&quot; &quot;edit-submit-recherche-404&quot; ].</td>
 					</tr>
 				
 					<tr>
@@ -630,6 +766,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;form class=&quot;views-exposed-form bef-exposed-form&quot; data-drupal-selector=&quot;views-exposed-form-recherche-404-page-1&quot; action=&quot;/fr/404&quot; method=&quot;get&quot; id=&quot;views-exposed-form-recherche-404-page-1&quot; accept-charset=&quot;UTF-8&quot;&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;edit-changed&quot; &quot;edit-changed-1&quot; &quot;edit-search-api-fulltext&quot; &quot;edit-search-api-language-ar&quot; &quot;edit-search-api-language-en&quot; &quot;edit-search-api-language-es&quot; &quot;edit-search-api-language-fr&quot; &quot;edit-search-api-language-ja&quot; &quot;edit-search-api-language-ru&quot; &quot;edit-search-api-language-zh-hans&quot; &quot;edit-submit-recherche-404&quot; ].</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -655,6 +796,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;form class=&quot;views-exposed-form bef-exposed-form&quot; data-drupal-selector=&quot;views-exposed-form-recherche-404-page-1&quot; action=&quot;/fr/404&quot; method=&quot;get&quot; id=&quot;views-exposed-form-recherche-404-page-1&quot; accept-charset=&quot;UTF-8&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;edit-changed&quot; &quot;edit-changed-1&quot; &quot;edit-search-api-fulltext&quot; &quot;edit-search-api-language-ar&quot; &quot;edit-search-api-language-en&quot; &quot;edit-search-api-language-es&quot; &quot;edit-search-api-language-fr&quot; &quot;edit-search-api-language-ja&quot; &quot;edit-search-api-language-ru&quot; &quot;edit-search-api-language-zh-hans&quot; &quot;edit-submit-recherche-404&quot; ].</td>
 					</tr>
 				
 				<tr>
@@ -780,6 +926,14 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">default-src &#39;none&#39;; upgrade-insecure-requests; frame-ancestors &#39;none&#39;; connect-src &#39;self&#39;; font-src &#39;self&#39;; frame-src https://www.youtube.com https://player.ausha.co; img-src &#39;self&#39;; script-src &#39;self&#39; &#39;unsafe-inline&#39; https://player.ausha.co/ausha-player.js; style-src &#39;self&#39; &#39;unsafe-inline&#39;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: 
+form-action
+
+The directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -806,6 +960,14 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">default-src &#39;none&#39;; upgrade-insecure-requests; frame-ancestors &#39;none&#39;; connect-src &#39;self&#39;; font-src &#39;self&#39;; frame-src https://www.youtube.com https://player.ausha.co; img-src &#39;self&#39;; script-src &#39;self&#39; &#39;unsafe-inline&#39; https://player.ausha.co/ausha-player.js; style-src &#39;self&#39; &#39;unsafe-inline&#39;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: 
+form-action
+
+The directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -831,6 +993,14 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">default-src &#39;none&#39;; upgrade-insecure-requests; frame-ancestors &#39;none&#39;; connect-src &#39;self&#39;; font-src &#39;self&#39;; frame-src https://www.youtube.com https://player.ausha.co; img-src &#39;self&#39;; script-src &#39;self&#39; &#39;unsafe-inline&#39; https://player.ausha.co/ausha-player.js; style-src &#39;self&#39; &#39;unsafe-inline&#39;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: 
+form-action
+
+The directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</td>
 					</tr>
 				
 				<tr>
@@ -926,6 +1096,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">default-src &#39;none&#39;; upgrade-insecure-requests; frame-ancestors &#39;none&#39;; connect-src &#39;self&#39;; font-src &#39;self&#39;; frame-src https://www.youtube.com https://player.ausha.co; img-src &#39;self&#39;; script-src &#39;self&#39; &#39;unsafe-inline&#39; https://player.ausha.co/ausha-player.js; style-src &#39;self&#39; &#39;unsafe-inline&#39;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">script-src includes unsafe-inline.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -952,6 +1127,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">default-src &#39;none&#39;; upgrade-insecure-requests; frame-ancestors &#39;none&#39;; connect-src &#39;self&#39;; font-src &#39;self&#39;; frame-src https://www.youtube.com https://player.ausha.co; img-src &#39;self&#39;; script-src &#39;self&#39; &#39;unsafe-inline&#39; https://player.ausha.co/ausha-player.js; style-src &#39;self&#39; &#39;unsafe-inline&#39;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">script-src includes unsafe-inline.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -977,6 +1157,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">default-src &#39;none&#39;; upgrade-insecure-requests; frame-ancestors &#39;none&#39;; connect-src &#39;self&#39;; font-src &#39;self&#39;; frame-src https://www.youtube.com https://player.ausha.co; img-src &#39;self&#39;; script-src &#39;self&#39; &#39;unsafe-inline&#39; https://player.ausha.co/ausha-player.js; style-src &#39;self&#39; &#39;unsafe-inline&#39;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">script-src includes unsafe-inline.</td>
 					</tr>
 				
 				<tr>
@@ -1072,6 +1257,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">default-src &#39;none&#39;; upgrade-insecure-requests; frame-ancestors &#39;none&#39;; connect-src &#39;self&#39;; font-src &#39;self&#39;; frame-src https://www.youtube.com https://player.ausha.co; img-src &#39;self&#39;; script-src &#39;self&#39; &#39;unsafe-inline&#39; https://player.ausha.co/ausha-player.js; style-src &#39;self&#39; &#39;unsafe-inline&#39;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">style-src includes unsafe-inline.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1098,6 +1288,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">default-src &#39;none&#39;; upgrade-insecure-requests; frame-ancestors &#39;none&#39;; connect-src &#39;self&#39;; font-src &#39;self&#39;; frame-src https://www.youtube.com https://player.ausha.co; img-src &#39;self&#39;; script-src &#39;self&#39; &#39;unsafe-inline&#39; https://player.ausha.co/ausha-player.js; style-src &#39;self&#39; &#39;unsafe-inline&#39;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">style-src includes unsafe-inline.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1123,6 +1318,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">default-src &#39;none&#39;; upgrade-insecure-requests; frame-ancestors &#39;none&#39;; connect-src &#39;self&#39;; font-src &#39;self&#39;; frame-src https://www.youtube.com https://player.ausha.co; img-src &#39;self&#39;; script-src &#39;self&#39; &#39;unsafe-inline&#39; https://player.ausha.co/ausha-player.js; style-src &#39;self&#39; &#39;unsafe-inline&#39;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">style-src includes unsafe-inline.</td>
 					</tr>
 				
 				<tr>
@@ -1218,6 +1418,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1243,6 +1448,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -1270,6 +1480,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1295,6 +1510,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -1322,6 +1542,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1347,6 +1572,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -1374,6 +1604,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1399,6 +1634,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -1426,6 +1666,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1452,6 +1697,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1477,6 +1727,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 				<tr>
@@ -1556,6 +1811,15 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">/*! jQuery UI - v1.12.1</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">CVE-2021-41184
+CVE-2021-41183
+CVE-2021-41182
+CVE-2022-31160
+</td>
 					</tr>
 				
 				<tr>
@@ -1666,6 +1930,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1691,6 +1960,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -1718,6 +1992,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1743,6 +2022,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -1770,6 +2054,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1795,6 +2084,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -1822,6 +2116,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1847,6 +2146,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -1874,6 +2178,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1900,6 +2209,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -1925,6 +2239,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-28315037-1&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 				<tr>
@@ -2001,6 +2320,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">Eval</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 				<tr>
@@ -2081,6 +2405,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2107,30 +2436,9 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
-				
 					<tr>
 						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.aft.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0">https://www.aft.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
+							class="indent2">Other Info</td>
 						<td width="80%"></td>
 					</tr>
 				
@@ -2159,6 +2467,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2183,6 +2496,11 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
 						<td width="80%"></td>
 					</tr>
 				
@@ -2211,6 +2529,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2235,6 +2558,11 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
 						<td width="80%"></td>
 					</tr>
 				
@@ -2263,6 +2591,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2287,6 +2620,11 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
 						<td width="80%"></td>
 					</tr>
 				
@@ -2315,6 +2653,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2341,6 +2684,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2365,6 +2713,42 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/themes/custom/aft/js/scripts.js?v=9.3.22">https://www.aft.gouv.fr/themes/custom/aft/js/scripts.js?v=9.3.22</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
 						<td width="80%"></td>
 					</tr>
 				
@@ -2436,6 +2820,37 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/en/titre/fr0011008705">https://www.aft.gouv.fr/en/titre/fr0011008705</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1557995195</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1557995195, which evaluates to: 2019-05-16 08:26:35</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.aft.gouv.fr/fr/cadre-juridique-budget">https://www.aft.gouv.fr/fr/cadre-juridique-budget</a></td>
 					</tr>
 					<tr>
@@ -2457,6 +2872,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">1379448247</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1379448247, which evaluates to: 2013-09-17 20:04:07</td>
 					</tr>
 				
 					<tr>
@@ -2482,7 +2902,12 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">1691887066</td>
+						<td width="80%">1692491859</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1692491859, which evaluates to: 2023-08-20 00:37:39</td>
 					</tr>
 				
 					<tr>
@@ -2510,6 +2935,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">1756338842</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1756338842, which evaluates to: 2025-08-27 23:54:02</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2534,7 +2964,12 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">1691887066</td>
+						<td width="80%">1692491859</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1692491859, which evaluates to: 2023-08-20 00:37:39</td>
 					</tr>
 				
 					<tr>
@@ -2562,6 +2997,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">1629897596</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1629897596, which evaluates to: 2021-08-25 13:19:56</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2588,10 +3028,77 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">1884101225</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1884101225, which evaluates to: 2029-09-14 17:27:05</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/index.php/fr/contact">https://www.aft.gouv.fr/index.php/fr/contact</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1692491862</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1692491862, which evaluates to: 2023-08-20 00:37:42</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/index.php/fr/recevoir-nos-publications">https://www.aft.gouv.fr/index.php/fr/recevoir-nos-publications</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1692491862</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1692491862, which evaluates to: 2023-08-20 00:37:42</td>
+					</tr>
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">6</td>
+					<td width="80%">9</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -2667,6 +3174,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">/files/css/css_ZQhezKiJksnzoNObMvCO6KBc4Bt-kvLRg4xpjrES5zA</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���z�ܲ�ܲ��B�*&quot;d�|�4�̼#�(8ߤ��`�c�D��</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2692,6 +3204,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">/files/css/css_D94g4S8ntCedBcTdhBn71JBCpVv9i3v3y2nNPdsaT_w</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���z�ܲ�ܲ����8K��	�Aq7a~�$�V�b����sOvƓ�</td>
 					</tr>
 				
 					<tr>
@@ -2719,6 +3236,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">/files/css/css_D94g4S8ntCedBcTdhBn71JBCpVv9i3v3y2nNPdsaT_w</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���z�ܲ�ܲ����8K��	�Aq7a~�$�V�b����sOvƓ�</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2744,6 +3266,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">/files/css/css_D94g4S8ntCedBcTdhBn71JBCpVv9i3v3y2nNPdsaT_w</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���z�ܲ�ܲ����8K��	�Aq7a~�$�V�b����sOvƓ�</td>
 					</tr>
 				
 					<tr>
@@ -2771,6 +3298,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">/files/css/css_D94g4S8ntCedBcTdhBn71JBCpVv9i3v3y2nNPdsaT_w</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���z�ܲ�ܲ����8K��	�Aq7a~�$�V�b����sOvƓ�</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2796,6 +3328,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">/files/css/css_wKOAPCUrkJXbfU_KGzAjZLOq6-3yzNOkNtL3rYcKczw</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���z�ܲ�ܲ��(�	J�%v�S���,��|�4����a�</td>
 					</tr>
 				
 					<tr>
@@ -2823,6 +3360,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">/files/css/css_wKOAPCUrkJXbfU_KGzAjZLOq6-3yzNOkNtL3rYcKczw</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���z�ܲ�ܲ��(�	J�%v�S���,��|�4����a�</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2848,6 +3390,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">/files/css/css_D94g4S8ntCedBcTdhBn71JBCpVv9i3v3y2nNPdsaT_w</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���z�ܲ�ܲ����8K��	�Aq7a~�$�V�b����sOvƓ�</td>
 					</tr>
 				
 					<tr>
@@ -2875,6 +3422,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">/files/css/css_D94g4S8ntCedBcTdhBn71JBCpVv9i3v3y2nNPdsaT_w</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���z�ܲ�ܲ����8K��	�Aq7a~�$�V�b����sOvƓ�</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2901,6 +3453,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">/files/css/css_D94g4S8ntCedBcTdhBn71JBCpVv9i3v3y2nNPdsaT_w</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���z�ܲ�ܲ����8K��	�Aq7a~�$�V�b����sOvƓ�</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -2926,6 +3483,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">/files/css/css_D94g4S8ntCedBcTdhBn71JBCpVv9i3v3y2nNPdsaT_w</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���z�ܲ�ܲ����8K��	�Aq7a~�$�V�b����sOvƓ�</td>
 					</tr>
 				
 				<tr>
@@ -3006,6 +3568,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">user</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;&lt;script type=&quot;application/json&quot; data-drupal-selector=&quot;drupal-settings-json&quot;&gt;{&quot;path&quot;:{&quot;baseUrl&quot;:&quot;\/&quot;,&quot;scriptPath&quot;:null,&quot;pathPrefi&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3031,6 +3598,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">user</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;&lt;script type=&quot;application/json&quot; data-drupal-selector=&quot;drupal-settings-json&quot;&gt;{&quot;path&quot;:{&quot;baseUrl&quot;:&quot;\/&quot;,&quot;scriptPath&quot;:null,&quot;pathPrefi&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 					<tr>
@@ -3058,6 +3630,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">user</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;&lt;script type=&quot;application/json&quot; data-drupal-selector=&quot;drupal-settings-json&quot;&gt;{&quot;path&quot;:{&quot;baseUrl&quot;:&quot;\/&quot;,&quot;scriptPath&quot;:null,&quot;pathPrefi&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3083,6 +3660,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">user</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;&lt;script type=&quot;application/json&quot; data-drupal-selector=&quot;drupal-settings-json&quot;&gt;{&quot;path&quot;:{&quot;baseUrl&quot;:&quot;\/&quot;,&quot;scriptPath&quot;:null,&quot;pathPrefi&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 					<tr>
@@ -3110,6 +3692,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">user</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;&lt;script type=&quot;application/json&quot; data-drupal-selector=&quot;drupal-settings-json&quot;&gt;{&quot;path&quot;:{&quot;baseUrl&quot;:&quot;\/&quot;,&quot;scriptPath&quot;:null,&quot;pathPrefi&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3135,6 +3722,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">user</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;&lt;script type=&quot;application/json&quot; data-drupal-selector=&quot;drupal-settings-json&quot;&gt;{&quot;path&quot;:{&quot;baseUrl&quot;:&quot;\/&quot;,&quot;scriptPath&quot;:null,&quot;pathPrefi&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 					<tr>
@@ -3162,6 +3754,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">user</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;&lt;script type=&quot;application/json&quot; data-drupal-selector=&quot;drupal-settings-json&quot;&gt;{&quot;path&quot;:{&quot;baseUrl&quot;:&quot;\/&quot;,&quot;scriptPath&quot;:null,&quot;pathPrefi&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3187,6 +3784,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">user</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;&lt;script type=&quot;application/json&quot; data-drupal-selector=&quot;drupal-settings-json&quot;&gt;{&quot;path&quot;:{&quot;baseUrl&quot;:&quot;\/&quot;,&quot;scriptPath&quot;:null,&quot;pathPrefi&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 					<tr>
@@ -3214,6 +3816,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">user</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;&lt;script type=&quot;application/json&quot; data-drupal-selector=&quot;drupal-settings-json&quot;&gt;{&quot;path&quot;:{&quot;baseUrl&quot;:&quot;\/&quot;,&quot;scriptPath&quot;:null,&quot;pathPrefi&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3240,6 +3847,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">user</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;&lt;script type=&quot;application/json&quot; data-drupal-selector=&quot;drupal-settings-json&quot;&gt;{&quot;path&quot;:{&quot;baseUrl&quot;:&quot;\/&quot;,&quot;scriptPath&quot;:null,&quot;pathPrefi&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3265,6 +3877,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">user</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;&lt;script type=&quot;application/json&quot; data-drupal-selector=&quot;drupal-settings-json&quot;&gt;{&quot;path&quot;:{&quot;baseUrl&quot;:&quot;\/&quot;,&quot;scriptPath&quot;:null,&quot;pathPrefi&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 				<tr>
@@ -3340,7 +3957,12 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">&lt;a href=&quot;/fr/contact&quot; target=&quot;_self&quot; data-drupal-link-system-path=&quot;node/82&quot;&gt;Contact&lt;/a&gt;</td>
+						<td width="80%">&lt;a href=&quot;/index.php/fr/contact&quot; target=&quot;_self&quot; data-drupal-link-system-path=&quot;node/82&quot;&gt;Contact&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
 					</tr>
 				
 					<tr>
@@ -3368,6 +3990,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;a href=&quot;/fr/contact&quot; target=&quot;_self&quot; data-drupal-link-system-path=&quot;node/82&quot;&gt;Contact&lt;/a&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3393,6 +4020,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;a href=&quot;/fr/contact&quot; target=&quot;_self&quot; data-drupal-link-system-path=&quot;node/82&quot;&gt;Contact&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
 					</tr>
 				
 					<tr>
@@ -3420,6 +4052,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;a href=&quot;/fr/contact&quot; target=&quot;_self&quot; data-drupal-link-system-path=&quot;node/82&quot;&gt;Contact&lt;/a&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3445,6 +4082,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;a href=&quot;/fr/contact&quot; target=&quot;_self&quot; data-drupal-link-system-path=&quot;node/82&quot;&gt;Contact&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
 					</tr>
 				
 					<tr>
@@ -3472,6 +4114,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;a href=&quot;/fr/contact&quot; target=&quot;_self&quot; data-drupal-link-system-path=&quot;node/82&quot;&gt;Contact&lt;/a&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3497,6 +4144,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;a href=&quot;/fr/contact&quot; target=&quot;_self&quot; data-drupal-link-system-path=&quot;node/82&quot;&gt;Contact&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
 					</tr>
 				
 					<tr>
@@ -3524,6 +4176,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;a href=&quot;/fr/contact&quot; target=&quot;_self&quot; data-drupal-link-system-path=&quot;node/82&quot;&gt;Contact&lt;/a&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3549,6 +4206,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;a href=&quot;/fr/contact&quot; target=&quot;_self&quot; data-drupal-link-system-path=&quot;node/82&quot;&gt;Contact&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
 					</tr>
 				
 					<tr>
@@ -3576,6 +4238,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;a href=&quot;/fr/contact&quot; target=&quot;_self&quot; data-drupal-link-system-path=&quot;node/82&quot;&gt;Contact&lt;/a&gt;</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3601,6 +4268,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">&lt;a href=&quot;/fr/contact&quot; target=&quot;_self&quot; data-drupal-link-system-path=&quot;node/82&quot;&gt;Contact&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
 					</tr>
 				
 				<tr>
@@ -3677,6 +4349,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">private</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3702,6 +4379,42 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">private</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/core/*.jpeg">https://www.aft.gouv.fr/core/*.jpeg</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">private</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -3729,6 +4442,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">private</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3754,6 +4472,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">private</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -3781,31 +4504,10 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">private</td>
 					</tr>
-				
 					<tr>
 						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.aft.gouv.fr/profiles/*.css">https://www.aft.gouv.fr/profiles/*.css</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
+							class="indent2">Other Info</td>
 						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">private</td>
 					</tr>
 				
 				<tr>
@@ -3925,6 +4627,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">max-age=300, public</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -3950,6 +4657,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">max-age=300, public</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -3977,6 +4689,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">max-age=300, public</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4002,6 +4719,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">max-age=300, public</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -4029,6 +4751,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">max-age=300, public</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4054,6 +4781,42 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">max-age=300, public</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/ja/recherche-avancee">https://www.aft.gouv.fr/ja/recherche-avancee</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=300, public</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -4081,6 +4844,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">max-age=300, public</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4107,31 +4875,10 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
-				
 					<tr>
 						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.aft.gouv.fr/ru/recherche-avancee">https://www.aft.gouv.fr/ru/recherche-avancee</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">cache-control</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
+							class="indent2">Other Info</td>
 						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">max-age=300, public</td>
 					</tr>
 				
 					<tr>
@@ -4159,6 +4906,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4184,6 +4936,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">max-age=300, public</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 				<tr>
@@ -4270,6 +5027,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4296,6 +5058,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4320,6 +5087,11 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
 						<td width="80%"></td>
 					</tr>
 				
@@ -4401,6 +5173,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4427,6 +5204,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4451,6 +5233,11 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
 						<td width="80%"></td>
 					</tr>
 				
@@ -4532,6 +5319,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4558,6 +5350,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4582,6 +5379,11 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
 						<td width="80%"></td>
 					</tr>
 				
@@ -4663,6 +5465,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4689,6 +5496,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4713,6 +5525,11 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
 						<td width="80%"></td>
 					</tr>
 				
@@ -4794,6 +5611,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">max-age=300</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4819,6 +5641,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">max-age=300</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 					<tr>
@@ -4846,6 +5673,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%">max-age=300</td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4872,6 +5704,11 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -4897,6 +5734,11 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">max-age=300</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
 					</tr>
 				
 				<tr>
@@ -4995,6 +5837,23 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/en/404?_exception_statuscode=404&amp;destination=/fr
+
+appears to include user input in: 
+
+a(n) [a] tag [href] attribute 
+
+The user input found was:
+destination=/fr
+
+The user-controlled value was:
+/fr/404?_exception_statuscode=404&amp;destination=/fr</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -5020,6 +5879,969 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/es/404?_exception_statuscode=404&amp;destination=/fr
+
+appears to include user input in: 
+
+a(n) [a] tag [href] attribute 
+
+The user input found was:
+destination=/fr
+
+The user-controlled value was:
+/fr/404?_exception_statuscode=404&amp;destination=/fr</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">changed</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [input] tag [value] attribute 
+
+The user input found was:
+changed=ZAP
+
+The user-controlled value was:
+zap</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">changed_1</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [input] tag [value] attribute 
+
+The user input found was:
+changed_1=ZAP
+
+The user-controlled value was:
+zap</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_fulltext</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [input] tag [value] attribute 
+
+The user input found was:
+search_api_fulltext=ZAP
+
+The user-controlled value was:
+zap</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[ar]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [input] tag [value] attribute 
+
+The user input found was:
+search_api_language[ar]=ar
+
+The user-controlled value was:
+ar</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[en]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [a] tag [hreflang] attribute 
+
+The user input found was:
+search_api_language[en]=en
+
+The user-controlled value was:
+en</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[en]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [input] tag [value] attribute 
+
+The user input found was:
+search_api_language[en]=en
+
+The user-controlled value was:
+en</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[en]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [li] tag [class] attribute 
+
+The user input found was:
+search_api_language[en]=en
+
+The user-controlled value was:
+en</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[es]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [a] tag [hreflang] attribute 
+
+The user input found was:
+search_api_language[es]=es
+
+The user-controlled value was:
+es</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[es]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [input] tag [value] attribute 
+
+The user input found was:
+search_api_language[es]=es
+
+The user-controlled value was:
+es</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[es]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [li] tag [class] attribute 
+
+The user input found was:
+search_api_language[es]=es
+
+The user-controlled value was:
+es</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[fr]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [html] tag [lang] attribute 
+
+The user input found was:
+search_api_language[fr]=fr
+
+The user-controlled value was:
+fr</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[fr]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [input] tag [value] attribute 
+
+The user input found was:
+search_api_language[fr]=fr
+
+The user-controlled value was:
+fr</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[fr]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [li] tag [class] attribute 
+
+The user input found was:
+search_api_language[fr]=fr
+
+The user-controlled value was:
+fr</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[ja]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [a] tag [hreflang] attribute 
+
+The user input found was:
+search_api_language[ja]=ja
+
+The user-controlled value was:
+ja</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[ja]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [input] tag [value] attribute 
+
+The user input found was:
+search_api_language[ja]=ja
+
+The user-controlled value was:
+ja</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[ja]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [li] tag [class] attribute 
+
+The user input found was:
+search_api_language[ja]=ja
+
+The user-controlled value was:
+ja</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[ru]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [a] tag [hreflang] attribute 
+
+The user input found was:
+search_api_language[ru]=ru
+
+The user-controlled value was:
+ru</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[ru]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [input] tag [value] attribute 
+
+The user input found was:
+search_api_language[ru]=ru
+
+The user-controlled value was:
+ru</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[ru]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [li] tag [class] attribute 
+
+The user input found was:
+search_api_language[ru]=ru
+
+The user-controlled value was:
+ru</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[zh-hans]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [a] tag [hreflang] attribute 
+
+The user input found was:
+search_api_language[zh-hans]=zh-hans
+
+The user-controlled value was:
+zh-hans</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[zh-hans]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [input] tag [value] attribute 
+
+The user input found was:
+search_api_language[zh-hans]=zh-hans
+
+The user-controlled value was:
+zh-hans</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans">https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">search_api_language[zh-hans]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/fr/404?changed=ZAP&amp;changed_1=ZAP&amp;search_api_fulltext=ZAP&amp;search_api_language%5Bar%5D=ar&amp;search_api_language%5Ben%5D=en&amp;search_api_language%5Bes%5D=es&amp;search_api_language%5Bfr%5D=fr&amp;search_api_language%5Bja%5D=ja&amp;search_api_language%5Bru%5D=ru&amp;search_api_language%5Bzh-hans%5D=zh-hans
+
+appears to include user input in: 
+
+a(n) [li] tag [class] attribute 
+
+The user input found was:
+search_api_language[zh-hans]=zh-hans
+
+The user-controlled value was:
+zh-hans</td>
 					</tr>
 				
 					<tr>
@@ -5047,6 +6869,23 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/ja/404?_exception_statuscode=404&amp;destination=/fr
+
+appears to include user input in: 
+
+a(n) [a] tag [href] attribute 
+
+The user input found was:
+destination=/fr
+
+The user-controlled value was:
+/fr/404?_exception_statuscode=404&amp;destination=/fr</td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -5072,6 +6911,23 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/ru/404?_exception_statuscode=404&amp;destination=/fr
+
+appears to include user input in: 
+
+a(n) [a] tag [href] attribute 
+
+The user input found was:
+destination=/fr
+
+The user-controlled value was:
+/fr/404?_exception_statuscode=404&amp;destination=/fr</td>
 					</tr>
 				
 					<tr>
@@ -5099,10 +6955,27 @@ td {
 							class="indent2">Evidence</td>
 						<td width="80%"></td>
 					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.aft.gouv.fr/zh-hans/404?_exception_statuscode=404&amp;destination=/fr
+
+appears to include user input in: 
+
+a(n) [a] tag [href] attribute 
+
+The user input found was:
+destination=/fr
+
+The user-controlled value was:
+/fr/404?_exception_statuscode=404&amp;destination=/fr</td>
+					</tr>
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">5</td>
+					<td width="80%">27</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
