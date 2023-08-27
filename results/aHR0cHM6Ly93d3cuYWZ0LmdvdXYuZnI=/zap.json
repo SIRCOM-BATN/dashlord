@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.13.0",
-	"@generated": "Sun, 20 Aug 2023 00:38:35",
+	"@generated": "Sun, 27 Aug 2023 00:39:46",
 	"site":[ 
 		{
 			"@name": "https://www.aft.gouv.fr",
@@ -9,33 +9,6 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
-				{
-					"pluginid": "10062",
-					"alertRef": "10062",
-					"alert": "PII Disclosure",
-					"name": "PII Disclosure",
-					"riskcode": "3",
-					"confidence": "2",
-					"riskdesc": "High (Medium)",
-					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.aft.gouv.fr/core/*.css$?_exception_statuscode=404&changed&changed_1&destination=/fr&page=7&search_api_fulltext",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "2355218013192096",
-							"otherinfo": "Credit Card Type detected: Mastercard"
-						}
-					],
-					"count": "1",
-					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
-					"otherinfo": "<p>Credit Card Type detected: Mastercard</p>",
-					"reference": "",
-					"cweid": "359",
-					"wascid": "13",
-					"sourceid": "2597"
-				},
 				{
 					"pluginid": "10202",
 					"alertRef": "10202",
@@ -149,7 +122,7 @@
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "357"
+					"sourceid": "431"
 				},
 				{
 					"pluginid": "10055",
@@ -412,7 +385,7 @@
 					"reference": "<p>https://github.com/advisories/GHSA-h6gj-6jjq-h8g9</p><p>https://bugs.jqueryui.com/ticket/15284</p><p>https://github.com/jquery/jquery-ui/commit/8cc5bae1caa1fcf96bf5862c5646c787020ba3f9</p><p>https://nvd.nist.gov/vuln/detail/CVE-2022-31160</p><p>https://github.com/jquery/jquery-ui/security/advisories/GHSA-h6gj-6jjq-h8g9</p><p>https://github.com/jquery/jquery-ui/security/advisories/GHSA-gpqq-952q-5327</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-41184</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-41183</p><p>https://github.com/jquery/jquery-ui/security/advisories/GHSA-9gj3-hwp5-pmwc</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-41182</p><p>https://github.com/jquery/jquery-ui/issues/2101</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "2506"
+					"sourceid": "2550"
 				},
 				{
 					"pluginid": "10017",
@@ -505,6 +478,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.aft.gouv.fr/search/",
+							"method": "GET",
+							"param": "https://www.googletagmanager.com/gtag/js?id=UA-28315037-1",
+							"attack": "",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-28315037-1\"></script>",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.aft.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "https://www.googletagmanager.com/gtag/js?id=UA-28315037-1",
@@ -513,7 +494,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
 					"otherinfo": "",
 					"reference": "",
@@ -546,7 +527,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "2488"
+					"sourceid": "2509"
 				},
 				{
 					"pluginid": "10063",
@@ -567,7 +548,31 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.aft.gouv.fr/core/assets/vendor/css-escape/css.escape.js?v=1.5.1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.aft.gouv.fr/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.3",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.aft.gouv.fr/core/assets/vendor/jquery.ui/ui/version-min.js?v=1.13.1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.aft.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.0",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -591,23 +596,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/core/misc/drupal.js?v=9.3.22",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.aft.gouv.fr/core/misc/drupalSettingsLoader.js?v=9.3.22",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/core/misc/jquery.once.bc.js?v=9.3.22",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -645,14 +634,6 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/themes/custom/aft/js/scripts.js?v=9.3.22",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
 					"count": "12",
@@ -661,7 +642,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "339"
+					"sourceid": "334"
 				},
 				{
 					"pluginid": "10096",
@@ -673,14 +654,6 @@
 					"riskdesc": "Low (Low)",
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
-						{
-							"uri": "https://www.aft.gouv.fr/en/titre/fr0011008705",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1557995195",
-							"otherinfo": "1557995195, which evaluates to: 2019-05-16 08:26:35"
-						},
 						{
 							"uri": "https://www.aft.gouv.fr/fr/cadre-juridique-budget",
 							"method": "GET",
@@ -694,8 +667,8 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1692491859",
-							"otherinfo": "1692491859, which evaluates to: 2023-08-20 00:37:39"
+							"evidence": "1693096728",
+							"otherinfo": "1693096728, which evaluates to: 2023-08-27 00:38:48"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/fr/presentation",
@@ -710,8 +683,8 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1692491859",
-							"otherinfo": "1692491859, which evaluates to: 2023-08-20 00:37:39"
+							"evidence": "1693096728",
+							"otherinfo": "1693096728, which evaluates to: 2023-08-27 00:38:48"
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/fr/tresorerie-cadre-juridique",
@@ -730,29 +703,21 @@
 							"otherinfo": "1884101225, which evaluates to: 2029-09-14 17:27:05"
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/index.php/fr/contact",
+							"uri": "https://www.aft.gouv.fr/index.php/fr/presentation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1692491862",
-							"otherinfo": "1692491862, which evaluates to: 2023-08-20 00:37:42"
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/index.php/fr/recevoir-nos-publications",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1692491862",
-							"otherinfo": "1692491862, which evaluates to: 2023-08-20 00:37:42"
+							"evidence": "1756338842",
+							"otherinfo": "1756338842, which evaluates to: 2025-08-27 23:54:02"
 						}
 					],
-					"count": "9",
+					"count": "7",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1557995195, which evaluates to: 2019-05-16 08:26:35</p>",
+					"otherinfo": "<p>1379448247, which evaluates to: 2013-09-17 20:04:07</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "2329"
+					"sourceid": "1644"
 				},
 				{
 					"pluginid": "10094",
@@ -983,7 +948,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a href=\"/index.php/fr/contact\" target=\"_self\" data-drupal-link-system-path=\"node/82\">Contact</a>",
+							"evidence": "<a href=\"/fr/contact\" target=\"_self\" data-drupal-link-system-path=\"node/82\">Contact</a>",
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
@@ -1102,14 +1067,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.aft.gouv.fr/core/*.jpeg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "private",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.aft.gouv.fr/core/*.jpg",
 							"method": "GET",
 							"param": "",
@@ -1127,6 +1084,14 @@
 						},
 						{
 							"uri": "https://www.aft.gouv.fr/core/*.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "private",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.aft.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1274,17 +1239,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1317,17 +1274,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1360,17 +1309,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1403,17 +1344,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.aft.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1713,7 +1646,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "1453"
+					"sourceid": "1482"
 				}
 			]
 		}
