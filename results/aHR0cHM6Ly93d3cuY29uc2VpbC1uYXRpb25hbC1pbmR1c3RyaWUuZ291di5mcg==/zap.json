@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.13.0",
-	"@generated": "Sun, 10 Sep 2023 01:25:01",
+	"@generated": "Sun, 17 Sep 2023 01:22:58",
 	"site":[ 
 		{
 			"@name": "https://www.conseil-national-industrie.gouv.fr",
@@ -50,7 +50,7 @@
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "903"
+					"sourceid": "908"
 				},
 				{
 					"pluginid": "10055",
@@ -64,6 +64,14 @@
 					"instances":[ 
 						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						},
+						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -87,7 +95,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>script-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -114,6 +122,14 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/filter/tips",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -130,7 +146,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -157,6 +173,14 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/filter/tips",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -173,7 +197,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -294,7 +318,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "381"
+					"sourceid": "481"
 				},
 				{
 					"pluginid": "10098",
@@ -331,6 +355,14 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/filter/tips",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -356,14 +388,6 @@
 						},
 						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/user/login/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/user/logout/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -428,7 +452,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "1417"
+					"sourceid": "1650"
 				},
 				{
 					"pluginid": "10044",
@@ -471,7 +495,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "530"
+					"sourceid": "548"
 				},
 				{
 					"pluginid": "10110",
@@ -530,7 +554,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "1630"
+					"sourceid": "1709"
 				},
 				{
 					"pluginid": "10063",
@@ -615,7 +639,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -623,7 +647,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css$",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -752,7 +776,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "381"
+					"sourceid": "481"
 				},
 				{
 					"pluginid": "10096",
@@ -872,7 +896,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u071E/\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\u017B\uFFFD!b<\uFFFD$\uFFFD\uFFFDq\u02A1\uFFFD\uFFFD\\x001c=V\\x0004O\uFFFD\\x000et\uFFFD+=j\uFFFD\\x0013@\\x0004k"
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -945,7 +969,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "503"
+					"sourceid": "502"
 				},
 				{
 					"pluginid": "10027",
@@ -1105,7 +1129,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1180,7 +1204,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/cni-action/chantier-de-planification-pour-la-decarbonation-de-l-industrie",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/cni-action/comite-executif-du-cni",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1188,7 +1212,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/cni-action/comite-executif-du-cni",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/cni-action/conseil-pour-la-mixite-et-l-egalite-professionnelle-dans-l-industrie",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1285,9 +1309,17 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1320,9 +1352,17 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1355,9 +1395,17 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1390,9 +1438,17 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1467,7 +1523,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/core/*.js$",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1475,7 +1531,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/core/*.png",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
