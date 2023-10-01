@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.13.0",
-	"@generated": "Sun, 24 Sep 2023 01:23:16",
+	"@generated": "Sun, 1 Oct 2023 01:31:15",
 	"site":[ 
 		{
 			"@name": "https://www.conseil-national-industrie.gouv.fr",
@@ -36,14 +36,6 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"captcha_sid\" \"captcha_token\" \"edit-captcha-response\" \"edit-consentement-form\" \"edit-objet-de-votre-message\" \"edit-send-submit\" \"edit-url\" \"edit-votre-courriel-mail-1\" \"edit-votre-courriel-mail-2\" \"edit-votre-nom\" \"form_build_id\" \"form_id\" \"honeypot_time\" ]."
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/questionnaire/industrielles-actions-feminisation-industrie",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"webform-submission-form webform-submission-add-form webform-submission-actions-feminisation-industrie-form webform-submission-actions-feminisation-industrie-add-form webform-submission-actions-feminisation-industrie-node-854-form webform-submission-actions-feminisation-industrie-node-854-add-form js-webform-details-toggle webform-details-toggle\" data-drupal-selector=\"webform-submission-actions-feminisation-industrie-node-854-add-form\" action=\"/questionnaire/industrielles-actions-feminisation-industrie\" method=\"post\" id=\"webform-submission-actions-feminisation-industrie-node-854-add-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"captcha_sid\" \"captcha_token\" \"edit-actuellement-mentor-jeune-fille-ou-femme-non\" \"edit-actuellement-mentor-jeune-fille-ou-femme-oui\" \"edit-adresse-email\" \"edit-captcha-response\" \"edit-civilite-madame\" \"edit-civilite-monsieur\" \"edit-identite-first\" \"edit-identite-last\" \"edit-intervention-public-scolaire-mixite-non\" \"edit-intervention-public-scolaire-mixite-oui\" \"edit-je-suis-ou-represente-une-personne-morale-\" \"edit-je-suis-ou-represente-une-personne-physique\" \"edit-lequel-laquelle\" \"edit-lieu\" \"edit-membre-reseau-ou-asso-egalite-non\" \"edit-membre-reseau-ou-asso-egalite-oui\" \"edit-quelle-structure-entreprise-association\" \"edit-submit\" \"edit-url\" \"edit-via-quelle-association-\" \"form_build_id\" \"form_id\" \"honeypot_time\" ]."
-						},
-						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/recherche",
 							"method": "GET",
 							"param": "",
@@ -52,13 +44,13 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ]."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"captcha_sid\" \"captcha_token\" \"edit-adresse-email\" \"edit-captcha-response\" \"edit-coordonnees-telephoniques\" \"edit-entreprise\" \"edit-fonction\" \"edit-fonctions-exercees-other\" \"edit-genre-madame\" \"edit-genre-monsieur\" \"edit-implication-dans-le-collectif-jaccepte-dintervenir-en-milieu-scolaire-pour-sensibiliser-les-enfants-sur-les-mtiers-de-lindustrie\" \"edit-implication-dans-le-collectif-jaccepte-dtre-recontacte-pour-intervenir-lors-dvnements-salons-tables-rondes-sminaires-colloques-etc-\" \"edit-implication-dans-le-collectif-jaccepte-dtre-recontacte-pour-mentorer-un-jeune-employ-dans-lindustrie\" \"edit-implication-dans-le-collectif-je-suis-volontaire-pour-prendre-la-parole-dans-les-mdias-\" \"edit-intervention-public-scolaire-non\" \"edit-intervention-public-scolaire-oui\" \"edit-lequel-\" \"edit-membre-reseau-ou-asso-non\" \"edit-membre-reseau-ou-asso-oui\" \"edit-mentor-jeune-fille-ou-femme-non\" \"edit-mentor-jeune-fille-ou-femme-oui\" \"edit-nom-first\" \"edit-nom-last\" \"edit-personne-physique-morale-une-personne-morale-\" \"edit-personne-physique-morale-une-personne-physique\" \"edit-quelle-association\" \"edit-quelle-structure-\" \"edit-secteur-other\" \"edit-submit\" \"edit-url\" \"edit-ville\" \"form_build_id\" \"form_id\" \"honeypot_time\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "919"
+					"sourceid": "914"
 				},
 				{
 					"pluginid": "10055",
@@ -288,7 +280,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.js",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -302,7 +294,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "218"
+					"sourceid": "484"
 				},
 				{
 					"pluginid": "10098",
@@ -379,14 +371,6 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/user/logout/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/user/password/",
 							"method": "GET",
 							"param": "",
@@ -411,7 +395,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
 					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
@@ -444,7 +428,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "1806"
+					"sourceid": "1157"
 				},
 				{
 					"pluginid": "10044",
@@ -473,14 +457,6 @@
 							"otherinfo": "Location header URI length: 53 [https://www.conseil-national-industrie.gouv.fr/search].\nPredicted response size: 353.\nResponse Body Length: 458."
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/search",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "Location header URI length: 58 [https://www.conseil-national-industrie.gouv.fr/search/node].\nPredicted response size: 358.\nResponse Body Length: 478."
-						},
-						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/search/",
 							"method": "GET",
 							"param": "",
@@ -489,13 +465,13 @@
 							"otherinfo": "Location header URI length: 53 [https://www.conseil-national-industrie.gouv.fr/search].\nPredicted response size: 353.\nResponse Body Length: 458."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
 					"otherinfo": "<p>Location header URI length: 58 [https://www.conseil-national-industrie.gouv.fr/filter/tips].</p><p>Predicted response size: 358.</p><p>Response Body Length: 478.</p>",
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "553"
+					"sourceid": "551"
 				},
 				{
 					"pluginid": "10110",
@@ -554,7 +530,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "1850"
+					"sourceid": "1204"
 				},
 				{
 					"pluginid": "10063",
@@ -647,7 +623,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.js",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -738,14 +714,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/core/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
@@ -768,6 +736,14 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
 					"count": "12",
@@ -776,7 +752,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "218"
+					"sourceid": "484"
 				},
 				{
 					"pluginid": "10096",
@@ -904,6 +880,14 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u071E/\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\u017B\uFFFD!b<\uFFFD$\uFFFD\uFFFDq\u02A1\uFFFD\uFFFD\\x001c=V\\x0004O\uFFFD\\x000et\uFFFD+=j\uFFFD\\x0013@\\x0004k"
 						},
 						{
+							"uri": "https://www.conseil-national-industrie.gouv.fr/index.php/node/add/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files_cni/languages/fr_xbusIWI8lySjpXHKoZ34HD1WBE-eDnSLKz1q1xNABGs",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u071E/\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\u017B\uFFFD!b<\uFFFD$\uFFFD\uFFFDq\u02A1\uFFFD\uFFFD\\x001c=V\\x0004O\uFFFD\\x000et\uFFFD+=j\uFFFD\\x0013@\\x0004k"
+						},
+						{
 							"uri": "https://www.conseil-national-industrie.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -936,7 +920,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u071E/\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\u017B\uFFFD!b<\uFFFD$\uFFFD\uFFFDq\u02A1\uFFFD\uFFFD\\x001c=V\\x0004O\uFFFD\\x000et\uFFFD+=j\uFFFD\\x0013@\\x0004k"
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD\uFFFDz\uFFFD\u071E/\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\u017B\uFFFD!b<\uFFFD$\uFFFD\uFFFDq\u02A1\uFFFD\uFFFD\\x001c=V\\x0004O\uFFFD\\x000et\uFFFD+=j\uFFFD\\x0013@\\x0004k</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
@@ -969,7 +953,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "507"
+					"sourceid": "508"
 				},
 				{
 					"pluginid": "10027",
@@ -1006,7 +990,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/core/*.svg",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1014,7 +998,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css$",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1046,7 +1030,7 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/core/*.svg",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1054,7 +1038,7 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.css$",
+							"uri": "https://www.conseil-national-industrie.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
