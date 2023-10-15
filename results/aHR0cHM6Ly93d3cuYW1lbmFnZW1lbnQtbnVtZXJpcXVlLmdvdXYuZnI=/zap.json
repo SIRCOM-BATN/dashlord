@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
-	"@version": "2.13.0",
-	"@generated": "Sun, 8 Oct 2023 00:54:01",
+	"@version": "2.14.0",
+	"@generated": "Sun, 15 Oct 2023 01:04:00",
 	"site":[ 
 		{
 			"@name": "https://www.amenagement-numerique.gouv.fr",
@@ -9,33 +9,6 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
-				{
-					"pluginid": "10062",
-					"alertRef": "10062",
-					"alert": "PII Disclosure",
-					"name": "PII Disclosure",
-					"riskcode": "3",
-					"confidence": "3",
-					"riskdesc": "High (High)",
-					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/fr/actualites?f%5B0%5D=date%3A2020-12",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "4045802391103",
-							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 404580\nBrand: VISA\nCategory: \nIssuer: "
-						}
-					],
-					"count": "1",
-					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
-					"otherinfo": "<p>Credit Card Type detected: Visa</p><p>Bank Identification Number: 404580</p><p>Brand: VISA</p><p>Category: </p><p>Issuer: </p>",
-					"reference": "",
-					"cweid": "359",
-					"wascid": "13",
-					"sourceid": "1731"
-				},
 				{
 					"pluginid": "10202",
 					"alertRef": "10202",
@@ -74,10 +47,10 @@
 					"count": "3",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"form_build_id\" \"form_id\" ].</p>",
-					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
+					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1029"
+					"sourceid": "991"
 				},
 				{
 					"pluginid": "10055",
@@ -95,7 +68,7 @@
 							"param": "Content-Security-Policy",
 							"attack": "",
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/filter/tips",
@@ -103,7 +76,7 @@
 							"param": "Content-Security-Policy",
 							"attack": "",
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/search/",
@@ -111,12 +84,12 @@
 							"param": "Content-Security-Policy",
 							"attack": "",
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						}
 					],
 					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
-					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>script-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
+					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>script-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
@@ -299,7 +272,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.css$",
+							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -307,7 +280,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.js",
+							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -358,14 +331,6 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/index.php/admin/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -383,6 +348,14 @@
 						},
 						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.amenagement-numerique.gouv.fr/user/login/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -535,7 +508,7 @@
 					"reference": "<p>https://www.wsj.com/articles/BL-CIOB-2999</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "1070"
+					"sourceid": "1073"
 				},
 				{
 					"pluginid": "10099",
@@ -562,7 +535,7 @@
 					"reference": "<p>https://www.wsj.com/articles/BL-CIOB-2999</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "1055"
+					"sourceid": "1058"
 				},
 				{
 					"pluginid": "90003",
@@ -639,7 +612,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.css$",
+							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -647,7 +620,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.css$",
+							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -696,7 +669,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "281"
+					"sourceid": "290"
 				},
 				{
 					"pluginid": "10017",
@@ -773,7 +746,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.css$",
+							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "https://use.fontawesome.com/releases/v5.5.0/js/all.js",
 							"attack": "",
@@ -781,7 +754,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.css$",
+							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "https://use.fontawesome.com/releases/v5.5.0/js/v4-shims.js",
 							"attack": "",
@@ -830,7 +803,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "782"
+					"sourceid": "785"
 				},
 				{
 					"pluginid": "10063",
@@ -915,7 +888,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.css",
+							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -923,7 +896,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.css$",
+							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1121,14 +1094,6 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0015\uFFFDOg\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0003Y\\x0014W\uFFFD\\x0016\uFFFDj\\x000c\\x001c!\uFFFD+\uFFFD R\uFFFD\uFFFD\uFFFD<"
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/index.php/node/add/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files/languages/fr_5RXeT2eX1vm3yOwDWRRXiRb9agwcIaEriCBSooSsPH8",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0015\uFFFDOg\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0003Y\\x0014W\uFFFD\\x0016\uFFFDj\\x000c\\x001c!\uFFFD+\uFFFD R\uFFFD\uFFFD\uFFFD<"
-						},
-						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -1161,7 +1126,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0015\uFFFDOg\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0003Y\\x0014W\uFFFD\\x0016\uFFFDj\\x000c\\x001c!\uFFFD+\uFFFD R\uFFFD\uFFFD\uFFFD<"
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFD\uFFFDm\uFFFD\u04CF\uFFFD4$\uFFFD\\x0002'^6\u97AE*\uFFFD{\uFFFD\uFFFDo\uFFFD\uFFFD\uFFFDm</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
@@ -1194,7 +1159,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "234"
+					"sourceid": "236"
 				},
 				{
 					"pluginid": "10027",
@@ -1263,14 +1228,6 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/index.php\\/\",\"scriptPath\":null\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/index.php/node/add/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/index.php\\/\",\"scriptPath\":null\", see evidence field for the suspicious comment/snippet."
-						},
-						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -1303,7 +1260,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -1544,7 +1501,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/fr/projets-collectivites-territoriales",
+							"uri": "https://www.amenagement-numerique.gouv.fr/fr/referentiel-dadresses-commun-base-adresse-nationale",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
