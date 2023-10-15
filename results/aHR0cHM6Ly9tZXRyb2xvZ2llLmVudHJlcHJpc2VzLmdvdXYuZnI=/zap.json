@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
-	"@version": "2.13.0",
-	"@generated": "Sun, 8 Oct 2023 01:23:37",
+	"@version": "2.14.0",
+	"@generated": "Sun, 15 Oct 2023 01:50:24",
 	"site":[ 
 		{
 			"@name": "https://metrologie.entreprises.gouv.fr",
@@ -58,15 +58,23 @@
 							"attack": "",
 							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/fr/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">",
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ]."
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/refractometres-3",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-bef-auto-submit-full-form=\"\" data-bef-auto-submit=\"\" data-bef-auto-submit-delay=\"500\" data-drupal-selector=\"views-exposed-form-taxonomy-term-page-1\" action=\"/fr/refractometres-3\" method=\"get\" id=\"views-exposed-form-taxonomy-term-page-1\" accept-charset=\"UTF-8\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-type-de-media-target-id-10\" \"edit-field-type-de-media-target-id-13\" \"edit-field-type-de-media-target-id-7\" \"edit-submit-taxonomy-term\" ]."
 						}
 					],
-					"count": "5",
+					"count": "6",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-submit-foire-aux-questions\" \"edit-title\" ].</p>",
-					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
+					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "4554"
+					"sourceid": "4555"
 				},
 				{
 					"pluginid": "10055",
@@ -84,7 +92,7 @@
 							"param": "Content-Security-Policy",
 							"attack": "",
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/filter/tips",
@@ -92,7 +100,7 @@
 							"param": "Content-Security-Policy",
 							"attack": "",
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr",
@@ -100,16 +108,16 @@
 							"param": "Content-Security-Policy",
 							"attack": "",
 							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						}
 					],
 					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
-					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>script-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
+					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>script-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -152,7 +160,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -195,7 +203,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10038",
@@ -296,6 +304,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.gif",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
@@ -304,13 +320,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "212"
+					"sourceid": "291"
 				},
 				{
 					"pluginid": "10098",
@@ -379,7 +395,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/user/logout/",
+							"uri": "https://metrologie.entreprises.gouv.fr/user/login/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -417,7 +433,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90003",
@@ -559,7 +575,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "7"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10110",
@@ -618,7 +634,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "4827"
+					"sourceid": "4830"
 				},
 				{
 					"pluginid": "10063",
@@ -703,6 +719,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
@@ -712,14 +736,6 @@
 						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -834,6 +850,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.gif",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
@@ -842,13 +866,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "212"
+					"sourceid": "291"
 				},
 				{
 					"pluginid": "10094",
@@ -909,7 +933,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDz\uFFFD\u8588\"{\uFFFDZ\uFFFD\\x000b\uFFFD\uFFFD\uFFFD?~\uFFFD\uFFFDw\\x0016\uFFFD8H\\x0019@\uFFFD\uFFFD\uFFFD\uFFFDs\uFFFD\uFFFD\uFFFD\uFFFDV\uFFFD\uFFFD\r\uFFFD\ru\\q\uFFFD\uFFFD\uFFFD\t\\x001b\uFFFD"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/index.php/comment/reply/",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/actualites/controle-des-distributeurs-et-importateurs-d-instruments-de-mesure",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -917,7 +941,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDz\uFFFD\u8588\"{\uFFFDZ\uFFFD\\x000b\uFFFD\uFFFD\uFFFD?~\uFFFD\uFFFDw\\x0016\uFFFD8H\\x0019@\uFFFD\uFFFD\uFFFD\uFFFDs\uFFFD\uFFFD\uFFFD\uFFFDV\uFFFD\uFFFD\r\uFFFD\ru\\q\uFFFD\uFFFD\uFFFD\t\\x001b\uFFFD"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/index.php/node/add/",
+							"uri": "https://metrologie.entreprises.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -990,7 +1014,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "422"
+					"sourceid": "423"
 				},
 				{
 					"pluginid": "10027",
@@ -1166,7 +1190,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/index.php/comment/reply/",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/actualites/controle-des-distributeurs-et-importateurs-d-instruments-de-mesure",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1174,7 +1198,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/index.php/node/add/",
+							"uri": "https://metrologie.entreprises.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1241,14 +1265,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/en",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600, public",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "cache-control",
@@ -1298,6 +1314,14 @@
 						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/organismes-pour-la-verification-periodique/organismes-agrees-pour-la-verification-periodique-des-ipfna",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600, public",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/organismes-pour-la-verification-periodique/verification-periodique-et-installation-des-chronotachygraphes",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1362,23 +1386,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1405,23 +1421,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1448,23 +1456,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1491,23 +1491,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1614,7 +1606,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "7"
+					"sourceid": "1"
 				}
 			]
 		}
