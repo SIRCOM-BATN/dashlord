@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 15 Oct 2023 02:10:27",
+	"@generated": "Sun, 22 Oct 2023 02:25:18",
 	"site":[ 
 		{
 			"@name": "https://www.semaine-industrie.gouv.fr",
@@ -82,7 +82,7 @@
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1023"
+					"sourceid": "1835"
 				},
 				{
 					"pluginid": "10055",
@@ -103,7 +103,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/",
+							"uri": "https://www.semaine-industrie.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -111,7 +111,15 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"uri": "https://www.semaine-industrie.gouv.fr/user/password/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -119,7 +127,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>script-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -146,7 +154,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/",
+							"uri": "https://www.semaine-industrie.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -154,7 +162,15 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"uri": "https://www.semaine-industrie.gouv.fr/user/password/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -162,7 +178,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -189,7 +205,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/",
+							"uri": "https://www.semaine-industrie.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -197,7 +213,15 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"uri": "https://www.semaine-industrie.gouv.fr/user/password/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -205,7 +229,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -304,7 +328,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js",
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -312,7 +336,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js$",
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -326,7 +350,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "901"
+					"sourceid": "260"
 				},
 				{
 					"pluginid": "10098",
@@ -347,7 +371,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/",
+							"uri": "https://www.semaine-industrie.gouv.fr/admin/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -355,7 +379,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/espace-entreprises",
+							"uri": "https://www.semaine-industrie.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -363,23 +387,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/la-semaine-de-l-industrie-qu-est-que-c-est",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/participer/comment-inscrire-evenement-pour-la-semaine-de-l-industrie",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche",
+							"uri": "https://www.semaine-industrie.gouv.fr/index.php/admin/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -395,7 +403,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/rss/actualites",
+							"uri": "https://www.semaine-industrie.gouv.fr/search/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -411,7 +419,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/login",
+							"uri": "https://www.semaine-industrie.gouv.fr/user/login/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -419,7 +427,23 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"uri": "https://www.semaine-industrie.gouv.fr/user/password/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/user/register/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/web.config",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -446,6 +470,14 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
 					"instances":[ 
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/actualites/etincel-quand-l-ecole-et-l-industrie-se-rencontrent",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/modules/custom/linkedin/js/linkedin.js?v=9.5.8",
 							"method": "GET",
 							"param": "",
@@ -454,13 +486,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "1329"
+					"sourceid": "2254"
 				},
 				{
 					"pluginid": "10044",
@@ -575,7 +607,34 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "1087"
+					"sourceid": "1876"
+				},
+				{
+					"pluginid": "10017",
+					"alertRef": "10017",
+					"alert": "Cross-Domain JavaScript Source File Inclusion",
+					"name": "Cross-Domain JavaScript Source File Inclusion",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/actualites/etincel-quand-l-ecole-et-l-industrie-se-rencontrent",
+							"method": "GET",
+							"param": "https://platform.twitter.com/widgets.js",
+							"attack": "",
+							"evidence": "<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "829",
+					"wascid": "15",
+					"sourceid": "2254"
 				},
 				{
 					"pluginid": "10110",
@@ -626,7 +685,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "1373"
+					"sourceid": "2159"
 				},
 				{
 					"pluginid": "10063",
@@ -640,14 +699,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -720,6 +771,14 @@
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -826,7 +885,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js",
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -834,7 +893,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js$",
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -848,7 +907,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "901"
+					"sourceid": "260"
 				},
 				{
 					"pluginid": "10094",
@@ -869,7 +928,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFD)#@UL\uFFFDD\uFFFD\uFFFD\uFFFDZ\uFFFD\u07AB\r\uFFFDT\uFFFD\u051CT\\x0006\uFFFD\uFFFDY\\x0008\u04E4^L"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/",
+							"uri": "https://www.semaine-industrie.gouv.fr/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -901,7 +960,23 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFD)#@UL\uFFFDD\uFFFD\uFFFD\uFFFDZ\uFFFD\u07AB\r\uFFFDT\uFFFD\u051CT\\x0006\uFFFD\uFFFDY\\x0008\u04E4^L"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/la-semaine-de-l-industrie-qu-est-que-c-est",
+							"uri": "https://www.semaine-industrie.gouv.fr/filter/tips",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files_sedi/languages/fr_il_I39AVUyGRIqTm1rb3qsNv1Si1JxUBqf0WQjTpF5M",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFD)#@UL\uFFFDD\uFFFD\uFFFD\uFFFDZ\uFFFD\u07AB\r\uFFFDT\uFFFD\u051CT\\x0006\uFFFD\uFFFDY\\x0008\u04E4^L"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/index.php/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files_sedi/languages/fr_il_I39AVUyGRIqTm1rb3qsNv1Si1JxUBqf0WQjTpF5M",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFD)#@UL\uFFFDD\uFFFD\uFFFD\uFFFDZ\uFFFD\u07AB\r\uFFFDT\uFFFD\u051CT\\x0006\uFFFD\uFFFDY\\x0008\u04E4^L"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -925,28 +1000,12 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFD)#@UL\uFFFDD\uFFFD\uFFFD\uFFFDZ\uFFFD\u07AB\r\uFFFDT\uFFFD\u051CT\\x0006\uFFFD\uFFFDY\\x0008\u04E4^L"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche",
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "/files_sedi/languages/fr_il_I39AVUyGRIqTm1rb3qsNv1Si1JxUBqf0WQjTpF5M",
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFD)#@UL\uFFFDD\uFFFD\uFFFD\uFFFDZ\uFFFD\u07AB\r\uFFFDT\uFFFD\u051CT\\x0006\uFFFD\uFFFDY\\x0008\u04E4^L"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/login",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM",
-							"otherinfo": "~\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDou\uFFFDTns4_\uFFFD,c\u04FD\uFFFD\uFFFD\t\uFFFD7\uFFFD\u0299a,\\x001c}\uFFFDv\uFFFD3"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM",
-							"otherinfo": "~\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDou\uFFFDTns4_\uFFFD,c\u04FD\uFFFD\uFFFD\t\uFFFD7\uFFFD\u0299a,\\x001c}\uFFFDv\uFFFD3"
 						}
 					],
 					"count": "11",
@@ -982,7 +1041,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "984"
+					"sourceid": "1708"
 				},
 				{
 					"pluginid": "10027",
@@ -1003,14 +1062,6 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
 							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
@@ -1027,7 +1078,15 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1043,14 +1102,6 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "TODO",
-							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
-						},
-						{
 							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
@@ -1067,7 +1118,15 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "TODO",
+							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1102,7 +1161,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/",
+							"uri": "https://www.semaine-industrie.gouv.fr/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1134,7 +1193,23 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/la-semaine-de-l-industrie-qu-est-que-c-est",
+							"uri": "https://www.semaine-industrie.gouv.fr/filter/tips",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/index.php/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1158,23 +1233,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/login",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1218,6 +1277,14 @@
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/espace-entreprises",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600, public, no-cache",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1279,14 +1346,6 @@
 							"attack": "",
 							"evidence": "max-age=600, public, no-cache",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/register",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600, public, no-cache",
-							"otherinfo": ""
 						}
 					],
 					"count": "11",
@@ -1316,6 +1375,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1324,7 +1391,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1351,6 +1418,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1359,7 +1434,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1386,6 +1461,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1394,7 +1477,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1421,6 +1504,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1429,7 +1520,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1449,14 +1540,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=300",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1496,7 +1579,23 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=300",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/core/*.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=300",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1504,13 +1603,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "7",
+					"count": "8",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "901"
+					"sourceid": "260"
 				},
 				{
 					"pluginid": "10049",
@@ -1524,14 +1623,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "no-cache",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1555,7 +1646,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
