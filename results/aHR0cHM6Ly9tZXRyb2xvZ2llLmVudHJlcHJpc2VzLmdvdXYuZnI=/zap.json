@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 15 Oct 2023 01:50:24",
+	"@generated": "Sun, 22 Oct 2023 01:54:58",
 	"site":[ 
 		{
 			"@name": "https://metrologie.entreprises.gouv.fr",
@@ -19,6 +19,14 @@
 					"riskdesc": "Medium (Low)",
 					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
 					"instances":[ 
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/en/recherche",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/en/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ]."
+						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/faq",
 							"method": "GET",
@@ -68,13 +76,13 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-type-de-media-target-id-10\" \"edit-field-type-de-media-target-id-13\" \"edit-field-type-de-media-target-id-7\" \"edit-submit-taxonomy-term\" ]."
 						}
 					],
-					"count": "6",
+					"count": "7",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
-					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-submit-foire-aux-questions\" \"edit-title\" ].</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "4555"
+					"sourceid": "4886"
 				},
 				{
 					"pluginid": "10055",
@@ -296,14 +304,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
@@ -320,13 +320,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "291"
+					"sourceid": "171"
 				},
 				{
 					"pluginid": "10098",
@@ -460,7 +460,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "4780"
+					"sourceid": "4708"
 				},
 				{
 					"pluginid": "10044",
@@ -575,7 +575,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10110",
@@ -634,7 +634,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "4830"
+					"sourceid": "4846"
 				},
 				{
 					"pluginid": "10063",
@@ -719,14 +719,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/core/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
@@ -736,6 +728,14 @@
 						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -842,14 +842,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
@@ -866,13 +858,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "291"
+					"sourceid": "171"
 				},
 				{
 					"pluginid": "10094",
@@ -925,6 +917,14 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDz\uFFFD\u8588\"{\uFFFDZ\uFFFD\\x000b\uFFFD\uFFFD\uFFFD?~\uFFFD\uFFFDw\\x0016\uFFFD8H\\x0019@\uFFFD\uFFFD\uFFFD\uFFFDs\uFFFD\uFFFD\uFFFD\uFFFDV\uFFFD\uFFFD\r\uFFFD\ru\\q\uFFFD\uFFFD\uFFFD\t\\x001b\uFFFD"
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/en",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/channel/UCY7v8V4Wtn8aTif2GUm3nTQ",
+							"otherinfo": "r\uFFFD\uFFFDr\\x0016\uFFFD\uFFFD\uFFFDP&;\uFFFD\uFFFDxZ\uFFFD\uFFFDi8\uFFFD\uFFFDe&\uFFFDt\uFFFD"
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
@@ -934,14 +934,6 @@
 						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/actualites/controle-des-distributeurs-et-importateurs-d-instruments-de-mesure",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files_metrologie/languages/fr_tdxacOEgZQMG4_pJz_6Xl7FbA6A2ZDXVccaCykwkbiE",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDz\uFFFD\u8588\"{\uFFFDZ\uFFFD\\x000b\uFFFD\uFFFD\uFFFD?~\uFFFD\uFFFDw\\x0016\uFFFD8H\\x0019@\uFFFD\uFFFD\uFFFD\uFFFDs\uFFFD\uFFFD\uFFFD\uFFFDV\uFFFD\uFFFD\r\uFFFD\ru\\q\uFFFD\uFFFD\uFFFD\t\\x001b\uFFFD"
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1014,7 +1006,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "423"
+					"sourceid": "425"
 				},
 				{
 					"pluginid": "10027",
@@ -1182,6 +1174,14 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/en",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
@@ -1191,14 +1191,6 @@
 						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/actualites/controle-des-distributeurs-et-importateurs-d-instruments-de-mesure",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1265,6 +1257,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/en",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600, public",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "cache-control",
@@ -1305,14 +1305,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/organismes-pour-la-verification-periodique/organismes-agrees-pour-la-verification-periodique-des-analyseurs-de-gaz-co-co2",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600, public",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/organismes-pour-la-verification-periodique/organismes-agrees-pour-la-verification-periodique-des-ipfna",
 							"method": "GET",
 							"param": "cache-control",
@@ -1321,7 +1313,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/organismes-pour-la-verification-periodique/verification-periodique-et-installation-des-chronotachygraphes",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/organismes-pour-la-verification-primitive/organisme-designe-pour-la-verification-primitive-des-refractometres",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1329,7 +1321,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/organismes-pour-la-verification-primitive/organisme-designe-pour-la-verification-primitive-des-refractometres",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/refractometres-textes-vigueur",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1528,14 +1520,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/core/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=300",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "",
@@ -1561,6 +1545,14 @@
 						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/core/*.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=300",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
