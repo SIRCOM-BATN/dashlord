@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 29 Oct 2023 02:25:21",
+	"@generated": "Sun, 5 Nov 2023 02:27:29",
 	"site":[ 
 		{
 			"@name": "https://www.servicesalapersonne.gouv.fr",
@@ -20,14 +20,6 @@
 					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/nous-contacter",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"webform-submission-form webform-submission-add-form webform-submission-courrier-form webform-submission-courrier-add-form webform-submission-courrier-paragraph-373-form webform-submission-courrier-paragraph-373-add-form js-webform-details-toggle webform-details-toggle\" data-drupal-selector=\"webform-submission-courrier-paragraph-373-add-form\" action=\"/nous-contacter\" method=\"post\" id=\"webform-submission-courrier-paragraph-373-add-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"captcha_sid\" \"captcha_token\" \"edit-captcha-response\" \"edit-consentement-form\" \"edit-objet-de-votre-message\" \"edit-send-submit\" \"edit-url\" \"edit-votre-courriel-mail-1\" \"edit-votre-courriel-mail-2\" \"edit-votre-nom\" \"form_build_id\" \"form_id\" \"honeypot_time\" ]."
-						},
-						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/recherche",
 							"method": "GET",
 							"param": "",
@@ -36,13 +28,13 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ]."
 						}
 					],
-					"count": "2",
+					"count": "1",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
-					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"captcha_sid\" \"captcha_token\" \"edit-captcha-response\" \"edit-consentement-form\" \"edit-objet-de-votre-message\" \"edit-send-submit\" \"edit-url\" \"edit-votre-courriel-mail-1\" \"edit-votre-courriel-mail-2\" \"edit-votre-nom\" \"form_build_id\" \"form_id\" \"honeypot_time\" ].</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1344"
+					"sourceid": "489"
 				},
 				{
 					"pluginid": "10055",
@@ -63,7 +55,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/filter/tips",
+							"uri": "https://www.servicesalapersonne.gouv.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -71,7 +63,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/search/",
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/travailler-dans-sap-presentation-des-certifications-ministerielles",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -106,7 +98,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/filter/tips",
+							"uri": "https://www.servicesalapersonne.gouv.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -114,7 +106,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/search/",
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/travailler-dans-sap-presentation-des-certifications-ministerielles",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -149,7 +141,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/filter/tips",
+							"uri": "https://www.servicesalapersonne.gouv.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -157,7 +149,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/search/",
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/travailler-dans-sap-presentation-des-certifications-ministerielles",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -232,14 +224,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
@@ -264,7 +248,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.css$",
+							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.gif",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.jpg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -286,7 +278,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "183"
+					"sourceid": "430"
 				},
 				{
 					"pluginid": "10098",
@@ -307,7 +299,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/admin/",
+							"uri": "https://www.servicesalapersonne.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -315,7 +307,55 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/filter/tips",
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/generalisation-du-credit-d-impot",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/nouveau-cycle-d-adhesion-de-la-charte-nationale-qualite-cnq",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/nouveau-site-pour-cncesu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/referentiel-de-certification-des-4-organimes-certificateurs-des-sap-est-reconnu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/salaries-des-services-la-personne-comment-evoluent-leurs-conditions-de-travail-et-d-emploi",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/services-la-personne-quelle-reglementation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/travailler-dans-sap-presentation-des-certifications-ministerielles",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -331,55 +371,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/search/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/user/login/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/user/logout/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/user/password/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/user/register/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/web.config",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -394,33 +386,6 @@
 					"cweid": "264",
 					"wascid": "14",
 					"sourceid": "1"
-				},
-				{
-					"pluginid": "90003",
-					"alertRef": "90003",
-					"alert": "Sub Resource Integrity Attribute Missing",
-					"name": "Sub Resource Integrity Attribute Missing",
-					"riskcode": "2",
-					"confidence": "3",
-					"riskdesc": "Medium (High)",
-					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
-					"instances":[ 
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/modules/custom/linkedin/js/linkedin.js?v=9.5.8",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script>",
-							"otherinfo": ""
-						}
-					],
-					"count": "1",
-					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
-					"cweid": "345",
-					"wascid": "15",
-					"sourceid": "1021"
 				},
 				{
 					"pluginid": "10044",
@@ -463,66 +428,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "500"
-				},
-				{
-					"pluginid": "10110",
-					"alertRef": "10110",
-					"alert": "Dangerous JS Functions",
-					"name": "Dangerous JS Functions",
-					"riskcode": "1",
-					"confidence": "1",
-					"riskdesc": "Low (Low)",
-					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/core/assets/vendor/jquery-form/jquery.form.min.js?v=4.3.0",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "eval",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.3",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Eval",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/libraries/shariff/shariff.complete.js?v=9.5.8",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "eval",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/libraries/tarteaucitron/tarteaucitron.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "eval",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/libraries/tarteaucitron/tarteaucitron.js?s0k20o",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "eval",
-							"otherinfo": ""
-						}
-					],
-					"count": "5",
-					"solution": "<p>See the references for security advice on the use of these functions.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://angular.io/guide/security</p>",
-					"cweid": "749",
-					"wascid": "-1",
-					"sourceid": "1068"
+					"sourceid": "731"
 				},
 				{
 					"pluginid": "10063",
@@ -536,6 +442,30 @@
 					"instances":[ 
 						{
 							"uri": "https://www.servicesalapersonne.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/generalisation-du-credit-d-impot",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/travailler-dans-sap-presentation-des-certifications-ministerielles",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -591,31 +521,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.png",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -690,14 +596,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
@@ -722,7 +620,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.css$",
+							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.gif",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.jpg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -744,7 +650,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "183"
+					"sourceid": "430"
 				},
 				{
 					"pluginid": "10096",
@@ -779,17 +685,9 @@
 							"attack": "",
 							"evidence": "1407303714",
 							"otherinfo": "1407303714, which evaluates to: 2014-08-06 05:41:54"
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/toute-linfo-en-continu",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1407303714",
-							"otherinfo": "1407303714, which evaluates to: 2014-08-06 05:41:54"
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1407303714, which evaluates to: 2014-08-06 05:41:54</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
@@ -816,7 +714,55 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/comment/reply/",
+							"uri": "https://www.servicesalapersonne.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files_sap/languages/fr_qx3lrCc4trfa26DEjZBCoJ41Fa70XMw-C8EkPt5mZVY",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/generalisation-du-credit-d-impot",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files_sap/languages/fr_qx3lrCc4trfa26DEjZBCoJ41Fa70XMw-C8EkPt5mZVY",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/nouveau-cycle-d-adhesion-de-la-charte-nationale-qualite-cnq",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files_sap/languages/fr_qx3lrCc4trfa26DEjZBCoJ41Fa70XMw-C8EkPt5mZVY",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/nouveau-site-pour-cncesu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files_sap/languages/fr_qx3lrCc4trfa26DEjZBCoJ41Fa70XMw-C8EkPt5mZVY",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/referentiel-de-certification-des-4-organimes-certificateurs-des-sap-est-reconnu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files_sap/languages/fr_qx3lrCc4trfa26DEjZBCoJ41Fa70XMw-C8EkPt5mZVY",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/services-la-personne-quelle-reglementation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files_sap/languages/fr_qx3lrCc4trfa26DEjZBCoJ41Fa70XMw-C8EkPt5mZVY",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/travailler-dans-sap-presentation-des-certifications-ministerielles",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -832,14 +778,6 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files_sap/languages/fr_qx3lrCc4trfa26DEjZBCoJ41Fa70XMw-C8EkPt5mZVY",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
-						},
-						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
@@ -848,47 +786,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files_sap/languages/fr_qx3lrCc4trfa26DEjZBCoJ41Fa70XMw-C8EkPt5mZVY",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/index.php/comment/reply/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files_sap/languages/fr_qx3lrCc4trfa26DEjZBCoJ41Fa70XMw-C8EkPt5mZVY",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/node/add/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files_sap/languages/fr_qx3lrCc4trfa26DEjZBCoJ41Fa70XMw-C8EkPt5mZVY",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files_sap/languages/fr_qx3lrCc4trfa26DEjZBCoJ41Fa70XMw-C8EkPt5mZVY",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
-						},
-						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files_sap/languages/fr_qx3lrCc4trfa26DEjZBCoJ41Fa70XMw-C8EkPt5mZVY",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD'8\uFFFD\uFFFD\uFFFD\u06E0\u010D\uFFFDB\uFFFD\uFFFD5\\x0015\uFFFD\uFFFD\\\uFFFD>\\x000b\uFFFD$>\uFFFDfeV"
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -929,7 +827,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "452"
+					"sourceid": "623"
 				},
 				{
 					"pluginid": "10027",
@@ -950,31 +848,31 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/generalisation-du-credit-d-impot",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/travailler-dans-sap-presentation-des-certifications-ministerielles",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -990,31 +888,31 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "TODO",
+							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/generalisation-du-credit-d-impot",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "TODO",
+							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/travailler-dans-sap-presentation-des-certifications-ministerielles",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "TODO",
+							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "TODO",
-							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "TODO",
-							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "TODO",
-							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1049,7 +947,55 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/comment/reply/",
+							"uri": "https://www.servicesalapersonne.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/generalisation-du-credit-d-impot",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/nouveau-cycle-d-adhesion-de-la-charte-nationale-qualite-cnq",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/nouveau-site-pour-cncesu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/referentiel-de-certification-des-4-organimes-certificateurs-des-sap-est-reconnu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/services-la-personne-quelle-reglementation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/travailler-dans-sap-presentation-des-certifications-ministerielles",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1065,14 +1011,6 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
@@ -1081,47 +1019,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/index.php/comment/reply/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/node/add/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/profiles/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1164,7 +1062,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/beneficier-des-sap/activites-de-services-la-personne",
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/generalisation-du-credit-d-impot",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1172,7 +1070,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/beneficier-des-sap/comment-utiliser-services-la-personne/recourir-organisme",
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/nouveau-cycle-d-adhesion-de-la-charte-nationale-qualite-cnq",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1180,7 +1078,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/beneficier-des-sap/quelles-aides-pour-financer-des-prestations-de-services-la-personne",
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/nouveau-site-pour-cncesu",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1188,7 +1086,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/beneficier-des-sap/services-la-personne-avantages-fiscaux-et-sociaux-pour-particuliers",
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/referentiel-de-certification-des-4-organimes-certificateurs-des-sap-est-reconnu",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1196,7 +1094,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/filter/tips",
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/salaries-des-services-la-personne-comment-evoluent-leurs-conditions-de-travail-et-d-emploi",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1204,7 +1102,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/recherche",
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/services-la-personne-quelle-reglementation",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600, public",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/actualites/travailler-dans-sap-presentation-des-certifications-ministerielles",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1213,14 +1119,6 @@
 						},
 						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600, public",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/rss/actualites",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1269,9 +1167,17 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1304,9 +1210,17 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1339,9 +1253,17 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1374,9 +1296,17 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1396,6 +1326,14 @@
 					"instances":[ 
 						{
 							"uri": "https://www.servicesalapersonne.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.servicesalapersonne.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1444,14 +1382,6 @@
 						},
 						{
 							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=300",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.servicesalapersonne.gouv.fr/core/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
