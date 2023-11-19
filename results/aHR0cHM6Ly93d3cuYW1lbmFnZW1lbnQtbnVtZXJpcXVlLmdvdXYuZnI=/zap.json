@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 12 Nov 2023 01:04:39",
+	"@generated": "Sun, 19 Nov 2023 01:05:41",
 	"site":[ 
 		{
 			"@name": "https://www.amenagement-numerique.gouv.fr",
@@ -9,33 +9,6 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
-				{
-					"pluginid": "10062",
-					"alertRef": "10062",
-					"alert": "PII Disclosure",
-					"name": "PII Disclosure",
-					"riskcode": "3",
-					"confidence": "3",
-					"riskdesc": "High (High)",
-					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/fr/actualites?f%5B0%5D=date%3A2019-07",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "5002947203624100",
-							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 500294\nBrand: MAESTRO\nCategory: \nIssuer: "
-						}
-					],
-					"count": "1",
-					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
-					"otherinfo": "<p>Credit Card Type detected: Maestro</p><p>Bank Identification Number: 500294</p><p>Brand: MAESTRO</p><p>Category: </p><p>Issuer: </p>",
-					"reference": "",
-					"cweid": "359",
-					"wascid": "13",
-					"sourceid": "1835"
-				},
 				{
 					"pluginid": "10202",
 					"alertRef": "10202",
@@ -93,23 +66,15 @@
 							"attack": "",
 							"evidence": "<form class=\"views-exposed-form bef-exposed-form col-8-small-1\" data-drupal-selector=\"views-exposed-form-offres-block-1\" action=\"/index.php/fr/bonhautdebit-aidefinanciere\" method=\"get\" id=\"views-exposed-form-offres-block-1\" accept-charset=\"UTF-8\">",
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-commune-target-id\" \"edit-submit-offres\" ]."
-						},
-						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/contact/",
-							"method": "POST",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"webform-submission-form webform-submission-add-form webform-submission-contact-form webform-submission-contact-add-form col-8-small-1\" data-drupal-selector=\"webform-submission-contact-add-form\" action=\"/contact/\" method=\"post\" id=\"webform-submission-contact-add-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"form_build_id\" \"form_id\" ]."
 						}
 					],
-					"count": "7",
+					"count": "6",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"form_build_id\" \"form_id\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1064"
+					"sourceid": "1050"
 				},
 				{
 					"pluginid": "10055",
@@ -299,7 +264,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.js$",
+							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -307,7 +272,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.png",
+							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -361,7 +326,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "217"
+					"sourceid": "218"
 				},
 				{
 					"pluginid": "10098",
@@ -575,7 +540,7 @@
 					"reference": "<p>https://www.wsj.com/articles/BL-CIOB-2999</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "1072"
+					"sourceid": "1076"
 				},
 				{
 					"pluginid": "10099",
@@ -602,7 +567,7 @@
 					"reference": "<p>https://www.wsj.com/articles/BL-CIOB-2999</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "1046"
+					"sourceid": "1059"
 				},
 				{
 					"pluginid": "90003",
@@ -647,7 +612,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.js$",
+							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -655,7 +620,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.js$",
+							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -663,7 +628,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.svg",
+							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -671,7 +636,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.svg",
+							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -770,7 +735,23 @@
 							"otherinfo": "CVE-2020-11023\nCVE-2020-11022\nCVE-2015-9251\nCVE-2019-11358\nCVE-2020-7656\nCVE-2020-23064\nCVE-2012-6708\n"
 						},
 						{
+							"uri": "https://www.amenagement-numerique.gouv.fr/core/assets/vendor/jquery.ui/ui/keycode-min.js?v=1.12.1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/*! jQuery UI - v1.12.1",
+							"otherinfo": "CVE-2021-41184\nCVE-2021-41183\nCVE-2021-41182\nCVE-2022-31160\n"
+						},
+						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/core/assets/vendor/jquery.ui/ui/labels-min.js?v=1.12.1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/*! jQuery UI - v1.12.1",
+							"otherinfo": "CVE-2021-41184\nCVE-2021-41183\nCVE-2021-41182\nCVE-2022-31160\n"
+						},
+						{
+							"uri": "https://www.amenagement-numerique.gouv.fr/core/assets/vendor/jquery.ui/ui/plugin-min.js?v=1.12.1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -810,13 +791,13 @@
 							"otherinfo": "CVE-2021-41184\nCVE-2021-41183\nCVE-2021-41182\nCVE-2022-31160\n"
 						}
 					],
-					"count": "12",
+					"count": "14",
 					"solution": "<p>Please upgrade to the latest version of jquery-ui.</p>",
 					"otherinfo": "<p>CVE-2021-41184</p><p>CVE-2021-41183</p><p>CVE-2021-41182</p><p>CVE-2022-31160</p><p></p>",
 					"reference": "<p>https://github.com/advisories/GHSA-h6gj-6jjq-h8g9</p><p>https://bugs.jqueryui.com/ticket/15284</p><p>https://github.com/jquery/jquery-ui/commit/8cc5bae1caa1fcf96bf5862c5646c787020ba3f9</p><p>https://nvd.nist.gov/vuln/detail/CVE-2022-31160</p><p>https://github.com/jquery/jquery-ui/security/advisories/GHSA-h6gj-6jjq-h8g9</p><p>https://github.com/jquery/jquery-ui/security/advisories/GHSA-gpqq-952q-5327</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-41184</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-41183</p><p>https://github.com/jquery/jquery-ui/security/advisories/GHSA-9gj3-hwp5-pmwc</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-41182</p><p>https://github.com/jquery/jquery-ui/issues/2101</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "2002"
+					"sourceid": "2274"
 				},
 				{
 					"pluginid": "10044",
@@ -851,7 +832,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "286"
+					"sourceid": "302"
 				},
 				{
 					"pluginid": "10017",
@@ -896,7 +877,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.js$",
+							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "https://use.fontawesome.com/releases/v5.5.0/js/all.js",
 							"attack": "",
@@ -904,7 +885,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.js$",
+							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "https://use.fontawesome.com/releases/v5.5.0/js/v4-shims.js",
 							"attack": "",
@@ -985,7 +966,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "781"
+					"sourceid": "806"
 				},
 				{
 					"pluginid": "10063",
@@ -1054,14 +1035,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
@@ -1071,6 +1044,14 @@
 						},
 						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1092,7 +1073,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "52"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10035",
@@ -1153,14 +1134,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
@@ -1209,13 +1182,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "217"
+					"sourceid": "218"
 				},
 				{
 					"pluginid": "10094",
@@ -1314,17 +1287,9 @@
 							"attack": "",
 							"evidence": "/files/languages/fr_5RXeT2eX1vm3yOwDWRRXiRb9agwcIaEriCBSooSsPH8",
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0015\uFFFDOg\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0003Y\\x0014W\uFFFD\\x0016\uFFFDj\\x000c\\x001c!\uFFFD+\uFFFD R\uFFFD\uFFFD\uFFFD<"
-						},
-						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/recherche-resultat/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files/languages/fr_5RXeT2eX1vm3yOwDWRRXiRb9agwcIaEriCBSooSsPH8",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0015\uFFFDOg\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0003Y\\x0014W\uFFFD\\x0016\uFFFDj\\x000c\\x001c!\uFFFD+\uFFFD R\uFFFD\uFFFD\uFFFD<"
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFD\uFFFDm\uFFFD\u04CF\uFFFD4$\uFFFD\\x0002'^6\u97AE*\uFFFD{\uFFFD\uFFFDo\uFFFD\uFFFD\uFFFDm</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
@@ -1357,7 +1322,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "235"
+					"sourceid": "241"
 				},
 				{
 					"pluginid": "10027",
@@ -1418,6 +1383,14 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/index.php\\/\",\"scriptPath\":null\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://www.amenagement-numerique.gouv.fr/index.php/node/add/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/index.php\\/\",\"scriptPath\":null\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -1443,14 +1416,6 @@
 						},
 						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/recherche-resultat/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1525,6 +1490,14 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
+							"uri": "https://www.amenagement-numerique.gouv.fr/index.php/node/add/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -1550,14 +1523,6 @@
 						},
 						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/recherche-resultat/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1624,7 +1589,31 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "private",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "private",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.gif",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "private",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.amenagement-numerique.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1632,13 +1621,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "6",
+					"count": "9",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "217"
+					"sourceid": "218"
 				},
 				{
 					"pluginid": "10015",
@@ -1691,14 +1680,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/fr/metiers-raccordement-fibre",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600, public",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/fr/projets-collectivites-territoriales",
 							"method": "GET",
 							"param": "cache-control",
@@ -1707,7 +1688,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/fr/un-chantier-createur-demplois",
+							"uri": "https://www.amenagement-numerique.gouv.fr/fr/referentiel-dadresses-commun-base-adresse-nationale",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600, public",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.amenagement-numerique.gouv.fr/fr/technologies-linternet-fixe-quelles-technologies-quels-debits",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1758,7 +1747,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.js",
+							"uri": "https://www.amenagement-numerique.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1788,7 +1777,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "216"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1801,7 +1790,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.js",
+							"uri": "https://www.amenagement-numerique.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1831,7 +1820,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "216"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1844,7 +1833,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.js",
+							"uri": "https://www.amenagement-numerique.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1874,7 +1863,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "216"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1887,7 +1876,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.js",
+							"uri": "https://www.amenagement-numerique.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1917,7 +1906,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "216"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1938,22 +1927,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=300",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.amenagement-numerique.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=300",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.amenagement-numerique.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1970,7 +1943,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "3",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
@@ -2027,15 +2000,39 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.amenagement-numerique.gouv.fr/fr/bonhautdebit-aidefinanciere?field_commune_target_id=ZAP&field_departement_target_id=All\r\n\r\nappears to include user input in: \r\n\r\na(n) [option] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_departement_target_id=All\r\n\r\nThe user-controlled value was:\r\nall"
+						},
+						{
+							"uri": "https://www.amenagement-numerique.gouv.fr/fr/ressources?page=17",
+							"method": "GET",
+							"param": "page",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.amenagement-numerique.gouv.fr/fr/ressources?page=17\r\n\r\nappears to include user input in: \r\n\r\na(n) [img] tag [data-entity-uuid] attribute \r\n\r\nThe user input found was:\r\npage=17\r\n\r\nThe user-controlled value was:\r\n17a2fdff-8410-47a3-8e65-9733c57b8d70"
+						},
+						{
+							"uri": "https://www.amenagement-numerique.gouv.fr/fr/ressources?page=17",
+							"method": "GET",
+							"param": "page",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.amenagement-numerique.gouv.fr/fr/ressources?page=17\r\n\r\nappears to include user input in: \r\n\r\na(n) [img] tag [height] attribute \r\n\r\nThe user input found was:\r\npage=17\r\n\r\nThe user-controlled value was:\r\n174"
+						},
+						{
+							"uri": "https://www.amenagement-numerique.gouv.fr/fr/ressources?page=17",
+							"method": "GET",
+							"param": "page",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.amenagement-numerique.gouv.fr/fr/ressources?page=17\r\n\r\nappears to include user input in: \r\n\r\na(n) [img] tag [width] attribute \r\n\r\nThe user input found was:\r\npage=17\r\n\r\nThe user-controlled value was:\r\n170"
 						}
 					],
-					"count": "5",
+					"count": "8",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
 					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.amenagement-numerique.gouv.fr/fr/bonhautdebit-aidefinanciere?field_commune_target_id=ZAP&field_departement_target_id=All</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>field_commune_target_id=ZAP</p><p></p><p>The user-controlled value was:</p><p>zap</p>",
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "2054"
+					"sourceid": "2331"
 				}
 			]
 		}
