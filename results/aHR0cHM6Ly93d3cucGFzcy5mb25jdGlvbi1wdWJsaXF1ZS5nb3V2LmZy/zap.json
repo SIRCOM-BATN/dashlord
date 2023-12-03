@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 26 Nov 2023 02:58:07",
+	"@generated": "Sun, 3 Dec 2023 03:11:30",
 	"site":[ 
 		{
 			"@name": "https://www.pass.fonction-publique.gouv.fr",
@@ -52,6 +52,14 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"captcha_sid\" \"captcha_token\" \"edit-actions-submit\" \"edit-adresse-mail\" \"edit-captcha-response\" \"edit-nom\" \"edit-prenom\" \"edit-rgpd\" \"form_build_id\" \"form_id\" ]."
 						},
 						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/recherche-offre",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/recherche-offre\" method=\"get\" id=\"views-exposed-form-recherche-offre-page-1\" accept-charset=\"UTF-8\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-combine--3\" \"edit-field-type-de-contrat-value-apprentissage--2\" \"edit-field-type-de-contrat-value-stage--2\" \"edit-geo-boundary-group-lat-north-east--2\" \"edit-geo-boundary-group-lat-south-west--2\" \"edit-geo-boundary-group-lng-north-east--2\" \"edit-geo-boundary-group-lng-south-west--2\" \"edit-loadall--2\" \"edit-reset--2\" \"edit-submit-recherche-offre--2\" ]."
+						},
+						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/ressources",
 							"method": "GET",
 							"param": "",
@@ -98,14 +106,6 @@
 							"attack": "",
 							"evidence": "<form class=\"user-register-form user-form\" data-user-info-from-browser data-drupal-selector=\"user-register-form\" enctype=\"multipart/form-data\" action=\"/user/register/recruteur\" method=\"post\" id=\"user-register-form\" accept-charset=\"UTF-8\">",
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"captcha_sid\" \"captcha_token\" \"edit-captcha-response\" \"edit-field-entite-non-existante-value\" \"edit-field-nom-de-l-entite-a-ajouter-0-value\" \"edit-field-nom-de-la-sous-entite-a-aj-0-value\" \"edit-field-sous-entite-non-existante-value\" \"edit-mail\" \"edit-name\" \"edit-pass-pass1\" \"edit-pass-pass2\" \"edit-submit\" \"form_build_id\" \"form_id\" \"multiple_registration_rid\" ]."
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/user/login",
-							"method": "POST",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"user-login-form\" data-drupal-selector=\"user-login-form\" action=\"/user/login\" method=\"post\" id=\"user-login-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-name\" \"edit-pass\" \"edit-submit\" \"form_build_id\" \"form_id\" ]."
 						}
 					],
 					"count": "11",
@@ -143,6 +143,14 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/user/login",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						},
+						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/user/logout",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -151,7 +159,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>script-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -186,6 +194,14 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/user/login",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/user/logout",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -194,7 +210,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -229,6 +245,14 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/user/login",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/user/logout",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -237,7 +261,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -288,23 +312,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.jpg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -328,7 +336,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -352,7 +360,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -360,13 +376,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "85"
+					"sourceid": "53"
 				},
 				{
 					"pluginid": "10098",
@@ -476,6 +492,49 @@
 					"sourceid": "1"
 				},
 				{
+					"pluginid": "90022",
+					"alertRef": "90022",
+					"alert": "Application Error Disclosure",
+					"name": "Application Error Disclosure",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/recherche-offre?combine&field_administration_de_rattache_target_id&field_departement_target_id&field_domaine_d_activite_target_id&field_niveau_de_diplome_prepare_target_id&field_pays_target_id&field_region_target_id&field_type_de_contrat_value&items_per_page=12&loadall&reset&type_de_contrat_value_2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/recherche-offre?combine&field_administration_de_rattache_target_id&field_departement_target_id&field_domaine_d_activite_target_id&field_niveau_de_diplome_prepare_target_id&field_pays_target_id&field_region_target_id&field_type_de_contrat_value&items_per_page=24&loadall&reset&type_de_contrat_value_2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/recherche-offre?combine&field_administration_de_rattache_target_id&field_departement_target_id&field_domaine_d_activite_target_id&field_niveau_de_diplome_prepare_target_id&field_pays_target_id&field_region_target_id&field_type_de_contrat_value&items_per_page=48&loadall&reset&type_de_contrat_value_2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1543"
+				},
+				{
 					"pluginid": "10044",
 					"alertRef": "10044",
 					"alert": "Big Redirect Detected (Potential Sensitive Information Leak)",
@@ -580,7 +639,50 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "1644"
+					"sourceid": "1477"
+				},
+				{
+					"pluginid": "10017",
+					"alertRef": "10017",
+					"alert": "Cross-Domain JavaScript Source File Inclusion",
+					"name": "Cross-Domain JavaScript Source File Inclusion",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/recherche-offre?combine&field_administration_de_rattache_target_id&field_departement_target_id&field_domaine_d_activite_target_id&field_niveau_de_diplome_prepare_target_id&field_pays_target_id&field_region_target_id&field_type_de_contrat_value&items_per_page=12&loadall&reset&type_de_contrat_value_2",
+							"method": "GET",
+							"param": "//html5shiv.googlecode.com/svn/trunk/html5.js",
+							"attack": "",
+							"evidence": "<script src=\"//html5shiv.googlecode.com/svn/trunk/html5.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/recherche-offre?combine&field_administration_de_rattache_target_id&field_departement_target_id&field_domaine_d_activite_target_id&field_niveau_de_diplome_prepare_target_id&field_pays_target_id&field_region_target_id&field_type_de_contrat_value&items_per_page=24&loadall&reset&type_de_contrat_value_2",
+							"method": "GET",
+							"param": "//html5shiv.googlecode.com/svn/trunk/html5.js",
+							"attack": "",
+							"evidence": "<script src=\"//html5shiv.googlecode.com/svn/trunk/html5.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/recherche-offre?combine&field_administration_de_rattache_target_id&field_departement_target_id&field_domaine_d_activite_target_id&field_niveau_de_diplome_prepare_target_id&field_pays_target_id&field_region_target_id&field_type_de_contrat_value&items_per_page=48&loadall&reset&type_de_contrat_value_2",
+							"method": "GET",
+							"param": "//html5shiv.googlecode.com/svn/trunk/html5.js",
+							"attack": "",
+							"evidence": "<script src=\"//html5shiv.googlecode.com/svn/trunk/html5.js\"></script>",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "829",
+					"wascid": "15",
+					"sourceid": "1543"
 				},
 				{
 					"pluginid": "10110",
@@ -641,14 +743,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/files/js/js_R1uVVkSLHOtv5kgwVDi9mt4bpuiWp5ulhBeALW-QVxA.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "eval",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/files/js/js_rsFDfdILsVss61K0az83mM8DlpgBwzTFb2CEvVTMJqA.js",
 							"method": "GET",
 							"param": "",
@@ -665,14 +759,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/files/js/js_uw3IAi_-IxIyqbfy5RV-lXp-_Hf2XJWWelI1uy-7420.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "eval",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/libraries/tarteaucitron/tarteaucitron.js",
 							"method": "GET",
 							"param": "",
@@ -681,13 +767,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "9",
 					"solution": "<p>See the references for security advice on the use of these functions.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "1592"
+					"sourceid": "1435"
 				},
 				{
 					"pluginid": "10063",
@@ -740,23 +826,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.jpg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -772,7 +842,23 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -788,7 +874,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -814,6 +900,14 @@
 					"riskdesc": "Low (High)",
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
 						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.css",
 							"method": "GET",
@@ -847,23 +941,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.jpg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -879,7 +957,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -903,7 +989,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -911,13 +1005,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "85"
+					"sourceid": "89"
 				},
 				{
 					"pluginid": "10094",
@@ -970,6 +1064,14 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFD\uFFFD\\x000fr\uFFFD\uFFFD\\x0006U|\uFFFD`ykz\uFFFD\n\uFFFD\uFFFD\uFFFDE\uFFFDrp[\\x0006C\uFFFD:\uFFFD\uFFFD\uFFFDj"
 						},
 						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/media/oembed",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files/css/css_2hg9yro4GVXzFYHlrevYK_76bRfNycFsGQ5464J3vas",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFD\uFFFD\\x000fr\uFFFD\uFFFD\\x0006U|\uFFFD`ykz\uFFFD\n\uFFFD\uFFFD\uFFFDE\uFFFDrp[\\x0006C\uFFFD:\uFFFD\uFFFD\uFFFDj"
+						},
+						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -1003,14 +1105,6 @@
 						},
 						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/user/login",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files/css/css_2hg9yro4GVXzFYHlrevYK_76bRfNycFsGQ5464J3vas",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFD\uFFFD\\x000fr\uFFFD\uFFFD\\x0006U|\uFFFD`ykz\uFFFD\n\uFFFD\uFFFD\uFFFDE\uFFFDrp[\\x0006C\uFFFD:\uFFFD\uFFFD\uFFFDj"
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/user/password",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1051,7 +1145,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "113"
+					"sourceid": "91"
 				},
 				{
 					"pluginid": "10027",
@@ -1104,6 +1198,14 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/media/oembed",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -1137,14 +1239,6 @@
 						},
 						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/user/login",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/user/password",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1211,6 +1305,14 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/media/oembed",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -1244,14 +1346,6 @@
 						},
 						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/user/login",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"main-content\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/user/password",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1294,6 +1388,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/accessibilite",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600, public",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "cache-control",
@@ -1302,27 +1404,11 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/stage-long-ambassade-de-france-en-serbie-chancellerie-politique-1",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/recherche-offre",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
-							"evidence": "max-age=600, s-maxage=600, public, must-revalidate",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/stage-long-ambassade-de-france-oslo-norvege-0",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600, s-maxage=600, public, must-revalidate",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/offre/stagiaire-aupres-du-bureau-emp-1",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600, s-maxage=600, public, must-revalidate",
+							"evidence": "max-age=600, public",
 							"otherinfo": ""
 						},
 						{
@@ -1331,6 +1417,14 @@
 							"param": "cache-control",
 							"attack": "",
 							"evidence": "max-age=1209600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/sitemap",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600, public",
 							"otherinfo": ""
 						},
 						{
@@ -1393,23 +1487,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.jpg",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.js",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1425,7 +1503,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1452,23 +1530,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.jpg",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.js",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1484,7 +1546,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1511,23 +1573,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.jpg",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.js",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1543,7 +1589,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1570,23 +1616,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.jpg",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.js",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1602,7 +1632,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1621,51 +1651,11 @@
 					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/blockquote",
-							"method": "GET",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/user/password",
+							"method": "POST",
 							"param": "SSESS2a1f1276ff98ddb188463ac6fbc68a5d",
 							"attack": "",
-							"evidence": "aW7TMsyn0puseaqwm821oCjXy3R1jHy37odBrZHSrZea%2CmfN",
-							"otherinfo": "\ncookie:SSESS2a1f1276ff98ddb188463ac6fbc68a5d"
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/cite",
-							"method": "GET",
-							"param": "SSESS2a1f1276ff98ddb188463ac6fbc68a5d",
-							"attack": "",
-							"evidence": "aW7TMsyn0puseaqwm821oCjXy3R1jHy37odBrZHSrZea%2CmfN",
-							"otherinfo": "\ncookie:SSESS2a1f1276ff98ddb188463ac6fbc68a5d"
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/dt",
-							"method": "GET",
-							"param": "SSESS2a1f1276ff98ddb188463ac6fbc68a5d",
-							"attack": "",
-							"evidence": "aW7TMsyn0puseaqwm821oCjXy3R1jHy37odBrZHSrZea%2CmfN",
-							"otherinfo": "\ncookie:SSESS2a1f1276ff98ddb188463ac6fbc68a5d"
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/li",
-							"method": "GET",
-							"param": "SSESS2a1f1276ff98ddb188463ac6fbc68a5d",
-							"attack": "",
-							"evidence": "aW7TMsyn0puseaqwm821oCjXy3R1jHy37odBrZHSrZea%2CmfN",
-							"otherinfo": "\ncookie:SSESS2a1f1276ff98ddb188463ac6fbc68a5d"
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/ol",
-							"method": "GET",
-							"param": "SSESS2a1f1276ff98ddb188463ac6fbc68a5d",
-							"attack": "",
-							"evidence": "aW7TMsyn0puseaqwm821oCjXy3R1jHy37odBrZHSrZea%2CmfN",
-							"otherinfo": "\ncookie:SSESS2a1f1276ff98ddb188463ac6fbc68a5d"
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/ul",
-							"method": "GET",
-							"param": "SSESS2a1f1276ff98ddb188463ac6fbc68a5d",
-							"attack": "",
-							"evidence": "aW7TMsyn0puseaqwm821oCjXy3R1jHy37odBrZHSrZea%2CmfN",
+							"evidence": "CiLjLhcBeve5v-6f6yDPixdfwOVVBrLZXCxxxnGJxpWeVIAn",
 							"otherinfo": "\ncookie:SSESS2a1f1276ff98ddb188463ac6fbc68a5d"
 						},
 						{
@@ -1673,25 +1663,17 @@
 							"method": "POST",
 							"param": "SSESS2a1f1276ff98ddb188463ac6fbc68a5d",
 							"attack": "",
-							"evidence": "aW7TMsyn0puseaqwm821oCjXy3R1jHy37odBrZHSrZea%2CmfN",
-							"otherinfo": "\ncookie:SSESS2a1f1276ff98ddb188463ac6fbc68a5d"
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/code",
-							"method": "GET",
-							"param": "SSESS2a1f1276ff98ddb188463ac6fbc68a5d",
-							"attack": "",
-							"evidence": "aW7TMsyn0puseaqwm821oCjXy3R1jHy37odBrZHSrZea%2CmfN",
+							"evidence": "CiLjLhcBeve5v-6f6yDPixdfwOVVBrLZXCxxxnGJxpWeVIAn",
 							"otherinfo": "\ncookie:SSESS2a1f1276ff98ddb188463ac6fbc68a5d"
 						}
 					],
-					"count": "8",
+					"count": "2",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
 					"otherinfo": "<p></p><p>cookie:SSESS2a1f1276ff98ddb188463ac6fbc68a5d</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1634"
+					"sourceid": "1524"
 				},
 				{
 					"pluginid": "10049",
@@ -1744,23 +1726,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.jpg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=600",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=600",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1776,7 +1742,31 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css",
+							"uri": "https://www.pass.fonction-publique.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.css$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.gif",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.pass.fonction-publique.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1792,7 +1782,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
@@ -1961,7 +1951,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "1620"
+					"sourceid": "1491"
 				}
 			]
 		}
