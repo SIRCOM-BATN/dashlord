@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 7 Jan 2024 01:49:14",
+	"@generated": "Sun, 14 Jan 2024 01:47:06",
 	"site":[ 
 		{
 			"@name": "https://metrologie.entreprises.gouv.fr",
@@ -9,6 +9,33 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10097",
+					"alertRef": "10097",
+					"alert": "Hash Disclosure - Mac OSX salted SHA-1",
+					"name": "Hash Disclosure - Mac OSX salted SHA-1",
+					"riskcode": "3",
+					"confidence": "2",
+					"riskdesc": "High (Medium)",
+					"desc": "<p>A hash was disclosed by the web server. - Mac OSX salted SHA-1</p>",
+					"instances":[ 
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/files_metrologie/files/reglemen/textes/let-96-091-listegaz.pdf",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that hashes that are used to protect credentials or other resources are not leaked by the web server or database. There is typically no requirement for password hashes to be accessible to the web browser.      </p>",
+					"otherinfo": "",
+					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p><p>http://openwall.info/wiki/john/sample-hashes</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "5602"
+				},
 				{
 					"pluginid": "10202",
 					"alertRef": "10202",
@@ -57,7 +84,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form class=\"webform-submission-form webform-submission-add-form webform-submission-courrier-form webform-submission-courrier-add-form webform-submission-courrier-paragraph-58-form webform-submission-courrier-paragraph-58-add-form js-webform-details-toggle webform-details-toggle\" data-drupal-selector=\"webform-submission-courrier-paragraph-58-add-form\" action=\"/fr/question-sur-la-metrologie-legale-ou-industrielle\" method=\"post\" id=\"webform-submission-courrier-paragraph-58-add-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"captcha_sid\" \"captcha_token\" \"edit-captcha-response\" \"edit-consentement-form\" \"edit-objet-de-votre-message\" \"edit-send-submit\" \"edit-url\" \"edit-votre-courriel-mail-1\" \"edit-votre-courriel-mail-2\" \"edit-votre-nom\" \"form_build_id\" \"form_id\" \"honeypot_time\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"captcha_sid\" \"captcha_token\" \"edit-captcha-response\" \"edit-objet-de-votre-message\" \"edit-send-submit\" \"edit-url\" \"edit-votre-courriel-mail-1\" \"edit-votre-courriel-mail-2\" \"edit-votre-nom\" \"form_build_id\" \"form_id\" \"honeypot_time\" ]."
 						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/recherche",
@@ -90,7 +117,7 @@
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "4953"
+					"sourceid": "5337"
 				},
 				{
 					"pluginid": "10055",
@@ -119,7 +146,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/search/",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -133,7 +160,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10055",
@@ -162,7 +189,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/search/",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -176,7 +203,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10055",
@@ -205,7 +232,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/search/",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -219,7 +246,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10038",
@@ -312,14 +339,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.jpeg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.jpg",
 							"method": "GET",
 							"param": "",
@@ -336,13 +355,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "209"
+					"sourceid": "98"
 				},
 				{
 					"pluginid": "10098",
@@ -379,6 +398,14 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/index.php/admin/",
 							"method": "GET",
 							"param": "",
@@ -395,14 +422,6 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/search/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -411,7 +430,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/user/logout/",
+							"uri": "https://metrologie.entreprises.gouv.fr/user/login/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -449,7 +468,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10099",
@@ -476,7 +495,7 @@
 					"reference": "<p>https://www.wsj.com/articles/BL-CIOB-2999</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "5083"
+					"sourceid": "5061"
 				},
 				{
 					"pluginid": "10099",
@@ -488,14 +507,6 @@
 					"riskdesc": "Medium (Medium)",
 					"desc": "<p>Application Source Code was disclosed by the web server - Perl</p>",
 					"instances":[ 
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/files_metrologie/files/reglemen/textes/arr-05081957.pdf",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "$#6b6F",
-							"otherinfo": ""
-						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/files_metrologie/files/reglemen/textes/arr-19071976-eau.pdf",
 							"method": "GET",
@@ -518,14 +529,6 @@
 							"param": "",
 							"attack": "",
 							"evidence": "$#df2x",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/files_metrologie/files/reglemen/textes/cir-9010140100.pdf",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "$#yDo9",
 							"otherinfo": ""
 						},
 						{
@@ -561,6 +564,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/files_metrologie/files/reglemen/textes/dir-71-0348-cee.pdf",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "$#5eYy8",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/files_metrologie/files/reglemen/textes/dir-75-0033.pdf",
 							"method": "GET",
 							"param": "",
@@ -585,13 +596,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Ensure that application Source Code is not available with alternative extensions, and ensure that source code is not present within other files or data deployed to the web server, or served by the web server. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://www.wsj.com/articles/BL-CIOB-2999</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "5330"
+					"sourceid": "5264"
 				},
 				{
 					"pluginid": "90003",
@@ -618,7 +629,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "4706"
+					"sourceid": "4777"
 				},
 				{
 					"pluginid": "10044",
@@ -733,7 +744,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "47"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10110",
@@ -792,7 +803,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "4892"
+					"sourceid": "4827"
 				},
 				{
 					"pluginid": "10063",
@@ -814,14 +825,6 @@
 						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://metrologie.entreprises.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -861,14 +864,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
@@ -877,7 +872,23 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -968,7 +979,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/core/*.js$",
+							"uri": "https://metrologie.entreprises.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -976,7 +987,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/core/*.png",
+							"uri": "https://metrologie.entreprises.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1000,14 +1011,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.jpeg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.jpg",
 							"method": "GET",
 							"param": "",
@@ -1024,13 +1027,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "209"
+					"sourceid": "98"
 				},
 				{
 					"pluginid": "10096",
@@ -1044,6 +1047,14 @@
 					"instances":[ 
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/files_metrologie/files/reglemen/textes/arr-20190129.pdf",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1642714034",
+							"otherinfo": "1642714034, which evaluates to: 2022-01-20 21:27:14"
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/files_metrologie/files/reglemen/textes/deci-18007520011.pdf",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1067,13 +1078,13 @@
 							"otherinfo": "1642714034, which evaluates to: 2022-01-20 21:27:14"
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1642714034, which evaluates to: 2022-01-20 21:27:14</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "5121"
+					"sourceid": "5150"
 				},
 				{
 					"pluginid": "10094",
@@ -1126,14 +1137,6 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDz\uFFFD\u8588\"{\uFFFDZ\uFFFD\\x000b\uFFFD\uFFFD\uFFFD?~\uFFFD\uFFFDw\\x0016\uFFFD8H\\x0019@\uFFFD\uFFFD\uFFFD\uFFFDs\uFFFD\uFFFD\uFFFD\uFFFDV\uFFFD\uFFFD\r\uFFFD\ru\\q\uFFFD\uFFFD\uFFFD\t\\x001b\uFFFD"
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/en",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "com/channel/UCY7v8V4Wtn8aTif2GUm3nTQ",
-							"otherinfo": "r\uFFFD\uFFFDr\\x0016\uFFFD\uFFFD\uFFFDP&;\uFFFD\uFFFDxZ\uFFFD\uFFFDi8\uFFFD\uFFFDe&\uFFFDt\uFFFD"
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
@@ -1143,6 +1146,14 @@
 						},
 						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr/actualites/controle-des-distributeurs-et-importateurs-d-instruments-de-mesure",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files_metrologie/languages/fr_tdxacOEgZQMG4_pJz_6Xl7FbA6A2ZDXVccaCykwkbiE",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDz\uFFFD\u8588\"{\uFFFDZ\uFFFD\\x000b\uFFFD\uFFFD\uFFFD?~\uFFFD\uFFFDw\\x0016\uFFFD8H\\x0019@\uFFFD\uFFFD\uFFFD\uFFFDs\uFFFD\uFFFD\uFFFD\uFFFDV\uFFFD\uFFFD\r\uFFFD\ru\\q\uFFFD\uFFFD\uFFFD\t\\x001b\uFFFD"
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/actualites/mesures-d-accompagnement-pour-entreprises-impactees-par-covid-19",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1215,7 +1226,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "367"
+					"sourceid": "423"
 				},
 				{
 					"pluginid": "10027",
@@ -1260,7 +1271,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.css$",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1268,7 +1279,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.js$",
+							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1308,7 +1319,7 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.css$",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1316,7 +1327,7 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.js$",
+							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1466,14 +1477,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/en",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600, public",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "cache-control",
@@ -1530,7 +1533,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/organismes-pour-la-verification-periodique/verification-periodique-et-installation-des-chronotachygraphes",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/organismes-pour-la-verification-primitive/organisme-designe-pour-la-verification-primitive-des-refractometres",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1538,7 +1541,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/fr/organismes-pour-la-verification-primitive/organisme-designe-pour-la-verification-primitive-des-refractometres",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr/refractometres-textes-vigueur",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1562,7 +1565,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
@@ -1589,7 +1592,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/robots.txt",
+							"uri": "https://metrologie.entreprises.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1597,13 +1608,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1624,7 +1635,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/robots.txt",
+							"uri": "https://metrologie.entreprises.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1632,13 +1651,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1659,7 +1678,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/robots.txt",
+							"uri": "https://metrologie.entreprises.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1667,13 +1694,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1694,7 +1721,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/robots.txt",
+							"uri": "https://metrologie.entreprises.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://metrologie.entreprises.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1702,13 +1737,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10049",
@@ -1777,15 +1812,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.css",
+							"uri": "https://metrologie.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "max-age=300",
+							"evidence": "max-age=600",
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.js",
+							"uri": "https://metrologie.entreprises.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1815,7 +1850,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "7"
 				}
 			]
 		}
