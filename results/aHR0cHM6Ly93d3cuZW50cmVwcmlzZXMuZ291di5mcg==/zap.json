@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 7 Jan 2024 01:43:44",
+	"@generated": "Sun, 14 Jan 2024 01:35:52",
 	"site":[ 
 		{
 			"@name": "https://www.entreprises.gouv.fr",
@@ -84,6 +84,14 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"edit-keys\" \"edit-submit\" ]."
 						},
 						{
+							"uri": "https://www.entreprises.gouv.fr/index.php/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
+						},
+						{
 							"uri": "https://www.entreprises.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
@@ -116,7 +124,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-thematique-filter-target-id-1043\" \"edit-field-thematique-filter-target-id-1046\" \"edit-field-thematique-filter-target-id-1049\" \"edit-field-thematique-filter-target-id-1052\" \"edit-field-thematique-filter-target-id-1055\" \"edit-field-thematique-filter-target-id-1058\" \"edit-field-thematique-filter-target-id-1285\" \"edit-submit-l-information-en-continu\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
@@ -143,7 +151,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/filter/tips",
+							"uri": "https://www.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -151,7 +159,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr",
+							"uri": "https://www.entreprises.gouv.fr/user/register/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -165,7 +173,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10055",
@@ -186,7 +194,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/filter/tips",
+							"uri": "https://www.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -194,7 +202,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr",
+							"uri": "https://www.entreprises.gouv.fr/user/register/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -208,7 +216,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10055",
@@ -229,7 +237,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/filter/tips",
+							"uri": "https://www.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -237,7 +245,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr",
+							"uri": "https://www.entreprises.gouv.fr/user/register/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -251,7 +259,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10038",
@@ -366,7 +374,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "358"
+					"sourceid": "320"
 				},
 				{
 					"pluginid": "10098",
@@ -411,6 +419,14 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
+							"uri": "https://www.entreprises.gouv.fr/index.php/admin/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
 							"uri": "https://www.entreprises.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -420,14 +436,6 @@
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/search/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/user/login/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -473,7 +481,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10044",
@@ -518,12 +526,12 @@
 							"otherinfo": "Location header URI length: 41 [https://www.entreprises.gouv.fr/fr/search].\nPredicted response size: 341.\nResponse Body Length: 410."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/index.php/user/login/",
+							"uri": "https://www.entreprises.gouv.fr/index.php/user/logout/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "Location header URI length: 45 [https://www.entreprises.gouv.fr/fr/user/login].\nPredicted response size: 345.\nResponse Body Length: 426."
+							"otherinfo": "Location header URI length: 44 [https://www.entreprises.gouv.fr/index.php/fr].\nPredicted response size: 344.\nResponse Body Length: 422."
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/index.php/user/password/",
@@ -607,23 +615,15 @@
 							"attack": "",
 							"evidence": "Eval",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/libraries/tarteaucitron/tarteaucitron.js?s6dpqz",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "eval",
-							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "1",
 					"solution": "<p>See the references for security advice on the use of these functions.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "2515"
+					"sourceid": "2380"
 				},
 				{
 					"pluginid": "10063",
@@ -645,6 +645,14 @@
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -701,14 +709,6 @@
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/profiles/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -853,7 +853,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "358"
+					"sourceid": "320"
 				},
 				{
 					"pluginid": "10096",
@@ -894,32 +894,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1473454505",
-							"otherinfo": "1473454505, which evaluates to: 2016-09-09 20:55:05"
+							"evidence": "1665335645",
+							"otherinfo": "1665335645, which evaluates to: 2022-10-09 17:14:05"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.css$",
+							"uri": "https://www.entreprises.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1445345092",
-							"otherinfo": "1445345092, which evaluates to: 2015-10-20 12:44:52"
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1445345092",
-							"otherinfo": "1445345092, which evaluates to: 2015-10-20 12:44:52"
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1445345092",
-							"otherinfo": "1445345092, which evaluates to: 2015-10-20 12:44:52"
+							"evidence": "1825198574",
+							"otherinfo": "1825198574, which evaluates to: 2027-11-02 23:36:14"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/fr",
@@ -950,8 +934,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1473454505",
-							"otherinfo": "1473454505, which evaluates to: 2016-09-09 20:55:05"
+							"evidence": "1665335645",
+							"otherinfo": "1665335645, which evaluates to: 2022-10-09 17:14:05"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1825198574",
+							"otherinfo": "1825198574, which evaluates to: 2027-11-02 23:36:14"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/sitemap.xml",
@@ -962,7 +954,7 @@
 							"otherinfo": "1445345092, which evaluates to: 2015-10-20 12:44:52"
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1444367860, which evaluates to: 2015-10-09 05:17:40</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
@@ -1029,7 +1021,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD:\u2BCDm~V]AMM--\uFFFD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD\uFFFDz\uFFFD!CtOW\u0080m\""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.entreprises.gouv.fr/fr/page-non-trouvee",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1037,7 +1029,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD:\u2BCDm~V]AMM--\uFFFD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD\uFFFDz\uFFFD!CtOW\u0080m\""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/index.php/node/add/",
+							"uri": "https://www.entreprises.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1110,7 +1102,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "515"
+					"sourceid": "523"
 				},
 				{
 					"pluginid": "10027",
@@ -1286,7 +1278,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.entreprises.gouv.fr/fr/page-non-trouvee",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1294,7 +1286,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/node/add/",
+							"uri": "https://www.entreprises.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1401,14 +1393,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr/commerce-et-artisanat/dispositifs-et-labels/valorisation-des-metiers",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=300",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.entreprises.gouv.fr/fr/commerce-et-artisanat/la-filiere-restauration",
 							"method": "GET",
 							"param": "cache-control",
@@ -1418,6 +1402,14 @@
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/fr/commerce-et-artisanat/ventes-reglementees/soldes",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=300",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/fr/page-non-trouvee",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1476,7 +1468,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.css",
+							"uri": "https://www.entreprises.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1519,7 +1511,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.css",
+							"uri": "https://www.entreprises.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1562,7 +1554,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.css",
+							"uri": "https://www.entreprises.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1605,7 +1597,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.css",
+							"uri": "https://www.entreprises.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1664,6 +1656,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.entreprises.gouv.fr/core/*.css$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=300",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.entreprises.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "",
@@ -1705,14 +1705,6 @@
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=300",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
