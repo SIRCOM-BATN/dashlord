@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 14 Jan 2024 01:13:32",
+	"@generated": "Sun, 21 Jan 2024 01:19:19",
 	"site":[ 
 		{
 			"@name": "https://www.budget.gouv.fr",
@@ -33,7 +33,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/download_csv/timeline/donn\u00E9es_.csv\" method=\"POST\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"colors\" \"data\" \"download-65a3314ed4437\" \"url\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"colors\" \"data\" \"download-65ac6d7721684\" \"url\" ]."
 						},
 						{
 							"uri": "https://www.budget.gouv.fr",
@@ -41,7 +41,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/download_csv/timeline/donn\u00E9es_.csv\" method=\"POST\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"colors\" \"data\" \"download-65a331fa22756\" \"url\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"colors\" \"data\" \"download-65ac701ad335a\" \"url\" ]."
 						},
 						{
 							"uri": "https://www.budget.gouv.fr",
@@ -50,6 +50,14 @@
 							"attack": "",
 							"evidence": "<form action=\"/download_csv/piechart_extended/donn\u00E9es_depense_admin_pie.csv\" method=\"POST\">",
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 3: \"colors\" \"data\" \"download-e4377306-e82f-4cf1-8bff-696fb189d125\" \"url\" ]."
+						},
+						{
+							"uri": "https://www.budget.gouv.fr/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/rechercher\" method=\"get\" id=\"views-exposed-form-rechercher-es-page-1\" accept-charset=\"UTF-8\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-tags-target-id\" \"edit-query\" \"edit-submit-rechercher-es\" \"f[0]\" ]."
 						},
 						{
 							"uri": "https://www.budget.gouv.fr/core/*.css$",
@@ -90,20 +98,12 @@
 							"attack": "",
 							"evidence": "<form action=\"/rechercher\" method=\"get\" id=\"views-exposed-form-rechercher-es-page-1\" accept-charset=\"UTF-8\">",
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-tags-target-id\" \"edit-query\" \"edit-submit-rechercher-es\" \"f[0]\" ]."
-						},
-						{
-							"uri": "https://www.budget.gouv.fr/profiles/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form action=\"/rechercher\" method=\"get\" id=\"views-exposed-form-rechercher-es-page-1\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-tags-target-id\" \"edit-query\" \"edit-submit-rechercher-es\" \"f[0]\" ]."
 						}
 					],
 					"count": "10",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-tags-target-id\" \"edit-query\" \"edit-submit-rechercher-es\" \"f[0]\" ].</p>",
-					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
 					"sourceid": "1"
@@ -127,14 +127,6 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/index.php/filter/tips",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
-						},
-						{
 							"uri": "https://www.budget.gouv.fr/index.php/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -151,10 +143,10 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>script-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
-					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "1"
@@ -178,14 +170,6 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/index.php/filter/tips",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
-							"otherinfo": "script-src includes unsafe-inline."
-						},
-						{
 							"uri": "https://www.budget.gouv.fr/index.php/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -202,10 +186,10 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
-					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "1"
@@ -229,14 +213,6 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/index.php/filter/tips",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
-							"otherinfo": "style-src includes unsafe-inline."
-						},
-						{
 							"uri": "https://www.budget.gouv.fr/index.php/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -253,10 +229,10 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
-					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "1"
@@ -272,23 +248,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.budget.gouv.fr/core/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.budget.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.budget.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -344,7 +304,23 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.budget.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.budget.gouv.fr/profiles/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.budget.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -371,10 +347,10 @@
 					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "135"
+					"sourceid": "120"
 				},
 				{
 					"pluginid": "10098",
@@ -516,7 +492,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1672"
+					"sourceid": "1666"
 				},
 				{
 					"pluginid": "90003",
@@ -543,7 +519,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "1672"
+					"sourceid": "1666"
 				},
 				{
 					"pluginid": "90022",
@@ -586,11 +562,11 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1638"
+					"sourceid": "1661"
 				},
 				{
 					"pluginid": "10044",
-					"alertRef": "10044",
+					"alertRef": "10044-1",
 					"alert": "Big Redirect Detected (Potential Sensitive Information Leak)",
 					"name": "Big Redirect Detected (Potential Sensitive Information Leak)",
 					"riskcode": "1",
@@ -598,14 +574,6 @@
 					"riskdesc": "Low (Medium)",
 					"desc": "<p>The server has responded with a redirect that seems to provide a large response. This may indicate that although the server sent a redirect it also responded with body content (which may include sensitive details, PII, etc.).</p>",
 					"instances":[ 
-						{
-							"uri": "https://www.budget.gouv.fr/documentation/publications-de-la-direction/situation-mensuelle-du-budget-de-letat-smb/smb-2023-0",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "Location header URI length: 121 [https://www.budget.gouv.fr/documentation/publications-de-la-direction/situation-mensuelle-du-budget-de-letat-smb/smb-2023].\nPredicted response size: 421.\nResponse Body Length: 730."
-						},
 						{
 							"uri": "https://www.budget.gouv.fr/index.php/",
 							"method": "GET",
@@ -671,13 +639,13 @@
 							"otherinfo": "Location header URI length: 33 [https://www.budget.gouv.fr/search].\nPredicted response size: 333.\nResponse Body Length: 378."
 						}
 					],
-					"count": "9",
+					"count": "8",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
-					"otherinfo": "<p>Location header URI length: 121 [https://www.budget.gouv.fr/documentation/publications-de-la-direction/situation-mensuelle-du-budget-de-letat-smb/smb-2023].</p><p>Predicted response size: 421.</p><p>Response Body Length: 730.</p>",
+					"otherinfo": "<p>Location header URI length: 27 [https://www.budget.gouv.fr/].</p><p>Predicted response size: 327.</p><p>Response Body Length: 354.</p>",
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "1409"
+					"sourceid": "1564"
 				},
 				{
 					"pluginid": "10017",
@@ -728,7 +696,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "1672"
+					"sourceid": "1666"
 				},
 				{
 					"pluginid": "10110",
@@ -740,6 +708,14 @@
 					"riskdesc": "Low (Low)",
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
+						{
+							"uri": "https://www.budget.gouv.fr/files/js/js_dEjCOUMxgqq9tQ6lnlBiltRlQ_Og97RjkmiZ87-kTns.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval",
+							"otherinfo": ""
+						},
 						{
 							"uri": "https://www.budget.gouv.fr/files/js/js_gQekqfFnDaR9Cw3LaAZxfOEusUjLUqz0J8rdZg4sFjo.js",
 							"method": "GET",
@@ -755,31 +731,15 @@
 							"attack": "",
 							"evidence": "eval",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.budget.gouv.fr/files/js/js_QrYsh6u6WZFZOZOCnEUujEAUPow_ErXTJIbkuAl9XLc.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "eval",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.budget.gouv.fr/files/js/js_SX-95O2zLbDFEVS-p2mqbOnj4E9SLBurP2oeoQdtblo.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "eval",
-							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>See the references for security advice on the use of these functions.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "1480"
+					"sourceid": "1700"
 				},
 				{
 					"pluginid": "10063",
@@ -793,14 +753,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.budget.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.budget.gouv.fr/core/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -849,6 +801,14 @@
 						},
 						{
 							"uri": "https://www.budget.gouv.fr/core/*.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.budget.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -890,7 +850,7 @@
 				},
 				{
 					"pluginid": "10035",
-					"alertRef": "10035",
+					"alertRef": "10035-1",
 					"alert": "Strict-Transport-Security Header Not Set",
 					"name": "Strict-Transport-Security Header Not Set",
 					"riskcode": "1",
@@ -899,23 +859,7 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.budget.gouv.fr/core/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.budget.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.budget.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -955,7 +899,23 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.budget.gouv.fr/core/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.budget.gouv.fr/core/*.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.budget.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -971,7 +931,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/profiles/*.gif",
+							"uri": "https://www.budget.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -979,7 +939,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/profiles/*.jpeg",
+							"uri": "https://www.budget.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -998,10 +958,10 @@
 					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "135"
+					"sourceid": "120"
 				},
 				{
 					"pluginid": "10096",
@@ -1116,7 +1076,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1232"
+					"sourceid": "1145"
 				},
 				{
 					"pluginid": "10021",
@@ -1140,10 +1100,10 @@
 					"count": "1",
 					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
 					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
-					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
+					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1553"
+					"sourceid": "1561"
 				},
 				{
 					"pluginid": "10094",
@@ -1204,7 +1164,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFD\uFFFD[N\uFFFD\uFFFD9N\u03BD\uFFFD\uFFFD\uFFFD\uFFFDzu#\uFFFDk\uFFFDR\uFFFDV\uFFFD\\x0013=MY\\x0018:"
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.budget.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1254,7 +1214,7 @@
 				},
 				{
 					"pluginid": "10019",
-					"alertRef": "10019",
+					"alertRef": "10019-1",
 					"alert": "Content-Type Header Missing",
 					"name": "Content-Type Header Missing",
 					"riskcode": "0",
@@ -1265,7 +1225,7 @@
 						{
 							"uri": "https://www.budget.gouv.fr/web.config",
 							"method": "GET",
-							"param": "",
+							"param": "content-type",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
@@ -1274,10 +1234,10 @@
 					"count": "1",
 					"solution": "<p>Ensure each page is setting the specific and appropriate content-type value for the content being delivered.</p>",
 					"otherinfo": "",
-					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
+					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "146"
+					"sourceid": "141"
 				},
 				{
 					"pluginid": "10027",
@@ -1338,12 +1298,12 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.budget.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/index.php\\/\",\"scriptPath\":null\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://www.budget.gouv.fr/node/add/",
@@ -1384,7 +1344,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "31"
 				},
 				{
 					"pluginid": "10109",
@@ -1445,7 +1405,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.budget.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1491,7 +1451,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "31"
 				},
 				{
 					"pluginid": "10015",
@@ -1544,7 +1504,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/panorama-finances-publique/administrations-publiques-locales-apul",
+							"uri": "https://www.budget.gouv.fr/panorama-finances-publique/comparaison-europeenne",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1552,7 +1512,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.budget.gouv.fr/panorama-finances-publique/comparaison-europeenne",
+							"uri": "https://www.budget.gouv.fr/panorama-finances-publique/etat-et-organismes-divers-dadministration-centrale-odac",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1598,7 +1558,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "35"
+					"sourceid": "31"
 				},
 				{
 					"pluginid": "90005",
@@ -1611,7 +1571,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.budget.gouv.fr/core/*.css",
+							"uri": "https://www.budget.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1633,23 +1593,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.budget.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "119"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1662,7 +1614,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.budget.gouv.fr/core/*.css",
+							"uri": "https://www.budget.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1684,23 +1636,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.budget.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "119"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1713,7 +1657,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.budget.gouv.fr/core/*.css",
+							"uri": "https://www.budget.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1735,23 +1679,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.budget.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "119"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1764,7 +1700,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.budget.gouv.fr/core/*.css",
+							"uri": "https://www.budget.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1786,23 +1722,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.budget.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "119"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1845,7 +1773,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "31"
 				},
 				{
 					"pluginid": "10049",
@@ -1928,7 +1856,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "119"
+					"sourceid": "120"
 				},
 				{
 					"pluginid": "10031",
@@ -1976,10 +1904,10 @@
 					"count": "4",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
 					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.budget.gouv.fr/rechercher?f%5B0%5D=type%3Adocuments&field_tags_target_id=ZAP&query=ZAP&sort_bef_combine=search_api_relevance_DESC</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>f[0]=type:documents</p><p></p><p>The user-controlled value was:</p><p>type:documents</p>",
-					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "1529"
+					"sourceid": "1547"
 				}
 			]
 		}
