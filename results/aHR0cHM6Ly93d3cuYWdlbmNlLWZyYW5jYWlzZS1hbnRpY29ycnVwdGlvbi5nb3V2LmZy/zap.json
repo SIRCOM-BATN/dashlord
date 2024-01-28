@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 21 Jan 2024 00:46:14",
+	"@generated": "Sun, 28 Jan 2024 00:42:30",
 	"site":[ 
 		{
 			"@name": "https://www.agence-francaise-anticorruption.gouv.fr",
@@ -130,7 +130,34 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p><p>http://openwall.info/wiki/john/sample-hashes</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1293"
+					"sourceid": "1320"
+				},
+				{
+					"pluginid": "10062",
+					"alertRef": "10062",
+					"alert": "PII Disclosure",
+					"name": "PII Disclosure",
+					"riskcode": "3",
+					"confidence": "3",
+					"riskdesc": "High (High)",
+					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr?page=1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4831838067076",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 483183\nBrand: VISA\nCategory: \nIssuer: WESTERNBANK PUERTO RICO"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
+					"otherinfo": "<p>Credit Card Type detected: Visa</p><p>Bank Identification Number: 483183</p><p>Brand: VISA</p><p>Category: </p><p>Issuer: WESTERNBANK PUERTO RICO</p>",
+					"reference": "",
+					"cweid": "359",
+					"wascid": "13",
+					"sourceid": "519"
 				},
 				{
 					"pluginid": "10202",
@@ -148,7 +175,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit--2\" ]."
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr",
@@ -164,15 +191,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/comment/reply/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys--2\" \"edit-submit\" ]."
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.css$",
@@ -180,7 +199,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys--2\" \"edit-submit\" ]."
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.js$",
@@ -188,7 +207,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys--2\" \"edit-submit\" ]."
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.svg",
@@ -196,7 +215,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys--2\" \"edit-submit\" ]."
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr",
@@ -204,7 +223,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit--2\" ]."
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr",
@@ -215,12 +234,20 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"edit-submit-masonry-page-d-accueil\" \"edit-tid-47\" \"edit-tid-49\" \"edit-tid-5\" \"edit-tid-7\" \"edit-tid-859\" \"edit-tid-862\" \"edit-type-actualite\" \"edit-type-article\" \"edit-type-media\" ]."
 						},
 						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/node/add/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit--2\" ]."
+						},
+						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys--2\" \"edit-submit\" ]."
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.js$",
@@ -228,7 +255,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys--2\" \"edit-submit\" ]."
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.svg",
@@ -236,12 +263,12 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys--2\" \"edit-submit\" ]."
 						}
 					],
 					"count": "12",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
-					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ].</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit--2\" ].</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
@@ -277,7 +304,7 @@
 					"count": "2",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>script-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
-					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "7"
@@ -312,7 +339,7 @@
 					"count": "2",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-eval.</p>",
-					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "7"
@@ -347,7 +374,7 @@
 					"count": "2",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
-					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "7"
@@ -382,7 +409,7 @@
 					"count": "2",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
-					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "7"
@@ -462,14 +489,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
@@ -486,7 +505,23 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.jpg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -494,13 +529,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "59"
+					"sourceid": "130"
 				},
 				{
 					"pluginid": "10098",
@@ -529,14 +564,6 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
@@ -546,6 +573,14 @@
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/search/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -692,7 +727,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.svg",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -700,7 +735,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.svg",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -708,7 +743,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.svg",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -716,7 +751,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -724,7 +759,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -732,7 +767,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -797,7 +832,7 @@
 					"reference": "<p>https://github.com/jquery/jquery/issues/2432</p><p>http://blog.jquery.com/2016/01/08/jquery-2-2-and-1-12-released/</p><p>http://research.insecurelabs.org/jquery/test/</p><p>https://blog.jquery.com/2019/04/10/jquery-3-4-0-released/</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-11358</p><p>https://github.com/advisories/GHSA-rmxg-73gg-4p98</p><p>https://nvd.nist.gov/vuln/detail/CVE-2015-9251</p><p>https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b</p><p>https://bugs.jquery.com/ticket/11974</p><p>https://github.com/jquery/jquery.com/issues/162</p><p>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "923"
+					"sourceid": "929"
 				},
 				{
 					"pluginid": "90022",
@@ -824,7 +859,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1223"
+					"sourceid": "1234"
 				},
 				{
 					"pluginid": "10044",
@@ -984,7 +1019,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.js$",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "https://platform.twitter.com/widgets.js",
 							"attack": "",
@@ -992,7 +1027,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.js$",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "https://use.fontawesome.com/releases/v5.1.1/js/all.js",
 							"attack": "",
@@ -1000,7 +1035,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.js$",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "https://use.fontawesome.com/releases/v5.1.1/js/v4-shims.js",
 							"attack": "",
@@ -1008,7 +1043,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.svg",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.js$",
 							"method": "GET",
 							"param": "https://platform.twitter.com/widgets.js",
 							"attack": "",
@@ -1016,7 +1051,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.svg",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.js$",
 							"method": "GET",
 							"param": "https://use.fontawesome.com/releases/v5.1.1/js/all.js",
 							"attack": "",
@@ -1024,7 +1059,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.svg",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.js$",
 							"method": "GET",
 							"param": "https://use.fontawesome.com/releases/v5.1.1/js/v4-shims.js",
 							"attack": "",
@@ -1185,7 +1220,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "923"
+					"sourceid": "929"
 				},
 				{
 					"pluginid": "10063",
@@ -1254,14 +1289,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
@@ -1271,105 +1298,6 @@
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.gif",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						}
-					],
-					"count": "12",
-					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
-					"cweid": "693",
-					"wascid": "15",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "10035",
-					"alertRef": "10035-1",
-					"alert": "Strict-Transport-Security Header Not Set",
-					"name": "Strict-Transport-Security Header Not Set",
-					"riskcode": "1",
-					"confidence": "3",
-					"riskdesc": "Low (High)",
-					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.gif",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.jpeg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.jpg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.png",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1409,13 +1337,128 @@
 							"otherinfo": ""
 						}
 					],
+					"count": "13",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10035",
+					"alertRef": "10035-1",
+					"alert": "Strict-Transport-Security Header Not Set",
+					"name": "Strict-Transport-Security Header Not Set",
+					"riskcode": "1",
+					"confidence": "3",
+					"riskdesc": "Low (High)",
+					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.css$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.gif",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.jpeg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.jpg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.gif",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.jpg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
 					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "59"
+					"sourceid": "130"
 				},
 				{
 					"pluginid": "10096",
@@ -1490,7 +1533,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1031"
+					"sourceid": "973"
 				},
 				{
 					"pluginid": "10094",
@@ -1632,7 +1675,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "158"
+					"sourceid": "155"
 				},
 				{
 					"pluginid": "10024",
@@ -1645,7 +1688,7 @@
 					"desc": "<p>The request appeared to contain sensitive information leaked in the URL. This can violate PCI and most organizational compliance policies. You can configure the list of strings for this check to add or remove values specific to your environment.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/en/node/2065?token=KYQYo25h634JnzJs4GNSvE3ILijvvnmlHxv8dgVUTzI",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/en/node/2065?token=kUeAbJhPp4a3cQXBe_yNble5u-XRQm435NSlDmc9-Fk",
 							"method": "GET",
 							"param": "token",
 							"attack": "",
@@ -1653,7 +1696,7 @@
 							"otherinfo": "The URL contains potentially sensitive information. The following string was found via the pattern: token\ntoken"
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/jeu-serieux?token=ZCvBjcAn6-iKGY7Qv_p0Pws5zPbqkyYDf1Pv8xAJvsA",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/jeu-serieux?token=psaCg-qy5_UXOfKht-gSWPA_qL_ZDX5tzn04hHfKN0U",
 							"method": "GET",
 							"param": "token",
 							"attack": "",
@@ -1667,7 +1710,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1789"
+					"sourceid": "1785"
 				},
 				{
 					"pluginid": "10027",
@@ -1942,14 +1985,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/faq/foire-aux-questions-faq",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/lagence",
 							"method": "GET",
 							"param": "cache-control",
@@ -1967,6 +2002,14 @@
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/organisation",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/presse",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -2033,7 +2076,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.css",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -2041,7 +2084,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/robots.txt",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -2076,7 +2119,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.css",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -2084,7 +2127,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/robots.txt",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -2119,7 +2162,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.css",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -2127,7 +2170,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/robots.txt",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -2162,7 +2205,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.css",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -2170,7 +2213,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/robots.txt",
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -2245,14 +2288,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=600",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
@@ -2262,6 +2297,14 @@
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -2304,12 +2347,164 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "created",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ncreated=2024-01-28\n\nThe user-controlled value was:\n2024-01-28"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "created_1",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ncreated_1=2024-01-28\n\nThe user-controlled value was:\n2024-01-28"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "field_thematique[47]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique[47]=47\n\nThe user-controlled value was:\n47"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "field_thematique[49]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique[49]=49\n\nThe user-controlled value was:\n49"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "field_thematique[859]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique[859]=859\n\nThe user-controlled value was:\n859"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "field_thematique[862]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique[862]=862\n\nThe user-controlled value was:\n862"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "keys",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nkeys=ZAP\n\nThe user-controlled value was:\nzap"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "type[actualite]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[actualite]=actualite\n\nThe user-controlled value was:\nactualite"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "type[article]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[article]=article\n\nThe user-controlled value was:\narticle"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "type[faq]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[faq]=faq\n\nThe user-controlled value was:\nfaq"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "type[jeu_serieux]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[jeu_serieux]=jeu_serieux\n\nThe user-controlled value was:\njeu_serieux"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "type[media]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[media]=media\n\nThe user-controlled value was:\nmedia"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "type[page]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [div] tag [class] attribute \n\nThe user input found was:\ntype[page]=page\n\nThe user-controlled value was:\npage"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "type[page]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [h1] tag [class] attribute \n\nThe user input found was:\ntype[page]=page\n\nThe user-controlled value was:\npage-title"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "type[page]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[page]=page\n\nThe user-controlled value was:\npage"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "type[page]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[page]=page\n\nThe user-controlled value was:\npage_organisation_internationale"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "type[page]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[page]=page\n\nThe user-controlled value was:\npage_pays"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "type[page_organisation_internationale]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[page_organisation_internationale]=page_organisation_internationale\n\nThe user-controlled value was:\npage_organisation_internationale"
+						},
+						{
+							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays",
+							"method": "GET",
+							"param": "type[page_pays]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[page_pays]=page_pays\n\nThe user-controlled value was:\npage_pays"
+						},
+						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856",
 							"method": "GET",
 							"param": "field_thematique_documentaire_target_id[832]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_thematique_documentaire_target_id[832]=832\r\n\r\nThe user-controlled value was:\r\n832"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_documentaire_target_id[832]=832\n\nThe user-controlled value was:\n832"
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856",
@@ -2317,7 +2512,7 @@
 							"param": "field_thematique_documentaire_target_id[835]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_thematique_documentaire_target_id[835]=835\r\n\r\nThe user-controlled value was:\r\n835"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_documentaire_target_id[835]=835\n\nThe user-controlled value was:\n835"
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856",
@@ -2325,7 +2520,7 @@
 							"param": "field_thematique_documentaire_target_id[838]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_thematique_documentaire_target_id[838]=838\r\n\r\nThe user-controlled value was:\r\n838"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_documentaire_target_id[838]=838\n\nThe user-controlled value was:\n838"
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856",
@@ -2333,7 +2528,7 @@
 							"param": "field_thematique_documentaire_target_id[841]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_thematique_documentaire_target_id[841]=841\r\n\r\nThe user-controlled value was:\r\n841"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_documentaire_target_id[841]=841\n\nThe user-controlled value was:\n841"
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856",
@@ -2341,7 +2536,7 @@
 							"param": "field_thematique_documentaire_target_id[844]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_thematique_documentaire_target_id[844]=844\r\n\r\nThe user-controlled value was:\r\n844"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_documentaire_target_id[844]=844\n\nThe user-controlled value was:\n844"
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856",
@@ -2349,7 +2544,7 @@
 							"param": "field_thematique_documentaire_target_id[847]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_thematique_documentaire_target_id[847]=847\r\n\r\nThe user-controlled value was:\r\n847"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_documentaire_target_id[847]=847\n\nThe user-controlled value was:\n847"
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856",
@@ -2357,7 +2552,7 @@
 							"param": "field_thematique_documentaire_target_id[853]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_thematique_documentaire_target_id[853]=853\r\n\r\nThe user-controlled value was:\r\n853"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_documentaire_target_id[853]=853\n\nThe user-controlled value was:\n853"
 						},
 						{
 							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856",
@@ -2365,88 +2560,16 @@
 							"param": "field_thematique_documentaire_target_id[856]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nfield_thematique_documentaire_target_id[856]=856\r\n\r\nThe user-controlled value was:\r\n856"
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media",
-							"method": "GET",
-							"param": "tid[47]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\ntid[47]=47\r\n\r\nThe user-controlled value was:\r\n47"
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media",
-							"method": "GET",
-							"param": "tid[49]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\ntid[49]=49\r\n\r\nThe user-controlled value was:\r\n49"
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media",
-							"method": "GET",
-							"param": "tid[859]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\ntid[859]=859\r\n\r\nThe user-controlled value was:\r\n859"
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media",
-							"method": "GET",
-							"param": "tid[862]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\ntid[862]=862\r\n\r\nThe user-controlled value was:\r\n862"
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media",
-							"method": "GET",
-							"param": "type[actualite]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\ntype[actualite]=actualite\r\n\r\nThe user-controlled value was:\r\nactualite"
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media",
-							"method": "GET",
-							"param": "type[article]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\ntype[article]=article\r\n\r\nThe user-controlled value was:\r\narticle"
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media",
-							"method": "GET",
-							"param": "type[media]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media\r\n\r\nappears to include user input in: \r\n\r\na(n) [div] tag [class] attribute \r\n\r\nThe user input found was:\r\ntype[media]=media\r\n\r\nThe user-controlled value was:\r\nmedia media--blazy media--slick media--loading is-b-loading media--ratio media--ratio--fluid media--image"
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media",
-							"method": "GET",
-							"param": "type[media]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media\r\n\r\nappears to include user input in: \r\n\r\na(n) [img] tag [class] attribute \r\n\r\nThe user input found was:\r\ntype[media]=media\r\n\r\nThe user-controlled value was:\r\nmedia__image media__element b-lazy"
-						},
-						{
-							"uri": "https://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media",
-							"method": "GET",
-							"param": "type[media]",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr?tid%5B47%5D=47&tid%5B49%5D=49&tid%5B5%5D=5&tid%5B7%5D=7&tid%5B859%5D=859&tid%5B862%5D=862&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bmedia%5D=media\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\ntype[media]=media\r\n\r\nThe user-controlled value was:\r\nmedia"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_documentaire_target_id[856]=856\n\nThe user-controlled value was:\n856"
 						}
 					],
-					"count": "17",
+					"count": "27",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
-					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.agence-francaise-anticorruption.gouv.fr/fr/tous-les-documents?field_thematique_documentaire_target_id%5B832%5D=832&field_thematique_documentaire_target_id%5B835%5D=835&field_thematique_documentaire_target_id%5B838%5D=838&field_thematique_documentaire_target_id%5B841%5D=841&field_thematique_documentaire_target_id%5B844%5D=844&field_thematique_documentaire_target_id%5B847%5D=847&field_thematique_documentaire_target_id%5B853%5D=853&field_thematique_documentaire_target_id%5B856%5D=856</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>field_thematique_documentaire_target_id[832]=832</p><p></p><p>The user-controlled value was:</p><p>832</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.agence-francaise-anticorruption.gouv.fr/fr/recherche?created=2024-01-28&created_1=2024-01-28&field_thematique%5B47%5D=47&field_thematique%5B49%5D=49&field_thematique%5B5%5D=5&field_thematique%5B7%5D=7&field_thematique%5B859%5D=859&field_thematique%5B862%5D=862&keys=ZAP&type%5Bactualite%5D=actualite&type%5Barticle%5D=article&type%5Bfaq%5D=faq&type%5Bjeu_serieux%5D=jeu_serieux&type%5Bmedia%5D=media&type%5Bpage%5D=page&type%5Bpage_organisation_internationale%5D=page_organisation_internationale&type%5Bpage_pays%5D=page_pays</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>created=2024-01-28</p><p></p><p>The user-controlled value was:</p><p>2024-01-28</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "928"
+					"sourceid": "1242"
 				}
 			]
 		}
