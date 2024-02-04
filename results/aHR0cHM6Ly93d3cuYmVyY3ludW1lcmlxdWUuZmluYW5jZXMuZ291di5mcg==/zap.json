@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 28 Jan 2024 01:00:31",
+	"@generated": "Sun, 4 Feb 2024 01:01:26",
 	"site":[ 
 		{
 			"@name": "https://www.bercynumerique.finances.gouv.fr",
@@ -36,14 +36,6 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ]."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/comment/reply/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"header-searchbar\" data-drupal-selector=\"header-searchbar\" action=\"/recherche\" method=\"GET\" id=\"header-searchbar\" accept-charset=\"UTF-8\" data-drupal-form-fields=\"edit-search,edit-valider\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ]."
-						},
-						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
@@ -68,7 +60,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ]."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -116,7 +108,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ]."
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ].</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
@@ -143,7 +135,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/filter/tips",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -186,7 +178,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/filter/tips",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -229,7 +221,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/filter/tips",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -366,7 +358,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "98"
+					"sourceid": "96"
 				},
 				{
 					"pluginid": "10098",
@@ -588,7 +580,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "403"
+					"sourceid": "387"
 				},
 				{
 					"pluginid": "10110",
@@ -615,7 +607,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "404"
+					"sourceid": "365"
 				},
 				{
 					"pluginid": "10063",
@@ -708,14 +700,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.gif",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
@@ -724,13 +708,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "56"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10035",
@@ -845,7 +829,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "98"
+					"sourceid": "96"
 				},
 				{
 					"pluginid": "10096",
@@ -933,6 +917,14 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFDE\uFFFD\\x0016\uFFFD~\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD3\r\uFFFD@\uFFFD\\x000e\u04EE\uFFFD$rp\uFFFD>"
 						},
 						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/*/media/oembed",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files/css/css_wtV3by3rHXLVJRtsxwPSxI9lRwvU29YEFmvrgsyH070",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFD]\uFFFD\uFFFDz\uFFFD\\\uFFFDIF\uFFFD1\uFFFD\uFFFD\uFFFD#\uFFFDQ\uFFFD\uFFFD6\uFFFD\uFFFD\\x0005\uFFFD\uFFFD\uFFFD!\uFFFD\uFFFD"
+						},
+						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/comment/reply/",
 							"method": "GET",
 							"param": "",
@@ -973,7 +965,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFD]\uFFFD\uFFFDz\uFFFD\\\uFFFDIF\uFFFD1\uFFFD\uFFFD\uFFFD#\uFFFDQ\uFFFD\uFFFD6\uFFFD\uFFFD\\x0005\uFFFD\uFFFD\uFFFD!\uFFFD\uFFFD"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/media/oembed",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -981,7 +973,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFD]\uFFFD\uFFFDz\uFFFD\\\uFFFDIF\uFFFD1\uFFFD\uFFFD\uFFFD#\uFFFDQ\uFFFD\uFFFD6\uFFFD\uFFFD\\x0005\uFFFD\uFFFD\uFFFD!\uFFFD\uFFFD"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/media/oembed",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1013,13 +1005,13 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFD]\uFFFD\uFFFDz\uFFFD\\\uFFFDIF\uFFFD1\uFFFD\uFFFD\uFFFD#\uFFFDQ\uFFFD\uFFFD6\uFFFD\uFFFD\\x0005\uFFFD\uFFFD\uFFFD!\uFFFD\uFFFD"
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFDE\uFFFD\\x0016\uFFFD~\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD3\r\uFFFD@\uFFFD\\x000e\u04EE\uFFFD$rp\uFFFD></p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "56"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10019",
@@ -1046,7 +1038,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "122"
+					"sourceid": "121"
 				},
 				{
 					"pluginid": "10027",
@@ -1107,15 +1099,23 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/index.php\\/\",\"scriptPath\":null\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/media/oembed",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1147,7 +1147,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -1182,14 +1182,6 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/comment/reply/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Page non trouv\u00E9e</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
@@ -1214,11 +1206,11 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Page non trouv\u00E9e</a>",
+							"evidence": "<a id=\"contenu\" tabindex=\"-1\"></a>",
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
@@ -1227,6 +1219,14 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Page non trouv\u00E9e</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/node/add/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Acc\u00E8s refus\u00E9</a>",
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
@@ -1289,6 +1289,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/faites-fleurir-vos-competences-numeriques",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600, public",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "cache-control",
@@ -1298,14 +1306,6 @@
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/liens-utiles",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600, public",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/numerique-adolescent-et-vie-privee-episode-2-au-contact-des-collegiennes-et-collegiens",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1367,7 +1367,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "56"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1402,7 +1402,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "56"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1472,7 +1472,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "56"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1507,7 +1507,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "56"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1576,14 +1576,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=600",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
@@ -1600,7 +1592,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/robots.txt",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1608,7 +1600,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/sitemap.xml",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1616,13 +1608,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "56"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10031",
@@ -1785,7 +1777,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "677"
+					"sourceid": "716"
 				}
 			]
 		}
