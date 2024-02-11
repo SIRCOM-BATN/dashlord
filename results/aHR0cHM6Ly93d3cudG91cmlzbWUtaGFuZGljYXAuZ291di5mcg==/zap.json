@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 4 Feb 2024 02:25:37",
+	"@generated": "Sun, 11 Feb 2024 02:23:20",
 	"site":[ 
 		{
 			"@name": "https://www.tourisme-handicap.gouv.fr",
@@ -9,33 +9,6 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
-				{
-					"pluginid": "10062",
-					"alertRef": "10062",
-					"alert": "PII Disclosure",
-					"name": "PII Disclosure",
-					"riskcode": "3",
-					"confidence": "3",
-					"riskdesc": "High (High)",
-					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?page=1",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "67181316797131",
-							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 671813\nBrand: MAESTRO\nCategory: ATM ONLY\nIssuer: ROYAL BANK OF SCOTlanD"
-						}
-					],
-					"count": "1",
-					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
-					"otherinfo": "<p>Credit Card Type detected: Maestro</p><p>Bank Identification Number: 671813</p><p>Brand: MAESTRO</p><p>Category: ATM ONLY</p><p>Issuer: ROYAL BANK OF SCOTlanD</p>",
-					"reference": "",
-					"cweid": "359",
-					"wascid": "13",
-					"sourceid": "807"
-				},
 				{
 					"pluginid": "10202",
 					"alertRef": "10202",
@@ -55,7 +28,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ]."
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -149,7 +122,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "321"
+					"sourceid": "306"
 				},
 				{
 					"pluginid": "10055",
@@ -178,14 +151,6 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/index.php/filter/tips",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
-						},
-						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -194,7 +159,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>script-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -229,14 +194,6 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/index.php/filter/tips",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
-							"otherinfo": "script-src includes unsafe-inline."
-						},
-						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -245,7 +202,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -280,14 +237,6 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/index.php/filter/tips",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
-							"otherinfo": "style-src includes unsafe-inline."
-						},
-						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -296,7 +245,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -316,14 +265,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -379,6 +320,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
@@ -417,7 +366,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "54"
+					"sourceid": "52"
 				},
 				{
 					"pluginid": "10098",
@@ -446,6 +395,14 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
+							"uri": "https://www.tourisme-handicap.gouv.fr/filter/tips",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
@@ -454,7 +411,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/index.php/admin/",
+							"uri": "https://www.tourisme-handicap.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -462,7 +419,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/robots.txt",
+							"uri": "https://www.tourisme-handicap.gouv.fr/search/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -495,14 +452,6 @@
 						},
 						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/user/password/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/user/register/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -551,7 +500,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "639"
+					"sourceid": "649"
 				},
 				{
 					"pluginid": "10044",
@@ -666,7 +615,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "17"
+					"sourceid": "12"
 				},
 				{
 					"pluginid": "10110",
@@ -733,7 +682,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "713"
+					"sourceid": "704"
 				},
 				{
 					"pluginid": "110009",
@@ -848,7 +797,7 @@
 					"reference": "<p>https://owasp.org/www-community/attacks/Full_Path_Disclosure</p>",
 					"cweid": "209",
 					"wascid": "13",
-					"sourceid": "298"
+					"sourceid": "362"
 				},
 				{
 					"pluginid": "10063",
@@ -870,14 +819,6 @@
 						},
 						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -917,6 +858,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
@@ -949,7 +898,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/profiles/*.jpg",
+							"uri": "https://www.tourisme-handicap.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1024,7 +973,23 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1048,14 +1013,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/profiles/*.jpeg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/profiles/*.jpg",
 							"method": "GET",
 							"param": "",
@@ -1072,13 +1029,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "54"
+					"sourceid": "52"
 				},
 				{
 					"pluginid": "10094",
@@ -1092,14 +1049,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.tourisme-handicap.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files_th/languages/fr_nQyos4sf5aY01KeyZZLmPv5Dp8iahQyK_hTaSUlrJY4",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFD\uFFFDZ\uFFFD\\x000b\uFFFD\uFFFD\uFFFD?~\uFFFD\uFFFDC*,\uFFFD\uFFFD\uFFFDi\uFFFD5)\uFFFDd\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD&\uFFFDC\"\uFFFD\uFFFD6\uFFFDRZ\uFFFDc"
-						},
-						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1139,7 +1088,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFD\uFFFDZ\uFFFD\\x000b\uFFFD\uFFFD\uFFFD?~\uFFFD\uFFFDC*,\uFFFD\uFFFD\uFFFDi\uFFFD5)\uFFFDd\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD&\uFFFDC\"\uFFFD\uFFFD6\uFFFDRZ\uFFFDc"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1147,7 +1096,15 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFD\uFFFDZ\uFFFD\\x000b\uFFFD\uFFFD\uFFFD?~\uFFFD\uFFFDC*,\uFFFD\uFFFD\uFFFDi\uFFFD5)\uFFFDd\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD&\uFFFDC\"\uFFFD\uFFFD6\uFFFDRZ\uFFFDc"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/index.php/node/add/",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/tourisme-handicap-tourisme-pour-tous",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files_th/languages/fr_nQyos4sf5aY01KeyZZLmPv5Dp8iahQyK_hTaSUlrJY4",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFD\uFFFDZ\uFFFD\\x000b\uFFFD\uFFFD\uFFFD?~\uFFFD\uFFFDC*,\uFFFD\uFFFD\uFFFDi\uFFFD5)\uFFFDd\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD&\uFFFDC\"\uFFFD\uFFFD6\uFFFDRZ\uFFFDc"
+						},
+						{
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/trouver-etablissement-accessible-labellise-tourisme-handicap",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1220,7 +1177,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "265"
+					"sourceid": "263"
 				},
 				{
 					"pluginid": "10027",
@@ -1281,14 +1238,6 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
 							"uri": "https://www.tourisme-handicap.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -1335,17 +1284,9 @@
 							"attack": "",
 							"evidence": "TODO",
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/profiles/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "TODO",
-							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "14",
+					"count": "12",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -1365,14 +1306,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.tourisme-handicap.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1412,7 +1345,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1420,7 +1353,15 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/index.php/node/add/",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/tourisme-handicap-tourisme-pour-tous",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/trouver-etablissement-accessible-labellise-tourisme-handicap",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1511,7 +1452,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/espace-pro/partenaires-et-relais-territoriaux/partenaires-nationaux-tourisme-handicap",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/espace-pro/partenaires-et-relais-territoriaux/annuaire-des-startups-du-tourisme-accessible",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1602,6 +1543,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.js",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1610,7 +1559,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1637,6 +1586,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.js",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1645,7 +1602,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1672,6 +1629,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.js",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1680,7 +1645,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1707,6 +1672,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.js",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1715,7 +1688,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1743,14 +1716,6 @@
 						},
 						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=300",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1806,6 +1771,22 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.tourisme-handicap.gouv.fr/profiles/*.gif",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=300",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tourisme-handicap.gouv.fr/profiles/*.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=300",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.tourisme-handicap.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1822,7 +1803,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
@@ -1841,141 +1822,141 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "date_0",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_0=2024-02-04\n\nThe user-controlled value was:\n2024-02-04"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_0=2024-02-11\n\nThe user-controlled value was:\n2024-02-11"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "date_1",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_1=2024-02-04\n\nThe user-controlled value was:\n2024-02-04"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_1=2024-02-11\n\nThe user-controlled value was:\n2024-02-11"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "keys",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nkeys=ZAP\n\nThe user-controlled value was:\nzap"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nkeys=ZAP\n\nThe user-controlled value was:\nzap"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [link] tag [media] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [link] tag [media] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [option] tag [value] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [option] tag [value] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "sort_by",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nsort_by=search_api_relevance\n\nThe user-controlled value was:\nsearch_api_relevance"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nsort_by=search_api_relevance\n\nThe user-controlled value was:\nsearch_api_relevance"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[actualite]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[actualite]=actualite\n\nThe user-controlled value was:\nactualite"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[actualite]=actualite\n\nThe user-controlled value was:\nactualite"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[appel_a_projets]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[appel_a_projets]=appel_a_projets\n\nThe user-controlled value was:\nappel_a_projets"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[appel_a_projets]=appel_a_projets\n\nThe user-controlled value was:\nappel_a_projets"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[article]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[article]=article\n\nThe user-controlled value was:\narticle"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[article]=article\n\nThe user-controlled value was:\narticle"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[communique_de_presse]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[communique_de_presse]=communique_de_presse\n\nThe user-controlled value was:\ncommunique_de_presse"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[communique_de_presse]=communique_de_presse\n\nThe user-controlled value was:\ncommunique_de_presse"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[evenement]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [a] tag [data-drupal-link-system-path] attribute \n\nThe user input found was:\ntype[evenement]=evenement\n\nThe user-controlled value was:\nevenements"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [a] tag [data-drupal-link-system-path] attribute \n\nThe user input found was:\ntype[evenement]=evenement\n\nThe user-controlled value was:\nevenements"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[evenement]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[evenement]=evenement\n\nThe user-controlled value was:\nevenement"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[evenement]=evenement\n\nThe user-controlled value was:\nevenement"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[evenement]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [li] tag [title] attribute \n\nThe user input found was:\ntype[evenement]=evenement\n\nThe user-controlled value was:\nevenements"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [li] tag [title] attribute \n\nThe user input found was:\ntype[evenement]=evenement\n\nThe user-controlled value was:\nevenements"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[faq]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[faq]=faq\n\nThe user-controlled value was:\nfaq"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[faq]=faq\n\nThe user-controlled value was:\nfaq"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[media]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[media]=media\n\nThe user-controlled value was:\nmedia"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[media]=media\n\nThe user-controlled value was:\nmedia"
 						},
 						{
-							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[page_accueil_n2]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[page_accueil_n2]=page_accueil_n2\n\nThe user-controlled value was:\npage_accueil_n2"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[page_accueil_n2]=page_accueil_n2\n\nThe user-controlled value was:\npage_accueil_n2"
 						}
 					],
 					"count": "16",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
-					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-04&date_1=2024-02-04&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>date_0=2024-02-04</p><p></p><p>The user-controlled value was:</p><p>2024-02-04</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.tourisme-handicap.gouv.fr/fr/recherche?date_0=2024-02-11&date_1=2024-02-11&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>date_0=2024-02-11</p><p></p><p>The user-controlled value was:</p><p>2024-02-11</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "969"
+					"sourceid": "968"
 				}
 			]
 		}
