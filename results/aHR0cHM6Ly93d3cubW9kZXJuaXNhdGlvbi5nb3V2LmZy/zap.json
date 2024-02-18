@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 11 Feb 2024 02:43:23",
+	"@generated": "Sun, 18 Feb 2024 02:45:31",
 	"site":[ 
 		{
 			"@name": "https://www.modernisation.gouv.fr",
@@ -143,7 +143,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique",
+							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/assurer-la-mise-en-oeuvre-des-politiques-prioritaires-du-gouvernement",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -186,7 +186,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique",
+							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/assurer-la-mise-en-oeuvre-des-politiques-prioritaires-du-gouvernement",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -229,7 +229,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique",
+							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/assurer-la-mise-en-oeuvre-des-politiques-prioritaires-du-gouvernement",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -328,7 +328,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/profiles/*.gif",
+							"uri": "https://www.modernisation.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -336,7 +336,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/profiles/*.jpg",
+							"uri": "https://www.modernisation.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -358,7 +358,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "2232"
+					"sourceid": "2107"
 				},
 				{
 					"pluginid": "10098",
@@ -380,6 +380,14 @@
 						},
 						{
 							"uri": "https://www.modernisation.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/ameliorer-lexperience-usagers",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -449,14 +457,6 @@
 							"attack": "",
 							"evidence": "Access-Control-Allow-Origin: *",
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/partenariat-pour-un-gouvernement-ouvert",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						}
 					],
 					"count": "11",
@@ -492,7 +492,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "2411"
+					"sourceid": "2201"
 				},
 				{
 					"pluginid": "90003",
@@ -527,7 +527,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "2411"
+					"sourceid": "2201"
 				},
 				{
 					"pluginid": "10044",
@@ -580,20 +580,28 @@
 							"otherinfo": "Location header URI length: 45 [https://www.modernisation.gouv.fr/filter/tips].\nPredicted response size: 345.\nResponse Body Length: 426."
 						},
 						{
+							"uri": "https://www.modernisation.gouv.fr/index.php/user/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 44 [https://www.modernisation.gouv.fr/user/login].\nPredicted response size: 344.\nResponse Body Length: 422."
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/index.php/user/logout",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 44 [https://www.modernisation.gouv.fr/index.php/].\nPredicted response size: 344.\nResponse Body Length: 422."
+						},
+						{
 							"uri": "https://www.modernisation.gouv.fr/index.php/user/password",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "Location header URI length: 47 [https://www.modernisation.gouv.fr/user/password].\nPredicted response size: 347.\nResponse Body Length: 434."
-						},
-						{
-							"uri": "https://www.modernisation.gouv.fr/marches-publics",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "Location header URI length: 71 [https://www.modernisation.gouv.fr/marches-publics-et-appels-candidature].\nPredicted response size: 371.\nResponse Body Length: 530."
 						},
 						{
 							"uri": "https://www.modernisation.gouv.fr/partenariat-pour-un-gouvernement-ouvert",
@@ -626,14 +634,6 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "Location header URI length: 41 [https://www.modernisation.gouv.fr/accueil].\nPredicted response size: 341.\nResponse Body Length: 410."
-						},
-						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique",
-							"method": "POST",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "Location header URI length: 62 [https://www.modernisation.gouv.fr/transformer-laction-publique].\nPredicted response size: 362.\nResponse Body Length: 494."
 						}
 					],
 					"count": "12",
@@ -642,7 +642,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "2105"
+					"sourceid": "2665"
 				},
 				{
 					"pluginid": "10017",
@@ -677,7 +677,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "2411"
+					"sourceid": "2201"
 				},
 				{
 					"pluginid": "10110",
@@ -728,7 +728,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "2022"
+					"sourceid": "2031"
 				},
 				{
 					"pluginid": "110009",
@@ -843,7 +843,7 @@
 					"reference": "<p>https://owasp.org/www-community/attacks/Full_Path_Disclosure</p>",
 					"cweid": "209",
 					"wascid": "13",
-					"sourceid": "2364"
+					"sourceid": "2170"
 				},
 				{
 					"pluginid": "10063",
@@ -865,6 +865,22 @@
 						},
 						{
 							"uri": "https://www.modernisation.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/ameliorer-lexperience-usagers",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/ameliorer-lexperience-usagers/services-publics",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -912,14 +928,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/france-experimentation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/le-barometre-des-resultats-de-laction-publique",
 							"method": "GET",
 							"param": "",
@@ -929,14 +937,6 @@
 						},
 						{
 							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/le-comite-interministeriel-de-la-transformation-publique-citp",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/partenariat-pour-un-gouvernement-ouvert",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1027,14 +1027,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/core/themes/stable/css/system/components/item-list.module.css?s8flfx",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.modernisation.gouv.fr/core/themes/stable/css/system/components/js.module.css?s8flfx",
 							"method": "GET",
 							"param": "",
@@ -1043,7 +1035,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/core/themes/stable/css/system/components/position-container.module.css?s8flfx",
+							"uri": "https://www.modernisation.gouv.fr/core/themes/stable/css/system/components/nowrap.module.css?s8flfx",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1051,7 +1043,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/core/themes/stable/css/system/components/sticky-header.module.css?s8flfx",
+							"uri": "https://www.modernisation.gouv.fr/core/themes/stable/css/system/components/system-status-counter.css?s8flfx",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1067,13 +1059,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "1857"
+					"sourceid": "1854"
 				},
 				{
 					"pluginid": "10094",
@@ -1095,6 +1087,22 @@
 						},
 						{
 							"uri": "https://www.modernisation.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM",
+							"otherinfo": "~\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDou\uFFFDTns4_\uFFFD,c\u04FD\uFFFD\uFFFD\t\uFFFD7\uFFFD\u0299a,\\x001c}\uFFFDv\uFFFD3"
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/ameliorer-lexperience-usagers",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM",
+							"otherinfo": "~\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDou\uFFFDTns4_\uFFFD,c\u04FD\uFFFD\uFFFD\t\uFFFD7\uFFFD\u0299a,\\x001c}\uFFFDv\uFFFD3"
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/ameliorer-lexperience-usagers/services-publics",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1142,14 +1150,6 @@
 							"otherinfo": "~\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDou\uFFFDTns4_\uFFFD,c\u04FD\uFFFD\uFFFD\t\uFFFD7\uFFFD\u0299a,\\x001c}\uFFFDv\uFFFD3"
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/france-experimentation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM",
-							"otherinfo": "~\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDou\uFFFDTns4_\uFFFD,c\u04FD\uFFFD\uFFFD\t\uFFFD7\uFFFD\u0299a,\\x001c}\uFFFDv\uFFFD3"
-						},
-						{
 							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/le-barometre-des-resultats-de-laction-publique",
 							"method": "GET",
 							"param": "",
@@ -1159,14 +1159,6 @@
 						},
 						{
 							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/le-comite-interministeriel-de-la-transformation-publique-citp",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM",
-							"otherinfo": "~\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDou\uFFFDTns4_\uFFFD,c\u04FD\uFFFD\uFFFD\t\uFFFD7\uFFFD\u0299a,\\x001c}\uFFFDv\uFFFD3"
-						},
-						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/partenariat-pour-un-gouvernement-ouvert",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1207,7 +1199,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "2314"
+					"sourceid": "2139"
 				},
 				{
 					"pluginid": "10027",
@@ -1229,6 +1221,22 @@
 						},
 						{
 							"uri": "https://www.modernisation.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/ameliorer-lexperience-usagers",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/ameliorer-lexperience-usagers/services-publics",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1276,14 +1284,6 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/france-experimentation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
 							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/le-barometre-des-resultats-de-laction-publique",
 							"method": "GET",
 							"param": "",
@@ -1298,14 +1298,6 @@
 							"attack": "",
 							"evidence": "user",
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/partenariat-pour-un-gouvernement-ouvert",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						}
 					],
 					"count": "11",
@@ -1314,7 +1306,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10109",
@@ -1340,6 +1332,22 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<a id=\"contenu\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/ameliorer-lexperience-usagers",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Am\u00E9liorer l\u2019exp\u00E9rience usagers</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/ameliorer-lexperience-usagers/services-publics",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Services Publics +</a>",
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
@@ -1383,14 +1391,6 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/france-experimentation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">France Exp\u00E9rimentation</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
 							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/le-barometre-des-resultats-de-laction-publique",
 							"method": "GET",
 							"param": "",
@@ -1404,14 +1404,6 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Comit\u00E9 interminist\u00E9riel de la transformation publique</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/partenariat-pour-un-gouvernement-ouvert",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Partenariat pour un Gouvernement Ouvert</a>",
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						}
 					],
@@ -1443,6 +1435,14 @@
 						},
 						{
 							"uri": "https://www.modernisation.gouv.fr/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600, public",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.modernisation.gouv.fr/ameliorer-lexperience-usagers",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1512,14 +1512,6 @@
 							"attack": "",
 							"evidence": "max-age=600, public",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/partenariat-pour-un-gouvernement-ouvert",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600, public",
-							"otherinfo": ""
 						}
 					],
 					"count": "11",
@@ -1528,7 +1520,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1555,17 +1547,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1598,17 +1582,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1641,17 +1617,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1684,17 +1652,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1785,7 +1745,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/france-experimentation",
+							"uri": "https://www.modernisation.gouv.fr/transformer-laction-publique/le-barometre-des-resultats-de-laction-publique",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1807,7 +1767,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10031",
@@ -2042,7 +2002,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "2700"
+					"sourceid": "2848"
 				}
 			]
 		}
