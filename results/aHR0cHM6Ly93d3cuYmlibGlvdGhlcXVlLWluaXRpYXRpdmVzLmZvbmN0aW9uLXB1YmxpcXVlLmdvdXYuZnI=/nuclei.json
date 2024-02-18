@@ -1,0 +1,444 @@
+[
+  [
+    {
+      "template": "dns/dns-saas-service-detection.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
+      "template-id": "dns-saas-service-detection",
+      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
+      "info": {
+        "name": "DNS SaaS Service Detection",
+        "author": [
+          "noah @thesubtlety",
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "service"
+        ],
+        "description": "A CNAME DNS record was discovered",
+        "reference": [
+          "https://ns1.com/resources/cname",
+          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
+          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "www.bibliotheque-initiatives.fonction-publique.gouv.fr.",
+      "matched-at": "www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "extracted-results": [
+        "vdjnm6u.ng.impervadns.net."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 38403\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.bibliotheque-initiatives.fonction-publique.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 38403\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.bibliotheque-initiatives.fonction-publique.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.bibliotheque-initiatives.fonction-publique.gouv.fr.\t600\tIN\tCNAME\tvdjnm6u.ng.impervadns.net.\n",
+      "timestamp": "2024-02-18T01:18:01.830598563Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.bibliotheque-initiatives.fonction-publique.gouv.fr.",
+      "matched-at": "www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 48122\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.bibliotheque-initiatives.fonction-publique.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 48122\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.bibliotheque-initiatives.fonction-publique.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.bibliotheque-initiatives.fonction-publique.gouv.fr.\t600\tIN\tCNAME\tvdjnm6u.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
+      "timestamp": "2024-02-18T01:18:01.841361763Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke"
+        ],
+        "tags": [
+          "tech"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "matched-at": "https://www.bibliotheque-initiatives.fonction-publique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.bibliotheque-initiatives.fonction-publique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.bibliotheque-initiatives.fonction-publique.gouv.fr/\r\nSet-Cookie: visid_incap_3059895=pP9b7sa3SCmn3Dja4TJ5Vz9b0WUAAAAAQUIPAAAAAABUT9AuVEdtB23umSIdyUjZ; expires=Sun, 16 Feb 2025 06:22:27 GMT; HttpOnly; path=/; Domain=.bibliotheque-initiatives.fonction-publique.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_622_3059895=FMW1WB4vcx5hyOSmA8uhCD9b0WUAAAAAfV9MKfkp166OK/tnNn2IAA==; path=/; Domain=.bibliotheque-initiatives.fonction-publique.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 6-8995426-0 0NNN RT(1708219199097 12) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-02-18T01:19:59.532385607Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.bibliotheque-initiatives.fonction-publique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke"
+        ],
+        "tags": [
+          "tech"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "matched-at": "https://www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.bibliotheque-initiatives.fonction-publique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.bibliotheque-initiatives.fonction-publique.gouv.fr/\r\nSet-Cookie: visid_incap_3059895=R6nulyWcTvKiIWmSiTtwtjlb0WUAAAAAQUIPAAAAAAC6zgq6szzh6T30behJF4gW; expires=Sun, 16 Feb 2025 06:22:27 GMT; HttpOnly; path=/; Domain=.bibliotheque-initiatives.fonction-publique.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_622_3059895=N13GAZRJ9A9SvuSmA8uhCDlb0WUAAAAAGnR4CmxmM3sxOqh8GYcplw==; path=/; Domain=.bibliotheque-initiatives.fonction-publique.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 10-26602099-0 0NNN RT(1708219193618 7) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-02-18T01:19:59.608173507Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.bibliotheque-initiatives.fonction-publique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/external-service-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/external-service-interaction",
+      "template-id": "external-service-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/external-service-interaction.yaml",
+      "info": {
+        "name": "External Service Interaction",
+        "author": [
+          "andreluna"
+        ],
+        "tags": [
+          "miscellaneous",
+          "http",
+          "misc",
+          "oast"
+        ],
+        "description": "External Service interaction via Host Header Injection.",
+        "reference": [
+          "https://portswigger.net/kb/issues/00300210_external-service-interaction-http",
+          "https://success.qualys.com/support/s/article/000006843",
+          "https://owasp.org/www-project-web-security-testing-guide/latest/4-web_application_security_testing/07-input_validation_testing/17-testing_for_host_header_injection"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-918",
+            "cwe-406"
+          ]
+        }
+      },
+      "type": "http",
+      "host": "https://www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "matched-at": "https://www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: cn8llikaialvq4f7ilegq9rqctuenb8c5.oast.site\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 692\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1010-26609987-0 0NNN RT(1708219285256 7) q(0 -1 -1 -1) r(64 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1010-26609987-0%200NNN%20RT%281708219285256%207%29%20q%280%20-1%20-1%20-1%29%20r%2864%20-1%29&incident_id=0-180547484428149770&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-180547484428149770</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-02-18T01:21:32.049174851Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "cn8llikaialvq4f7ilegq9rqctuenb8c5",
+        "full-id": "cn8llikaialvq4f7ilegq9rqctuenb8c5",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 26592\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cn8llikaialvq4f7ilegq9rqctuenb8c5.oast.site.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 26592\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cn8llikaialvq4f7ilegq9rqctuenb8c5.oast.site.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncn8llikaialvq4f7ilegq9rqctuenb8c5.oast.site.\t3600\tIN\tA\t178.128.16.97\n\n;; AUTHORITY SECTION:\ncn8llikaialvq4f7ilegq9rqctuenb8c5.oast.site.\t3600\tIN\tNS\tns1.oast.site.\ncn8llikaialvq4f7ilegq9rqctuenb8c5.oast.site.\t3600\tIN\tNS\tns2.oast.site.\n\n;; ADDITIONAL SECTION:\nns1.oast.site.\t3600\tIN\tA\t178.128.16.97\nns2.oast.site.\t3600\tIN\tA\t178.128.16.97\n",
+        "remote-address": "198.143.37.13",
+        "timestamp": "2024-02-18T01:21:25.788812725Z"
+      },
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Host: cn8llikaialvq4f7ilegq9rqctuenb8c5.oast.site' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.bibliotheque-initiatives.fonction-publique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/tls-sni-proxy.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-sni-proxy",
+      "template-id": "tls-sni-proxy",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/tls-sni-proxy.yaml",
+      "info": {
+        "name": "TLS SNI Proxy Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "misconfig",
+          "ssrf",
+          "oast",
+          "tls",
+          "sni",
+          "proxy"
+        ],
+        "reference": [
+          "https://www.invicti.com/blog/web-security/ssrf-vulnerabilities-caused-by-sni-proxy-misconfigurations/",
+          "https://www.bamsoftware.com/computers/sniproxy/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "matched-at": "https://www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.bibliotheque-initiatives.fonction-publique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-02-18T01:22:04.421208828Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "cn8llikaialvq4f7ilegyttew15qabq9b",
+        "full-id": "cn8llikaialvq4f7ilegyttew15qabq9b",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 31502\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cn8llikaialvq4f7ilegyttew15qabq9b.oast.site.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 31502\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cn8llikaialvq4f7ilegyttew15qabq9b.oast.site.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncn8llikaialvq4f7ilegyttew15qabq9b.oast.site.\t3600\tIN\tA\t178.128.16.97\n\n;; AUTHORITY SECTION:\ncn8llikaialvq4f7ilegyttew15qabq9b.oast.site.\t3600\tIN\tNS\tns1.oast.site.\ncn8llikaialvq4f7ilegyttew15qabq9b.oast.site.\t3600\tIN\tNS\tns2.oast.site.\n\n;; ADDITIONAL SECTION:\nns1.oast.site.\t3600\tIN\tA\t178.128.16.97\nns2.oast.site.\t3600\tIN\tA\t178.128.16.97\n",
+        "remote-address": "198.143.37.13",
+        "timestamp": "2024-02-18T01:21:54.575583199Z"
+      },
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "incapsula",
+      "type": "http",
+      "host": "https://www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "matched-at": "https://www.bibliotheque-initiatives.fonction-publique.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: www.bibliotheque-initiatives.fonction-publique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.bibliotheque-initiatives.fonction-publique.gouv.fr/\r\nSet-Cookie: visid_incap_3059895=Bz7VEGEdQLiCWA7V0jDLf8db0WUAAAAAQUIPAAAAAABRWSviQ6a5RHLDxDADe7nq; expires=Sun, 16 Feb 2025 06:22:27 GMT; HttpOnly; path=/; Domain=.bibliotheque-initiatives.fonction-publique.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_622_3059895=hD+xeEiURm04wOWmA8uhCMdb0WUAAAAAKrWyxC7MRY3tFZWXZhH+CA==; path=/; Domain=.bibliotheque-initiatives.fonction-publique.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 10-26614165-0 0NNN RT(1708219335763 11) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-02-18T01:22:16.150272218Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.bibliotheque-initiatives.fonction-publique.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.bibliotheque-initiatives.fonction-publique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/vulnerabilities/generic/request-based-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/request-based-interaction",
+      "template-id": "request-based-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/vulnerabilities/generic/request-based-interaction.yaml",
+      "info": {
+        "name": "OOB Request Based Interaction",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "oast",
+          "ssrf",
+          "generic"
+        ],
+        "description": "The remote server fetched a spoofed DNS Name from the request.",
+        "reference": [
+          "https://portswigger.net/research/cracking-the-lens-targeting-https-hidden-attack-surface"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 5
+        }
+      },
+      "matcher-name": "dns",
+      "type": "http",
+      "host": "https://www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "matched-at": "https://www.bibliotheque-initiatives.fonction-publique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: cn8llikaialvq4f7ileg1rfgs7ca8gkih.oast.site\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 692\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1009-21424821-0 0NNN RT(1708219347778 8) q(0 -1 -1 -1) r(64 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1009-21424821-0%200NNN%20RT%281708219347778%208%29%20q%280%20-1%20-1%20-1%29%20r%2864%20-1%29&incident_id=0-143457289321194505&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-143457289321194505</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-02-18T01:22:34.565635877Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "cn8llikaialvq4f7ileg1rfgs7ca8gkih",
+        "full-id": "cn8llikaialvq4f7ileg1rfgs7ca8gkih",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 2384\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cn8llikaialvq4f7ileg1rfgs7ca8gkih.oast.site.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 2384\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cn8llikaialvq4f7ileg1rfgs7ca8gkih.oast.site.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncn8llikaialvq4f7ileg1rfgs7ca8gkih.oast.site.\t3600\tIN\tA\t178.128.16.97\n\n;; AUTHORITY SECTION:\ncn8llikaialvq4f7ileg1rfgs7ca8gkih.oast.site.\t3600\tIN\tNS\tns1.oast.site.\ncn8llikaialvq4f7ileg1rfgs7ca8gkih.oast.site.\t3600\tIN\tNS\tns2.oast.site.\n\n;; ADDITIONAL SECTION:\nns1.oast.site.\t3600\tIN\tA\t178.128.16.97\nns2.oast.site.\t3600\tIN\tA\t178.128.16.97\n",
+        "remote-address": "198.143.37.13",
+        "timestamp": "2024-02-18T01:22:28.279251391Z"
+      },
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "matched-at": "www.bibliotheque-initiatives.fonction-publique.gouv.fr:443",
+      "extracted-results": [
+        "Gandi"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2024-02-18T01:23:31.346044715Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "matched-at": "www.bibliotheque-initiatives.fonction-publique.gouv.fr:443",
+      "extracted-results": [
+        "bibliotheque-initiatives.fonction-publique.gouv.fr",
+        "www.bibliotheque-initiatives.fonction-publique.gouv.fr"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2024-02-18T01:23:31.346164699Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "matched-at": "www.bibliotheque-initiatives.fonction-publique.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2024-02-18T01:23:31.705756514Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.bibliotheque-initiatives.fonction-publique.gouv.fr",
+      "matched-at": "www.bibliotheque-initiatives.fonction-publique.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2024-02-18T01:23:31.793289453Z",
+      "matcher-status": true
+    }
+  ]
+]
