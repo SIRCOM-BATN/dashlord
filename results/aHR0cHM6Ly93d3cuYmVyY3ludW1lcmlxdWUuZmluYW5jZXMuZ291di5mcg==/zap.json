@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 3 Mar 2024 01:07:06",
+	"@generated": "Sun, 10 Mar 2024 01:08:16",
 	"site":[ 
 		{
 			"@name": "https://www.bercynumerique.finances.gouv.fr",
@@ -9,41 +9,6 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
-				{
-					"pluginid": "10097",
-					"alertRef": "10097",
-					"alert": "Hash Disclosure - Mac OSX salted SHA-1",
-					"name": "Hash Disclosure - Mac OSX salted SHA-1",
-					"riskcode": "3",
-					"confidence": "2",
-					"riskdesc": "High (Medium)",
-					"desc": "<p>A hash was disclosed by the web server. - Mac OSX salted SHA-1</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/files/styles/ds_cartes_image_illustrative/public/2021-09/20181005163710-9f80f61d-xx.jpg?itok=9Yx27Mkn",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "3C8428E59F7FDF117100BDFBA2334AF2282F7A2BBE1257A0",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/files/styles/ds_cartes_image_illustrative/public/2021-09/20181005163710-9f80f61d-xx.jpg?itok=9Yx27Mkn",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "5A7A7FDBDE43DE117100BDFBA2334AF2282F7A2BBE1257A0",
-							"otherinfo": ""
-						}
-					],
-					"count": "2",
-					"solution": "<p>Ensure that hashes that are used to protect credentials or other resources are not leaked by the web server or database. There is typically no requirement for password hashes to be accessible to the web browser.      </p>",
-					"otherinfo": "",
-					"reference": "<p>https://openwall.info/wiki/john/sample-hashes</p>",
-					"cweid": "200",
-					"wascid": "13",
-					"sourceid": "3870"
-				},
 				{
 					"pluginid": "10202",
 					"alertRef": "10202",
@@ -56,14 +21,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"header-searchbar\" data-drupal-selector=\"header-searchbar\" action=\"/recherche\" method=\"GET\" id=\"header-searchbar\" accept-charset=\"UTF-8\" data-drupal-form-fields=\"edit-search,edit-valider\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ]."
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/*/media/oembed",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -111,7 +68,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ]."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/node/add/",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -119,7 +76,15 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ]."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.css$",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/media/oembed",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"header-searchbar\" data-drupal-selector=\"header-searchbar\" action=\"/recherche\" method=\"GET\" id=\"header-searchbar\" accept-charset=\"UTF-8\" data-drupal-form-fields=\"edit-search,edit-valider\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ]."
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -278,7 +243,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "56"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10038",
@@ -355,6 +320,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
@@ -363,7 +336,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.gif",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.jpeg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -377,14 +350,6 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
 					"count": "12",
@@ -393,7 +358,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "99"
+					"sourceid": "98"
 				},
 				{
 					"pluginid": "10098",
@@ -438,7 +403,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/user/password",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -513,7 +478,7 @@
 					"desc": "<p>The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=132000301434490401-420935609952241576&mth=GET&rpinfo=0&xinfo=40-74226937-0%200NNN%20RT%281709427958804%208%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=1000001470350666365-306367348798399687&mth=GET&rpinfo=0&xinfo=7-48821957-0%200NNN%20RT%281710032829134%206%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -527,7 +492,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "519"
+					"sourceid": "430"
 				},
 				{
 					"pluginid": "90003",
@@ -540,7 +505,7 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
 					"instances":[ 
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=132000301434490401-420935609952241576&mth=GET&rpinfo=0&xinfo=40-74226937-0%200NNN%20RT%281709427958804%208%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=1000001470350666365-306367348798399687&mth=GET&rpinfo=0&xinfo=7-48821957-0%200NNN%20RT%281710032829134%206%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -554,7 +519,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "519"
+					"sourceid": "430"
 				},
 				{
 					"pluginid": "10044",
@@ -567,12 +532,84 @@
 					"desc": "<p>The server has responded with a redirect that seems to provide a large response. This may indicate that although the server sent a redirect it also responded with body content (which may include sensitive details, PII, etc.).</p>",
 					"instances":[ 
 						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 44 [https://www.bercynumerique.finances.gouv.fr/].\nPredicted response size: 344.\nResponse Body Length: 422."
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/faites-fleurir-vos-competences-numeriques",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 85 [https://www.bercynumerique.finances.gouv.fr/faites-fleurir-vos-competences-numeriques].\nPredicted response size: 385.\nResponse Body Length: 586."
+						},
+						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "Location header URI length: 55 [https://www.bercynumerique.finances.gouv.fr/filter/tips].\nPredicted response size: 355.\nResponse Body Length: 466."
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/information-en-continu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 66 [https://www.bercynumerique.finances.gouv.fr/information-en-continu].\nPredicted response size: 366.\nResponse Body Length: 510."
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/liens-utiles",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 56 [https://www.bercynumerique.finances.gouv.fr/liens-utiles].\nPredicted response size: 356.\nResponse Body Length: 470."
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/pac-num/formation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 61 [https://www.bercynumerique.finances.gouv.fr/pac-num/formation].\nPredicted response size: 361.\nResponse Body Length: 490."
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/pac-num/les-bonus-pac-num",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 69 [https://www.bercynumerique.finances.gouv.fr/pac-num/les-bonus-pac-num].\nPredicted response size: 369.\nResponse Body Length: 522."
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/pac-num/pix",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 55 [https://www.bercynumerique.finances.gouv.fr/pac-num/pix].\nPredicted response size: 355.\nResponse Body Length: 466."
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/presentation-du-pac-num",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 67 [https://www.bercynumerique.finances.gouv.fr/presentation-du-pac-num].\nPredicted response size: 367.\nResponse Body Length: 514."
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/quest-ce-que-le-sac-dos-numerique",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Location header URI length: 77 [https://www.bercynumerique.finances.gouv.fr/quest-ce-que-le-sac-dos-numerique].\nPredicted response size: 377.\nResponse Body Length: 554."
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/search/",
@@ -583,76 +620,12 @@
 							"otherinfo": "Location header URI length: 50 [https://www.bercynumerique.finances.gouv.fr/search].\nPredicted response size: 350.\nResponse Body Length: 446."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/node/11",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "Location header URI length: 55 [https://www.bercynumerique.finances.gouv.fr/pac-num/pix].\nPredicted response size: 355.\nResponse Body Length: 466."
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/node/12",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "Location header URI length: 61 [https://www.bercynumerique.finances.gouv.fr/pac-num/formation].\nPredicted response size: 361.\nResponse Body Length: 490."
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/node/13",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "Location header URI length: 69 [https://www.bercynumerique.finances.gouv.fr/pac-num/les-bonus-pac-num].\nPredicted response size: 369.\nResponse Body Length: 522."
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/node/302",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "Location header URI length: 56 [https://www.bercynumerique.finances.gouv.fr/liens-utiles].\nPredicted response size: 356.\nResponse Body Length: 470."
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/node/9",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "Location header URI length: 67 [https://www.bercynumerique.finances.gouv.fr/presentation-du-pac-num].\nPredicted response size: 367.\nResponse Body Length: 514."
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/node/9312",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "Location header URI length: 85 [https://www.bercynumerique.finances.gouv.fr/faites-fleurir-vos-competences-numeriques].\nPredicted response size: 385.\nResponse Body Length: 586."
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/pac-num/la-ressourcerie-numerique-pac-num",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "Location header URI length: 69 [https://www.bercynumerique.finances.gouv.fr/pac-num/les-bonus-pac-num].\nPredicted response size: 369.\nResponse Body Length: 522."
-						},
-						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/recherche/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "Location header URI length: 53 [https://www.bercynumerique.finances.gouv.fr/recherche].\nPredicted response size: 353.\nResponse Body Length: 458."
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/search",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "Location header URI length: 55 [https://www.bercynumerique.finances.gouv.fr/search/node].\nPredicted response size: 355.\nResponse Body Length: 466."
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/search/",
@@ -663,13 +636,13 @@
 							"otherinfo": "Location header URI length: 50 [https://www.bercynumerique.finances.gouv.fr/search].\nPredicted response size: 350.\nResponse Body Length: 446."
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
-					"otherinfo": "<p>Location header URI length: 55 [https://www.bercynumerique.finances.gouv.fr/filter/tips].</p><p>Predicted response size: 355.</p><p>Response Body Length: 466.</p>",
+					"otherinfo": "<p>Location header URI length: 44 [https://www.bercynumerique.finances.gouv.fr/].</p><p>Predicted response size: 344.</p><p>Response Body Length: 422.</p>",
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "181"
+					"sourceid": "409"
 				},
 				{
 					"pluginid": "10010",
@@ -684,25 +657,25 @@
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr",
 							"method": "GET",
-							"param": "incap_ses_132_3065004",
+							"param": "incap_ses_1000_3065004",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_132_3065004",
+							"evidence": "Set-Cookie: incap_ses_1000_3065004",
 							"otherinfo": ""
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "incap_ses_132_3065004",
+							"param": "incap_ses_1000_3065004",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_132_3065004",
+							"evidence": "Set-Cookie: incap_ses_1000_3065004",
 							"otherinfo": ""
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/sitemap.xml",
 							"method": "GET",
-							"param": "incap_ses_132_3065004",
+							"param": "incap_ses_1000_3065004",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_132_3065004",
+							"evidence": "Set-Cookie: incap_ses_1000_3065004",
 							"otherinfo": ""
 						}
 					],
@@ -727,9 +700,9 @@
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr",
 							"method": "GET",
-							"param": "incap_ses_132_3065004",
+							"param": "incap_ses_1000_3065004",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_132_3065004",
+							"evidence": "Set-Cookie: incap_ses_1000_3065004",
 							"otherinfo": ""
 						},
 						{
@@ -743,9 +716,9 @@
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "incap_ses_132_3065004",
+							"param": "incap_ses_1000_3065004",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_132_3065004",
+							"evidence": "Set-Cookie: incap_ses_1000_3065004",
 							"otherinfo": ""
 						},
 						{
@@ -759,9 +732,9 @@
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/sitemap.xml",
 							"method": "GET",
-							"param": "incap_ses_132_3065004",
+							"param": "incap_ses_1000_3065004",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_132_3065004",
+							"evidence": "Set-Cookie: incap_ses_1000_3065004",
 							"otherinfo": ""
 						},
 						{
@@ -792,7 +765,7 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1381380575&ns=4",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1026752951&ns=1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -800,7 +773,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1531286570&ns=1",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1074839462&ns=8",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -808,7 +781,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=174016674&ns=5",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1382937127&ns=3",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -816,7 +789,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1758300068&ns=3",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1426047214&ns=2",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -824,7 +797,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=2003836901&ns=2",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1579440543&ns=1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -832,7 +805,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=435577789&ns=1",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=16504801&ns=4",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -840,7 +813,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=493324849&ns=1",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1752448679&ns=5",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -848,7 +821,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=539496331&ns=3",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1774868574&ns=4",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -856,7 +829,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=582147495&ns=6",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1927444168&ns=5",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -864,7 +837,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=657132640&ns=9",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1956629942&ns=2",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -872,7 +845,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=803445175&ns=2",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=438014088&ns=6",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -880,7 +853,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=947446377&ns=2",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=692146291&ns=5",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -902,7 +875,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "502"
+					"sourceid": "419"
 				},
 				{
 					"pluginid": "10063",
@@ -995,7 +968,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.js",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.jpg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1022,109 +995,109 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/accessibilite",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.jpeg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1553181991",
-							"otherinfo": "1553181991, which evaluates to: 2019-03-21 15:26:31"
+							"evidence": "1579440543",
+							"otherinfo": "1579440543, which evaluates to: 2020-01-19 13:29:03"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/comment/reply/",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1837012959",
-							"otherinfo": "1837012959, which evaluates to: 2028-03-18 17:22:39"
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/core/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1873706836",
-							"otherinfo": "1873706836, which evaluates to: 2029-05-17 10:07:16"
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1758300068",
-							"otherinfo": "1758300068, which evaluates to: 2025-09-19 16:41:08"
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1531286570",
-							"otherinfo": "1531286570, which evaluates to: 2018-07-11 05:22:50"
+							"evidence": "1426047214",
+							"otherinfo": "1426047214, which evaluates to: 2015-03-11 04:13:34"
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "2003836901",
-							"otherinfo": "2003836901, which evaluates to: 2033-07-01 13:21:41"
+							"evidence": "1956629942",
+							"otherinfo": "1956629942, which evaluates to: 2032-01-02 04:19:02"
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1791453472",
-							"otherinfo": "1791453472, which evaluates to: 2026-10-08 09:57:52"
+							"evidence": "1562380741",
+							"otherinfo": "1562380741, which evaluates to: 2019-07-06 02:39:01"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/mentions-legales",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/*/media/oembed",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "2022801465",
-							"otherinfo": "2022801465, which evaluates to: 2034-02-06 01:17:45"
+							"evidence": "1600670328",
+							"otherinfo": "1600670328, which evaluates to: 2020-09-21 06:38:48"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/node/add/",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1671774340",
-							"otherinfo": "1671774340, which evaluates to: 2022-12-23 05:45:40"
+							"evidence": "1947073575",
+							"otherinfo": "1947073575, which evaluates to: 2031-09-13 13:46:15"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/pac-num/formation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1822135152",
-							"otherinfo": "1822135152, which evaluates to: 2027-09-28 12:39:12"
+							"evidence": "1901968345",
+							"otherinfo": "1901968345, which evaluates to: 2030-04-09 12:32:25"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/recoupement-dinformations-en-ligne-ce-que-vous-publiez-peut-devoiler-votre-vie-privee",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/pac-num/les-bonus-pac-num",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1488450910",
-							"otherinfo": "1488450910, which evaluates to: 2017-03-02 10:35:10"
+							"evidence": "1588875649",
+							"otherinfo": "1588875649, which evaluates to: 2020-05-07 18:20:49"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/thematique/reseaux-sociaux",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/pac-num/pix",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1547168411",
-							"otherinfo": "1547168411, which evaluates to: 2019-01-11 01:00:11"
+							"evidence": "2021542651",
+							"otherinfo": "2021542651, which evaluates to: 2034-01-22 11:37:31"
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1927444168",
+							"otherinfo": "1927444168, which evaluates to: 2031-01-29 09:09:28"
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.jpeg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1752448679",
+							"otherinfo": "1752448679, which evaluates to: 2025-07-13 23:17:59"
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.jpg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1774868574",
+							"otherinfo": "1774868574, which evaluates to: 2026-03-30 11:02:54"
 						}
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1553181991, which evaluates to: 2019-03-21 15:26:31</p>",
+					"otherinfo": "<p>1579440543, which evaluates to: 2020-01-19 13:29:03</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "477"
+					"sourceid": "125"
 				},
 				{
 					"pluginid": "10021",
@@ -1137,15 +1110,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=657132640&ns=9",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/files/2022-09/visuel-pacnum.jpg",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1074839462&ns=8",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1201,7 +1166,15 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/files/styles/ds_cartes_image_illustrative/public/2024-02/roso_osint_0.jpg?itok=ye24CQEu",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/files/styles/ds_cartes_image_illustrative/public/2024-03/dane-ia-couvertue-brochure-2024-50145.jpg?itok=ixpzMRls",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/files/styles/ds_cartes_image_illustrative/public/2024-03/gettyimages-1405821635_0.jpg?itok=QDJ-mZ-b",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1239,7 +1212,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "497"
+					"sourceid": "378"
 				},
 				{
 					"pluginid": "10094",
@@ -1256,16 +1229,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "d2HEGVotTref+sRXyZ+S5/XM42UAAAAAQUIPAAAAAABJW308HvmWKhnWzbeD4pYw",
-							"otherinfo": "wa\uFFFD\\x0019Z-N\uFFFD\uFFFD\uFFFD\uFFFDW\u025F\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000I[}<\\x001e\uFFFD\uFFFD*\\x0019\uFFFD\u0377\uFFFD\uFFFD0"
+							"evidence": "nBLE/Q0PSQCh2QsoAWuEfbsH7WUAAAAAQUIPAAAAAADsJfRnmnlRWXZUm+HwU0Xk",
+							"otherinfo": "\uFFFD\\x0012\uFFFD\uFFFD\r\\x000fI\\x0000\uFFFD\uFFFD\\x000b(\\x0001k\uFFFD}\uFFFD\\x0007\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD%\uFFFDg\uFFFDyQYvT\uFFFD\uFFFD\uFFFDSE\uFFFD"
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "WACJXem9RkOqDIJdkge4h/XM42UAAAAAQUIPAAAAAACLg1stRVHTP7tKFNzLo/0i",
-							"otherinfo": "X\\x0000\uFFFD]\uFFFDFC\uFFFD\\x000c\uFFFD]\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFD[-EQ\uFFFD?\uFFFDJ\\x0014\uFFFD\u02E3\uFFFD\""
+							"evidence": "2G22tAgASZuCzeoc36zOTbsH7WUAAAAAQUIPAAAAAAC3qx4yNmpgtHzbgy5x1T7s",
+							"otherinfo": "\uFFFDm\uFFFD\uFFFD\\x0008\\x0000I\uFFFD\uFFFD\uFFFD\uFFFD\\x001c\u07EC\uFFFDM\uFFFD\\x0007\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFD\\x001e26j`\uFFFD|\u06C3.q\uFFFD>\uFFFD"
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/comment/reply/",
@@ -1309,14 +1282,6 @@
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/node/add/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files/css/css_wtV3by3rHXLVJRtsxwPSxI9lRwvU29YEFmvrgsyH070",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFD]\uFFFD\uFFFDz\uFFFD\\\uFFFDIF\uFFFD1\uFFFD\uFFFD\uFFFD#\uFFFDQ\uFFFD\uFFFD6\uFFFD\uFFFD\\x0005\uFFFD\uFFFD\uFFFD!\uFFFD\uFFFD"
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1344,25 +1309,25 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "OLSE3wkSTGatl65NjxMQsfXM42UAAAAAQUIPAAAAAACgqdpIP1ucIO0/Pbem3lam",
-							"otherinfo": "8\uFFFD\uFFFD\uFFFD\t\\x0012Lf\uFFFD\uFFFD\uFFFDM\uFFFD\\x0013\\x0010\uFFFD\uFFFD\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFD\uFFFDH?[\uFFFD \uFFFD?=\uFFFD\uFFFD\uFFFDV\uFFFD"
+							"evidence": "IurQIQJ1Q1igPBbQM8m5IbsH7WUAAAAAQUIPAAAAAABusi6U/8wAkCZTgLWO+p3w",
+							"otherinfo": "\"\uFFFD\uFFFD!\\x0002uCX\uFFFD<\\x0016\uFFFD3\u0279!\uFFFD\\x0007\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000n\uFFFD.\uFFFD\uFFFD\uFFFD\\x0000\uFFFD&S\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "T7f5uhl3Rz68wNgw3shYrPbM42UAAAAAQUIPAAAAAACJ63puRMqKWxajzfkJ+IwU",
-							"otherinfo": "O\uFFFD\uFFFD\uFFFD\\x0019wG>\uFFFD\uFFFD\uFFFD0\uFFFD\uFFFDX\uFFFD\uFFFD\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFDznD\u028A[\\x0016\uFFFD\uFFFD\uFFFD\t\uFFFD\uFFFD\\x0014"
+							"evidence": "FhfROoBATMi3KHJvV/ikObwH7WUAAAAAQUIPAAAAAABnUJH4YzvGAxugl+dEJSiO",
+							"otherinfo": "\\x0016\\x0017\uFFFD:\uFFFD@L\u0237(roW\uFFFD\uFFFD9\uFFFD\\x0007\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000gP\uFFFD\uFFFDc;\uFFFD\\x0003\\x001b\uFFFD\uFFFD\uFFFDD%(\uFFFD"
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>wa\uFFFD\\x0019Z-N\uFFFD\uFFFD\uFFFD\uFFFDW\u025F\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000I[}<\\x001e\uFFFD\uFFFD*\\x0019\uFFFD\u0377\uFFFD\uFFFD0</p>",
+					"otherinfo": "<p>\uFFFD\\x0012\uFFFD\uFFFD\r\\x000fI\\x0000\uFFFD\uFFFD\\x000b(\\x0001k\uFFFD}\uFFFD\\x0007\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD%\uFFFDg\uFFFDyQYvT\uFFFD\uFFFD\uFFFDSE\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "56"
 				},
 				{
 					"pluginid": "10027",
@@ -1376,14 +1341,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/*/media/oembed",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1431,7 +1388,15 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/node/add/",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/index.php/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/index.php\\/\",\"scriptPath\":null\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/media/oembed",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1439,7 +1404,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.css$",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1487,7 +1452,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.bercynumerique.finances.gouv.fr\nvisid_incap_3065004=d2HEGVotTref+sRXyZ+S5/XM42UAAAAAQUIPAAAAAABJW308HvmWKhnWzbeD4pYw\nincap_ses_132_3065004=w9JoDnHYXDAYSj8lk/XUAfXM42UAAAAAVQpFwt9YqImyIicoYcQbyQ==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.bercynumerique.finances.gouv.fr\nvisid_incap_3065004=2G22tAgASZuCzeoc36zOTbsH7WUAAAAAQUIPAAAAAAC3qx4yNmpgtHzbgy5x1T7s\nincap_ses_1000_3065004=DwSHX9lfcGS8qR7/CbjgDbsH7WUAAAAADmnehAZ62mOYVspS8mqQaQ==\n"
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr",
@@ -1495,7 +1460,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.bercynumerique.finances.gouv.fr\nvisid_incap_3065004=WACJXem9RkOqDIJdkge4h/XM42UAAAAAQUIPAAAAAACLg1stRVHTP7tKFNzLo/0i\nincap_ses_132_3065004=cWTPUGvIODnkSz8lk/XUAfXM42UAAAAAvZLmf+LIJLRUdQTsB+IHzQ==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.bercynumerique.finances.gouv.fr\nvisid_incap_3065004=nBLE/Q0PSQCh2QsoAWuEfbsH7WUAAAAAQUIPAAAAAADsJfRnmnlRWXZUm+HwU0Xk\nincap_ses_1000_3065004=+tU/Wy4NCF8cqh7/CbjgDbsH7WUAAAAAufVOIsoChssiqfOmY2j0Cg==\n"
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/robots.txt",
@@ -1503,7 +1468,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.bercynumerique.finances.gouv.fr\nvisid_incap_3065004=OLSE3wkSTGatl65NjxMQsfXM42UAAAAAQUIPAAAAAACgqdpIP1ucIO0/Pbem3lam\nincap_ses_132_3065004=JGaZRj29NBuQSj8lk/XUAfXM42UAAAAA5EmZpllbKi9DnbYfCFCMfg==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.bercynumerique.finances.gouv.fr\nvisid_incap_3065004=IurQIQJ1Q1igPBbQM8m5IbsH7WUAAAAAQUIPAAAAAABusi6U/8wAkCZTgLWO+p3w\nincap_ses_1000_3065004=w7ehCKIvoQzgqR7/CbjgDbsH7WUAAAAAbNZx6eeBlYor2JAt9M/GhA==\n"
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/sitemap.xml",
@@ -1511,12 +1476,12 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.bercynumerique.finances.gouv.fr\nvisid_incap_3065004=T7f5uhl3Rz68wNgw3shYrPbM42UAAAAAQUIPAAAAAACJ63puRMqKWxajzfkJ+IwU\nincap_ses_132_3065004=68g2XBW7IEMhTj8lk/XUAfbM42UAAAAANcNjB1C2CH1FnIBehLqS6g==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.bercynumerique.finances.gouv.fr\nvisid_incap_3065004=FhfROoBATMi3KHJvV/ikObwH7WUAAAAAQUIPAAAAAABnUJH4YzvGAxugl+dEJSiO\nincap_ses_1000_3065004=dpr3JqjqDhN9qh7/CbjgDbwH7WUAAAAAoP8AcNGN9EoVvNid9ba7zg==\n"
 						}
 					],
 					"count": "4",
 					"solution": "<p>Always scope cookies to a FQDN (Fully Qualified Domain Name).</p>",
-					"otherinfo": "<p>The origin domain used for comparison was: </p><p>www.bercynumerique.finances.gouv.fr</p><p>visid_incap_3065004=d2HEGVotTref+sRXyZ+S5/XM42UAAAAAQUIPAAAAAABJW308HvmWKhnWzbeD4pYw</p><p>incap_ses_132_3065004=w9JoDnHYXDAYSj8lk/XUAfXM42UAAAAAVQpFwt9YqImyIicoYcQbyQ==</p><p></p>",
+					"otherinfo": "<p>The origin domain used for comparison was: </p><p>www.bercynumerique.finances.gouv.fr</p><p>visid_incap_3065004=2G22tAgASZuCzeoc36zOTbsH7WUAAAAAQUIPAAAAAAC3qx4yNmpgtHzbgy5x1T7s</p><p>incap_ses_1000_3065004=DwSHX9lfcGS8qR7/CbjgDbsH7WUAAAAADmnehAZ62mOYVspS8mqQaQ==</p><p></p>",
 					"reference": "<p>https://tools.ietf.org/html/rfc6265#section-4.1</p><p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p><p>https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies</p>",
 					"cweid": "565",
 					"wascid": "15",
@@ -1545,7 +1510,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=1758300068\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=1382937127\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1561,7 +1526,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=4&cb=1381380575\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=4&cb=16504801\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1569,7 +1534,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=435577789\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1579440543\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1577,7 +1542,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=582147495\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=438014088\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1585,7 +1550,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=174016674\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=1426047214\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1601,7 +1566,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=2003836901\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=1956629942\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1609,15 +1574,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=539496331\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=1927444168\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.js",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.jpg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=993738128\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=4&cb=1774868574\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
@@ -1656,7 +1621,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/faites-fleurir-vos-competences-numeriques",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1664,7 +1629,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/filter/tips",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/information-en-continu",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1716,7 +1681,7 @@
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
-							"evidence": "max-age=541, public",
+							"evidence": "max-age=124, public",
 							"otherinfo": ""
 						},
 						{
@@ -1734,7 +1699,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "56"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1755,6 +1720,30 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.gif",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.js",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1763,13 +1752,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "5",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "56"
 				},
 				{
 					"pluginid": "90005",
@@ -1790,6 +1779,30 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.gif",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.js",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1798,13 +1811,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "5",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "56"
 				},
 				{
 					"pluginid": "90005",
@@ -1825,6 +1838,30 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.gif",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.js",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1833,7 +1870,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "5",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1860,6 +1897,30 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.css",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.gif",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.js",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1868,13 +1929,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "5",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "56"
 				},
 				{
 					"pluginid": "10112",
@@ -1889,47 +1950,47 @@
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr",
 							"method": "GET",
-							"param": "incap_ses_132_3065004",
+							"param": "incap_ses_1000_3065004",
 							"attack": "",
-							"evidence": "cWTPUGvIODnkSz8lk/XUAfXM42UAAAAAvZLmf+LIJLRUdQTsB+IHzQ==",
-							"otherinfo": "\ncookie:incap_ses_132_3065004\ncookie:visid_incap_3065004"
+							"evidence": "+tU/Wy4NCF8cqh7/CbjgDbsH7WUAAAAAufVOIsoChssiqfOmY2j0Cg==",
+							"otherinfo": "\ncookie:incap_ses_1000_3065004\ncookie:visid_incap_3065004"
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr",
 							"method": "GET",
-							"param": "incap_ses_132_3065004",
+							"param": "incap_ses_1000_3065004",
 							"attack": "",
-							"evidence": "w9JoDnHYXDAYSj8lk/XUAfXM42UAAAAAVQpFwt9YqImyIicoYcQbyQ==",
-							"otherinfo": "\ncookie:incap_ses_132_3065004\ncookie:visid_incap_3065004"
+							"evidence": "DwSHX9lfcGS8qR7/CbjgDbsH7WUAAAAADmnehAZ62mOYVspS8mqQaQ==",
+							"otherinfo": "\ncookie:incap_ses_1000_3065004\ncookie:visid_incap_3065004"
 						},
 						{
 							"uri": "https://www.bercynumerique.finances.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "incap_ses_132_3065004",
+							"param": "incap_ses_1000_3065004",
 							"attack": "",
-							"evidence": "JGaZRj29NBuQSj8lk/XUAfXM42UAAAAA5EmZpllbKi9DnbYfCFCMfg==",
-							"otherinfo": "\ncookie:incap_ses_132_3065004\ncookie:visid_incap_3065004"
+							"evidence": "w7ehCKIvoQzgqR7/CbjgDbsH7WUAAAAAbNZx6eeBlYor2JAt9M/GhA==",
+							"otherinfo": "\ncookie:incap_ses_1000_3065004\ncookie:visid_incap_3065004"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.jpg",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.css$",
 							"method": "GET",
-							"param": "incap_ses_132_3065004",
+							"param": "incap_ses_1000_3065004",
 							"attack": "",
-							"evidence": "JGaZRj29NBuQSj8lk/XUAfXM42UAAAAA5EmZpllbKi9DnbYfCFCMfg==",
-							"otherinfo": "\ncookie:incap_ses_132_3065004"
+							"evidence": "w7ehCKIvoQzgqR7/CbjgDbsH7WUAAAAAbNZx6eeBlYor2JAt9M/GhA==",
+							"otherinfo": "\ncookie:incap_ses_1000_3065004"
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.jpg",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "visid_incap_3065004",
 							"attack": "",
-							"evidence": "OLSE3wkSTGatl65NjxMQsfXM42UAAAAAQUIPAAAAAACgqdpIP1ucIO0/Pbem3lam",
+							"evidence": "IurQIQJ1Q1igPBbQM8m5IbsH7WUAAAAAQUIPAAAAAABusi6U/8wAkCZTgLWO+p3w",
 							"otherinfo": "\ncookie:visid_incap_3065004"
 						}
 					],
 					"count": "5",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
-					"otherinfo": "<p></p><p>cookie:incap_ses_132_3065004</p><p>cookie:visid_incap_3065004</p>",
+					"otherinfo": "<p></p><p>cookie:incap_ses_1000_3065004</p><p>cookie:visid_incap_3065004</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
@@ -2018,19 +2079,19 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=541",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.bercynumerique.finances.gouv.fr/sitemap.xml",
+							"uri": "https://www.bercynumerique.finances.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "max-age=600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.bercynumerique.finances.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=124",
 							"otherinfo": ""
 						}
 					],
@@ -2040,7 +2101,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "56"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10031",
@@ -2203,7 +2264,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "882"
+					"sourceid": "867"
 				}
 			]
 		}
