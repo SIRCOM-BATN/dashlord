@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 25 Feb 2024 01:45:34",
+	"@generated": "Sun, 10 Mar 2024 01:40:55",
 	"site":[ 
 		{
 			"@name": "https://www.entreprises.gouv.fr",
@@ -68,12 +68,20 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.entreprises.gouv.fr/fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-bef-auto-submit-full-form=\"\" data-bef-auto-submit=\"\" data-bef-auto-submit-delay=\"500\" data-drupal-selector=\"views-exposed-form-l-information-en-continu-block-accueil\" action=\"/fr/toute-linfo-en-continu\" method=\"get\" id=\"views-exposed-form-l-information-en-continu-block-accueil\" accept-charset=\"UTF-8\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-thematique-filter-target-id-1043\" \"edit-field-thematique-filter-target-id-1046\" \"edit-field-thematique-filter-target-id-1049\" \"edit-field-thematique-filter-target-id-1052\" \"edit-field-thematique-filter-target-id-1055\" \"edit-field-thematique-filter-target-id-1058\" \"edit-field-thematique-filter-target-id-1285\" \"edit-submit-l-information-en-continu\" ]."
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "<form action=\"/fr/recherche\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"edit-keys\" \"edit-submit\" ]."
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/node/add/",
@@ -116,7 +124,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-thematique-filter-target-id-1043\" \"edit-field-thematique-filter-target-id-1046\" \"edit-field-thematique-filter-target-id-1049\" \"edit-field-thematique-filter-target-id-1052\" \"edit-field-thematique-filter-target-id-1055\" \"edit-field-thematique-filter-target-id-1058\" \"edit-field-thematique-filter-target-id-1285\" \"edit-submit-l-information-en-continu\" ].</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
@@ -151,7 +159,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/user/register/",
+							"uri": "https://www.entreprises.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -194,7 +202,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/user/register/",
+							"uri": "https://www.entreprises.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -237,7 +245,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/user/register/",
+							"uri": "https://www.entreprises.gouv.fr/search/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -366,7 +374,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "53"
+					"sourceid": "252"
 				},
 				{
 					"pluginid": "10098",
@@ -419,7 +427,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/index.php/search/",
+							"uri": "https://www.entreprises.gouv.fr/index.php/user/password/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -486,7 +494,7 @@
 					"desc": "<p>The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=1538000700216578588-331755514700632461&mth=GET&rpinfo=0&xinfo=13-43510061-0%200NNN%20RT%281708825298196%208%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=8223000920237869856-302953627660523275&mth=GET&rpinfo=0&xinfo=11-45779413-0%200NNN%20RT%281710034688325%206%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -500,7 +508,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "2621"
+					"sourceid": "2785"
 				},
 				{
 					"pluginid": "90003",
@@ -513,7 +521,7 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
 					"instances":[ 
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=1538000700216578588-331755514700632461&mth=GET&rpinfo=0&xinfo=13-43510061-0%200NNN%20RT%281708825298196%208%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=8223000920237869856-302953627660523275&mth=GET&rpinfo=0&xinfo=11-45779413-0%200NNN%20RT%281710034688325%206%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -551,7 +559,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "2621"
+					"sourceid": "2785"
 				},
 				{
 					"pluginid": "10044",
@@ -596,12 +604,12 @@
 							"otherinfo": "Location header URI length: 41 [https://www.entreprises.gouv.fr/fr/search].\nPredicted response size: 341.\nResponse Body Length: 410."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/index.php/user/logout/",
+							"uri": "https://www.entreprises.gouv.fr/index.php/user/login/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "Location header URI length: 44 [https://www.entreprises.gouv.fr/index.php/fr].\nPredicted response size: 344.\nResponse Body Length: 422."
+							"otherinfo": "Location header URI length: 45 [https://www.entreprises.gouv.fr/fr/user/login].\nPredicted response size: 345.\nResponse Body Length: 426."
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/index.php/user/password/",
@@ -681,29 +689,21 @@
 						{
 							"uri": "https://www.entreprises.gouv.fr",
 							"method": "GET",
-							"param": "incap_ses_1538_3062843",
+							"param": "incap_ses_8223_3062843",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1538_3062843",
+							"evidence": "Set-Cookie: incap_ses_8223_3062843",
 							"otherinfo": ""
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "incap_ses_1538_3062843",
+							"param": "incap_ses_8223_3062843",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1538_3062843",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "incap_ses_1538_3062843",
-							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1538_3062843",
+							"evidence": "Set-Cookie: incap_ses_8223_3062843",
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that the HttpOnly flag is set for all cookies.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
@@ -724,9 +724,9 @@
 						{
 							"uri": "https://www.entreprises.gouv.fr",
 							"method": "GET",
-							"param": "incap_ses_1538_3062843",
+							"param": "incap_ses_8223_3062843",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1538_3062843",
+							"evidence": "Set-Cookie: incap_ses_8223_3062843",
 							"otherinfo": ""
 						},
 						{
@@ -740,9 +740,9 @@
 						{
 							"uri": "https://www.entreprises.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "incap_ses_1538_3062843",
+							"param": "incap_ses_8223_3062843",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1538_3062843",
+							"evidence": "Set-Cookie: incap_ses_8223_3062843",
 							"otherinfo": ""
 						},
 						{
@@ -752,25 +752,9 @@
 							"attack": "",
 							"evidence": "Set-Cookie: visid_incap_3062843",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "incap_ses_1538_3062843",
-							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1538_3062843",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "visid_incap_3062843",
-							"attack": "",
-							"evidence": "Set-Cookie: visid_incap_3062843",
-							"otherinfo": ""
 						}
 					],
-					"count": "6",
+					"count": "4",
 					"solution": "<p>Ensure that the SameSite attribute is set to either 'lax' or ideally 'strict' for all cookies.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
@@ -811,7 +795,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "3224"
+					"sourceid": "3633"
 				},
 				{
 					"pluginid": "10110",
@@ -824,7 +808,7 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1351296319&ns=2",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1275741387&ns=3",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -832,7 +816,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1609821765&ns=3",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1519161399&ns=1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -840,7 +824,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1710424983&ns=4",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=183590617&ns=7",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -848,7 +832,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1749617482&ns=6",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1873128699&ns=5",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -856,7 +840,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1862144193&ns=9",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=219670029&ns=4",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -864,7 +848,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=248933481&ns=4",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=287747316&ns=5",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -872,7 +856,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=255988038&ns=1",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=507894610&ns=6",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -880,7 +864,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=478199048&ns=6",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=545891062&ns=7",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -888,7 +872,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=788760716&ns=1",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=740405868&ns=1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -912,7 +896,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/libraries/tarteaucitron/tarteaucitron.js?s95vdz",
+							"uri": "https://www.entreprises.gouv.fr/libraries/tarteaucitron/tarteaucitron.js?s9z0r7",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -926,7 +910,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "502"
+					"sourceid": "2774"
 				},
 				{
 					"pluginid": "110009",
@@ -1041,7 +1025,7 @@
 					"reference": "<p>https://owasp.org/www-community/attacks/Full_Path_Disclosure</p>",
 					"cweid": "209",
 					"wascid": "13",
-					"sourceid": "486"
+					"sourceid": "485"
 				},
 				{
 					"pluginid": "10063",
@@ -1110,14 +1094,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.entreprises.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
@@ -1127,6 +1103,14 @@
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/profiles/*.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1173,14 +1157,6 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1444367860",
-							"otherinfo": "1444367860, which evaluates to: 2015-10-09 05:17:40"
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
 							"evidence": "1445345092",
 							"otherinfo": "1445345092, which evaluates to: 2015-10-20 12:44:52"
 						},
@@ -1189,8 +1165,48 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1450273485",
-							"otherinfo": "1450273485, which evaluates to: 2015-12-16 13:44:45"
+							"evidence": "1473814682",
+							"otherinfo": "1473814682, which evaluates to: 2016-09-14 00:58:02"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1481260031",
+							"otherinfo": "1481260031, which evaluates to: 2016-12-09 05:07:11"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1487687290",
+							"otherinfo": "1487687290, which evaluates to: 2017-02-21 14:28:10"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1488457074",
+							"otherinfo": "1488457074, which evaluates to: 2017-03-02 12:17:54"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1544963490",
+							"otherinfo": "1544963490, which evaluates to: 2018-12-16 12:31:30"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1713640762",
+							"otherinfo": "1713640762, which evaluates to: 2024-04-20 19:19:22"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr",
@@ -1201,14 +1217,6 @@
 							"otherinfo": "1778918997, which evaluates to: 2026-05-16 08:09:57"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1808249880",
-							"otherinfo": "1808249880, which evaluates to: 2027-04-20 19:38:00"
-						},
-						{
 							"uri": "https://www.entreprises.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
@@ -1217,44 +1225,20 @@
 							"otherinfo": "1445345092, which evaluates to: 2015-10-20 12:44:52"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.gif",
+							"uri": "https://www.entreprises.gouv.fr/core/*.jpeg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1710424983",
-							"otherinfo": "1710424983, which evaluates to: 2024-03-14 14:03:03"
+							"evidence": "1519161399",
+							"otherinfo": "1519161399, which evaluates to: 2018-02-20 21:16:39"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.js",
+							"uri": "https://www.entreprises.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1609821765",
-							"otherinfo": "1609821765, which evaluates to: 2021-01-05 04:42:45"
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1445345092",
-							"otherinfo": "1445345092, which evaluates to: 2015-10-20 12:44:52"
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/profiles/*.jpeg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1474941923",
-							"otherinfo": "1474941923, which evaluates to: 2016-09-27 02:05:23"
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/profiles/*.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1749617482",
-							"otherinfo": "1749617482, which evaluates to: 2025-06-11 04:51:22"
+							"evidence": "1873128699",
+							"otherinfo": "1873128699, which evaluates to: 2029-05-10 17:31:39"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/sitemap.xml",
@@ -1263,19 +1247,11 @@
 							"attack": "",
 							"evidence": "1445345092",
 							"otherinfo": "1445345092, which evaluates to: 2015-10-20 12:44:52"
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1862144193",
-							"otherinfo": "1862144193, which evaluates to: 2029-01-03 14:16:33"
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1444367860, which evaluates to: 2015-10-09 05:17:40</p>",
+					"otherinfo": "<p>1445345092, which evaluates to: 2015-10-20 12:44:52</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -1292,7 +1268,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1351296319&ns=2",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=219670029&ns=4",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1300,7 +1276,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1609821765&ns=3",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=287747316&ns=5",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1308,7 +1284,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1710424983&ns=4",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=507894610&ns=6",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1316,7 +1292,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=478199048&ns=6",
+							"uri": "https://www.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=545891062&ns=7",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1324,7 +1300,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/assets/vendor/jquery.ui/themes/base/core.css?s95vdz",
+							"uri": "https://www.entreprises.gouv.fr/core/assets/vendor/jquery.ui/themes/base/core.css?s9z0r7",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1332,7 +1308,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/themes/stable/css/system/components/ajax-progress.module.css?s95vdz",
+							"uri": "https://www.entreprises.gouv.fr/core/themes/stable/css/system/components/autocomplete-loading.module.css?s9z0r7",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1340,7 +1316,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/themes/stable/css/system/components/align.module.css?s95vdz",
+							"uri": "https://www.entreprises.gouv.fr/core/themes/stable/css/system/components/clearfix.module.css?s9z0r7",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1348,7 +1324,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/themes/stable/css/system/components/autocomplete-loading.module.css?s95vdz",
+							"uri": "https://www.entreprises.gouv.fr/core/themes/stable/css/system/components/container-inline.module.css?s9z0r7",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1356,15 +1332,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/themes/stable/css/system/components/clearfix.module.css?s95vdz",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/core/themes/stable/css/system/components/fieldgroup.module.css?s95vdz",
+							"uri": "https://www.entreprises.gouv.fr/core/themes/stable/css/system/components/fieldgroup.module.css?s9z0r7",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1373,6 +1341,14 @@
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/files/favicon-marianne_0.png",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/fr/rss/actualites",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1394,7 +1370,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "502"
+					"sourceid": "2498"
 				},
 				{
 					"pluginid": "10094",
@@ -1411,8 +1387,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "IArVfJVTRyi0ueYcEm/73tCa2mUAAAAAQUIPAAAAAAB0uFQdnTcGkDKphhQ0T0wg",
-							"otherinfo": " \n\uFFFD|\uFFFDSG(\uFFFD\uFFFD\uFFFD\\x001c\\x0012o\uFFFD\uFFFD\u041A\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000t\uFFFDT\\x001d\uFFFD7\\x0006\uFFFD2\uFFFD\uFFFD\\x00144OL "
+							"evidence": "GpC9mOfcSMKLQC2Qu2p2Mf0O7WUAAAAAQUIPAAAAAAA786eSWM2wIHBtGySCMYnT",
+							"otherinfo": "\\x001a\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDH\u008B@-\uFFFD\uFFFDjv1\uFFFD\\x000e\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000;\uFFFDX\u0370 pm\\x001b$\uFFFD1\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "jSBazKhQSEmmUVfw0jieD/0O7WUAAAAAQUIPAAAAAADvY5DrK7otnOYVVMvbKiXz",
+							"otherinfo": "\uFFFD Z\u0328PHI\uFFFDQW\uFFFD\uFFFD8\uFFFD\\x000f\uFFFD\\x000e\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFDc\uFFFD\uFFFD+\uFFFD-\uFFFD\uFFFD\\x0015T\uFFFD\uFFFD*%\uFFFD"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/comment/reply/",
@@ -1479,17 +1463,25 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD:\u2BCDm~V]AMM--\uFFFD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD\uFFFDz\uFFFD!CtOW\u0080m\""
 						},
 						{
+							"uri": "https://www.entreprises.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "aQlEHTJkTxaAiWnKKnyjJP0O7WUAAAAAQUIPAAAAAAAi/Ne74P4nanpNTx2W7qmR",
+							"otherinfo": "i\tD\\x001d2dO\\x0016\uFFFD\uFFFDi\uFFFD*|\uFFFD$\uFFFD\\x000e\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\"\uFFFD\u05FB\uFFFD\uFFFD'jzMO\\x001d\uFFFD\uEA51"
+						},
+						{
 							"uri": "https://www.entreprises.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "UCXZ/2gERWOIAcRWpiKrYdCa2mUAAAAAQUIPAAAAAABhI+MLBVDDltKXrkE9fxHQ",
-							"otherinfo": "P%\uFFFD\uFFFDh\\x0004Ec\uFFFD\\x0001\uFFFDV\uFFFD\"\uFFFDa\u041A\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000a#\uFFFD\\x000b\\x0005P\u00D6\u0497\uFFFDA=\\x0011\uFFFD"
+							"evidence": "/files/languages/fr_OuKvjW1-Vl1BTU0tLcCzm_86hqG4etAhQ3RPV8KAbSI",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDjx.j\\x0007\uFFFD\uFFFD\uFFFD\uFFFD:\u2BCDm~V]AMM--\uFFFD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD\uFFFDz\uFFFD!CtOW\u0080m\""
 						}
 					],
-					"count": "10",
+					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p> </p><p>\uFFFD|\uFFFDSG(\uFFFD\uFFFD\uFFFD\\x001c\\x0012o\uFFFD\uFFFD\u041A\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000t\uFFFDT\\x001d\uFFFD7\\x0006\uFFFD2\uFFFD\uFFFD\\x00144OL </p>",
+					"otherinfo": "<p>\\x001a\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDH\u008B@-\uFFFD\uFFFDjv1\uFFFD\\x000e\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000;\uFFFDX\u0370 pm\\x001b$\uFFFD1\uFFFD\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -1530,7 +1522,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.svg",
+							"uri": "https://www.entreprises.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1538,7 +1530,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/profiles/*.svg",
+							"uri": "https://www.entreprises.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1578,7 +1570,7 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.svg",
+							"uri": "https://www.entreprises.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1586,7 +1578,7 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/profiles/*.svg",
+							"uri": "https://www.entreprises.gouv.fr/profiles/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1626,7 +1618,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.entreprises.gouv.fr\nvisid_incap_3062843=IArVfJVTRyi0ueYcEm/73tCa2mUAAAAAQUIPAAAAAAB0uFQdnTcGkDKphhQ0T0wg\nincap_ses_1538_3062843=yEefbnGgRTPGEbb4fBNYFdCa2mUAAAAAXTh8kvcW75gXa3HDPYchRA==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.entreprises.gouv.fr\nvisid_incap_3062843=GpC9mOfcSMKLQC2Qu2p2Mf0O7WUAAAAAQUIPAAAAAAA786eSWM2wIHBtGySCMYnT\nincap_ses_8223_3062843=HRfwDhCAxEQgC30Gxfcdcv0O7WUAAAAAg+n56wY986lbARKkI9p1nA==\n"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr",
@@ -1634,7 +1626,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.entreprises.gouv.fr\nvisid_incap_3062843=oaAwUMG/Sv21h+/L5vzcitCa2mUAAAAAQUIPAAAAAACXwnKHk4FdZxWPZDaZ1nlM\nincap_ses_1538_3062843=j+MTeLPYn1GPELb4fBNYFdCa2mUAAAAAAU8eMl6we4ytIoo5AWZekQ==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.entreprises.gouv.fr\nvisid_incap_3062843=jSBazKhQSEmmUVfw0jieD/0O7WUAAAAAQUIPAAAAAADvY5DrK7otnOYVVMvbKiXz\nincap_ses_8223_3062843=3s0MQ5Ye8jesCn0Gxfcdcv0O7WUAAAAAFWPpF6q7OIdGs8m4igImoQ==\n"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/robots.txt",
@@ -1642,20 +1634,12 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.entreprises.gouv.fr\nvisid_incap_3062843=TrxvDFEaS3yjwBePdWoBtNCa2mUAAAAAQUIPAAAAAAD9WvaQ1DcUcpZsGF3oQKMd\nincap_ses_1538_3062843=dxoPDwW7JURSEbb4fBNYFdCa2mUAAAAAzIPjMBJDOU6ZJ5PLRjUT1A==\n"
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.entreprises.gouv.fr\nvisid_incap_3062843=UCXZ/2gERWOIAcRWpiKrYdCa2mUAAAAAQUIPAAAAAABhI+MLBVDDltKXrkE9fxHQ\nincap_ses_1538_3062843=Kg99VN4a9XIcErb4fBNYFdCa2mUAAAAAcyOcfBqJHpL1/R82AA5uIA==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.entreprises.gouv.fr\nvisid_incap_3062843=aQlEHTJkTxaAiWnKKnyjJP0O7WUAAAAAQUIPAAAAAAAi/Ne74P4nanpNTx2W7qmR\nincap_ses_8223_3062843=VDTbZfM9NEH5Cn0Gxfcdcv0O7WUAAAAA++VEeVL4keG/V739/xHTNQ==\n"
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Always scope cookies to a FQDN (Fully Qualified Domain Name).</p>",
-					"otherinfo": "<p>The origin domain used for comparison was: </p><p>www.entreprises.gouv.fr</p><p>visid_incap_3062843=IArVfJVTRyi0ueYcEm/73tCa2mUAAAAAQUIPAAAAAAB0uFQdnTcGkDKphhQ0T0wg</p><p>incap_ses_1538_3062843=yEefbnGgRTPGEbb4fBNYFdCa2mUAAAAAXTh8kvcW75gXa3HDPYchRA==</p><p></p>",
+					"otherinfo": "<p>The origin domain used for comparison was: </p><p>www.entreprises.gouv.fr</p><p>visid_incap_3062843=GpC9mOfcSMKLQC2Qu2p2Mf0O7WUAAAAAQUIPAAAAAAA786eSWM2wIHBtGySCMYnT</p><p>incap_ses_8223_3062843=HRfwDhCAxEQgC30Gxfcdcv0O7WUAAAAAg+n56wY986lbARKkI9p1nA==</p><p></p>",
 					"reference": "<p>https://tools.ietf.org/html/rfc6265#section-4.1</p><p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p><p>https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies</p>",
 					"cweid": "565",
 					"wascid": "15",
@@ -1672,11 +1656,19 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
+							"uri": "https://www.entreprises.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
 							"uri": "https://www.entreprises.gouv.fr/core/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=1351296319\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=287747316\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1692,7 +1684,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=4&cb=1710424983\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=4&cb=219670029\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1700,7 +1692,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=255988038\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1519161399\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1708,7 +1700,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=478199048\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=7&cb=545891062\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1716,23 +1708,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=1609821765\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=507894610\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=788760716\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=1341458497\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1740,7 +1724,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=4&cb=248933481\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=1873128699\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1748,7 +1732,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=7&cb=1126773973\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=8&cb=2020605444\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1756,7 +1740,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=1749617482\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=7&cb=183590617\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1770,11 +1754,11 @@
 					],
 					"count": "12",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
-					"otherinfo": "<p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>",
+					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "53"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10015",
@@ -1871,7 +1855,7 @@
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
-							"evidence": "max-age=600, public",
+							"evidence": "max-age=565, public",
 							"otherinfo": ""
 						},
 						{
@@ -1879,7 +1863,7 @@
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
-							"evidence": "max-age=543, public",
+							"evidence": "max-age=245, public",
 							"otherinfo": ""
 						}
 					],
@@ -1910,7 +1894,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.gif",
+							"uri": "https://www.entreprises.gouv.fr/core/*.jpg",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1926,13 +1918,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "90005",
@@ -1953,7 +1945,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.gif",
+							"uri": "https://www.entreprises.gouv.fr/core/*.jpg",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1969,13 +1969,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "90005",
@@ -1996,7 +1996,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.gif",
+							"uri": "https://www.entreprises.gouv.fr/core/*.jpg",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -2012,13 +2020,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "90005",
@@ -2039,7 +2047,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/core/*.gif",
+							"uri": "https://www.entreprises.gouv.fr/core/*.jpg",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -2055,13 +2071,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10112",
@@ -2076,71 +2092,71 @@
 						{
 							"uri": "https://www.entreprises.gouv.fr",
 							"method": "GET",
-							"param": "visid_incap_3062843",
+							"param": "incap_ses_8223_3062843",
 							"attack": "",
-							"evidence": "IArVfJVTRyi0ueYcEm/73tCa2mUAAAAAQUIPAAAAAAB0uFQdnTcGkDKphhQ0T0wg",
-							"otherinfo": "\ncookie:visid_incap_3062843\ncookie:incap_ses_1538_3062843"
+							"evidence": "HRfwDhCAxEQgC30Gxfcdcv0O7WUAAAAAg+n56wY986lbARKkI9p1nA==",
+							"otherinfo": "\ncookie:incap_ses_8223_3062843\ncookie:visid_incap_3062843"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/robots.txt",
 							"method": "GET",
+							"param": "incap_ses_8223_3062843",
+							"attack": "",
+							"evidence": "VDTbZfM9NEH5Cn0Gxfcdcv0O7WUAAAAA++VEeVL4keG/V739/xHTNQ==",
+							"otherinfo": "\ncookie:incap_ses_8223_3062843\ncookie:visid_incap_3062843"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/core/",
+							"method": "GET",
+							"param": "incap_ses_8223_3062843",
+							"attack": "",
+							"evidence": "HRfwDhCAxEQgC30Gxfcdcv0O7WUAAAAAg+n56wY986lbARKkI9p1nA==",
+							"otherinfo": "\ncookie:incap_ses_8223_3062843"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/core/",
+							"method": "GET",
 							"param": "visid_incap_3062843",
 							"attack": "",
-							"evidence": "TrxvDFEaS3yjwBePdWoBtNCa2mUAAAAAQUIPAAAAAAD9WvaQ1DcUcpZsGF3oQKMd",
-							"otherinfo": "\ncookie:visid_incap_3062843\ncookie:incap_ses_1538_3062843"
+							"evidence": "GpC9mOfcSMKLQC2Qu2p2Mf0O7WUAAAAAQUIPAAAAAAA786eSWM2wIHBtGySCMYnT",
+							"otherinfo": "\ncookie:visid_incap_3062843"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/core/*.js$",
 							"method": "GET",
-							"param": "incap_ses_1538_3062843",
+							"param": "incap_ses_8223_3062843",
 							"attack": "",
-							"evidence": "dxoPDwW7JURSEbb4fBNYFdCa2mUAAAAAzIPjMBJDOU6ZJ5PLRjUT1A==",
-							"otherinfo": "\ncookie:incap_ses_1538_3062843"
+							"evidence": "VDTbZfM9NEH5Cn0Gxfcdcv0O7WUAAAAA++VEeVL4keG/V739/xHTNQ==",
+							"otherinfo": "\ncookie:incap_ses_8223_3062843"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/core/*.js$",
 							"method": "GET",
 							"param": "visid_incap_3062843",
 							"attack": "",
-							"evidence": "TrxvDFEaS3yjwBePdWoBtNCa2mUAAAAAQUIPAAAAAAD9WvaQ1DcUcpZsGF3oQKMd",
+							"evidence": "aQlEHTJkTxaAiWnKKnyjJP0O7WUAAAAAQUIPAAAAAAAi/Ne74P4nanpNTx2W7qmR",
 							"otherinfo": "\ncookie:visid_incap_3062843"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/filter",
+							"uri": "https://www.entreprises.gouv.fr/profiles/*.png",
 							"method": "GET",
-							"param": "incap_ses_1538_3062843",
+							"param": "incap_ses_8223_3062843",
 							"attack": "",
-							"evidence": "Kg99VN4a9XIcErb4fBNYFdCa2mUAAAAAcyOcfBqJHpL1/R82AA5uIA==",
-							"otherinfo": "\ncookie:incap_ses_1538_3062843"
+							"evidence": "HRfwDhCAxEQgC30Gxfcdcv0O7WUAAAAAg+n56wY986lbARKkI9p1nA==",
+							"otherinfo": "\ncookie:incap_ses_8223_3062843"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/filter",
+							"uri": "https://www.entreprises.gouv.fr/profiles/*.png",
 							"method": "GET",
 							"param": "visid_incap_3062843",
 							"attack": "",
-							"evidence": "UCXZ/2gERWOIAcRWpiKrYdCa2mUAAAAAQUIPAAAAAABhI+MLBVDDltKXrkE9fxHQ",
-							"otherinfo": "\ncookie:visid_incap_3062843"
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/user/register",
-							"method": "GET",
-							"param": "incap_ses_1538_3062843",
-							"attack": "",
-							"evidence": "Kg99VN4a9XIcErb4fBNYFdCa2mUAAAAAcyOcfBqJHpL1/R82AA5uIA==",
-							"otherinfo": "\ncookie:incap_ses_1538_3062843"
-						},
-						{
-							"uri": "https://www.entreprises.gouv.fr/user/register",
-							"method": "GET",
-							"param": "visid_incap_3062843",
-							"attack": "",
-							"evidence": "UCXZ/2gERWOIAcRWpiKrYdCa2mUAAAAAQUIPAAAAAABhI+MLBVDDltKXrkE9fxHQ",
+							"evidence": "GpC9mOfcSMKLQC2Qu2p2Mf0O7WUAAAAAQUIPAAAAAAA786eSWM2wIHBtGySCMYnT",
 							"otherinfo": "\ncookie:visid_incap_3062843"
 						}
 					],
 					"count": "8",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
-					"otherinfo": "<p></p><p>cookie:visid_incap_3062843</p><p>cookie:incap_ses_1538_3062843</p>",
+					"otherinfo": "<p></p><p>cookie:incap_ses_8223_3062843</p><p>cookie:visid_incap_3062843</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
@@ -2229,11 +2245,19 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.entreprises.gouv.fr/profiles/*.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=300",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.entreprises.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "max-age=543",
+							"evidence": "max-age=245",
 							"otherinfo": ""
 						},
 						{
@@ -2245,13 +2269,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10031",
@@ -2264,60 +2288,60 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
+							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
 							"method": "GET",
 							"param": "date_0",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_0=2024-02-25\n\nThe user-controlled value was:\n2024-02-25"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_0=2024-03-10\n\nThe user-controlled value was:\n2024-03-10"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
+							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
 							"method": "GET",
 							"param": "date_1",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_1=2024-02-25\n\nThe user-controlled value was:\n2024-02-25"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_1=2024-03-10\n\nThe user-controlled value was:\n2024-03-10"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
+							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
 							"method": "GET",
 							"param": "keys",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nkeys=ZAP\n\nThe user-controlled value was:\nzap"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nkeys=ZAP\n\nThe user-controlled value was:\nzap"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
+							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [a] tag [title] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\naller sur le site www.economie.gouv.fr"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [a] tag [title] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\naller sur le site www.economie.gouv.fr"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
+							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [link] tag [media] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [link] tag [media] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
+							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [option] tag [value] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [option] tag [value] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
 						},
 						{
-							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
+							"uri": "https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets",
 							"method": "GET",
 							"param": "type[]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [option] tag [value] attribute \n\nThe user input found was:\ntype[]=appel_a_projets\n\nThe user-controlled value was:\nappel_a_projets"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets\n\nappears to include user input in: \n\na(n) [option] tag [value] attribute \n\nThe user input found was:\ntype[]=appel_a_projets\n\nThe user-controlled value was:\nappel_a_projets"
 						},
 						{
 							"uri": "https://www.entreprises.gouv.fr/fr/recherche?keys=ZAP",
@@ -2326,15 +2350,71 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/recherche?keys=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nkeys=ZAP\n\nThe user-controlled value was:\nzap"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285",
+							"method": "GET",
+							"param": "field_thematique_filter_target_id[1043]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_filter_target_id[1043]=1043\n\nThe user-controlled value was:\n1043"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285",
+							"method": "GET",
+							"param": "field_thematique_filter_target_id[1046]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_filter_target_id[1046]=1046\n\nThe user-controlled value was:\n1046"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285",
+							"method": "GET",
+							"param": "field_thematique_filter_target_id[1049]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_filter_target_id[1049]=1049\n\nThe user-controlled value was:\n1049"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285",
+							"method": "GET",
+							"param": "field_thematique_filter_target_id[1052]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_filter_target_id[1052]=1052\n\nThe user-controlled value was:\n1052"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285",
+							"method": "GET",
+							"param": "field_thematique_filter_target_id[1055]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_filter_target_id[1055]=1055\n\nThe user-controlled value was:\n1055"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285",
+							"method": "GET",
+							"param": "field_thematique_filter_target_id[1058]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_filter_target_id[1058]=1058\n\nThe user-controlled value was:\n1058"
+						},
+						{
+							"uri": "https://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285",
+							"method": "GET",
+							"param": "field_thematique_filter_target_id[1285]",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.entreprises.gouv.fr/fr/toute-linfo-en-continu?field_thematique_filter_target_id%5B1043%5D=1043&field_thematique_filter_target_id%5B1046%5D=1046&field_thematique_filter_target_id%5B1049%5D=1049&field_thematique_filter_target_id%5B1052%5D=1052&field_thematique_filter_target_id%5B1055%5D=1055&field_thematique_filter_target_id%5B1058%5D=1058&field_thematique_filter_target_id%5B1285%5D=1285\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nfield_thematique_filter_target_id[1285]=1285\n\nThe user-controlled value was:\n1285"
 						}
 					],
-					"count": "8",
+					"count": "15",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
-					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-02-25&date_1=2024-02-25&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>date_0=2024-02-25</p><p></p><p>The user-controlled value was:</p><p>2024-02-25</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.entreprises.gouv.fr/fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&type%5B%5D=appel_a_projets</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>date_0=2024-03-10</p><p></p><p>The user-controlled value was:</p><p>2024-03-10</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "3122"
+					"sourceid": "3605"
 				}
 			]
 		}
