@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 10 Mar 2024 02:14:28",
+	"@generated": "Sun, 17 Mar 2024 02:14:08",
 	"site":[ 
 		{
 			"@name": "https://www.semaine-industrie.gouv.fr",
@@ -76,7 +76,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ]."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?page=7",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?page=6",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -122,7 +122,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "428"
+					"sourceid": "2513"
 				},
 				{
 					"pluginid": "10055",
@@ -143,7 +143,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/search/",
+							"uri": "https://www.semaine-industrie.gouv.fr/user/login/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -186,7 +186,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/search/",
+							"uri": "https://www.semaine-industrie.gouv.fr/user/login/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -229,7 +229,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/search/",
+							"uri": "https://www.semaine-industrie.gouv.fr/user/login/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -263,6 +263,14 @@
 					"riskdesc": "Medium (High)",
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css",
 							"method": "GET",
@@ -328,14 +336,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
@@ -366,7 +366,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "268"
+					"sourceid": "297"
 				},
 				{
 					"pluginid": "10098",
@@ -396,6 +396,14 @@
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/index.php/admin/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/index.php/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -457,14 +465,6 @@
 							"attack": "",
 							"evidence": "Access-Control-Allow-Origin: *",
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/web.config",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						}
 					],
 					"count": "11",
@@ -473,7 +473,34 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "1"
+					"sourceid": "51"
+				},
+				{
+					"pluginid": "10020",
+					"alertRef": "10020-1",
+					"alert": "Missing Anti-clickjacking Header",
+					"name": "Missing Anti-clickjacking Header",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=1360001060181059543-466434947378322058&mth=GET&rpinfo=0&xinfo=10-87251606-0%200NNN%20RT%281710641583153%2012%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
+					"cweid": "1021",
+					"wascid": "15",
+					"sourceid": "6601"
 				},
 				{
 					"pluginid": "90003",
@@ -486,6 +513,14 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
 					"instances":[ 
 						{
+							"uri": "https://www.semaine-industrie.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=1360001060181059543-466434947378322058&mth=GET&rpinfo=0&xinfo=10-87251606-0%200NNN%20RT%281710641583153%2012%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap\" rel=\"stylesheet\">",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.semaine-industrie.gouv.fr/modules/custom/linkedin/js/linkedin.js?v=9.5.8",
 							"method": "GET",
 							"param": "",
@@ -494,13 +529,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "709"
+					"sourceid": "6601"
 				},
 				{
 					"pluginid": "10044",
@@ -615,7 +650,184 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "480"
+					"sourceid": "4780"
+				},
+				{
+					"pluginid": "10010",
+					"alertRef": "10010",
+					"alert": "Cookie No HttpOnly Flag",
+					"name": "Cookie No HttpOnly Flag",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: incap_ses_1360_3071172",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: incap_ses_1360_3071172",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: incap_ses_1360_3071172",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that the HttpOnly flag is set for all cookies.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
+					"cweid": "1004",
+					"wascid": "13",
+					"sourceid": "51"
+				},
+				{
+					"pluginid": "10011",
+					"alertRef": "10011",
+					"alert": "Cookie Without Secure Flag",
+					"name": "Cookie Without Secure Flag",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: incap_ses_1360_3071172",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr",
+							"method": "GET",
+							"param": "visid_incap_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: visid_incap_3071172",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: incap_ses_1360_3071172",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "visid_incap_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: visid_incap_3071172",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: incap_ses_1360_3071172",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "visid_incap_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: visid_incap_3071172",
+							"otherinfo": ""
+						}
+					],
+					"count": "6",
+					"solution": "<p>Whenever a cookie contains sensitive information or is a session token, then it should always be passed using an encrypted channel. Ensure that the secure flag is set for cookies containing such sensitive information.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
+					"cweid": "614",
+					"wascid": "13",
+					"sourceid": "51"
+				},
+				{
+					"pluginid": "10054",
+					"alertRef": "10054-1",
+					"alert": "Cookie without SameSite Attribute",
+					"name": "Cookie without SameSite Attribute",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>A cookie has been set without the SameSite attribute, which means that the cookie can be sent as a result of a 'cross-site' request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: incap_ses_1360_3071172",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr",
+							"method": "GET",
+							"param": "visid_incap_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: visid_incap_3071172",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: incap_ses_1360_3071172",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "visid_incap_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: visid_incap_3071172",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: incap_ses_1360_3071172",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "visid_incap_3071172",
+							"attack": "",
+							"evidence": "Set-Cookie: visid_incap_3071172",
+							"otherinfo": ""
+						}
+					],
+					"count": "6",
+					"solution": "<p>Ensure that the SameSite attribute is set to either 'lax' or ideally 'strict' for all cookies.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
+					"cweid": "1275",
+					"wascid": "13",
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10110",
@@ -628,7 +840,7 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/assets/vendor/jquery-form/jquery.form.min.js?v=4.3.0",
+							"uri": "https://www.semaine-industrie.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1129110180&ns=8",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -636,11 +848,67 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/assets/vendor/jquery/jquery.min.js?v=3.6.3",
+							"uri": "https://www.semaine-industrie.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1166741617&ns=2",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Eval",
+							"evidence": "eval",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1845797629&ns=4",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=2108765250&ns=2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=285385591&ns=1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=551278405&ns=1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=636046138&ns=6",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=81841913&ns=5",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/assets/vendor/jquery-form/jquery.form.min.js?v=4.3.0",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval",
 							"otherinfo": ""
 						},
 						{
@@ -668,13 +936,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "12",
 					"solution": "<p>See the references for security advice on the use of these functions.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "775"
+					"sourceid": "6539"
 				},
 				{
 					"pluginid": "110009",
@@ -789,7 +1057,7 @@
 					"reference": "<p>https://owasp.org/www-community/attacks/Full_Path_Disclosure</p>",
 					"cweid": "209",
 					"wascid": "13",
-					"sourceid": "313"
+					"sourceid": "344"
 				},
 				{
 					"pluginid": "10063",
@@ -810,7 +1078,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -818,7 +1086,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css$",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -896,7 +1164,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "51"
 				},
 				{
 					"pluginid": "10035",
@@ -909,7 +1177,7 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -917,7 +1185,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css$",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -973,7 +1241,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.svg",
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1011,7 +1279,237 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "268"
+					"sourceid": "297"
+				},
+				{
+					"pluginid": "10096",
+					"alertRef": "10096",
+					"alert": "Timestamp Disclosure - Unix",
+					"name": "Timestamp Disclosure - Unix",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1620451873",
+							"otherinfo": "1620451873, which evaluates to: 2021-05-08 05:31:13"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/actualites/bercy-fait-industrie-30-novembre-2023",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1666291503",
+							"otherinfo": "1666291503, which evaluates to: 2022-10-20 18:45:03"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/actualites/bonne-semaine-industrie-2023",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1493403006",
+							"otherinfo": "1493403006, which evaluates to: 2017-04-28 18:10:06"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/actualites/lancement-de-la-12e-edition-de-la-semaine-de-l-industrie",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1575187443",
+							"otherinfo": "1575187443, which evaluates to: 2019-12-01 08:04:03"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1719577763",
+							"otherinfo": "1719577763, which evaluates to: 2024-06-28 12:29:23"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1845797629",
+							"otherinfo": "1845797629, which evaluates to: 2028-06-28 09:33:49"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/declaration-d-accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1477239967",
+							"otherinfo": "1477239967, which evaluates to: 2016-10-23 16:26:07"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/decouvrir-l-industrie/l-industrie-univers-decouvrir",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1897962840",
+							"otherinfo": "1897962840, which evaluates to: 2030-02-22 03:54:00"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/node/add/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1427121341",
+							"otherinfo": "1427121341, which evaluates to: 2015-03-23 14:35:41"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/participer/espace-enseignants",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1551318165",
+							"otherinfo": "1551318165, which evaluates to: 2019-02-28 01:42:45"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1589470215",
+							"otherinfo": "1589470215, which evaluates to: 2020-05-14 15:30:15"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/README.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1553071709",
+							"otherinfo": "1553071709, which evaluates to: 2019-03-20 08:48:29"
+						}
+					],
+					"count": "12",
+					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
+					"otherinfo": "<p>1620451873, which evaluates to: 2021-05-08 05:31:13</p>",
+					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10021",
+					"alertRef": "10021",
+					"alert": "X-Content-Type-Options Header Missing",
+					"name": "X-Content-Type-Options Header Missing",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/assets/vendor/jquery.ui/themes/base/core.css?s7eesr",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/themes/stable/css/system/components/ajax-progress.module.css?s7eesr",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/themes/stable/css/system/components/align.module.css?s7eesr",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/themes/stable/css/system/components/autocomplete-loading.module.css?s7eesr",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/themes/stable/css/system/components/clearfix.module.css?s7eesr",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/themes/stable/css/system/components/container-inline.module.css?s7eesr",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/themes/stable/css/system/components/fieldgroup.module.css?s7eesr",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/themes/stable/css/system/components/hidden.module.css?s7eesr",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/themes/stable/css/system/components/nowrap.module.css?s7eesr",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/files_sedi/favicon-marianne_13.png",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/libraries/slick/slick/slick.css?s7eesr",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/modules/contrib/slick/css/layout/slick.module.css?s7eesr",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						}
+					],
+					"count": "12",
+					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
+					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
+					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "5950"
 				},
 				{
 					"pluginid": "10094",
@@ -1028,8 +1526,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/files_sedi/languages/fr_il_I39AVUyGRIqTm1rb3qsNv1Si1JxUBqf0WQjTpF5M",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFD)#@UL\uFFFDD\uFFFD\uFFFD\uFFFDZ\uFFFD\u07AB\r\uFFFDT\uFFFD\u051CT\\x0006\uFFFD\uFFFDY\\x0008\u04E4^L"
+							"evidence": "ax/vuLsiQ8WJDIdy5BRk8qxR9mUAAAAAQUIPAAAAAABCGQ7me0L+9oX/2F6qoVkV",
+							"otherinfo": "k\\x001f\uFE3B\"C\u0149\\x000c\uFFFDr\uFFFD\\x0014d\uFFFDQ\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000B\\x0019\\x000e\uFFFD{B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFDY\\x0015"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "3lQ29Jr0Q0mQDHTP/FIrg6xR9mUAAAAAQUIPAAAAAABddrtEfk8Mf2F42ENJNm9p",
+							"otherinfo": "\uFFFDT6\uFFFD\uFFFD\uFFFDCI\uFFFD\\x000ct\uFFFD\uFFFDR+\uFFFD\uFFFDQ\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000]v\uFFFDD~O\\x000cax\uFFFDCI6oi"
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/comment/reply/",
@@ -1057,14 +1563,6 @@
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/core/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files_sedi/languages/fr_il_I39AVUyGRIqTm1rb3qsNv1Si1JxUBqf0WQjTpF5M",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFD)#@UL\uFFFDD\uFFFD\uFFFD\uFFFDZ\uFFFD\u07AB\r\uFFFDT\uFFFD\u051CT\\x0006\uFFFD\uFFFDY\\x0008\u04E4^L"
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1104,48 +1602,29 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFD)#@UL\uFFFDD\uFFFD\uFFFD\uFFFDZ\uFFFD\u07AB\r\uFFFDT\uFFFD\u051CT\\x0006\uFFFD\uFFFDY\\x0008\u04E4^L"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/login",
+							"uri": "https://www.semaine-industrie.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM",
-							"otherinfo": "~\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDou\uFFFDTns4_\uFFFD,c\u04FD\uFFFD\uFFFD\t\uFFFD7\uFFFD\u0299a,\\x001c}\uFFFDv\uFFFD3"
+							"evidence": "1rnPoiiwR2GDO1DoDx9HEaxR9mUAAAAAQUIPAAAAAACJUnDStfvF9uL7NgvrRMlT",
+							"otherinfo": "\u05B9\u03E2(\uFFFDGa\uFFFD;P\uFFFD\\x000f\\x001fG\\x0011\uFFFDQ\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFDRp\u04B5\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\\x000b\uFFFDD\uFFFDS"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "ta6BYW2kQden4Juq3YytB61R9mUAAAAAQUIPAAAAAACGafP66toYy5r6y5hnPlRE",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDam\uFFFDA\u05E7\uFFFD\uFFFD\uFFFD\u074C\uFFFD\\x0007\uFFFDQ\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFDi\uFFFD\uFFFD\uFFFD\uFFFD\\x0018\u02DA\uFFFD\u02D8g>TD"
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDy\u063F\uFFFD\uFFFD\u0E68\\x001e\uFFFD\uFFFD\uFFFD\uFFFD)#@UL\uFFFDD\uFFFD\uFFFD\uFFFDZ\uFFFD\u07AB\r\uFFFDT\uFFFD\u051CT\\x0006\uFFFD\uFFFDY\\x0008\u04E4^L</p>",
+					"otherinfo": "<p>k\\x001f\uFE3B\"C\u0149\\x000c\uFFFDr\uFFFD\\x0014d\uFFFDQ\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000B\\x0019\\x000e\uFFFD{B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFDY\\x0015</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
 					"sourceid": "1"
-				},
-				{
-					"pluginid": "10019",
-					"alertRef": "10019-1",
-					"alert": "Content-Type Header Missing",
-					"name": "Content-Type Header Missing",
-					"riskcode": "0",
-					"confidence": "2",
-					"riskdesc": "Informational (Medium)",
-					"desc": "<p>The Content-Type header was either missing or empty.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/web.config",
-							"method": "GET",
-							"param": "content-type",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						}
-					],
-					"count": "1",
-					"solution": "<p>Ensure each page is setting the specific and appropriate content-type value for the content being delivered.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
-					"cweid": "345",
-					"wascid": "12",
-					"sourceid": "296"
 				},
 				{
 					"pluginid": "10027",
@@ -1182,14 +1661,6 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
 							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
@@ -1223,14 +1694,6 @@
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/core/*.js$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "TODO",
-							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1254,13 +1717,64 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "12",
+					"count": "10",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
 					"sourceid": "1"
+				},
+				{
+					"pluginid": "90033",
+					"alertRef": "90033",
+					"alert": "Loosely Scoped Cookie",
+					"name": "Loosely Scoped Cookie",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>Cookies can be scoped by domain or path. This check is only concerned with domain scope.The domain scope applied to a cookie determines which domains can access it. For example, a cookie can be scoped strictly to a subdomain e.g. www.nottrusted.com, or loosely scoped to a parent domain e.g. nottrusted.com. In the latter case, any subdomain of nottrusted.com can access the cookie. Loosely scoped cookies are common in mega-applications like google.com and live.com. Cookies set from a subdomain like app.foo.bar are transmitted only to that domain by the browser. However, cookies scoped to a parent-level domain may be transmitted to the parent, or any subdomain of the parent.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "The origin domain used for comparison was: \nwww.semaine-industrie.gouv.fr\nvisid_incap_3071172=3lQ29Jr0Q0mQDHTP/FIrg6xR9mUAAAAAQUIPAAAAAABddrtEfk8Mf2F42ENJNm9p\nincap_ses_1360_3071172=RKphfNgPjD6+Jz82wrHfEqxR9mUAAAAA8i9IgCTKNh0ca9rzJ9PvJA==\n"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "The origin domain used for comparison was: \nwww.semaine-industrie.gouv.fr\nvisid_incap_3071172=ax/vuLsiQ8WJDIdy5BRk8qxR9mUAAAAAQUIPAAAAAABCGQ7me0L+9oX/2F6qoVkV\nincap_ses_1360_3071172=btcEBaYJPVBkJz82wrHfEqxR9mUAAAAA3vgqHtYil70qvKFKD7NUkg==\n"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "The origin domain used for comparison was: \nwww.semaine-industrie.gouv.fr\nvisid_incap_3071172=1rnPoiiwR2GDO1DoDx9HEaxR9mUAAAAAQUIPAAAAAACJUnDStfvF9uL7NgvrRMlT\nincap_ses_1360_3071172=+KYNRMAHDxOqJz82wrHfEqxR9mUAAAAAfrPEciOoIjQnjZrC6GxLwA==\n"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "The origin domain used for comparison was: \nwww.semaine-industrie.gouv.fr\nvisid_incap_3071172=ta6BYW2kQden4Juq3YytB61R9mUAAAAAQUIPAAAAAACGafP66toYy5r6y5hnPlRE\nincap_ses_1360_3071172=1fE2PCq0nSvXJz82wrHfEq1R9mUAAAAA6nBB60cLiJJqTSKvYRQfsg==\n"
+						}
+					],
+					"count": "4",
+					"solution": "<p>Always scope cookies to a FQDN (Fully Qualified Domain Name).</p>",
+					"otherinfo": "<p>The origin domain used for comparison was: </p><p>www.semaine-industrie.gouv.fr</p><p>visid_incap_3071172=3lQ29Jr0Q0mQDHTP/FIrg6xR9mUAAAAAQUIPAAAAAABddrtEfk8Mf2F42ENJNm9p</p><p>incap_ses_1360_3071172=RKphfNgPjD6+Jz82wrHfEqxR9mUAAAAA8i9IgCTKNh0ca9rzJ9PvJA==</p><p></p>",
+					"reference": "<p>https://tools.ietf.org/html/rfc6265#section-4.1</p><p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p><p>https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies</p>",
+					"cweid": "565",
+					"wascid": "15",
+					"sourceid": "51"
 				},
 				{
 					"pluginid": "10109",
@@ -1281,84 +1795,84 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/comment/reply/",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=13&cb=1020482364\" async></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css$",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=81841913\" async></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.js$",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=1166741617\" async></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/core/*.svg",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.jpeg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=285385591\" async></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/filter/tips",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.jpg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=636046138\" async></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/node/add/",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=551278405\" async></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css$",
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=2108765250\" async></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js$",
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=243648315\" async></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.svg",
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=8&cb=263887037\" async></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/user/login",
+							"uri": "https://www.semaine-industrie.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=7&cb=569019195\" async></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
 					"count": "11",
@@ -1649,6 +2163,81 @@
 					"sourceid": "1"
 				},
 				{
+					"pluginid": "10112",
+					"alertRef": "10112",
+					"alert": "Session Management Response Identified",
+					"name": "Session Management Response Identified",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "RKphfNgPjD6+Jz82wrHfEqxR9mUAAAAA8i9IgCTKNh0ca9rzJ9PvJA==",
+							"otherinfo": "\ncookie:incap_ses_1360_3071172\ncookie:visid_incap_3071172"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "btcEBaYJPVBkJz82wrHfEqxR9mUAAAAA3vgqHtYil70qvKFKD7NUkg==",
+							"otherinfo": "\ncookie:incap_ses_1360_3071172\ncookie:visid_incap_3071172"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "1fE2PCq0nSvXJz82wrHfEq1R9mUAAAAA6nBB60cLiJJqTSKvYRQfsg==",
+							"otherinfo": "\ncookie:incap_ses_1360_3071172\ncookie:visid_incap_3071172"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/admin",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "1fE2PCq0nSvXJz82wrHfEq1R9mUAAAAA6nBB60cLiJJqTSKvYRQfsg==",
+							"otherinfo": "\ncookie:incap_ses_1360_3071172"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/admin",
+							"method": "GET",
+							"param": "visid_incap_3071172",
+							"attack": "",
+							"evidence": "ta6BYW2kQden4Juq3YytB61R9mUAAAAAQUIPAAAAAACGafP66toYy5r6y5hnPlRE",
+							"otherinfo": "\ncookie:visid_incap_3071172"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.js$",
+							"method": "GET",
+							"param": "incap_ses_1360_3071172",
+							"attack": "",
+							"evidence": "+KYNRMAHDxOqJz82wrHfEqxR9mUAAAAAfrPEciOoIjQnjZrC6GxLwA==",
+							"otherinfo": "\ncookie:incap_ses_1360_3071172"
+						},
+						{
+							"uri": "https://www.semaine-industrie.gouv.fr/core/*.js$",
+							"method": "GET",
+							"param": "visid_incap_3071172",
+							"attack": "",
+							"evidence": "1rnPoiiwR2GDO1DoDx9HEaxR9mUAAAAAQUIPAAAAAACJUnDStfvF9uL7NgvrRMlT",
+							"otherinfo": "\ncookie:visid_incap_3071172"
+						}
+					],
+					"count": "7",
+					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
+					"otherinfo": "<p></p><p>cookie:incap_ses_1360_3071172</p><p>cookie:visid_incap_3071172</p>",
+					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "51"
+				},
+				{
 					"pluginid": "10049",
 					"alertRef": "10049",
 					"alert": "Storable and Cacheable Content",
@@ -1729,7 +2318,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "268"
+					"sourceid": "231"
 				},
 				{
 					"pluginid": "10049",
@@ -1785,140 +2374,140 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "date_0",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_0=2024-03-10\n\nThe user-controlled value was:\n2024-03-10"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_0=2024-03-17\n\nThe user-controlled value was:\n2024-03-17"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "date_1",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_1=2024-03-10\n\nThe user-controlled value was:\n2024-03-10"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_1=2024-03-17\n\nThe user-controlled value was:\n2024-03-17"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "keys",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nkeys=ZAP\n\nThe user-controlled value was:\nzap"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nkeys=ZAP\n\nThe user-controlled value was:\nzap"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [link] tag [media] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [link] tag [media] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [option] tag [value] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [option] tag [value] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "sort_by",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nsort_by=search_api_relevance\n\nThe user-controlled value was:\nsearch_api_relevance"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nsort_by=search_api_relevance\n\nThe user-controlled value was:\nsearch_api_relevance"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[actualite]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[actualite]=actualite\n\nThe user-controlled value was:\nactualite"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[actualite]=actualite\n\nThe user-controlled value was:\nactualite"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[appel_a_projets]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[appel_a_projets]=appel_a_projets\n\nThe user-controlled value was:\nappel_a_projets"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[appel_a_projets]=appel_a_projets\n\nThe user-controlled value was:\nappel_a_projets"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[article]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[article]=article\n\nThe user-controlled value was:\narticle"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[article]=article\n\nThe user-controlled value was:\narticle"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[communique_de_presse]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[communique_de_presse]=communique_de_presse\n\nThe user-controlled value was:\ncommunique_de_presse"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[communique_de_presse]=communique_de_presse\n\nThe user-controlled value was:\ncommunique_de_presse"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[evenement]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[evenement]=evenement\n\nThe user-controlled value was:\nevenement"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[evenement]=evenement\n\nThe user-controlled value was:\nevenement"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[faq]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [a] tag [data-drupal-link-system-path] attribute \n\nThe user input found was:\ntype[faq]=faq\n\nThe user-controlled value was:\nfaq"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [a] tag [data-drupal-link-system-path] attribute \n\nThe user input found was:\ntype[faq]=faq\n\nThe user-controlled value was:\nfaq"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[faq]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [a] tag [title] attribute \n\nThe user input found was:\ntype[faq]=faq\n\nThe user-controlled value was:\nfaq"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [a] tag [title] attribute \n\nThe user input found was:\ntype[faq]=faq\n\nThe user-controlled value was:\nfaq"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[faq]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[faq]=faq\n\nThe user-controlled value was:\nfaq"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[faq]=faq\n\nThe user-controlled value was:\nfaq"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[faq]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [li] tag [title] attribute \n\nThe user input found was:\ntype[faq]=faq\n\nThe user-controlled value was:\nfaq"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [li] tag [title] attribute \n\nThe user input found was:\ntype[faq]=faq\n\nThe user-controlled value was:\nfaq"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[media]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[media]=media\n\nThe user-controlled value was:\nmedia"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[media]=media\n\nThe user-controlled value was:\nmedia"
 						},
 						{
-							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[page_accueil_n2]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[page_accueil_n2]=page_accueil_n2\n\nThe user-controlled value was:\npage_accueil_n2"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[page_accueil_n2]=page_accueil_n2\n\nThe user-controlled value was:\npage_accueil_n2"
 						},
 						{
 							"uri": "https://www.semaine-industrie.gouv.fr/recherche?page=17",
@@ -1971,11 +2560,11 @@
 					],
 					"count": "23",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
-					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-10&date_1=2024-03-10&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>date_0=2024-03-10</p><p></p><p>The user-controlled value was:</p><p>2024-03-10</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.semaine-industrie.gouv.fr/recherche?date_0=2024-03-17&date_1=2024-03-17&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>date_0=2024-03-17</p><p></p><p>The user-controlled value was:</p><p>2024-03-17</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "6682"
+					"sourceid": "6768"
 				}
 			]
 		}
