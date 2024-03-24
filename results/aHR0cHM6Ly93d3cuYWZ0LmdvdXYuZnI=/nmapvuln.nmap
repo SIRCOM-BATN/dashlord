@@ -1,6 +1,6 @@
-# Nmap 7.92 scan initiated Sun Mar 17 00:51:35 2024 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.aft.gouv.fr
+# Nmap 7.92 scan initiated Sun Mar 24 00:52:36 2024 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.aft.gouv.fr
 Nmap scan report for www.aft.gouv.fr (141.101.90.99)
-Host is up (0.0016s latency).
+Host is up (0.011s latency).
 Other addresses for www.aft.gouv.fr (not scanned): 141.101.90.97 141.101.90.98 141.101.90.96
 
 PORT      STATE SERVICE    VERSION
@@ -589,7 +589,17 @@ PORT      STATE SERVICE    VERSION
 5225/tcp  open  tcpwrapped
 5226/tcp  open  tcpwrapped
 5269/tcp  open  tcpwrapped
-|_xmpp-info: ERROR: Script execution failed (use -d to debug)
+| xmpp-info: 
+|   STARTTLS Failed
+|   info: 
+|     errors: 
+|       (timeout)
+|     compression_methods: 
+|     unknown: 
+|     auth_mechanisms: 
+|     features: 
+|     capabilities: 
+|_    xmpp: 
 5280/tcp  open  tcpwrapped
 5298/tcp  open  tcpwrapped
 5357/tcp  open  tcpwrapped
@@ -736,7 +746,8 @@ PORT      STATE SERVICE    VERSION
 8031/tcp  open  tcpwrapped
 8042/tcp  open  tcpwrapped
 8045/tcp  open  tcpwrapped
-8080/tcp  open  tcpwrapped
+8080/tcp  open  http       Cloudflare http proxy
+|_http-server-header: cloudflare
 8081/tcp  open  tcpwrapped
 8082/tcp  open  tcpwrapped
 8083/tcp  open  tcpwrapped
@@ -766,7 +777,8 @@ PORT      STATE SERVICE    VERSION
 8383/tcp  open  tcpwrapped
 8400/tcp  open  tcpwrapped
 8402/tcp  open  tcpwrapped
-8443/tcp  open  tcpwrapped
+8443/tcp  open  ssl/http   Cloudflare http proxy
+|_http-server-header: cloudflare
 8500/tcp  open  tcpwrapped
 8600/tcp  open  tcpwrapped
 8649/tcp  open  tcpwrapped
@@ -1011,4 +1023,4 @@ PORT      STATE SERVICE    VERSION
 65389/tcp open  tcpwrapped
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Sun Mar 17 00:51:55 2024 -- 1 IP address (1 host up) scanned in 20.41 seconds
+# Nmap done at Sun Mar 24 00:52:58 2024 -- 1 IP address (1 host up) scanned in 21.73 seconds
