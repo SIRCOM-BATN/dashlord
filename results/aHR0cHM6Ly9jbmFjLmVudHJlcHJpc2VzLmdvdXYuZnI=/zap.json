@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 24 Mar 2024 01:45:50",
+	"@generated": "Sun, 31 Mar 2024 01:55:42",
 	"site":[ 
 		{
 			"@name": "https://cnac.entreprises.gouv.fr",
@@ -20,15 +20,15 @@
 					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
 					"instances":[ 
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/mot-cle/rapport-activite",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-bef-auto-submit-full-form=\"\" data-bef-auto-submit=\"\" data-bef-auto-submit-delay=\"500\" data-drupal-selector=\"views-exposed-form-taxonomy-term-page-1\" action=\"/mot-cle/rapport-activite\" method=\"get\" id=\"views-exposed-form-taxonomy-term-page-1\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-type-de-media-target-id-11\" \"edit-field-type-de-media-target-id-5\" \"edit-field-type-de-media-target-id-8\" \"edit-submit-taxonomy-term\" ]."
+							"evidence": "<form class=\"views-exposed-form bef-exposed-form\" data-drupal-selector=\"views-exposed-form-recherche-recherche\" action=\"/recherche\" method=\"get\" id=\"views-exposed-form-recherche-recherche\" accept-charset=\"UTF-8\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ]."
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -118,11 +118,11 @@
 					],
 					"count": "12",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
-					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-field-type-de-media-target-id-11\" \"edit-field-type-de-media-target-id-5\" \"edit-field-type-de-media-target-id-8\" \"edit-submit-taxonomy-term\" ].</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-date-0\" \"edit-date-1\" \"edit-keys\" \"edit-sort-by-field-date-mise-a-jour\" \"edit-sort-by-search-api-relevance\" \"edit-submit-recherche\" \"edit-type-actualite\" \"edit-type-appel-a-projets\" \"edit-type-article\" \"edit-type-communique-de-presse\" \"edit-type-evenement\" \"edit-type-faq\" \"edit-type-media\" \"edit-type-page-accueil-n2\" ].</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1315"
+					"sourceid": "375"
 				},
 				{
 					"pluginid": "10055",
@@ -165,7 +165,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10055",
@@ -208,7 +208,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10055",
@@ -251,7 +251,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10038",
@@ -336,6 +336,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.jpeg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.jpg",
 							"method": "GET",
 							"param": "",
@@ -350,14 +358,6 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.png",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
 					"count": "12",
@@ -366,7 +366,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "266"
 				},
 				{
 					"pluginid": "10098",
@@ -395,7 +395,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/index.php/filter/tips",
+							"uri": "https://cnac.entreprises.gouv.fr/index.php/admin/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -403,7 +403,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/index.php/user/login/",
+							"uri": "https://cnac.entreprises.gouv.fr/index.php/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -473,7 +473,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10020",
@@ -486,7 +486,7 @@
 					"desc": "<p>The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.</p>",
 					"instances":[ 
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=892004290410545507-482009843087731533&mth=GET&rpinfo=0&xinfo=13-71486001-0%200NNN%20RT%281711244690782%2010%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
+							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=170000230437349953-171560157957457385&mth=GET&rpinfo=0&xinfo=41-33251571-0%200NNN%20RT%281711850081400%2013%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -500,7 +500,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1095"
+					"sourceid": "1089"
 				},
 				{
 					"pluginid": "90003",
@@ -513,7 +513,7 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
 					"instances":[ 
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=892004290410545507-482009843087731533&mth=GET&rpinfo=0&xinfo=13-71486001-0%200NNN%20RT%281711244690782%2010%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
+							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=170000230437349953-171560157957457385&mth=GET&rpinfo=0&xinfo=41-33251571-0%200NNN%20RT%281711850081400%2013%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -535,7 +535,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "1095"
+					"sourceid": "1089"
 				},
 				{
 					"pluginid": "10044",
@@ -650,7 +650,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "1614"
+					"sourceid": "1587"
 				},
 				{
 					"pluginid": "10010",
@@ -665,25 +665,25 @@
 						{
 							"uri": "https://cnac.entreprises.gouv.fr",
 							"method": "GET",
-							"param": "incap_ses_892_3062852",
+							"param": "incap_ses_170_3062852",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_892_3062852",
+							"evidence": "Set-Cookie: incap_ses_170_3062852",
 							"otherinfo": ""
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "incap_ses_892_3062852",
+							"param": "incap_ses_170_3062852",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_892_3062852",
+							"evidence": "Set-Cookie: incap_ses_170_3062852",
 							"otherinfo": ""
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/sitemap.xml",
 							"method": "GET",
-							"param": "incap_ses_892_3062852",
+							"param": "incap_ses_170_3062852",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_892_3062852",
+							"evidence": "Set-Cookie: incap_ses_170_3062852",
 							"otherinfo": ""
 						}
 					],
@@ -693,7 +693,7 @@
 					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
 					"cweid": "1004",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10054",
@@ -708,9 +708,9 @@
 						{
 							"uri": "https://cnac.entreprises.gouv.fr",
 							"method": "GET",
-							"param": "incap_ses_892_3062852",
+							"param": "incap_ses_170_3062852",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_892_3062852",
+							"evidence": "Set-Cookie: incap_ses_170_3062852",
 							"otherinfo": ""
 						},
 						{
@@ -724,9 +724,9 @@
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "incap_ses_892_3062852",
+							"param": "incap_ses_170_3062852",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_892_3062852",
+							"evidence": "Set-Cookie: incap_ses_170_3062852",
 							"otherinfo": ""
 						},
 						{
@@ -740,9 +740,9 @@
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/sitemap.xml",
 							"method": "GET",
-							"param": "incap_ses_892_3062852",
+							"param": "incap_ses_170_3062852",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_892_3062852",
+							"evidence": "Set-Cookie: incap_ses_170_3062852",
 							"otherinfo": ""
 						},
 						{
@@ -760,7 +760,7 @@
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
 					"cweid": "1275",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10110",
@@ -773,7 +773,7 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1064602912&ns=8",
+							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1121828967&ns=6",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -781,7 +781,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1373770692&ns=7",
+							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1711902686&ns=1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -789,7 +789,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1382699651&ns=6",
+							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=2031188027&ns=5",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -797,7 +797,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1722075498&ns=4",
+							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=274160312&ns=5",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -805,7 +805,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1734922266&ns=11",
+							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=573793300&ns=2",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -813,7 +813,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1947559329&ns=3",
+							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=743225607&ns=3",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -821,7 +821,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=815183217&ns=5",
+							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=862954805&ns=7",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -875,7 +875,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "369"
+					"sourceid": "1077"
 				},
 				{
 					"pluginid": "110009",
@@ -887,6 +887,14 @@
 					"riskdesc": "Low (Low)",
 					"desc": "<p>The full path of files which might be sensitive has been exposed to the client.</p>",
 					"instances":[ 
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/cite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/comment/reply/",
 							"method": "GET",
@@ -936,7 +944,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/node/25",
+							"uri": "https://cnac.entreprises.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -944,7 +952,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/node/add/",
+							"uri": "https://cnac.entreprises.gouv.fr/p",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -974,14 +982,6 @@
 							"attack": "",
 							"evidence": "/system/",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/reglement-interieur",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/system/",
-							"otherinfo": ""
 						}
 					],
 					"count": "12",
@@ -990,7 +990,7 @@
 					"reference": "<p>https://owasp.org/www-community/attacks/Full_Path_Disclosure</p>",
 					"cweid": "209",
 					"wascid": "13",
-					"sourceid": "321"
+					"sourceid": "1110"
 				},
 				{
 					"pluginid": "10063",
@@ -1003,7 +1003,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.css",
+							"uri": "https://cnac.entreprises.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1011,7 +1011,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.css$",
+							"uri": "https://cnac.entreprises.gouv.fr/core/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1089,17 +1089,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.png",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
@@ -1118,109 +1110,109 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
 						{
-							"uri": "https://cnac.entreprises.gouv.fr",
+							"uri": "https://cnac.entreprises.gouv.fr/activite-des-cdac",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1566526889",
-							"otherinfo": "1566526889, which evaluates to: 2019-08-23 02:21:29"
+							"evidence": "1733411717",
+							"otherinfo": "1733411717, which evaluates to: 2024-12-05 15:15:17"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr",
+							"uri": "https://cnac.entreprises.gouv.fr/actualites/rapports-activite/remise-rapport-annuel-30-ans-cnac",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1769228131",
-							"otherinfo": "1769228131, which evaluates to: 2026-01-24 04:15:31"
+							"evidence": "1865098023",
+							"otherinfo": "1865098023, which evaluates to: 2029-02-06 18:47:03"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/",
+							"uri": "https://cnac.entreprises.gouv.fr/core/*.jpeg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1889578578",
-							"otherinfo": "1889578578, which evaluates to: 2029-11-17 02:56:18"
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.gif",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1722075498",
-							"otherinfo": "1722075498, which evaluates to: 2024-07-27 10:18:18"
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1947559329",
-							"otherinfo": "1947559329, which evaluates to: 2031-09-19 04:42:09"
+							"evidence": "1711902686",
+							"otherinfo": "1711902686, which evaluates to: 2024-03-31 16:31:26"
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/core/*.js$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1934507233",
-							"otherinfo": "1934507233, which evaluates to: 2031-04-21 03:07:13"
+							"evidence": "1413339049",
+							"otherinfo": "1413339049, which evaluates to: 2014-10-15 02:10:49"
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1506409426",
-							"otherinfo": "1506409426, which evaluates to: 2017-09-26 07:03:46"
+							"evidence": "1636071407",
+							"otherinfo": "1636071407, which evaluates to: 2021-11-05 00:16:47"
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1568146383",
-							"otherinfo": "1568146383, which evaluates to: 2019-09-10 20:13:03"
+							"evidence": "1939387677",
+							"otherinfo": "1939387677, which evaluates to: 2031-06-16 14:47:57"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/",
+							"uri": "https://cnac.entreprises.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1498631721",
-							"otherinfo": "1498631721, which evaluates to: 2017-06-28 06:35:21"
+							"evidence": "1658007862",
+							"otherinfo": "1658007862, which evaluates to: 2022-07-16 21:44:22"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.css",
+							"uri": "https://cnac.entreprises.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1734922266",
-							"otherinfo": "1734922266, which evaluates to: 2024-12-23 02:51:06"
+							"evidence": "1487305044",
+							"otherinfo": "1487305044, which evaluates to: 2017-02-17 04:17:24"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.css$",
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.jpg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1871508438",
-							"otherinfo": "1871508438, which evaluates to: 2029-04-21 23:27:18"
+							"evidence": "1964457948",
+							"otherinfo": "1964457948, which evaluates to: 2032-04-01 18:45:48"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.jpeg",
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1717964761",
-							"otherinfo": "1717964761, which evaluates to: 2024-06-09 20:26:01"
+							"evidence": "1964543302",
+							"otherinfo": "1964543302, which evaluates to: 2032-04-02 18:28:22"
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1418006126",
+							"otherinfo": "1418006126, which evaluates to: 2014-12-08 02:35:26"
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/README.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1713602900",
+							"otherinfo": "1713602900, which evaluates to: 2024-04-20 08:48:20"
 						}
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1566526889, which evaluates to: 2019-08-23 02:21:29</p>",
+					"otherinfo": "<p>1733411717, which evaluates to: 2024-12-05 15:15:17</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "61"
+					"sourceid": "426"
 				},
 				{
 					"pluginid": "10021",
@@ -1233,63 +1225,63 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1064602912&ns=8",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1373770692&ns=7",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1382699651&ns=6",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1722075498&ns=4",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1734922266&ns=11",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1947559329&ns=3",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=815183217&ns=5",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://cnac.entreprises.gouv.fr/core/assets/vendor/jquery.ui/themes/base/core.css?s9vsv8",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/core/themes/stable/css/system/components/ajax-progress.module.css?s9vsv8",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/core/themes/stable/css/system/components/align.module.css?s9vsv8",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/core/themes/stable/css/system/components/autocomplete-loading.module.css?s9vsv8",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/core/themes/stable/css/system/components/clearfix.module.css?s9vsv8",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/core/themes/stable/css/system/components/container-inline.module.css?s9vsv8",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/core/themes/stable/css/system/components/details.module.css?s9vsv8",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/core/themes/stable/css/system/components/fieldgroup.module.css?s9vsv8",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1335,7 +1327,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "369"
+					"sourceid": "772"
 				},
 				{
 					"pluginid": "10094",
@@ -1352,16 +1344,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "craPpA3tTK2F/FJBDajNlJGF/2UAAAAAQUIPAAAAAAC7uIJfiG5U/IZXK7OU6IRj",
-							"otherinfo": "r\uFFFD\uFFFD\uFFFD\r\uFFFDL\uFFFD\uFFFD\uFFFDRA\r\uFFFD\u0354\uFFFD\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFD\uFFFD_\uFFFDnT\uFFFD\uFFFDW+\uFFFD\uFFFD\uFFFDc"
+							"evidence": "BTSB0Ip4Rq+8Uwd5gRdqjVfCCGYAAAAAQUIPAAAAAAA5dBZyDAwzh5dZS49cA8Kx",
+							"otherinfo": "\\x00054\uFFFD\u040AxF\uFFFD\uFFFDS\\x0007y\uFFFD\\x0017j\uFFFDW\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x00009t\\x0016r\\x000c\\x000c3\uFFFD\uFFFDYK\uFFFD\\\\x0003\u00B1"
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "9Ax5uVIbRvuH2JssY68a95CF/2UAAAAAQUIPAAAAAAA0Pybw69DjKu0cIL7WH+GG",
-							"otherinfo": "\uFFFD\\x000cy\uFFFDR\\x001bF\uFFFD\uFFFD\u061B,c\uFFFD\\x001a\uFFFD\uFFFD\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x00004?&\uFFFD\uFFFD\uFFFD\uFFFD*\uFFFD\\x001c \uFFFD\uFFFD\\x001f\uFFFD"
+							"evidence": "v8niEYCpRAewaNeWpikMilbCCGYAAAAAQUIPAAAAAACGiWyoGyQvCX2+3vKKByqR",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\\x0011\uFFFD\uFFFDD\\x0007\uFFFDh\u05D6\uFFFD)\\x000c\uFFFDV\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFDl\uFFFD\\x001b$/\t}\uFFFD\uFFFD\uFFFD\\x0007*\uFFFD"
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/comment/reply/",
@@ -1432,25 +1424,25 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "pgVVH6fASC+SAONESOmIqJCF/2UAAAAAQUIPAAAAAAARf2Smo0RkTm6McDfS4Pvy",
-							"otherinfo": "\uFFFD\\x0005U\\x001f\uFFFD\uFFFDH/\uFFFD\\x0000\uFFFDDH\u9228\uFFFD\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\\x0011d\uFFFD\uFFFDDdNn\uFFFDp7\uFFFD\uFFFD\uFFFD\uFFFD"
+							"evidence": "xuR8Iud2QXO3HKLrSc4qmVfCCGYAAAAAQUIPAAAAAAC92irxU17ocYL4ESc1ZEnS",
+							"otherinfo": "\uFFFD\uFFFD|\"\uFFFDvAs\uFFFD\\x001c\uFFFD\uFFFDI\uFFFD*\uFFFDW\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFD*\uFFFDS^\uFFFDq\uFFFD\uFFFD\\x0011'5dI\uFFFD"
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "OMVN80jlRN+fm7RYeFXGCJGF/2UAAAAAQUIPAAAAAACmsTX8p3Rm0WJhaUMLncpb",
-							"otherinfo": "8\uFFFDM\uFFFDH\uFFFDD\u07DF\uFFFD\uFFFDXxU\uFFFD\\x0008\uFFFD\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFD5\uFFFD\uFFFDtf\uFFFDbaiC\\x000b\uFFFD\uFFFD["
+							"evidence": "4WhYPaEETHKpcCx8Gl/TWGDCCGYAAAAAQUIPAAAAAACyz/8JnOnBgiv5mceRRnfq",
+							"otherinfo": "\uFFFDhX=\uFFFD\\x0004Lr\uFFFDp,|\\x001a_\uFFFDX`\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFD\uFFFD\t\uFFFD\uFFFD\uFFFD\uFFFD+\uFFFD\uFFFD\u01D1Fw\uFFFD"
 						}
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>r\uFFFD\uFFFD\uFFFD\r\uFFFDL\uFFFD\uFFFD\uFFFDRA\r\uFFFD\u0354\uFFFD\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFD\uFFFD_\uFFFDnT\uFFFD\uFFFDW+\uFFFD\uFFFD\uFFFDc</p>",
+					"otherinfo": "<p>\\x00054\uFFFD\u040AxF\uFFFD\uFFFDS\\x0007y\uFFFD\\x0017j\uFFFDW\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x00009t\\x0016r\\x000c\\x000c3\uFFFD\uFFFDYK\uFFFD\\\\x0003\u00B1</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "61"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10027",
@@ -1479,6 +1471,14 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://cnac.entreprises.gouv.fr/core/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://cnac.entreprises.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
@@ -1487,15 +1487,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.js$",
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1519,6 +1511,14 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://cnac.entreprises.gouv.fr/core/*.js$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "TODO",
+							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://cnac.entreprises.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
@@ -1527,15 +1527,7 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "TODO",
-							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: XITI a ajouter ici quand on aura les codes -->\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.js$",
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1549,7 +1541,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "90033",
@@ -1567,7 +1559,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \ncnac.entreprises.gouv.fr\nvisid_incap_3062852=9Ax5uVIbRvuH2JssY68a95CF/2UAAAAAQUIPAAAAAAA0Pybw69DjKu0cIL7WH+GG\nincap_ses_892_3062852=VwCMOf0WjA4UgAsULQlhDJCF/2UAAAAA1oimR+ajwSuoNZJZ2PkV5w==\n"
+							"otherinfo": "The origin domain used for comparison was: \ncnac.entreprises.gouv.fr\nvisid_incap_3062852=BTSB0Ip4Rq+8Uwd5gRdqjVfCCGYAAAAAQUIPAAAAAAA5dBZyDAwzh5dZS49cA8Kx\nincap_ses_170_3062852=w1/4UuOkeTeJ0fMST/ZbAlfCCGYAAAAAOj6i51VEKKF6Hd3brXXg2Q==\n"
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr",
@@ -1575,7 +1567,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \ncnac.entreprises.gouv.fr\nvisid_incap_3062852=craPpA3tTK2F/FJBDajNlJGF/2UAAAAAQUIPAAAAAAC7uIJfiG5U/IZXK7OU6IRj\nincap_ses_892_3062852=Wp72c9yz6RVjgQsULQlhDJGF/2UAAAAA3MQwrSRVrAN0od+BsDkDXw==\n"
+							"otherinfo": "The origin domain used for comparison was: \ncnac.entreprises.gouv.fr\nvisid_incap_3062852=v8niEYCpRAewaNeWpikMilbCCGYAAAAAQUIPAAAAAACGiWyoGyQvCX2+3vKKByqR\nincap_ses_170_3062852=IV2RAGgNH33az/MST/ZbAlbCCGYAAAAAA4MgrMk3iOQsrpLM/7pjeg==\n"
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/robots.txt",
@@ -1583,7 +1575,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \ncnac.entreprises.gouv.fr\nvisid_incap_3062852=pgVVH6fASC+SAONESOmIqJCF/2UAAAAAQUIPAAAAAAARf2Smo0RkTm6McDfS4Pvy\nincap_ses_892_3062852=YlxxSrzKYRVmgAsULQlhDJCF/2UAAAAA/6hSY+/enAE3pzPObBUiww==\n"
+							"otherinfo": "The origin domain used for comparison was: \ncnac.entreprises.gouv.fr\nvisid_incap_3062852=xuR8Iud2QXO3HKLrSc4qmVfCCGYAAAAAQUIPAAAAAAC92irxU17ocYL4ESc1ZEnS\nincap_ses_170_3062852=7e6fTmWVcDHk0PMST/ZbAlfCCGYAAAAAdcCK9cy1MpJtbUsExhVibA==\n"
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/sitemap.xml",
@@ -1591,16 +1583,16 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \ncnac.entreprises.gouv.fr\nvisid_incap_3062852=OMVN80jlRN+fm7RYeFXGCJGF/2UAAAAAQUIPAAAAAACmsTX8p3Rm0WJhaUMLncpb\nincap_ses_892_3062852=BregdpMaFRtigQsULQlhDJGF/2UAAAAAFFnlaTsMWhNvQc/cXCSLWQ==\n"
+							"otherinfo": "The origin domain used for comparison was: \ncnac.entreprises.gouv.fr\nvisid_incap_3062852=4WhYPaEETHKpcCx8Gl/TWGDCCGYAAAAAQUIPAAAAAACyz/8JnOnBgiv5mceRRnfq\nincap_ses_170_3062852=ex5OOE8iHCZB6vMST/ZbAmDCCGYAAAAAvsHGgUlLWrMwFUwDME0wLg==\n"
 						}
 					],
 					"count": "4",
 					"solution": "<p>Always scope cookies to a FQDN (Fully Qualified Domain Name).</p>",
-					"otherinfo": "<p>The origin domain used for comparison was: </p><p>cnac.entreprises.gouv.fr</p><p>visid_incap_3062852=9Ax5uVIbRvuH2JssY68a95CF/2UAAAAAQUIPAAAAAAA0Pybw69DjKu0cIL7WH+GG</p><p>incap_ses_892_3062852=VwCMOf0WjA4UgAsULQlhDJCF/2UAAAAA1oimR+ajwSuoNZJZ2PkV5w==</p><p></p>",
+					"otherinfo": "<p>The origin domain used for comparison was: </p><p>cnac.entreprises.gouv.fr</p><p>visid_incap_3062852=BTSB0Ip4Rq+8Uwd5gRdqjVfCCGYAAAAAQUIPAAAAAAA5dBZyDAwzh5dZS49cA8Kx</p><p>incap_ses_170_3062852=w1/4UuOkeTeJ0fMST/ZbAlfCCGYAAAAAOj6i51VEKKF6Hd3brXXg2Q==</p><p></p>",
 					"reference": "<p>https://tools.ietf.org/html/rfc6265#section-4.1</p><p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p><p>https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies</p>",
 					"cweid": "565",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10109",
@@ -1625,23 +1617,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=815183217\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=573793300\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.css$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"HautDePage\" tabindex=\"-1\"></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=4&cb=1722075498\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=274160312\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1649,7 +1633,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=7&cb=1373770692\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1711902686\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1657,7 +1641,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=1382699651\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=1121828967\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1665,7 +1649,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=1947559329\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=743225607\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1673,7 +1657,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=8&cb=1064602912\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=780180442\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1681,7 +1665,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=11&cb=1734922266\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=2031188027\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1689,7 +1673,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=494832549\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=1127050390\" async></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.jpg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=1964457948\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1697,25 +1689,17 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=391385034\" async></script>",
-							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.png",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=668286583\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1964543302\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10015",
@@ -1744,14 +1728,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/activite-des-cdac",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600, public",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://cnac.entreprises.gouv.fr/amenagement-commercial",
 							"method": "GET",
 							"param": "cache-control",
@@ -1761,6 +1737,14 @@
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/cdac-organisation-et-fonctionnement",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600, public",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://cnac.entreprises.gouv.fr/composition-de-la-cnac",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1788,7 +1772,7 @@
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
-							"evidence": "max-age=546, public",
+							"evidence": "max-age=536, public",
 							"otherinfo": ""
 						},
 						{
@@ -1835,15 +1819,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.gif",
+							"uri": "https://cnac.entreprises.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1859,7 +1835,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1878,15 +1854,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.gif",
+							"uri": "https://cnac.entreprises.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1902,7 +1870,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1921,15 +1889,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.gif",
+							"uri": "https://cnac.entreprises.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1945,7 +1905,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1964,15 +1924,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.gif",
+							"uri": "https://cnac.entreprises.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1988,7 +1940,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -2009,55 +1961,55 @@
 						{
 							"uri": "https://cnac.entreprises.gouv.fr",
 							"method": "GET",
-							"param": "incap_ses_892_3062852",
+							"param": "visid_incap_3062852",
 							"attack": "",
-							"evidence": "VwCMOf0WjA4UgAsULQlhDJCF/2UAAAAA1oimR+ajwSuoNZJZ2PkV5w==",
-							"otherinfo": "\ncookie:incap_ses_892_3062852\ncookie:visid_incap_3062852"
+							"evidence": "v8niEYCpRAewaNeWpikMilbCCGYAAAAAQUIPAAAAAACGiWyoGyQvCX2+3vKKByqR",
+							"otherinfo": "\ncookie:visid_incap_3062852\ncookie:incap_ses_170_3062852"
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/sitemap.xml",
 							"method": "GET",
-							"param": "incap_ses_892_3062852",
+							"param": "visid_incap_3062852",
 							"attack": "",
-							"evidence": "BregdpMaFRtigQsULQlhDJGF/2UAAAAAFFnlaTsMWhNvQc/cXCSLWQ==",
-							"otherinfo": "\ncookie:incap_ses_892_3062852\ncookie:visid_incap_3062852"
+							"evidence": "4WhYPaEETHKpcCx8Gl/TWGDCCGYAAAAAQUIPAAAAAACyz/8JnOnBgiv5mceRRnfq",
+							"otherinfo": "\ncookie:visid_incap_3062852\ncookie:incap_ses_170_3062852"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.css$",
+							"uri": "https://cnac.entreprises.gouv.fr/core/*.jpg",
 							"method": "GET",
-							"param": "incap_ses_892_3062852",
+							"param": "incap_ses_170_3062852",
 							"attack": "",
-							"evidence": "YlxxSrzKYRVmgAsULQlhDJCF/2UAAAAA/6hSY+/enAE3pzPObBUiww==",
-							"otherinfo": "\ncookie:incap_ses_892_3062852"
+							"evidence": "7e6fTmWVcDHk0PMST/ZbAlfCCGYAAAAAdcCK9cy1MpJtbUsExhVibA==",
+							"otherinfo": "\ncookie:incap_ses_170_3062852"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.css$",
+							"uri": "https://cnac.entreprises.gouv.fr/core/*.jpg",
 							"method": "GET",
 							"param": "visid_incap_3062852",
 							"attack": "",
-							"evidence": "pgVVH6fASC+SAONESOmIqJCF/2UAAAAAQUIPAAAAAAARf2Smo0RkTm6McDfS4Pvy",
+							"evidence": "xuR8Iud2QXO3HKLrSc4qmVfCCGYAAAAAQUIPAAAAAAC92irxU17ocYL4ESc1ZEnS",
 							"otherinfo": "\ncookie:visid_incap_3062852"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.svg",
+							"uri": "https://cnac.entreprises.gouv.fr/core/*.png",
 							"method": "GET",
-							"param": "incap_ses_892_3062852",
+							"param": "incap_ses_170_3062852",
 							"attack": "",
-							"evidence": "YlxxSrzKYRVmgAsULQlhDJCF/2UAAAAA/6hSY+/enAE3pzPObBUiww==",
-							"otherinfo": "\ncookie:incap_ses_892_3062852"
+							"evidence": "w1/4UuOkeTeJ0fMST/ZbAlfCCGYAAAAAOj6i51VEKKF6Hd3brXXg2Q==",
+							"otherinfo": "\ncookie:incap_ses_170_3062852"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/core/*.svg",
+							"uri": "https://cnac.entreprises.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "visid_incap_3062852",
 							"attack": "",
-							"evidence": "pgVVH6fASC+SAONESOmIqJCF/2UAAAAAQUIPAAAAAAARf2Smo0RkTm6McDfS4Pvy",
+							"evidence": "BTSB0Ip4Rq+8Uwd5gRdqjVfCCGYAAAAAQUIPAAAAAAA5dBZyDAwzh5dZS49cA8Kx",
 							"otherinfo": "\ncookie:visid_incap_3062852"
 						}
 					],
 					"count": "6",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
-					"otherinfo": "<p></p><p>cookie:incap_ses_892_3062852</p><p>cookie:visid_incap_3062852</p>",
+					"otherinfo": "<p></p><p>cookie:visid_incap_3062852</p><p>cookie:incap_ses_170_3062852</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
@@ -2073,6 +2025,14 @@
 					"riskdesc": "Informational (Medium)",
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
+						{
+							"uri": "https://cnac.entreprises.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=600",
+							"otherinfo": ""
+						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/core/*.css",
 							"method": "GET",
@@ -2138,7 +2098,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.js",
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.jpg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -2146,7 +2106,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.png",
+							"uri": "https://cnac.entreprises.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -2158,7 +2118,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "max-age=546",
+							"evidence": "max-age=536",
 							"otherinfo": ""
 						},
 						{
@@ -2170,7 +2130,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
@@ -2189,116 +2149,116 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "date_0",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_0=2024-03-24\n\nThe user-controlled value was:\n2024-03-24"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_0=2024-03-31\n\nThe user-controlled value was:\n2024-03-31"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "date_1",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_1=2024-03-24\n\nThe user-controlled value was:\n2024-03-24"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ndate_1=2024-03-31\n\nThe user-controlled value was:\n2024-03-31"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "keys",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nkeys=ZAP\n\nThe user-controlled value was:\nzap"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nkeys=ZAP\n\nThe user-controlled value was:\nzap"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [link] tag [media] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [link] tag [media] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "publie_depuis",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [option] tag [value] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [option] tag [value] attribute \n\nThe user input found was:\npublie_depuis=All\n\nThe user-controlled value was:\nall"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "sort_by",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nsort_by=search_api_relevance\n\nThe user-controlled value was:\nsearch_api_relevance"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nsort_by=search_api_relevance\n\nThe user-controlled value was:\nsearch_api_relevance"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[actualite]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[actualite]=actualite\n\nThe user-controlled value was:\nactualite"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[actualite]=actualite\n\nThe user-controlled value was:\nactualite"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[appel_a_projets]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[appel_a_projets]=appel_a_projets\n\nThe user-controlled value was:\nappel_a_projets"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[appel_a_projets]=appel_a_projets\n\nThe user-controlled value was:\nappel_a_projets"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[article]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[article]=article\n\nThe user-controlled value was:\narticle"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[article]=article\n\nThe user-controlled value was:\narticle"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[communique_de_presse]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[communique_de_presse]=communique_de_presse\n\nThe user-controlled value was:\ncommunique_de_presse"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[communique_de_presse]=communique_de_presse\n\nThe user-controlled value was:\ncommunique_de_presse"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[evenement]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[evenement]=evenement\n\nThe user-controlled value was:\nevenement"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[evenement]=evenement\n\nThe user-controlled value was:\nevenement"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[faq]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[faq]=faq\n\nThe user-controlled value was:\nfaq"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[faq]=faq\n\nThe user-controlled value was:\nfaq"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[media]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[media]=media\n\nThe user-controlled value was:\nmedia"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[media]=media\n\nThe user-controlled value was:\nmedia"
 						},
 						{
-							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
+							"uri": "https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2",
 							"method": "GET",
 							"param": "type[page_accueil_n2]",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[page_accueil_n2]=page_accueil_n2\n\nThe user-controlled value was:\npage_accueil_n2"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ntype[page_accueil_n2]=page_accueil_n2\n\nThe user-controlled value was:\npage_accueil_n2"
 						},
 						{
 							"uri": "https://cnac.entreprises.gouv.fr/recherche?page=31",
@@ -2311,11 +2271,11 @@
 					],
 					"count": "15",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
-					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-24&date_1=2024-03-24&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>date_0=2024-03-24</p><p></p><p>The user-controlled value was:</p><p>2024-03-24</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://cnac.entreprises.gouv.fr/recherche?date_0=2024-03-31&date_1=2024-03-31&keys=ZAP&publie_depuis=All&sort_by=search_api_relevance&type%5Bactualite%5D=actualite&type%5Bappel_a_projets%5D=appel_a_projets&type%5Barticle%5D=article&type%5Bcommunique_de_presse%5D=communique_de_presse&type%5Bevenement%5D=evenement&type%5Bfaq%5D=faq&type%5Bmedia%5D=media&type%5Bpage_accueil_n2%5D=page_accueil_n2</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>date_0=2024-03-31</p><p></p><p>The user-controlled value was:</p><p>2024-03-31</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "1333"
+					"sourceid": "1261"
 				}
 			]
 		}
