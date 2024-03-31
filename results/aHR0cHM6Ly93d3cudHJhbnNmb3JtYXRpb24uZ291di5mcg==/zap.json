@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 24 Mar 2024 03:14:29",
+	"@generated": "Sun, 31 Mar 2024 03:19:29",
 	"site":[ 
 		{
 			"@name": "https://www.transformation.gouv.fr",
@@ -21,14 +21,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.transformation.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form block=\"block-formulairederecherche\" action=\"/search/resultat\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/*/media/oembed",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -116,7 +108,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ]."
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"edit-keys\" \"edit-submit\" ].</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
@@ -143,7 +135,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/filter/tips",
+							"uri": "https://www.transformation.gouv.fr/index.php/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -186,7 +178,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/filter/tips",
+							"uri": "https://www.transformation.gouv.fr/index.php/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -229,7 +221,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/filter/tips",
+							"uri": "https://www.transformation.gouv.fr/index.php/filter/tips",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -328,6 +320,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.transformation.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.transformation.gouv.fr/profiles/*.css",
 							"method": "GET",
 							"param": "",
@@ -337,14 +337,6 @@
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/profiles/*.gif",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/profiles/*.jpg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -366,7 +358,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "88"
+					"sourceid": "58"
 				},
 				{
 					"pluginid": "10098",
@@ -395,14 +387,6 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
 							"uri": "https://www.transformation.gouv.fr/index.php/admin/",
 							"method": "GET",
 							"param": "",
@@ -412,6 +396,14 @@
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/index.php/filter/tips",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/index.php/search/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -486,7 +478,7 @@
 					"desc": "<p>The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=1346001100215606795-495706356385454990&mth=GET&rpinfo=0&xinfo=14-87690965-0%200NNN%20RT%281711250001083%2011%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=1363001000093256353-208382793859930379&mth=GET&rpinfo=0&xinfo=11-42016464-0%200NNN%20RT%281711855102896%2037%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -500,7 +492,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "448"
+					"sourceid": "3047"
 				},
 				{
 					"pluginid": "90003",
@@ -513,7 +505,7 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
 					"instances":[ 
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=1346001100215606795-495706356385454990&mth=GET&rpinfo=0&xinfo=14-87690965-0%200NNN%20RT%281711250001083%2011%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?CWUDNSAI=23&cinfo=03000000&edet=15&incident_id=1363001000093256353-208382793859930379&mth=GET&rpinfo=0&xinfo=11-42016464-0%200NNN%20RT%281711855102896%2037%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%283%2c306018%2c0%29%20U18",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -527,7 +519,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "448"
+					"sourceid": "3047"
 				},
 				{
 					"pluginid": "10003",
@@ -544,7 +536,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "* jQuery JavaScript Library v1.6.4",
+							"evidence": ",jquery:\"1.6.4\"",
 							"otherinfo": "CVE-2020-11023\nCVE-2020-11022\nCVE-2015-9251\nCVE-2019-11358\nCVE-2020-7656\nCVE-2012-6708\n"
 						}
 					],
@@ -554,7 +546,7 @@
 					"reference": "<p>https://nvd.nist.gov/vuln/detail/CVE-2012-6708</p><p>https://github.com/jquery/jquery/issues/2432</p><p>http://research.insecurelabs.org/jquery/test/</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-11358</p><p>https://github.com/advisories/GHSA-rmxg-73gg-4p98</p><p>https://bugs.jquery.com/ticket/11974</p><p>https://github.com/jquery/jquery.com/issues/162</p><p>https://nvd.nist.gov/vuln/detail/CVE-2020-7656</p><p>http://blog.jquery.com/2016/01/08/jquery-2-2-and-1-12-released/</p><p>http://bugs.jquery.com/ticket/11290</p><p>https://blog.jquery.com/2019/04/10/jquery-3-4-0-released/</p><p>https://nvd.nist.gov/vuln/detail/CVE-2015-9251</p><p>https://github.com/advisories/GHSA-q4m3-2j7h-f7xw</p><p>https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b</p><p>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "3269"
+					"sourceid": "3405"
 				},
 				{
 					"pluginid": "10044",
@@ -669,7 +661,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "291"
+					"sourceid": "323"
 				},
 				{
 					"pluginid": "10010",
@@ -684,25 +676,25 @@
 						{
 							"uri": "https://www.transformation.gouv.fr",
 							"method": "GET",
-							"param": "incap_ses_1346_3064996",
+							"param": "incap_ses_1363_3064996",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1346_3064996",
+							"evidence": "Set-Cookie: incap_ses_1363_3064996",
 							"otherinfo": ""
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "incap_ses_1346_3064996",
+							"param": "incap_ses_1363_3064996",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1346_3064996",
+							"evidence": "Set-Cookie: incap_ses_1363_3064996",
 							"otherinfo": ""
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/sitemap.xml",
 							"method": "GET",
-							"param": "incap_ses_1346_3064996",
+							"param": "incap_ses_1363_3064996",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1346_3064996",
+							"evidence": "Set-Cookie: incap_ses_1363_3064996",
 							"otherinfo": ""
 						}
 					],
@@ -727,9 +719,9 @@
 						{
 							"uri": "https://www.transformation.gouv.fr",
 							"method": "GET",
-							"param": "incap_ses_1346_3064996",
+							"param": "incap_ses_1363_3064996",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1346_3064996",
+							"evidence": "Set-Cookie: incap_ses_1363_3064996",
 							"otherinfo": ""
 						},
 						{
@@ -743,9 +735,9 @@
 						{
 							"uri": "https://www.transformation.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "incap_ses_1346_3064996",
+							"param": "incap_ses_1363_3064996",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1346_3064996",
+							"evidence": "Set-Cookie: incap_ses_1363_3064996",
 							"otherinfo": ""
 						},
 						{
@@ -759,9 +751,9 @@
 						{
 							"uri": "https://www.transformation.gouv.fr/sitemap.xml",
 							"method": "GET",
-							"param": "incap_ses_1346_3064996",
+							"param": "incap_ses_1363_3064996",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1346_3064996",
+							"evidence": "Set-Cookie: incap_ses_1363_3064996",
 							"otherinfo": ""
 						},
 						{
@@ -792,7 +784,7 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1012708292&ns=3",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1026369629&ns=1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -800,7 +792,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=120069548&ns=8",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=123216458&ns=3",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -808,7 +800,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1852687861&ns=6",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=132710888&ns=2",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -816,7 +808,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1881153765&ns=11",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1382855019&ns=5",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -824,7 +816,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1984015696&ns=3",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1464806005&ns=7",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -832,7 +824,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=200933203&ns=2",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1489499269&ns=6",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -840,7 +832,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=2088557935&ns=7",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1841807802&ns=6",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -848,7 +840,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=224506076&ns=5",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=2109822324&ns=4",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -856,7 +848,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=470763331&ns=4",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=283732754&ns=8",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -864,7 +856,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=774427665&ns=1",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=539797163&ns=11",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=810888647&ns=3",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -888,13 +888,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>See the references for security advice on the use of these functions.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "440"
+					"sourceid": "360"
 				},
 				{
 					"pluginid": "10063",
@@ -1001,9 +1001,17 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/profiles/*.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
@@ -1022,109 +1030,109 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.transformation.gouv.fr/*/media/oembed",
+							"uri": "https://www.transformation.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1755238405",
-							"otherinfo": "1755238405, which evaluates to: 2025-08-15 06:13:25"
+							"evidence": "1489499269",
+							"otherinfo": "1489499269, which evaluates to: 2017-03-14 13:47:49"
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1528733015",
+							"otherinfo": "1528733015, which evaluates to: 2018-06-11 16:03:35"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1987228756",
-							"otherinfo": "1987228756, which evaluates to: 2032-12-21 07:59:16"
+							"evidence": "1765532604",
+							"otherinfo": "1765532604, which evaluates to: 2025-12-12 09:43:24"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/core/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1566168080",
-							"otherinfo": "1566168080, which evaluates to: 2019-08-18 22:41:20"
+							"evidence": "1851634340",
+							"otherinfo": "1851634340, which evaluates to: 2028-09-03 22:52:20"
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/core/*.css",
+							"uri": "https://www.transformation.gouv.fr/core/*.jpeg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1984015696",
-							"otherinfo": "1984015696, which evaluates to: 2032-11-14 03:28:16"
+							"evidence": "1464806005",
+							"otherinfo": "1464806005, which evaluates to: 2016-06-01 18:33:25"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/core/*.jpg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1852687861",
-							"otherinfo": "1852687861, which evaluates to: 2028-09-16 03:31:01"
+							"evidence": "1841807802",
+							"otherinfo": "1841807802, which evaluates to: 2028-05-13 05:16:42"
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/espace-presse",
+							"uri": "https://www.transformation.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "2011488819",
-							"otherinfo": "2011488819, which evaluates to: 2033-09-28 02:53:39"
+							"evidence": "1912412591",
+							"otherinfo": "1912412591, which evaluates to: 2030-08-08 09:43:11"
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/index.php/comment/reply/",
+							"uri": "https://www.transformation.gouv.fr/index.php/*/media/oembed",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1397355777",
-							"otherinfo": "1397355777, which evaluates to: 2014-04-13 02:22:57"
+							"evidence": "1630790293",
+							"otherinfo": "1630790293, which evaluates to: 2021-09-04 21:18:13"
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/media/oembed",
+							"uri": "https://www.transformation.gouv.fr/ministre/biographie",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1581996362",
-							"otherinfo": "1581996362, which evaluates to: 2020-02-18 03:26:02"
+							"evidence": "1615254629",
+							"otherinfo": "1615254629, which evaluates to: 2021-03-09 01:50:29"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1905707528",
-							"otherinfo": "1905707528, which evaluates to: 2030-05-22 19:12:08"
+							"evidence": "1413790398",
+							"otherinfo": "1413790398, which evaluates to: 2014-10-20 07:33:18"
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/profiles/*.css",
+							"uri": "https://www.transformation.gouv.fr/profiles/*.jpeg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1881153765",
-							"otherinfo": "1881153765, which evaluates to: 2029-08-11 14:42:45"
+							"evidence": "1794002147",
+							"otherinfo": "1794002147, which evaluates to: 2026-11-06 21:55:47"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1604916042",
-							"otherinfo": "1604916042, which evaluates to: 2020-11-09 10:00:42"
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/profiles/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1421470220",
-							"otherinfo": "1421470220, which evaluates to: 2015-01-17 04:50:20"
+							"evidence": "2021862654",
+							"otherinfo": "2021862654, which evaluates to: 2034-01-26 04:30:54"
 						}
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1755238405, which evaluates to: 2025-08-15 06:13:25</p>",
+					"otherinfo": "<p>1489499269, which evaluates to: 2017-03-14 13:47:49</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "176"
+					"sourceid": "103"
 				},
 				{
 					"pluginid": "10021",
@@ -1137,7 +1145,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1852687861&ns=6",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=123216458&ns=3",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1145,7 +1153,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1984015696&ns=3",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1382855019&ns=5",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1153,7 +1161,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=200933203&ns=2",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1464806005&ns=7",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1161,7 +1169,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=224506076&ns=5",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1841807802&ns=6",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1169,7 +1177,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=470763331&ns=4",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=2109822324&ns=4",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1177,7 +1185,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/files/css/css_NJ132APSKu1y7Ysca2AWj3kV7ScxWg1ZLA5PDPUSB40.css",
+							"uri": "https://www.transformation.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=283732754&ns=8",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1201,7 +1209,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/files/js/js_4_2-cqLYjVI6JHj9xx7cJ_D9aws9dCHByp11kos9dp8.js",
+							"uri": "https://www.transformation.gouv.fr/files/js/js_kLR0JnyZfTf2qRoUv4D-NFXVlR3b1IANYkRe_XiMIWo.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1239,7 +1247,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "366"
+					"sourceid": "201"
 				},
 				{
 					"pluginid": "10094",
@@ -1256,16 +1264,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1KlQG/OTQ0eiHGC3s1Jb2FCa/2UAAAAAQUIPAAAAAACC9dhOmPXEXf8rXFEaUR8a",
-							"otherinfo": "\u0529P\\x001b\uFFFDCG\uFFFD\\x001c`\uFFFD\uFFFDR[\uFFFDP\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFD\uFFFDN\uFFFD\uFFFD\uFFFD]\uFFFD+\\Q\\x001aQ\\x001f\\x001a"
+							"evidence": "YlFf33JLQfqzwVsABP7Smv3VCGYAAAAAQUIPAAAAAACxY8Qn5/rSmj4kR0UHiCFu",
+							"otherinfo": "bQ_\uFFFDrKA\uFFFD\uFFFD\uFFFD[\\x0000\\x0004\uFFFD\u049A\uFFFD\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFDc\uFFFD'\uFFFD\uFFFD\u049A>$GE\\x0007\uFFFD!n"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1vle0mlaT/CXogIUFbpO3U+a/2UAAAAAQUIPAAAAAAB7TZ7GQbtwTukkxBBSh5mR",
-							"otherinfo": "\uFFFD\uFFFD^\uFFFDiZO\uFFFD\\x0002\\x0014\\x0015\uFFFDN\uFFFDO\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000{M\uFFFD\uFFFDA\uFFFDpN\uFFFD$\uFFFD\\x0010R\uFFFD\uFFFD\uFFFD"
+							"evidence": "fX+8KzZiTX23auZ4ypiycP7VCGYAAAAAQUIPAAAAAACrwlrwORzYKWIb7jd79X60",
+							"otherinfo": "}\uFFFD+6bM}\uFFFDj\uFFFDx\u0298\uFFFDp\uFFFD\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFDZ\uFFFD9\\x001c\uFFFD)b\\x001b\uFFFD7{\uFFFD~\uFFFD"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/comment/reply/",
@@ -1300,7 +1308,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFD']\uFFFD\\x0000\uFFFD\\\uFFFDb\uFFFD\\x001a\uFFFD\\x0005\uFFFD\uFFFDE{I\uFFFDV\uFFFDVK\\x0003\uFFFD\uFFFD=D\uFFFD\uFFFD"
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/node/add/",
+							"uri": "https://www.transformation.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1336,25 +1344,25 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "R+pVQ/SJTfuUddITim8fj0+a/2UAAAAAQUIPAAAAAAAFwAJoJR4pWPAZoENhBEUw",
-							"otherinfo": "G\uFFFDUC\uFFFDM\uFFFD\uFFFDu\uFFFD\\x0013\uFFFDo\\x001f\uFFFDO\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\\x0005\uFFFD\\x0002h%\\x001e)X\uFFFD\\x0019\uFFFDCa\\x0004E0"
+							"evidence": "t3yr38HzTDyKWulWg4aXwf3VCGYAAAAAQUIPAAAAAAAMg+wI8q86h3PlaGBHwls5",
+							"otherinfo": "\uFFFD|\uFFFD\uFFFD\uFFFD\uFFFDL<\uFFFDZ\uFFFDV\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\\x000c\uFFFD\uFFFD\\x0008\uFFFD:\uFFFDs\uFFFDh`G\uFFFD[9"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "TnIi2ZeoRgykWjdyiojCmVCa/2UAAAAAQUIPAAAAAAAhKf1H6AoANXWlhw1dOX4N",
-							"otherinfo": "Nr\"\u0657\uFFFDF\\x000c\uFFFDZ7r\uFFFD\uFFFD\u0099P\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000!)\uFFFDG\uFFFD\n\\x00005u\uFFFD\uFFFD\r]9~\r"
+							"evidence": "dqR7iEKURDSmUUaHI2OyC/7VCGYAAAAAQUIPAAAAAACu/FqjVfjyAKlgpUazia1H",
+							"otherinfo": "v\uFFFD{\uFFFDB\uFFFDD4\uFFFDQF\uFFFD#c\uFFFD\\x000b\uFFFD\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFDZ\uFFFDU\uFFFD\uFFFD\\x0000\uFFFD`\uFFFDF\uFFFD\uFFFD\uFFFDG"
 						}
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\u0529P\\x001b\uFFFDCG\uFFFD\\x001c`\uFFFD\uFFFDR[\uFFFDP\uFFFD\uFFFDe\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFD\uFFFDN\uFFFD\uFFFD\uFFFD]\uFFFD+\\Q\\x001aQ\\x001f\\x001a</p>",
+					"otherinfo": "<p>bQ_\uFFFDrKA\uFFFD\uFFFD\uFFFD[\\x0000\\x0004\uFFFD\u049A\uFFFD\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFDc\uFFFD'\uFFFD\uFFFD\u049A>$GE\\x0007\uFFFD!n</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "96"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10027",
@@ -1368,14 +1376,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.transformation.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/*/media/oembed",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1408,6 +1408,14 @@
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/core/*.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"scriptPath\":null,\"pathPrefi\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/filter/tips",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1479,7 +1487,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.transformation.gouv.fr\nvisid_incap_3064996=1KlQG/OTQ0eiHGC3s1Jb2FCa/2UAAAAAQUIPAAAAAACC9dhOmPXEXf8rXFEaUR8a\nincap_ses_1346_3064996=TWk9RooGJ2Xl3aKF3vStElCa/2UAAAAAN5j+2VpCtlqywWxHxO6rlQ==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.transformation.gouv.fr\nvisid_incap_3064996=fX+8KzZiTX23auZ4ypiycP7VCGYAAAAAQUIPAAAAAACrwlrwORzYKWIb7jd79X60\nincap_ses_1363_3064996=CFvJBaFUNnShig8nMFrqEv7VCGYAAAAAs9bwayg4FN8TxT7nGLhM1A==\n"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr",
@@ -1487,7 +1495,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.transformation.gouv.fr\nvisid_incap_3064996=1vle0mlaT/CXogIUFbpO3U+a/2UAAAAAQUIPAAAAAAB7TZ7GQbtwTukkxBBSh5mR\nincap_ses_1346_3064996=oDUNSDtBCix43aKF3vStEk+a/2UAAAAAvqoxan21zf6YuOlNZF+1sg==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.transformation.gouv.fr\nvisid_incap_3064996=YlFf33JLQfqzwVsABP7Smv3VCGYAAAAAQUIPAAAAAACxY8Qn5/rSmj4kR0UHiCFu\nincap_ses_1363_3064996=P1y7ebbgNz0Dig8nMFrqEv3VCGYAAAAAiSd8AHLF8BtDq1thMu3CDA==\n"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/robots.txt",
@@ -1495,7 +1503,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.transformation.gouv.fr\nvisid_incap_3064996=R+pVQ/SJTfuUddITim8fj0+a/2UAAAAAQUIPAAAAAAAFwAJoJR4pWPAZoENhBEUw\nincap_ses_1346_3064996=bpxtE31XYQeP3aKF3vStEk+a/2UAAAAAcgysFt4LruM+XWwzTMv2RA==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.transformation.gouv.fr\nvisid_incap_3064996=t3yr38HzTDyKWulWg4aXwf3VCGYAAAAAQUIPAAAAAAAMg+wI8q86h3PlaGBHwls5\nincap_ses_1363_3064996=CXstfhawAWUlig8nMFrqEv3VCGYAAAAAzAS9I/u8/y30Edlp4HyFTw==\n"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/sitemap.xml",
@@ -1503,16 +1511,16 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.transformation.gouv.fr\nvisid_incap_3064996=TnIi2ZeoRgykWjdyiojCmVCa/2UAAAAAQUIPAAAAAAAhKf1H6AoANXWlhw1dOX4N\nincap_ses_1346_3064996=WqV4dQUll3gL3qKF3vStElCa/2UAAAAAmfplTu3m/qbHF57qJYGLOA==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.transformation.gouv.fr\nvisid_incap_3064996=dqR7iEKURDSmUUaHI2OyC/7VCGYAAAAAQUIPAAAAAACu/FqjVfjyAKlgpUazia1H\nincap_ses_1363_3064996=VXWdCe81PgGeig8nMFrqEv7VCGYAAAAAbgMPsW9j5IQYMO5yjlanww==\n"
 						}
 					],
 					"count": "4",
 					"solution": "<p>Always scope cookies to a FQDN (Fully Qualified Domain Name).</p>",
-					"otherinfo": "<p>The origin domain used for comparison was: </p><p>www.transformation.gouv.fr</p><p>visid_incap_3064996=1KlQG/OTQ0eiHGC3s1Jb2FCa/2UAAAAAQUIPAAAAAACC9dhOmPXEXf8rXFEaUR8a</p><p>incap_ses_1346_3064996=TWk9RooGJ2Xl3aKF3vStElCa/2UAAAAAN5j+2VpCtlqywWxHxO6rlQ==</p><p></p>",
+					"otherinfo": "<p>The origin domain used for comparison was: </p><p>www.transformation.gouv.fr</p><p>visid_incap_3064996=fX+8KzZiTX23auZ4ypiycP7VCGYAAAAAQUIPAAAAAACrwlrwORzYKWIb7jd79X60</p><p>incap_ses_1363_3064996=CFvJBaFUNnShig8nMFrqEv7VCGYAAAAAs9bwayg4FN8TxT7nGLhM1A==</p><p></p>",
 					"reference": "<p>https://tools.ietf.org/html/rfc6265#section-4.1</p><p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p><p>https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies</p>",
 					"cweid": "565",
 					"wascid": "15",
-					"sourceid": "96"
+					"sourceid": "103"
 				},
 				{
 					"pluginid": "10109",
@@ -1537,7 +1545,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=1984015696\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=4&cb=2109822324\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1553,7 +1561,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=4&cb=470763331\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=1382855019\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1561,7 +1569,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=7&cb=704461876\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=7&cb=1464806005\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1569,7 +1577,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=1852687861\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=1841807802\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1577,7 +1585,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=224506076\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=123216458\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1593,7 +1601,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=8&cb=120069548\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=8&cb=283732754\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1601,7 +1609,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=11&cb=1881153765\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=11&cb=539797163\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1609,19 +1617,11 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=1012708292\" async></script>",
-							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/profiles/*.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=1604916042\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=132710888\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
 					"reference": "",
@@ -1704,19 +1704,19 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=546, public",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr/rubrique-ressources",
+							"uri": "https://www.transformation.gouv.fr/reforme-de-l-encadrement-superieur-de-l-etat",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
 							"evidence": "max-age=600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=540, public",
 							"otherinfo": ""
 						},
 						{
@@ -1747,7 +1747,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.transformation.gouv.fr/core/*.css",
+							"uri": "https://www.transformation.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1755,7 +1755,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/core/*.js$",
+							"uri": "https://www.transformation.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1777,7 +1777,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "88"
+					"sourceid": "54"
 				},
 				{
 					"pluginid": "90005",
@@ -1790,7 +1790,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.transformation.gouv.fr/core/*.css",
+							"uri": "https://www.transformation.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1798,7 +1798,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/core/*.js$",
+							"uri": "https://www.transformation.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1820,7 +1820,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "88"
+					"sourceid": "54"
 				},
 				{
 					"pluginid": "90005",
@@ -1833,7 +1833,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.transformation.gouv.fr/core/*.css",
+							"uri": "https://www.transformation.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1841,7 +1841,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/core/*.js$",
+							"uri": "https://www.transformation.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1863,7 +1863,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "88"
+					"sourceid": "54"
 				},
 				{
 					"pluginid": "90005",
@@ -1876,7 +1876,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.transformation.gouv.fr/core/*.css",
+							"uri": "https://www.transformation.gouv.fr/core/*.gif",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1884,7 +1884,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/core/*.js$",
+							"uri": "https://www.transformation.gouv.fr/core/*.js",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1906,7 +1906,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "88"
+					"sourceid": "54"
 				},
 				{
 					"pluginid": "10112",
@@ -1921,67 +1921,75 @@
 						{
 							"uri": "https://www.transformation.gouv.fr",
 							"method": "GET",
-							"param": "visid_incap_3064996",
+							"param": "incap_ses_1363_3064996",
 							"attack": "",
-							"evidence": "1KlQG/OTQ0eiHGC3s1Jb2FCa/2UAAAAAQUIPAAAAAACC9dhOmPXEXf8rXFEaUR8a",
-							"otherinfo": "\ncookie:visid_incap_3064996\ncookie:incap_ses_1346_3064996"
-						},
-						{
-							"uri": "https://www.transformation.gouv.fr",
-							"method": "GET",
-							"param": "visid_incap_3064996",
-							"attack": "",
-							"evidence": "1vle0mlaT/CXogIUFbpO3U+a/2UAAAAAQUIPAAAAAAB7TZ7GQbtwTukkxBBSh5mR",
-							"otherinfo": "\ncookie:visid_incap_3064996\ncookie:incap_ses_1346_3064996"
+							"evidence": "P1y7ebbgNz0Dig8nMFrqEv3VCGYAAAAAiSd8AHLF8BtDq1thMu3CDA==",
+							"otherinfo": "\ncookie:incap_ses_1363_3064996\ncookie:visid_incap_3064996"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "visid_incap_3064996",
+							"param": "incap_ses_1363_3064996",
 							"attack": "",
-							"evidence": "R+pVQ/SJTfuUddITim8fj0+a/2UAAAAAQUIPAAAAAAAFwAJoJR4pWPAZoENhBEUw",
-							"otherinfo": "\ncookie:visid_incap_3064996\ncookie:incap_ses_1346_3064996"
+							"evidence": "CXstfhawAWUlig8nMFrqEv3VCGYAAAAAzAS9I/u8/y30Edlp4HyFTw==",
+							"otherinfo": "\ncookie:incap_ses_1363_3064996\ncookie:visid_incap_3064996"
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/core/*.jpeg",
+							"uri": "https://www.transformation.gouv.fr/core/*.svg",
 							"method": "GET",
-							"param": "incap_ses_1346_3064996",
+							"param": "incap_ses_1363_3064996",
 							"attack": "",
-							"evidence": "bpxtE31XYQeP3aKF3vStEk+a/2UAAAAAcgysFt4LruM+XWwzTMv2RA==",
-							"otherinfo": "\ncookie:incap_ses_1346_3064996"
+							"evidence": "CXstfhawAWUlig8nMFrqEv3VCGYAAAAAzAS9I/u8/y30Edlp4HyFTw==",
+							"otherinfo": "\ncookie:incap_ses_1363_3064996"
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/core/*.jpeg",
+							"uri": "https://www.transformation.gouv.fr/core/*.svg",
 							"method": "GET",
 							"param": "visid_incap_3064996",
 							"attack": "",
-							"evidence": "R+pVQ/SJTfuUddITim8fj0+a/2UAAAAAQUIPAAAAAAAFwAJoJR4pWPAZoENhBEUw",
+							"evidence": "t3yr38HzTDyKWulWg4aXwf3VCGYAAAAAQUIPAAAAAAAMg+wI8q86h3PlaGBHwls5",
+							"otherinfo": "\ncookie:visid_incap_3064996"
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/profiles",
+							"method": "GET",
+							"param": "incap_ses_1363_3064996",
+							"attack": "",
+							"evidence": "CXstfhawAWUlig8nMFrqEv3VCGYAAAAAzAS9I/u8/y30Edlp4HyFTw==",
+							"otherinfo": "\ncookie:incap_ses_1363_3064996"
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/profiles",
+							"method": "GET",
+							"param": "visid_incap_3064996",
+							"attack": "",
+							"evidence": "t3yr38HzTDyKWulWg4aXwf3VCGYAAAAAQUIPAAAAAAAMg+wI8q86h3PlaGBHwls5",
 							"otherinfo": "\ncookie:visid_incap_3064996"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/profiles/*.css$",
 							"method": "GET",
-							"param": "incap_ses_1346_3064996",
+							"param": "incap_ses_1363_3064996",
 							"attack": "",
-							"evidence": "bpxtE31XYQeP3aKF3vStEk+a/2UAAAAAcgysFt4LruM+XWwzTMv2RA==",
-							"otherinfo": "\ncookie:incap_ses_1346_3064996"
+							"evidence": "CXstfhawAWUlig8nMFrqEv3VCGYAAAAAzAS9I/u8/y30Edlp4HyFTw==",
+							"otherinfo": "\ncookie:incap_ses_1363_3064996"
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "visid_incap_3064996",
 							"attack": "",
-							"evidence": "R+pVQ/SJTfuUddITim8fj0+a/2UAAAAAQUIPAAAAAAAFwAJoJR4pWPAZoENhBEUw",
+							"evidence": "t3yr38HzTDyKWulWg4aXwf3VCGYAAAAAQUIPAAAAAAAMg+wI8q86h3PlaGBHwls5",
 							"otherinfo": "\ncookie:visid_incap_3064996"
 						}
 					],
-					"count": "7",
+					"count": "8",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
-					"otherinfo": "<p></p><p>cookie:visid_incap_3064996</p><p>cookie:incap_ses_1346_3064996</p>",
+					"otherinfo": "<p></p><p>cookie:incap_ses_1363_3064996</p><p>cookie:visid_incap_3064996</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "96"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -2019,6 +2027,14 @@
 						},
 						{
 							"uri": "https://www.transformation.gouv.fr/core/*.gif",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.transformation.gouv.fr/core/*.jpeg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -2066,19 +2082,11 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.transformation.gouv.fr/profiles/*.gif",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=600",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.transformation.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "max-age=546",
+							"evidence": "max-age=540",
 							"otherinfo": ""
 						},
 						{
@@ -2251,7 +2259,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "2164"
+					"sourceid": "3180"
 				}
 			]
 		}
