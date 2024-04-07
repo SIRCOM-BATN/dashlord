@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 31 Mar 2024 02:41:00",
+	"@generated": "Sun, 7 Apr 2024 02:40:23",
 	"site":[ 
 		{
 			"@name": "https://www.fonction-publique.gouv.fr",
@@ -76,6 +76,14 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ]."
 						},
 						{
+							"uri": "https://www.fonction-publique.gouv.fr/index.php/comment/reply/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"header-searchbar\" data-drupal-selector=\"header-searchbar\" action=\"/recherche\" method=\"GET\" id=\"header-searchbar\" accept-charset=\"UTF-8\" data-drupal-form-fields=\"edit-search,edit-valider\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ]."
+						},
+						{
 							"uri": "https://www.fonction-publique.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
@@ -108,7 +116,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ]."
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"search-865-input\" ].</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
@@ -157,7 +165,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "68"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -200,7 +208,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "68"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -243,7 +251,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "68"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10038",
@@ -328,7 +336,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/profiles/*.gif",
+							"uri": "https://www.fonction-publique.gouv.fr/profiles/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -336,7 +344,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/profiles/*.jpeg",
+							"uri": "https://www.fonction-publique.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -358,7 +366,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "167"
+					"sourceid": "162"
 				},
 				{
 					"pluginid": "10098",
@@ -395,7 +403,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/index.php/filter/tips",
+							"uri": "https://www.fonction-publique.gouv.fr/index.php/user/password",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -465,7 +473,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "68"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10044",
@@ -516,7 +524,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "1570"
+					"sourceid": "1583"
 				},
 				{
 					"pluginid": "10010",
@@ -531,25 +539,25 @@
 						{
 							"uri": "https://www.fonction-publique.gouv.fr",
 							"method": "GET",
-							"param": "incap_ses_1700_3059583",
+							"param": "incap_ses_619_3059583",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1700_3059583",
+							"evidence": "Set-Cookie: incap_ses_619_3059583",
 							"otherinfo": ""
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "incap_ses_1700_3059583",
+							"param": "incap_ses_619_3059583",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1700_3059583",
+							"evidence": "Set-Cookie: incap_ses_619_3059583",
 							"otherinfo": ""
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/sitemap.xml",
 							"method": "GET",
-							"param": "incap_ses_1700_3059583",
+							"param": "incap_ses_619_3059583",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1700_3059583",
+							"evidence": "Set-Cookie: incap_ses_619_3059583",
 							"otherinfo": ""
 						}
 					],
@@ -559,7 +567,7 @@
 					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
 					"cweid": "1004",
 					"wascid": "13",
-					"sourceid": "68"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10054",
@@ -574,9 +582,9 @@
 						{
 							"uri": "https://www.fonction-publique.gouv.fr",
 							"method": "GET",
-							"param": "incap_ses_1700_3059583",
+							"param": "incap_ses_619_3059583",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1700_3059583",
+							"evidence": "Set-Cookie: incap_ses_619_3059583",
 							"otherinfo": ""
 						},
 						{
@@ -590,9 +598,9 @@
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "incap_ses_1700_3059583",
+							"param": "incap_ses_619_3059583",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1700_3059583",
+							"evidence": "Set-Cookie: incap_ses_619_3059583",
 							"otherinfo": ""
 						},
 						{
@@ -606,9 +614,9 @@
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/sitemap.xml",
 							"method": "GET",
-							"param": "incap_ses_1700_3059583",
+							"param": "incap_ses_619_3059583",
 							"attack": "",
-							"evidence": "Set-Cookie: incap_ses_1700_3059583",
+							"evidence": "Set-Cookie: incap_ses_619_3059583",
 							"otherinfo": ""
 						},
 						{
@@ -626,7 +634,7 @@
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
 					"cweid": "1275",
 					"wascid": "13",
-					"sourceid": "68"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10110",
@@ -639,7 +647,7 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=104352218&ns=2",
+							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1303348805&ns=4",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -647,7 +655,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1394049093&ns=1",
+							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1317643121&ns=3",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -655,7 +663,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1725307109&ns=3",
+							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1453105094&ns=7",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -663,7 +671,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=2095195808&ns=5",
+							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1510370262&ns=1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -671,7 +679,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=241118974&ns=1",
+							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1632750387&ns=2",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -679,7 +687,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=245466357&ns=5",
+							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1647511003&ns=1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -687,7 +695,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=350036799&ns=4",
+							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=272152476&ns=6",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -695,7 +703,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=722214178&ns=2",
+							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=410797924&ns=1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -703,7 +711,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=876839421&ns=7",
+							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=590055399&ns=5",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -711,7 +719,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=892926119&ns=6",
+							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=937893203&ns=4",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -741,7 +749,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "2334"
+					"sourceid": "2365"
 				},
 				{
 					"pluginid": "10063",
@@ -834,7 +842,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/profiles/*.gif",
+							"uri": "https://www.fonction-publique.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -848,7 +856,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "68"
 				},
 				{
 					"pluginid": "10096",
@@ -865,105 +873,105 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1432592581",
-							"otherinfo": "1432592581, which evaluates to: 2015-05-25 22:23:01"
+							"evidence": "1453105094",
+							"otherinfo": "1453105094, which evaluates to: 2016-01-18 08:18:14"
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/core/",
+							"uri": "https://www.fonction-publique.gouv.fr/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1943773963",
-							"otherinfo": "1943773963, which evaluates to: 2031-08-06 09:12:43"
+							"evidence": "1814861069",
+							"otherinfo": "1814861069, which evaluates to: 2027-07-06 08:04:29"
+						},
+						{
+							"uri": "https://www.fonction-publique.gouv.fr/composer/Plugin/ProjectMessage/README.md",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1843715262",
+							"otherinfo": "1843715262, which evaluates to: 2028-06-04 07:07:42"
+						},
+						{
+							"uri": "https://www.fonction-publique.gouv.fr/composer/Template/README.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1954580586",
+							"otherinfo": "1954580586, which evaluates to: 2031-12-09 11:03:06"
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/core/*.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1725307109",
-							"otherinfo": "1725307109, which evaluates to: 2024-09-02 19:58:29"
+							"evidence": "1632750387",
+							"otherinfo": "1632750387, which evaluates to: 2021-09-27 13:46:27"
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/core/*.svg",
+							"uri": "https://www.fonction-publique.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1941340509",
-							"otherinfo": "1941340509, which evaluates to: 2031-07-09 05:15:09"
+							"evidence": "1510370262",
+							"otherinfo": "1510370262, which evaluates to: 2017-11-11 03:17:42"
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/devenir-agent-public/comment-integrer-la-fonction-publique",
+							"uri": "https://www.fonction-publique.gouv.fr/core/*.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1957474546",
-							"otherinfo": "1957474546, which evaluates to: 2032-01-11 22:55:46"
+							"evidence": "1647511003",
+							"otherinfo": "1647511003, which evaluates to: 2022-03-17 09:56:43"
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/droit-de-la-fonction-publique/actualites-du-droit-de-la-fonction-publique",
+							"uri": "https://www.fonction-publique.gouv.fr/index.php/comment/reply/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1839415018",
-							"otherinfo": "1839415018, which evaluates to: 2028-04-15 12:36:58"
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/etre-agent-public/ma-remuneration",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1765867573",
-							"otherinfo": "1765867573, which evaluates to: 2025-12-16 06:46:13"
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/etudes-statistiques-et-publications/etudes-statistiques",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1420661998",
-							"otherinfo": "1420661998, which evaluates to: 2015-01-07 20:19:58"
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/filter/tips",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1841674182",
-							"otherinfo": "1841674182, which evaluates to: 2028-05-11 16:09:42"
+							"evidence": "2027113841",
+							"otherinfo": "2027113841, which evaluates to: 2034-03-27 23:10:41"
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/la-dgafp/qui-sommes-nous",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1458642865",
-							"otherinfo": "1458642865, which evaluates to: 2016-03-22 10:34:25"
+							"evidence": "1756574774",
+							"otherinfo": "1756574774, which evaluates to: 2025-08-30 17:26:14"
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/sites/README.txt",
+							"uri": "https://www.fonction-publique.gouv.fr/profiles/*.gif",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1409382145",
-							"otherinfo": "1409382145, which evaluates to: 2014-08-30 07:02:25"
+							"evidence": "1544954214",
+							"otherinfo": "1544954214, which evaluates to: 2018-12-16 09:56:54"
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/themes/README.txt",
+							"uri": "https://www.fonction-publique.gouv.fr/publications-dgafp",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1462236021",
-							"otherinfo": "1462236021, which evaluates to: 2016-05-03 00:40:21"
+							"evidence": "1859834197",
+							"otherinfo": "1859834197, which evaluates to: 2028-12-07 20:36:37"
+						},
+						{
+							"uri": "https://www.fonction-publique.gouv.fr/rejoindre-la-fonction-publique/calendrier-general-concours",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1588485795",
+							"otherinfo": "1588485795, which evaluates to: 2020-05-03 06:03:15"
 						}
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1432592581, which evaluates to: 2015-05-25 22:23:01</p>",
+					"otherinfo": "<p>1453105094, which evaluates to: 2016-01-18 08:18:14</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "68"
 				},
 				{
 					"pluginid": "10021",
@@ -976,7 +984,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=876839421&ns=7",
+							"uri": "https://www.fonction-publique.gouv.fr/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&cb=1453105094&ns=7",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -984,7 +992,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/files/styles/575x324/public/files/Images/Accueil/IRA-2024-03.png?itok=roFjgn0h",
+							"uri": "https://www.fonction-publique.gouv.fr/files/css/css_5kjkJbgzKnOVaFkDoyc7cwSWc-pBLKOOdBR95XdNDaM.css?delta=6&include=eJyFkVFuxCAMRC-EwpGQEyZZq2AQNlHT05duV6qStOrvYyTPG9YayFgMTWC-MkkhoXQYLxrwbpCI5tYaNqMtcIQYr4zm78jpoYbsZ1K4COVNwgtFXdukdiToAzC9PC9dreT_A7wUUadGbfR9Ywv2QMb3wRvNUKUN6pbS4KW0TIk_MFxG99OtfTiUgDwjhkicjlyMi_g_-Cm_c0bxN3LKHKVbn-F_Ye6yuKLtvOD6ES_sno7UF7Y2-j09w9e2rlKjrVF9qI-tV0rTD5m61D4nHrbxPpOUiE88ws6_&language=fr&theme=fp",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -992,7 +1000,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/files/styles/ds_cartes_image_illustrative/public/files/Images/actualite/2024/arrete-CET.png?itok=FqwF4x9C",
+							"uri": "https://www.fonction-publique.gouv.fr/files/css/css_dKKk_fWKauctKya03cUAZhRUCkoXX50ciYb0w1zi3PI.css?delta=3&include=eJyFkVFuxCAMRC-EwpGQEyZZq2AQNlHT05duV6qStOrvYyTPG9YayFgMTWC-MkkhoXQYLxrwbpCI5tYaNqMtcIQYr4zm78jpoYbsZ1K4COVNwgtFXdukdiToAzC9PC9dreT_A7wUUadGbfR9Ywv2QMb3wRvNUKUN6pbS4KW0TIk_MFxG99OtfTiUgDwjhkicjlyMi_g_-Cm_c0bxN3LKHKVbn-F_Ye6yuKLtvOD6ES_sno7UF7Y2-j09w9e2rlKjrVF9qI-tV0rTD5m61D4nHrbxPpOUiE88ws6_&language=fr&theme=fp",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1000,7 +1008,23 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/files/styles/ds_cartes_image_illustrative/public/files/Images/actualite/PACE.jpg?h=7c9f9eea&itok=HwRD1dzD",
+							"uri": "https://www.fonction-publique.gouv.fr/files/css/css_gRwZBO5gwSOV1GAwjsFqmtBqHtVO1btQHDZVZjT9Xas.css?delta=2&include=eJyFkVFuxCAMRC-EwpGQEyZZq2AQNlHT05duV6qStOrvYyTPG9YayFgMTWC-MkkhoXQYLxrwbpCI5tYaNqMtcIQYr4zm78jpoYbsZ1K4COVNwgtFXdukdiToAzC9PC9dreT_A7wUUadGbfR9Ywv2QMb3wRvNUKUN6pbS4KW0TIk_MFxG99OtfTiUgDwjhkicjlyMi_g_-Cm_c0bxN3LKHKVbn-F_Ye6yuKLtvOD6ES_sno7UF7Y2-j09w9e2rlKjrVF9qI-tV0rTD5m61D4nHrbxPpOUiE88ws6_&language=fr&theme=fp",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.fonction-publique.gouv.fr/files/css/css_N1tKBTtE7mBZOajygHMVrwB0ZeWWAfJ-C5VmdRqMh-o.css?delta=5&include=eJyFkVFuxCAMRC-EwpGQEyZZq2AQNlHT05duV6qStOrvYyTPG9YayFgMTWC-MkkhoXQYLxrwbpCI5tYaNqMtcIQYr4zm78jpoYbsZ1K4COVNwgtFXdukdiToAzC9PC9dreT_A7wUUadGbfR9Ywv2QMb3wRvNUKUN6pbS4KW0TIk_MFxG99OtfTiUgDwjhkicjlyMi_g_-Cm_c0bxN3LKHKVbn-F_Ye6yuKLtvOD6ES_sno7UF7Y2-j09w9e2rlKjrVF9qI-tV0rTD5m61D4nHrbxPpOUiE88ws6_&language=fr&theme=fp",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.fonction-publique.gouv.fr/files/css/css_ROg8OYnLyN8gdzXTzwPjpbTmZHDOI-Xzcwcb7bPUDEc.css?delta=4&include=eJyFkVFuxCAMRC-EwpGQEyZZq2AQNlHT05duV6qStOrvYyTPG9YayFgMTWC-MkkhoXQYLxrwbpCI5tYaNqMtcIQYr4zm78jpoYbsZ1K4COVNwgtFXdukdiToAzC9PC9dreT_A7wUUadGbfR9Ywv2QMb3wRvNUKUN6pbS4KW0TIk_MFxG99OtfTiUgDwjhkicjlyMi_g_-Cm_c0bxN3LKHKVbn-F_Ye6yuKLtvOD6ES_sno7UF7Y2-j09w9e2rlKjrVF9qI-tV0rTD5m61D4nHrbxPpOUiE88ws6_&language=fr&theme=fp",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1016,23 +1040,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/files/styles/ds_cartes_image_illustrative/public/files/Images/Publications/parentalite_mixite_sante_femme_portail.png?itok=JEFtAHjf",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://www.fonction-publique.gouv.fr/files/styles/ds_cartes_image_illustrative/public/files/Images/Publications/Protection-fonctionnelle.jpg?h=4eabc64f&itok=mSMq8G6Q",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/files/styles/ds_cartes_image_illustrative/public/files/Images/Rejoindre%20la%20FP/plan-talent-du-service-public.jpg?itok=Nf2kpxWI",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1078,7 +1086,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "2240"
+					"sourceid": "2304"
 				},
 				{
 					"pluginid": "10094",
@@ -1095,19 +1103,27 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "cAfKy4ZvQB20+cuUrzcPYPfMCGYAAAAAQUIPAAAAAACDYezFkcsgM1w8dDSCdBHC",
-							"otherinfo": "p\\x0007\uFFFD\u02C6o@\\x001d\uFFFD\uFFFD\u02D4\uFFFD7\\x000f`\uFFFD\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFDa\uFFFD\u0151\uFFFD 3\\<t4\uFFFDt\\x0011\uFFFD"
+							"evidence": "JXjS2O83RjGTK+pCC2k4OFMHEmYAAAAAQUIPAAAAAABDefVBGKvYNBxWJF2Cds+j",
+							"otherinfo": "%x\uFFFD\uFFFD\uFFFD7F1\uFFFD+\uFFFDB\\x000bi88S\\x0007\\x0012f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000Cy\uFFFDA\\x0018\uFFFD\uFFFD4\\x001cV$]\uFFFDv\u03E3"
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "6hJ8Qu5ZQgaNLxWm4TqaTPfMCGYAAAAAQUIPAAAAAADjbejqz13LnyUxWWaJBLXT",
-							"otherinfo": "\uFFFD\\x0012|B\uFFFDYB\\x0006\uFFFD/\\x0015\uFFFD\uFFFD:\uFFFDL\uFFFD\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFDm\uFFFD\uFFFD\uFFFD]\u02DF%1Yf\uFFFD\\x0004\uFFFD\uFFFD"
+							"evidence": "+zfh4ZS2RoWlxBR+p5NylFMHEmYAAAAAQUIPAAAAAADg3f07XxYKK0KNiyHigO9w",
+							"otherinfo": "\uFFFD7\uFFFD\u1536F\uFFFD\uFFFD\uFFFD\\x0014~\uFFFD\uFFFDr\uFFFDS\\x0007\\x0012f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFD\uFFFD;_\\x0016\n+B\uFFFD\uFFFD!\uFFFD\uFFFDp"
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/composer/Plugin/ProjectMessage/README.md",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/files/css/css_jzzBPr0S0P4UoO_q3kgXo8J68OmRhLhXOZxRgmxyHy4",
+							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFD\uFFFD0O\uFFFDD\uFFFD?\uFFFD(;\uFFFD\uFFFD\uFFFD\\x0005\uFFFD\uFFFD:da.\\x0015\uFFFDg\\x0014`\uFFFD\\x001c\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://www.fonction-publique.gouv.fr/composer/Plugin/Scaffold/README.md",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1132,14 +1148,6 @@
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/core/*.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/files/css/css_jzzBPr0S0P4UoO_q3kgXo8J68OmRhLhXOZxRgmxyHy4",
-							"otherinfo": "\uFFFD\uFFFD\uFFFDz\uFFFD\u0732\uFFFD\u0732\uFFFD\uFFFD\uFFFD0O\uFFFDD\uFFFD?\uFFFD(;\uFFFD\uFFFD\uFFFD\\x0005\uFFFD\uFFFD:da.\\x0015\uFFFDg\\x0014`\uFFFD\\x001c\uFFFD\uFFFD"
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/node/add/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1175,21 +1183,21 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "zb7rlEIWTH+NRaA5TOHXKffMCGYAAAAAQUIPAAAAAADMnCx18y4xLebHraetxNQD",
-							"otherinfo": "\u037E\uFFFDB\\x0016L\uFFFDE\uFFFD9L\uFFFD\uFFFD)\uFFFD\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\u031C,u\uFFFD.1-\uFFFD\u01ED\uFFFD\uFFFD\uFFFD\uFFFD\\x0003"
+							"evidence": "rq09Kfw7SmmqlOBkYxfVC1MHEmYAAAAAQUIPAAAAAAD70XgTtkPAHJBz7h07GB7C",
+							"otherinfo": "\uFFFD\uFFFD=)\uFFFD;Ji\uFFFD\uFFFD\uFFFDdc\\x0017\uFFFD\\x000bS\\x0007\\x0012f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\uFFFDx\\x0013\uFFFDC\uFFFD\\x001c\uFFFDs\uFFFD\\x001d;\\x0018\\x001e\uFFFD"
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "9I8tR6pNTsWSCOPizEkIj/jMCGYAAAAAQUIPAAAAAABEgYtL9cFzsC0BQfZZT/Pl",
-							"otherinfo": "\uFFFD-G\uFFFDMN\u0152\\x0008\uFFFD\uFFFD\uFFFDI\\x0008\uFFFD\uFFFD\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000D\uFFFD\uFFFDK\uFFFD\uFFFDs\uFFFD-\\x0001A\uFFFDYO\uFFFD\uFFFD"
+							"evidence": "yaQbT+CNTgq8QSi7fJr4UlcHEmYAAAAAQUIPAAAAAACBeNdYgFQTOmA8b0qUXnxz",
+							"otherinfo": "\u0264\\x001bO\uFFFD\uFFFDN\n\uFFFDA(\uFFFD|\uFFFD\uFFFDRW\\x0007\\x0012f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFDx\uFFFDX\uFFFDT\\x0013:`<oJ\uFFFD^|s"
 						}
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>p\\x0007\uFFFD\u02C6o@\\x001d\uFFFD\uFFFD\u02D4\uFFFD7\\x000f`\uFFFD\uFFFD\\x0008f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFDa\uFFFD\u0151\uFFFD 3\\<t4\uFFFDt\\x0011\uFFFD</p>",
+					"otherinfo": "<p>%x\uFFFD\uFFFD\uFFFD7F1\uFFFD+\uFFFDB\\x000bi88S\\x0007\\x0012f\\x0000\\x0000\\x0000\\x0000AB\\x000f\\x0000\\x0000\\x0000\\x0000\\x0000Cy\uFFFDA\\x0018\uFFFD\uFFFD4\\x001cV$]\uFFFDv\u03E3</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -1318,7 +1326,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.fonction-publique.gouv.fr\nvisid_incap_3059583=6hJ8Qu5ZQgaNLxWm4TqaTPfMCGYAAAAAQUIPAAAAAADjbejqz13LnyUxWWaJBLXT\nincap_ses_1700_3059583=3gYRIP5xEzflGJdMr52XF/fMCGYAAAAAQGmaS3jnC228HWDFL+Q9Tw==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.fonction-publique.gouv.fr\nvisid_incap_3059583=+zfh4ZS2RoWlxBR+p5NylFMHEmYAAAAAQUIPAAAAAADg3f07XxYKK0KNiyHigO9w\nincap_ses_619_3059583=IF/oUyN+lTj6EUrDOiGXCFMHEmYAAAAA4d6jXmWzNoQuUJ4eO9RiGg==\n"
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr",
@@ -1326,7 +1334,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.fonction-publique.gouv.fr\nvisid_incap_3059583=cAfKy4ZvQB20+cuUrzcPYPfMCGYAAAAAQUIPAAAAAACDYezFkcsgM1w8dDSCdBHC\nincap_ses_1700_3059583=Kd18C9y1/g1/G5dMr52XF/fMCGYAAAAAOK8kV2biB3QTqdRwhSgdlw==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.fonction-publique.gouv.fr\nvisid_incap_3059583=JXjS2O83RjGTK+pCC2k4OFMHEmYAAAAAQUIPAAAAAABDefVBGKvYNBxWJF2Cds+j\nincap_ses_619_3059583=Ac5IQa7zXTUxEkrDOiGXCFMHEmYAAAAAHafdA7t6PI5BzvhbscQnTg==\n"
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/robots.txt",
@@ -1334,7 +1342,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.fonction-publique.gouv.fr\nvisid_incap_3059583=zb7rlEIWTH+NRaA5TOHXKffMCGYAAAAAQUIPAAAAAADMnCx18y4xLebHraetxNQD\nincap_ses_1700_3059583=/ZUDQ/lXAC38GZdMr52XF/fMCGYAAAAAW0xVofx0rOW00wXf39m6uw==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.fonction-publique.gouv.fr\nvisid_incap_3059583=rq09Kfw7SmmqlOBkYxfVC1MHEmYAAAAAQUIPAAAAAAD70XgTtkPAHJBz7h07GB7C\nincap_ses_619_3059583=ARdyIzC5XQoWEkrDOiGXCFMHEmYAAAAACMXUhyjnPzxCBwzX+4IsFQ==\n"
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/sitemap.xml",
@@ -1342,12 +1350,12 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was: \nwww.fonction-publique.gouv.fr\nvisid_incap_3059583=9I8tR6pNTsWSCOPizEkIj/jMCGYAAAAAQUIPAAAAAABEgYtL9cFzsC0BQfZZT/Pl\nincap_ses_1700_3059583=ibbqOS7XMC0PHpdMr52XF/jMCGYAAAAAbwmhYZV8IycucNhkufTOnQ==\n"
+							"otherinfo": "The origin domain used for comparison was: \nwww.fonction-publique.gouv.fr\nvisid_incap_3059583=yaQbT+CNTgq8QSi7fJr4UlcHEmYAAAAAQUIPAAAAAACBeNdYgFQTOmA8b0qUXnxz\nincap_ses_619_3059583=nqBqQS5+LA3HE0rDOiGXCFcHEmYAAAAAWgTScP5Yi1UmYDy2z1Ydew==\n"
 						}
 					],
 					"count": "4",
 					"solution": "<p>Always scope cookies to a FQDN (Fully Qualified Domain Name).</p>",
-					"otherinfo": "<p>The origin domain used for comparison was: </p><p>www.fonction-publique.gouv.fr</p><p>visid_incap_3059583=6hJ8Qu5ZQgaNLxWm4TqaTPfMCGYAAAAAQUIPAAAAAADjbejqz13LnyUxWWaJBLXT</p><p>incap_ses_1700_3059583=3gYRIP5xEzflGJdMr52XF/fMCGYAAAAAQGmaS3jnC228HWDFL+Q9Tw==</p><p></p>",
+					"otherinfo": "<p>The origin domain used for comparison was: </p><p>www.fonction-publique.gouv.fr</p><p>visid_incap_3059583=+zfh4ZS2RoWlxBR+p5NylFMHEmYAAAAAQUIPAAAAAADg3f07XxYKK0KNiyHigO9w</p><p>incap_ses_619_3059583=IF/oUyN+lTj6EUrDOiGXCFMHEmYAAAAA4d6jXmWzNoQuUJ4eO9RiGg==</p><p></p>",
 					"reference": "<p>https://tools.ietf.org/html/rfc6265#section-4.1</p><p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p><p>https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies</p>",
 					"cweid": "565",
 					"wascid": "15",
@@ -1376,7 +1384,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=1725307109\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=1632750387\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1392,7 +1400,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=2095195808\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=4&cb=1303348805\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1400,7 +1408,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=241118974\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=410797924\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1408,7 +1416,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=892926119\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=272152476\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1416,7 +1424,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=4&cb=350036799\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=1317643121\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1432,7 +1440,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=2&cb=722214178\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1647511003\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1440,15 +1448,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=245466357\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=4&cb=937893203\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/profiles/*.gif",
+							"uri": "https://www.fonction-publique.gouv.fr/profiles/*.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=8&cb=1079437715\" async></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=6&cb=555716126\" async></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
@@ -1487,7 +1495,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/ecrire-au-ministere",
+							"uri": "https://www.fonction-publique.gouv.fr/acces-direct-vos-services",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1496,6 +1504,14 @@
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/filter/tips",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.fonction-publique.gouv.fr/la-dgafp/qui-sommes-nous",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1535,27 +1551,11 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/resultats-droit-de-la-fonction-publique",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/resultats-etre-agent-public",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=600",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.fonction-publique.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
-							"evidence": "max-age=378, public",
+							"evidence": "max-age=540, public",
 							"otherinfo": ""
 						},
 						{
@@ -1567,13 +1567,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "68"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1586,15 +1586,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/core/*.gif",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/core/*.jpg",
+							"uri": "https://www.fonction-publique.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1610,13 +1602,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "159"
+					"sourceid": "68"
 				},
 				{
 					"pluginid": "90005",
@@ -1629,15 +1621,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/core/*.gif",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/core/*.jpg",
+							"uri": "https://www.fonction-publique.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1653,13 +1637,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "159"
+					"sourceid": "68"
 				},
 				{
 					"pluginid": "90005",
@@ -1672,15 +1656,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/core/*.gif",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/core/*.jpg",
+							"uri": "https://www.fonction-publique.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1696,13 +1672,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "159"
+					"sourceid": "68"
 				},
 				{
 					"pluginid": "90005",
@@ -1715,15 +1691,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/core/*.gif",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/core/*.jpg",
+							"uri": "https://www.fonction-publique.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1739,13 +1707,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "159"
+					"sourceid": "68"
 				},
 				{
 					"pluginid": "10112",
@@ -1760,91 +1728,67 @@
 						{
 							"uri": "https://www.fonction-publique.gouv.fr",
 							"method": "GET",
-							"param": "visid_incap_3059583",
+							"param": "incap_ses_619_3059583",
 							"attack": "",
-							"evidence": "6hJ8Qu5ZQgaNLxWm4TqaTPfMCGYAAAAAQUIPAAAAAADjbejqz13LnyUxWWaJBLXT",
-							"otherinfo": "\ncookie:visid_incap_3059583\ncookie:incap_ses_1700_3059583"
+							"evidence": "Ac5IQa7zXTUxEkrDOiGXCFMHEmYAAAAAHafdA7t6PI5BzvhbscQnTg==",
+							"otherinfo": "\ncookie:incap_ses_619_3059583\ncookie:visid_incap_3059583"
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr",
 							"method": "GET",
-							"param": "visid_incap_3059583",
+							"param": "incap_ses_619_3059583",
 							"attack": "",
-							"evidence": "cAfKy4ZvQB20+cuUrzcPYPfMCGYAAAAAQUIPAAAAAACDYezFkcsgM1w8dDSCdBHC",
-							"otherinfo": "\ncookie:visid_incap_3059583\ncookie:incap_ses_1700_3059583"
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "visid_incap_3059583",
-							"attack": "",
-							"evidence": "zb7rlEIWTH+NRaA5TOHXKffMCGYAAAAAQUIPAAAAAADMnCx18y4xLebHraetxNQD",
-							"otherinfo": "\ncookie:visid_incap_3059583\ncookie:incap_ses_1700_3059583"
+							"evidence": "IF/oUyN+lTj6EUrDOiGXCFMHEmYAAAAA4d6jXmWzNoQuUJ4eO9RiGg==",
+							"otherinfo": "\ncookie:incap_ses_619_3059583\ncookie:visid_incap_3059583"
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/sitemap.xml",
 							"method": "GET",
-							"param": "visid_incap_3059583",
+							"param": "incap_ses_619_3059583",
 							"attack": "",
-							"evidence": "9I8tR6pNTsWSCOPizEkIj/jMCGYAAAAAQUIPAAAAAABEgYtL9cFzsC0BQfZZT/Pl",
-							"otherinfo": "\ncookie:visid_incap_3059583\ncookie:incap_ses_1700_3059583"
+							"evidence": "nqBqQS5+LA3HE0rDOiGXCFcHEmYAAAAAWgTScP5Yi1UmYDy2z1Ydew==",
+							"otherinfo": "\ncookie:incap_ses_619_3059583\ncookie:visid_incap_3059583"
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/index.php/media",
+							"uri": "https://www.fonction-publique.gouv.fr/core/*.css$",
 							"method": "GET",
-							"param": "incap_ses_1700_3059583",
+							"param": "incap_ses_619_3059583",
 							"attack": "",
-							"evidence": "ibbqOS7XMC0PHpdMr52XF/jMCGYAAAAAbwmhYZV8IycucNhkufTOnQ==",
-							"otherinfo": "\ncookie:incap_ses_1700_3059583"
+							"evidence": "ARdyIzC5XQoWEkrDOiGXCFMHEmYAAAAACMXUhyjnPzxCBwzX+4IsFQ==",
+							"otherinfo": "\ncookie:incap_ses_619_3059583"
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/index.php/media",
+							"uri": "https://www.fonction-publique.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "visid_incap_3059583",
 							"attack": "",
-							"evidence": "9I8tR6pNTsWSCOPizEkIj/jMCGYAAAAAQUIPAAAAAABEgYtL9cFzsC0BQfZZT/Pl",
+							"evidence": "rq09Kfw7SmmqlOBkYxfVC1MHEmYAAAAAQUIPAAAAAAD70XgTtkPAHJBz7h07GB7C",
 							"otherinfo": "\ncookie:visid_incap_3059583"
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/index.php/search",
+							"uri": "https://www.fonction-publique.gouv.fr/search",
 							"method": "GET",
-							"param": "incap_ses_1700_3059583",
+							"param": "incap_ses_619_3059583",
 							"attack": "",
-							"evidence": "ibbqOS7XMC0PHpdMr52XF/jMCGYAAAAAbwmhYZV8IycucNhkufTOnQ==",
-							"otherinfo": "\ncookie:incap_ses_1700_3059583"
+							"evidence": "nqBqQS5+LA3HE0rDOiGXCFcHEmYAAAAAWgTScP5Yi1UmYDy2z1Ydew==",
+							"otherinfo": "\ncookie:incap_ses_619_3059583"
 						},
 						{
-							"uri": "https://www.fonction-publique.gouv.fr/index.php/search",
+							"uri": "https://www.fonction-publique.gouv.fr/search",
 							"method": "GET",
 							"param": "visid_incap_3059583",
 							"attack": "",
-							"evidence": "9I8tR6pNTsWSCOPizEkIj/jMCGYAAAAAQUIPAAAAAABEgYtL9cFzsC0BQfZZT/Pl",
-							"otherinfo": "\ncookie:visid_incap_3059583"
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/index.php/user/login",
-							"method": "GET",
-							"param": "incap_ses_1700_3059583",
-							"attack": "",
-							"evidence": "ibbqOS7XMC0PHpdMr52XF/jMCGYAAAAAbwmhYZV8IycucNhkufTOnQ==",
-							"otherinfo": "\ncookie:incap_ses_1700_3059583"
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/index.php/user/login",
-							"method": "GET",
-							"param": "visid_incap_3059583",
-							"attack": "",
-							"evidence": "9I8tR6pNTsWSCOPizEkIj/jMCGYAAAAAQUIPAAAAAABEgYtL9cFzsC0BQfZZT/Pl",
+							"evidence": "yaQbT+CNTgq8QSi7fJr4UlcHEmYAAAAAQUIPAAAAAACBeNdYgFQTOmA8b0qUXnxz",
 							"otherinfo": "\ncookie:visid_incap_3059583"
 						}
 					],
-					"count": "10",
+					"count": "7",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
-					"otherinfo": "<p></p><p>cookie:visid_incap_3059583</p><p>cookie:incap_ses_1700_3059583</p>",
+					"otherinfo": "<p></p><p>cookie:incap_ses_619_3059583</p><p>cookie:visid_incap_3059583</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "68"
 				},
 				{
 					"pluginid": "10049",
@@ -1866,14 +1810,6 @@
 						},
 						{
 							"uri": "https://www.fonction-publique.gouv.fr/core/*.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=600",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.fonction-publique.gouv.fr/core/*.css$",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1937,11 +1873,19 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.fonction-publique.gouv.fr/profiles/*.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=600",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.fonction-publique.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "max-age=378",
+							"evidence": "max-age=540",
 							"otherinfo": ""
 						}
 					],
@@ -1951,7 +1895,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "68"
 				},
 				{
 					"pluginid": "10031",
@@ -2154,7 +2098,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "1987"
+					"sourceid": "2188"
 				}
 			]
 		}
