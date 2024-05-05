@@ -1,40 +1,6 @@
 [
   [
     {
-      "template": "dns/servfail-refused-hosts.yaml",
-      "template-url": "https://templates.nuclei.sh/public/servfail-refused-hosts",
-      "template-id": "servfail-refused-hosts",
-      "template-path": "/home/runner/nuclei-templates/dns/servfail-refused-hosts.yaml",
-      "info": {
-        "name": "DNS Servfail Host Finder",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "takeover"
-        ],
-        "description": "A DNS ServFail error occurred. ServFail errors occur when there is an error communicating with a DNS server. This could have a number of causes, including an error on the DNS server itself, or a temporary networking issue.",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "www.prix-carburants.gouv.fr.",
-      "matched-at": "www.prix-carburants.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 38486\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.prix-carburants.gouv.fr.\tIN\t A\n",
-      "response": ";; opcode: QUERY, status: SERVFAIL, id: 38486\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n; EDE: 22 (No Reachable Authority): (At delegation www.prix-carburants.gouv.fr for www.prix-carburants.gouv.fr/a)\n\n;; QUESTION SECTION:\n;www.prix-carburants.gouv.fr.\tIN\t A\n",
-      "timestamp": "2024-04-28T02:55:06.721897692Z",
-      "matcher-status": true
-    },
-    {
       "template": "dns/caa-fingerprint.yaml",
       "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
       "template-id": "caa-fingerprint",
@@ -66,9 +32,46 @@
       "type": "dns",
       "host": "www.prix-carburants.gouv.fr.",
       "matched-at": "www.prix-carburants.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 23819\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.prix-carburants.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 23819\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.prix-carburants.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.prix-carburants.gouv.fr.\t600\tIN\tCNAME\ttm9jlpo.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
-      "timestamp": "2024-04-28T02:55:07.144983497Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 4121\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.prix-carburants.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 4121\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.prix-carburants.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.prix-carburants.gouv.fr.\t600\tIN\tCNAME\ttm9jlpo.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
+      "timestamp": "2024-05-05T03:06:46.504320706Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/dns-saas-service-detection.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
+      "template-id": "dns-saas-service-detection",
+      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
+      "info": {
+        "name": "DNS SaaS Service Detection",
+        "author": [
+          "noah @thesubtlety",
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "service"
+        ],
+        "description": "A CNAME DNS record was discovered",
+        "reference": [
+          "https://ns1.com/resources/cname",
+          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
+          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "www.prix-carburants.gouv.fr.",
+      "matched-at": "www.prix-carburants.gouv.fr",
+      "extracted-results": [
+        "tm9jlpo.ng.impervadns.net."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 53011\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.prix-carburants.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 53011\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.prix-carburants.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.prix-carburants.gouv.fr.\t600\tIN\tCNAME\ttm9jlpo.ng.impervadns.net.\n",
+      "timestamp": "2024-05-05T03:06:47.425444273Z",
       "matcher-status": true
     },
     {
@@ -94,9 +97,9 @@
       "host": "https://www.prix-carburants.gouv.fr",
       "matched-at": "https://www.prix-carburants.gouv.fr/",
       "request": "GET / HTTP/1.1\r\nHost: www.prix-carburants.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.prix-carburants.gouv.fr/\r\nSet-Cookie: visid_incap_3031704=Z70vC8SvRiGf9zZQb70HBqO6LWYAAAAAQUIPAAAAAAAv10SuG3R5o+6jtS7JFfOV; expires=Sun, 27 Apr 2025 07:39:20 GMT; HttpOnly; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1543_3031704=8CpLNWlqmXYfAEPsV9ZpFaO6LWYAAAAAGHGCrlnfEtK1+x52jbDf/Q==; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 5-48822634-0 0NNN RT(1714272931723 4) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.prix-carburants.gouv.fr/\r\nSet-Cookie: visid_incap_3031704=ukgX2lL/Tz6w5o3Pb0QEieD3NmYAAAAAQUIPAAAAAADsxrdmxHyzvTJ6ZAoZ/gYg; expires=Sun, 04 May 2025 06:31:10 GMT; HttpOnly; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1348_3031704=nvwnKF6HwEgWVQj45A61EuD3NmYAAAAAzynlbR1sjJWi2CxzUmVnxw==; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 3-2995501-0 0NNN RT(1714878432201 11) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2024-04-28T02:55:32.029371812Z",
+      "timestamp": "2024-05-05T03:07:12.450328711Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.prix-carburants.gouv.fr'",
       "matcher-status": true
     },
@@ -123,9 +126,9 @@
       "host": "https://www.prix-carburants.gouv.fr",
       "matched-at": "https://www.prix-carburants.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: www.prix-carburants.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.prix-carburants.gouv.fr/\r\nSet-Cookie: visid_incap_3031704=r2BMeZlkSP+U8jLaq+JnN6O6LWYAAAAAQUIPAAAAAADk+HefqQ3t2Kw0B6mWOeG9; expires=Sun, 27 Apr 2025 07:39:13 GMT; HttpOnly; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1543_3031704=b9BFdgIcwlDx/0LsV9ZpFaO6LWYAAAAAoCBWPuXOHcpLgIqpe5kkwA==; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 8-50727412-0 0NNN RT(1714272931703 4) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U18\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.prix-carburants.gouv.fr/\r\nSet-Cookie: visid_incap_3031704=W8CmOMKTTmmU0ghBjRI9cuD3NmYAAAAAQUIPAAAAAAC5sa2dVSQh4+iwmJYE0gPm; expires=Sun, 04 May 2025 06:31:22 GMT; HttpOnly; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1348_3031704=o7/ZZGso+HPpVAj45A61EuD3NmYAAAAAvHCZvE1ei+999FAbU3hhEQ==; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 6-5644659-0 0NNN RT(1714878432180 8) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U18\r\n\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2024-04-28T02:55:32.108397249Z",
+      "timestamp": "2024-05-05T03:07:12.528754964Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.prix-carburants.gouv.fr'",
       "matcher-status": true
     },
@@ -166,21 +169,21 @@
       "type": "http",
       "host": "https://www.prix-carburants.gouv.fr",
       "matched-at": "https://www.prix-carburants.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: comrl2k8bhpv6c8ijh806ebtrnk4ror51.oast.online\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 692\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1007-64749792-0 0NNN RT(1714272943678 6) q(0 -1 -1 -1) r(63 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1007-64749792-0%200NNN%20RT%281714272943678%206%29%20q%280%20-1%20-1%20-1%29%20r%2863%20-1%29&incident_id=0-377969951216435335&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-377969951216435335</iframe></body></html>",
+      "request": "GET / HTTP/1.1\r\nHost: corffhs8bhpv6fbj81nggpbsdgsbu17db.oast.me\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 692\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1012-33721844-0 0NNN RT(1714878443411 5) q(0 -1 -1 -1) r(70 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1012-33721844-0%200NNN%20RT%281714878443411%205%29%20q%280%20-1%20-1%20-1%29%20r%2870%20-1%29&incident_id=0-167327493530190220&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-167327493530190220</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2024-04-28T02:55:50.224594478Z",
+      "timestamp": "2024-05-05T03:07:31.403799611Z",
       "interaction": {
         "protocol": "dns",
-        "unique-id": "comrl2k8bhpv6c8ijh806ebtrnk4ror51",
-        "full-id": "comrl2k8bhpv6c8ijh806ebtrnk4ror51",
+        "unique-id": "corffhs8bhpv6fbj81nggpbsdgsbu17db",
+        "full-id": "corffhs8bhpv6fbj81nggpbsdgsbu17db",
         "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 17636\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;comrl2k8bhpv6c8ijh806ebtrnk4ror51.oast.online.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 17636\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;comrl2k8bhpv6c8ijh806ebtrnk4ror51.oast.online.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncomrl2k8bhpv6c8ijh806ebtrnk4ror51.oast.online.\t3600\tIN\tA\t167.99.69.236\n\n;; AUTHORITY SECTION:\ncomrl2k8bhpv6c8ijh806ebtrnk4ror51.oast.online.\t3600\tIN\tNS\tns1.oast.online.\ncomrl2k8bhpv6c8ijh806ebtrnk4ror51.oast.online.\t3600\tIN\tNS\tns2.oast.online.\n\n;; ADDITIONAL SECTION:\nns1.oast.online.\t3600\tIN\tA\t167.99.69.236\nns2.oast.online.\t3600\tIN\tA\t167.99.69.236\n",
-        "remote-address": "198.143.37.57",
-        "timestamp": "2024-04-28T02:55:44.077456391Z"
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 40047\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;corffhs8bhpv6fbj81nggpbsdgsbu17db.oast.me.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 40047\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;corffhs8bhpv6fbj81nggpbsdgsbu17db.oast.me.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncorffhs8bhpv6fbj81nggpbsdgsbu17db.oast.me.\t3600\tIN\tA\t178.128.209.14\n\n;; AUTHORITY SECTION:\ncorffhs8bhpv6fbj81nggpbsdgsbu17db.oast.me.\t3600\tIN\tNS\tns1.oast.me.\ncorffhs8bhpv6fbj81nggpbsdgsbu17db.oast.me.\t3600\tIN\tNS\tns2.oast.me.\n\n;; ADDITIONAL SECTION:\nns1.oast.me.\t3600\tIN\tA\t178.128.209.14\nns2.oast.me.\t3600\tIN\tA\t178.128.209.14\n",
+        "remote-address": "198.143.37.32",
+        "timestamp": "2024-05-05T03:07:24.526640153Z"
       },
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Host: comrl2k8bhpv6c8ijh806ebtrnk4ror51.oast.online' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.prix-carburants.gouv.fr'",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Host: corffhs8bhpv6fbj81nggpbsdgsbu17db.oast.me' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.prix-carburants.gouv.fr'",
       "matcher-status": true
     },
     {
@@ -219,9 +222,9 @@
       "host": "https://www.prix-carburants.gouv.fr",
       "matched-at": "https://www.prix-carburants.gouv.fr/",
       "request": "POST / HTTP/1.1\r\nHost: www.prix-carburants.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.prix-carburants.gouv.fr/\r\nSet-Cookie: visid_incap_3031704=OltnhlXiRUadwk+c/41d/Li6LWYAAAAAQUIPAAAAAAARdKdW6FpPLSimXQY6k5lC; expires=Sun, 27 Apr 2025 07:39:20 GMT; HttpOnly; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1543_3031704=7PT6UBdcPCcyH0PsV9ZpFbi6LWYAAAAATGqxinxS8OIAO9rgWzOaYA==; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 10-87183951-0 0NNN RT(1714272952693 4) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.prix-carburants.gouv.fr/\r\nSet-Cookie: visid_incap_3031704=afWAud+1S5+2/0/t1+OTTfX3NmYAAAAAQUIPAAAAAAAGArTrCdCgxcSbKdwnBMoy; expires=Sun, 04 May 2025 06:31:10 GMT; HttpOnly; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1348_3031704=aREYOtaefXt8dgj45A61EvX3NmYAAAAAzBmIfctdqB11b7NkAi+mjg==; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 10-9453210-0 0NNN RT(1714878453220 4) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2024-04-28T02:55:52.937323691Z",
+      "timestamp": "2024-05-05T03:07:33.403532579Z",
       "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.prix-carburants.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.prix-carburants.gouv.fr/'",
       "matcher-status": true
     },
@@ -256,18 +259,18 @@
       "host": "https://www.prix-carburants.gouv.fr",
       "matched-at": "https://www.prix-carburants.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: www.prix-carburants.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.prix-carburants.gouv.fr/\r\nSet-Cookie: visid_incap_3031704=BuJ+GTszSHGQEMOOYBqJebu6LWYAAAAAQUIPAAAAAAB/AWMe+rcJx4RE6zdDjeDz; expires=Sun, 27 Apr 2025 07:40:22 GMT; HttpOnly; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1542_3031704=/1uSNm7LVmoEZrE/2UhmFbu6LWYAAAAA0JVQ/1TUEeSuO9VJHhzE7w==; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 10-93201176-0 0NNN RT(1714272955368 5) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.prix-carburants.gouv.fr/\r\nSet-Cookie: visid_incap_3031704=GPgPUgGpQJ6EsVK2JRd2DPj3NmYAAAAAQUIPAAAAAAB4tk3zYPSKrBSiboyuHNJ4; expires=Sun, 04 May 2025 06:31:23 GMT; HttpOnly; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1348_3031704=SY21Nq3WeHbZegj45A61Evj3NmYAAAAAZF9QnTyIcYz1Lc2oUvZKKg==; path=/; Domain=.prix-carburants.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 14-15462663-0 0NNN RT(1714878456065 10) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2024-04-28T02:55:55.580644609Z",
+      "timestamp": "2024-05-05T03:07:36.247645595Z",
       "interaction": {
         "protocol": "dns",
-        "unique-id": "comrl2k8bhpv6c8ijh8065tbyz5pc6cd8",
-        "full-id": "comrl2k8bhpv6c8ijh8065tbyz5pc6cd8",
+        "unique-id": "corffhs8bhpv6fbj81ng8ju4na6kf9n1i",
+        "full-id": "corffhs8bhpv6fbj81ng8ju4na6kf9n1i",
         "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 35283\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;comrl2k8bhpv6c8ijh8065tbyz5pc6cd8.oast.online.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 35283\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;comrl2k8bhpv6c8ijh8065tbyz5pc6cd8.oast.online.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncomrl2k8bhpv6c8ijh8065tbyz5pc6cd8.oast.online.\t3600\tIN\tA\t167.99.69.236\n\n;; AUTHORITY SECTION:\ncomrl2k8bhpv6c8ijh8065tbyz5pc6cd8.oast.online.\t3600\tIN\tNS\tns1.oast.online.\ncomrl2k8bhpv6c8ijh8065tbyz5pc6cd8.oast.online.\t3600\tIN\tNS\tns2.oast.online.\n\n;; ADDITIONAL SECTION:\nns1.oast.online.\t3600\tIN\tA\t167.99.69.236\nns2.oast.online.\t3600\tIN\tA\t167.99.69.236\n",
-        "remote-address": "198.143.37.63",
-        "timestamp": "2024-04-28T02:55:49.214893709Z"
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 31918\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;corffhs8bhpv6fbj81ng8ju4na6kf9n1i.oast.me.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 31918\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;corffhs8bhpv6fbj81ng8ju4na6kf9n1i.oast.me.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncorffhs8bhpv6fbj81ng8ju4na6kf9n1i.oast.me.\t3600\tIN\tA\t178.128.209.14\n\n;; AUTHORITY SECTION:\ncorffhs8bhpv6fbj81ng8ju4na6kf9n1i.oast.me.\t3600\tIN\tNS\tns1.oast.me.\ncorffhs8bhpv6fbj81ng8ju4na6kf9n1i.oast.me.\t3600\tIN\tNS\tns2.oast.me.\n\n;; ADDITIONAL SECTION:\nns1.oast.me.\t3600\tIN\tA\t178.128.209.14\nns2.oast.me.\t3600\tIN\tA\t178.128.209.14\n",
+        "remote-address": "198.143.37.32",
+        "timestamp": "2024-05-05T03:07:30.565057359Z"
       },
       "curl-command": "curl -X 'GET' -d '' -H 'Host: www.prix-carburants.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.prix-carburants.gouv.fr'",
       "matcher-status": true
@@ -300,20 +303,82 @@
       "type": "http",
       "host": "https://www.prix-carburants.gouv.fr",
       "matched-at": "https://www.prix-carburants.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: comrl2k8bhpv6c8ijh80fbamejqa8wuwr.oast.online\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 693\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1040-115851932-0 0NNN RT(1714272955867 5) q(0 -1 -1 -1) r(57 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1040-115851932-0%200NNN%20RT%281714272955867%205%29%20q%280%20-1%20-1%20-1%29%20r%2857%20-1%29&incident_id=0-659694568610398312&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-659694568610398312</iframe></body></html>",
+      "request": "GET / HTTP/1.1\r\nHost: corffhs8bhpv6fbj81ngu5p6hyy5oyxm3.oast.me\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 692\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1012-12946945-0 0NNN RT(1714878456188 3) q(0 -1 -1 -1) r(60 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1012-12946945-0%200NNN%20RT%281714878456188%203%29%20q%280%20-1%20-1%20-1%29%20r%2860%20-1%29&incident_id=0-111978516278673676&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-111978516278673676</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2024-04-28T02:56:01.665516303Z",
+      "timestamp": "2024-05-05T03:07:42.358218008Z",
       "interaction": {
         "protocol": "dns",
-        "unique-id": "comrl2k8bhpv6c8ijh80fbamejqa8wuwr",
-        "full-id": "comrl2k8bhpv6c8ijh80fbamejqa8wuwr",
+        "unique-id": "corffhs8bhpv6fbj81ngu5p6hyy5oyxm3",
+        "full-id": "corffhs8bhpv6fbj81ngu5p6hyy5oyxm3",
         "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 7684\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;comrl2k8bhpv6c8ijh80fbamejqa8wuwr.oast.online.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 7684\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;comrl2k8bhpv6c8ijh80fbamejqa8wuwr.oast.online.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncomrl2k8bhpv6c8ijh80fbamejqa8wuwr.oast.online.\t3600\tIN\tA\t167.99.69.236\n\n;; AUTHORITY SECTION:\ncomrl2k8bhpv6c8ijh80fbamejqa8wuwr.oast.online.\t3600\tIN\tNS\tns1.oast.online.\ncomrl2k8bhpv6c8ijh80fbamejqa8wuwr.oast.online.\t3600\tIN\tNS\tns2.oast.online.\n\n;; ADDITIONAL SECTION:\nns1.oast.online.\t3600\tIN\tA\t167.99.69.236\nns2.oast.online.\t3600\tIN\tA\t167.99.69.236\n",
-        "remote-address": "198.143.37.63",
-        "timestamp": "2024-04-28T02:55:56.093770346Z"
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 14157\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;corffhs8bhpv6fbj81ngu5p6hyy5oyxm3.oast.me.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 14157\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;corffhs8bhpv6fbj81ngu5p6hyy5oyxm3.oast.me.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncorffhs8bhpv6fbj81ngu5p6hyy5oyxm3.oast.me.\t3600\tIN\tA\t178.128.209.14\n\n;; AUTHORITY SECTION:\ncorffhs8bhpv6fbj81ngu5p6hyy5oyxm3.oast.me.\t3600\tIN\tNS\tns1.oast.me.\ncorffhs8bhpv6fbj81ngu5p6hyy5oyxm3.oast.me.\t3600\tIN\tNS\tns2.oast.me.\n\n;; ADDITIONAL SECTION:\nns1.oast.me.\t3600\tIN\tA\t178.128.209.14\nns2.oast.me.\t3600\tIN\tA\t178.128.209.14\n",
+        "remote-address": "198.143.37.42",
+        "timestamp": "2024-05-05T03:07:36.563865175Z"
       },
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.prix-carburants.gouv.fr",
+      "matched-at": "www.prix-carburants.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2024-05-05T03:08:38.56067294Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.prix-carburants.gouv.fr",
+      "matched-at": "www.prix-carburants.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2024-05-05T03:08:38.607461916Z",
       "matcher-status": true
     },
     {
@@ -343,7 +408,7 @@
         "GlobalSign nv-sa"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2024-04-28T02:56:57.245484922Z",
+      "timestamp": "2024-05-05T03:08:38.672033785Z",
       "matcher-status": true
     },
     {
@@ -370,14 +435,14 @@
       "host": "www.prix-carburants.gouv.fr",
       "matched-at": "www.prix-carburants.gouv.fr:443",
       "extracted-results": [
+        "statistiques-locales.insee.fr",
+        "*.prix-carburants.gouv.fr",
         "prix-carburants.gouv.fr",
         "*.roulez-eco.fr",
-        "imperva.com",
-        "statistiques-locales.insee.fr",
-        "*.prix-carburants.gouv.fr"
+        "imperva.com"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2024-04-28T02:56:57.245622909Z",
+      "timestamp": "2024-05-05T03:08:38.672151105Z",
       "matcher-status": true
     },
     {
@@ -412,69 +477,7 @@
         " SAN: [statistiques-locales.insee.fr *.prix-carburants.gouv.fr prix-carburants.gouv.fr *.roulez-eco.fr imperva.com]"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2024-04-28T02:56:57.245670388Z",
-      "matcher-status": true
-    },
-    {
-      "template": "ssl/tls-version.yaml",
-      "template-url": "https://templates.nuclei.sh/public/tls-version",
-      "template-id": "tls-version",
-      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
-      "info": {
-        "name": "TLS Version - Detect",
-        "author": [
-          "pdteam",
-          "pussycat0x"
-        ],
-        "tags": [
-          "ssl",
-          "tls"
-        ],
-        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 4
-        }
-      },
-      "type": "ssl",
-      "host": "www.prix-carburants.gouv.fr",
-      "matched-at": "www.prix-carburants.gouv.fr:443",
-      "extracted-results": [
-        "tls12"
-      ],
-      "ip": "45.223.57.83",
-      "timestamp": "2024-04-28T02:56:57.295101128Z",
-      "matcher-status": true
-    },
-    {
-      "template": "ssl/tls-version.yaml",
-      "template-url": "https://templates.nuclei.sh/public/tls-version",
-      "template-id": "tls-version",
-      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
-      "info": {
-        "name": "TLS Version - Detect",
-        "author": [
-          "pdteam",
-          "pussycat0x"
-        ],
-        "tags": [
-          "ssl",
-          "tls"
-        ],
-        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 4
-        }
-      },
-      "type": "ssl",
-      "host": "www.prix-carburants.gouv.fr",
-      "matched-at": "www.prix-carburants.gouv.fr:443",
-      "extracted-results": [
-        "tls13"
-      ],
-      "ip": "45.223.57.83",
-      "timestamp": "2024-04-28T02:56:57.350508655Z",
+      "timestamp": "2024-05-05T03:08:38.672548679Z",
       "matcher-status": true
     }
   ]
