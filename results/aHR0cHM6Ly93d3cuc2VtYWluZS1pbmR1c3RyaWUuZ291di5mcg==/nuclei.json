@@ -32,9 +32,9 @@
       "extracted-results": [
         "ghd4fop.ng.impervadns.net."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 28623\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.semaine-industrie.gouv.fr.\tIN\t CNAME\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 28623\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.semaine-industrie.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.semaine-industrie.gouv.fr.\t600\tIN\tCNAME\tghd4fop.ng.impervadns.net.\n",
-      "timestamp": "2024-06-23T02:24:23.716912309Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 40208\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.semaine-industrie.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 40208\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.semaine-industrie.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.semaine-industrie.gouv.fr.\t600\tIN\tCNAME\tghd4fop.ng.impervadns.net.\n",
+      "timestamp": "2024-06-30T02:24:46.888950806Z",
       "matcher-status": true
     },
     {
@@ -69,9 +69,52 @@
       "type": "dns",
       "host": "www.semaine-industrie.gouv.fr.",
       "matched-at": "www.semaine-industrie.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 28412\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.semaine-industrie.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 28412\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.semaine-industrie.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.semaine-industrie.gouv.fr.\t599\tIN\tCNAME\tghd4fop.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
-      "timestamp": "2024-06-23T02:24:24.632410504Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 60174\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.semaine-industrie.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 60174\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.semaine-industrie.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.semaine-industrie.gouv.fr.\t600\tIN\tCNAME\tghd4fop.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
+      "timestamp": "2024-06-30T02:24:46.983544223Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/cookies-without-secure.yaml",
+      "template-url": "https://templates.nuclei.sh/public/cookies-without-secure",
+      "template-id": "cookies-without-secure",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/cookies-without-secure.yaml",
+      "info": {
+        "name": "Cookies without Secure attribute - Detect",
+        "author": [
+          "vthiery"
+        ],
+        "tags": [
+          "misconfig",
+          "http",
+          "cookie",
+          "generic"
+        ],
+        "description": "Checks whether cookies in the HTTP response contain the Secure attribute. If the Secure flag is set, it means that the cookie can only be transmitted over HTTPS\n",
+        "impact": "Lack of Secure flag on cookies allows the cookie to be sent over unsecure HTTP, making it vulnerable to man-in-the-middle (MITM) attacks.\n",
+        "reference": [
+          "https://owasp.org/www-community/controls/securecookieattribute"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": null,
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        },
+        "remediation": "Ensure that all cookies are set with the Secure attribute to prevent MITM attacks.\n"
+      },
+      "type": "http",
+      "host": "https://www.semaine-industrie.gouv.fr",
+      "matched-at": "https://www.semaine-industrie.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.semaine-industrie.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.semaine-industrie.gouv.fr/\r\nSet-Cookie: visid_incap_3071172=itOPqlPYTBqv96e4LzCWeQnCgGYAAAAAQUIPAAAAAAAa4Gxr6GHvx3ri5Q8eEt4a; expires=Sun, 29 Jun 2025 07:46:01 GMT; HttpOnly; path=/; Domain=.semaine-industrie.gouv.fr\r\nSet-Cookie: incap_ses_1843_3071172=3DBVcTxQuEs/dmZg0aaTGQnCgGYAAAAAKhM/J2bEjDP14n8n1p+f1A==; path=/; Domain=.semaine-industrie.gouv.fr\r\nX-Iinfo: 49-54342687-0 0NNN RT(1719714313501 7) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-06-30T02:25:13.820260074Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.semaine-industrie.gouv.fr'",
       "matcher-status": true
     },
     {
@@ -98,9 +141,52 @@
       "host": "https://www.semaine-industrie.gouv.fr",
       "matched-at": "https://www.semaine-industrie.gouv.fr/",
       "request": "GET / HTTP/1.1\r\nHost: www.semaine-industrie.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.semaine-industrie.gouv.fr/\r\nSet-Cookie: visid_incap_3071172=O1eENcfrSDqmFzRWPF/NE3KHd2YAAAAAQUIPAAAAAACSZfjz5nRsfs/2ACjYPjn9; expires=Sun, 22 Jun 2025 07:44:12 GMT; HttpOnly; path=/; Domain=.semaine-industrie.gouv.fr\r\nSet-Cookie: incap_ses_1843_3071172=2PhRYAAuIFHHSrcyz6aTGXKHd2YAAAAA+xSQxRuNMAsqKHyDB977IA==; path=/; Domain=.semaine-industrie.gouv.fr\r\nX-Iinfo: 58-233647936-0 0NNN RT(1719109490457 7) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.semaine-industrie.gouv.fr/\r\nSet-Cookie: visid_incap_3071172=itOPqlPYTBqv96e4LzCWeQnCgGYAAAAAQUIPAAAAAAAa4Gxr6GHvx3ri5Q8eEt4a; expires=Sun, 29 Jun 2025 07:46:01 GMT; HttpOnly; path=/; Domain=.semaine-industrie.gouv.fr\r\nSet-Cookie: incap_ses_1843_3071172=3DBVcTxQuEs/dmZg0aaTGQnCgGYAAAAAKhM/J2bEjDP14n8n1p+f1A==; path=/; Domain=.semaine-industrie.gouv.fr\r\nX-Iinfo: 49-54342687-0 0NNN RT(1719714313501 7) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2024-06-23T02:24:50.761880152Z",
+      "timestamp": "2024-06-30T02:25:13.880594631Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.semaine-industrie.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/cookies-without-secure.yaml",
+      "template-url": "https://templates.nuclei.sh/public/cookies-without-secure",
+      "template-id": "cookies-without-secure",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/cookies-without-secure.yaml",
+      "info": {
+        "name": "Cookies without Secure attribute - Detect",
+        "author": [
+          "vthiery"
+        ],
+        "tags": [
+          "misconfig",
+          "http",
+          "cookie",
+          "generic"
+        ],
+        "description": "Checks whether cookies in the HTTP response contain the Secure attribute. If the Secure flag is set, it means that the cookie can only be transmitted over HTTPS\n",
+        "impact": "Lack of Secure flag on cookies allows the cookie to be sent over unsecure HTTP, making it vulnerable to man-in-the-middle (MITM) attacks.\n",
+        "reference": [
+          "https://owasp.org/www-community/controls/securecookieattribute"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": null,
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        },
+        "remediation": "Ensure that all cookies are set with the Secure attribute to prevent MITM attacks.\n"
+      },
+      "type": "http",
+      "host": "https://www.semaine-industrie.gouv.fr",
+      "matched-at": "https://www.semaine-industrie.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.semaine-industrie.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.semaine-industrie.gouv.fr/\r\nSet-Cookie: visid_incap_3071172=4tVFNrU1SECjSVb1iP4jxAnCgGYAAAAAQUIPAAAAAAAtbjSnq9Z+GmAH1wCySAgZ; expires=Sun, 29 Jun 2025 07:45:57 GMT; HttpOnly; path=/; Domain=.semaine-industrie.gouv.fr\r\nSet-Cookie: incap_ses_1843_3071172=fVx7TN3ZVT7udWZg0aaTGQnCgGYAAAAAC8gyXrtBA3KGJ9BTBQlfxw==; path=/; Domain=.semaine-industrie.gouv.fr\r\nX-Iinfo: 31-6703916-0 0NNN RT(1719714313463 8) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-06-30T02:25:13.956735611Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.semaine-industrie.gouv.fr'",
       "matcher-status": true
     },
@@ -128,9 +214,9 @@
       "host": "https://www.semaine-industrie.gouv.fr",
       "matched-at": "https://www.semaine-industrie.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: www.semaine-industrie.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.semaine-industrie.gouv.fr/\r\nSet-Cookie: visid_incap_3071172=x5zEbdKrRqqOCw86snvq6nKHd2YAAAAAQUIPAAAAAAB7XA+/n0vhmh2Ue5uIikT2; expires=Sun, 22 Jun 2025 07:43:33 GMT; HttpOnly; path=/; Domain=.semaine-industrie.gouv.fr\r\nSet-Cookie: incap_ses_1843_3071172=HbD5X+9nWCVhSrcyz6aTGXKHd2YAAAAA2XnKcv6Jsxz8YZ1AueMcHQ==; path=/; Domain=.semaine-industrie.gouv.fr\r\nX-Iinfo: 50-102960913-0 0NNN RT(1719109490419 8) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.semaine-industrie.gouv.fr/\r\nSet-Cookie: visid_incap_3071172=4tVFNrU1SECjSVb1iP4jxAnCgGYAAAAAQUIPAAAAAAAtbjSnq9Z+GmAH1wCySAgZ; expires=Sun, 29 Jun 2025 07:45:57 GMT; HttpOnly; path=/; Domain=.semaine-industrie.gouv.fr\r\nSet-Cookie: incap_ses_1843_3071172=fVx7TN3ZVT7udWZg0aaTGQnCgGYAAAAAC8gyXrtBA3KGJ9BTBQlfxw==; path=/; Domain=.semaine-industrie.gouv.fr\r\nX-Iinfo: 31-6703916-0 0NNN RT(1719714313463 8) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2024-06-23T02:24:50.862845108Z",
+      "timestamp": "2024-06-30T02:25:13.993885598Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.semaine-industrie.gouv.fr'",
       "matcher-status": true
     },
@@ -171,21 +257,21 @@
       "type": "http",
       "host": "https://www.semaine-industrie.gouv.fr",
       "matched-at": "https://www.semaine-industrie.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: cproem6ebrgv7fl7vhn0k4ki5mpox3mra.oast.site\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 695\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1059-240794449-0 0NNN RT(1719109502423 8) q(0 -1 -1 -1) r(64 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1059-240794449-0%200NNN%20RT%281719109502423%208%29%20q%280%20-1%20-1%20-1%29%20r%2864%20-1%29&incident_id=0-1291751525092360763&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-1291751525092360763</iframe></body></html>",
+      "request": "GET / HTTP/1.1\r\nHost: cq0c3rt8e4kv7eoaenegzhdmy516qxng9.oast.pro\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 692\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1048-49098564-0 0NNN RT(1719714325487 7) q(0 -1 -1 -1) r(59 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1048-49098564-0%200NNN%20RT%281719714325487%207%29%20q%280%20-1%20-1%20-1%29%20r%2859%20-1%29&incident_id=0-275940993074922096&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-275940993074922096</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2024-06-23T02:25:09.037810191Z",
+      "timestamp": "2024-06-30T02:25:31.654604516Z",
       "interaction": {
         "protocol": "dns",
-        "unique-id": "cproem6ebrgv7fl7vhn0k4ki5mpox3mra",
-        "full-id": "cproem6ebrgv7fl7vhn0k4ki5mpox3mra",
+        "unique-id": "cq0c3rt8e4kv7eoaenegzhdmy516qxng9",
+        "full-id": "cq0c3rt8e4kv7eoaenegzhdmy516qxng9",
         "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 45770\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cproem6ebrgv7fl7vhn0k4ki5mpox3mra.oast.site.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 45770\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cproem6ebrgv7fl7vhn0k4ki5mpox3mra.oast.site.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncproem6ebrgv7fl7vhn0k4ki5mpox3mra.oast.site.\t3600\tIN\tA\t178.128.16.97\n\n;; AUTHORITY SECTION:\ncproem6ebrgv7fl7vhn0k4ki5mpox3mra.oast.site.\t3600\tIN\tNS\tns1.oast.site.\ncproem6ebrgv7fl7vhn0k4ki5mpox3mra.oast.site.\t3600\tIN\tNS\tns2.oast.site.\n\n;; ADDITIONAL SECTION:\nns1.oast.site.\t3600\tIN\tA\t178.128.16.97\nns2.oast.site.\t3600\tIN\tA\t178.128.16.97\n",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 15539\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cq0c3rt8e4kv7eoaenegzhdmy516qxng9.oast.pro.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 15539\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cq0c3rt8e4kv7eoaenegzhdmy516qxng9.oast.pro.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncq0c3rt8e4kv7eoaenegzhdmy516qxng9.oast.pro.\t3600\tIN\tA\t178.128.212.209\n\n;; AUTHORITY SECTION:\ncq0c3rt8e4kv7eoaenegzhdmy516qxng9.oast.pro.\t3600\tIN\tNS\tns1.oast.pro.\ncq0c3rt8e4kv7eoaenegzhdmy516qxng9.oast.pro.\t3600\tIN\tNS\tns2.oast.pro.\n\n;; ADDITIONAL SECTION:\nns1.oast.pro.\t3600\tIN\tA\t178.128.212.209\nns2.oast.pro.\t3600\tIN\tA\t178.128.212.209\n",
         "remote-address": "198.143.37.68",
-        "timestamp": "2024-06-23T02:25:02.953404285Z"
+        "timestamp": "2024-06-30T02:25:25.977612878Z"
       },
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Host: cproem6ebrgv7fl7vhn0k4ki5mpox3mra.oast.site' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.semaine-industrie.gouv.fr'",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Host: cq0c3rt8e4kv7eoaenegzhdmy516qxng9.oast.pro' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.semaine-industrie.gouv.fr'",
       "matcher-status": true
     },
     {
@@ -224,9 +310,9 @@
       "host": "https://www.semaine-industrie.gouv.fr",
       "matched-at": "https://www.semaine-industrie.gouv.fr/",
       "request": "POST / HTTP/1.1\r\nHost: www.semaine-industrie.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 861\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: visid_incap_3071172=xop4gkNHSW2R8XxTgh0VGoeHd2YAAAAAQUIPAAAAAABewCXLbz1jzIPbgPWsm4vh; expires=Sun, 22 Jun 2025 06:29:02 GMT; HttpOnly; path=/; Domain=.semaine-industrie.gouv.fr\r\nSet-Cookie: incap_ses_486_3071172=3MUOS+zH5xpLnvpyjZ6+BoeHd2YAAAAAp4WQIEZP0bQZr7aRkP6b2Q==; path=/; Domain=.semaine-industrie.gouv.fr\r\nX-Iinfo: 10-41424516-0 0NNN RT(1719109511460 9) q(0 -1 -1 -1) r(0 -1) B15(4,200,0) U6\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=10-41424516-0%200NNN%20RT%281719109511460%209%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%284%2c200%2c0%29%20U6&incident_id=486000140159189936-264652040815641482&edet=15&cinfo=04000000&rpinfo=0&mth=POST\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 486000140159189936-264652040815641482</iframe></body></html>",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.semaine-industrie.gouv.fr/\r\nSet-Cookie: visid_incap_3071172=mFm7JoyKSH6DMudzv0JdHB/CgGYAAAAAQUIPAAAAAAC+TkJs0iIpdFmQZflEzSRg; expires=Sun, 29 Jun 2025 07:45:58 GMT; HttpOnly; path=/; Domain=.semaine-industrie.gouv.fr\r\nSet-Cookie: incap_ses_1843_3071172=j6cYDtwZqhNy9GZg0aaTGR/CgGYAAAAAc7D5mxuxBNbHsbyaWVvt+A==; path=/; Domain=.semaine-industrie.gouv.fr\r\nX-Iinfo: 59-107446048-0 0NNN RT(1719714335423 7) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2024-06-23T02:25:11.718301056Z",
+      "timestamp": "2024-06-30T02:25:35.740746921Z",
       "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.semaine-industrie.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.semaine-industrie.gouv.fr/'",
       "matcher-status": true
     },
@@ -261,18 +347,18 @@
       "host": "https://www.semaine-industrie.gouv.fr",
       "matched-at": "https://www.semaine-industrie.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: www.semaine-industrie.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.semaine-industrie.gouv.fr/\r\nSet-Cookie: visid_incap_3071172=bcNmKH9rQVqghoreU+iF+IqHd2YAAAAAQUIPAAAAAADoz1XeaSqGlsa93cEmYBOu; expires=Sun, 22 Jun 2025 07:43:27 GMT; HttpOnly; path=/; Domain=.semaine-industrie.gouv.fr\r\nSet-Cookie: incap_ses_1843_3071172=tTtkRdut7jVlx7cyz6aTGYqHd2YAAAAA1+4tCiQK0SdZqcAQtGI3eA==; path=/; Domain=.semaine-industrie.gouv.fr\r\nX-Iinfo: 62-257851133-0 0NNN RT(1719109514315 13) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.semaine-industrie.gouv.fr/\r\nSet-Cookie: visid_incap_3071172=tald2H19Q1+/R66Th3m+ACHCgGYAAAAAQUIPAAAAAAAB9fnBsDKNGlmGYZPu7iSb; expires=Sun, 29 Jun 2025 07:46:03 GMT; HttpOnly; path=/; Domain=.semaine-industrie.gouv.fr\r\nSet-Cookie: incap_ses_1843_3071172=SPMWY+M4JyvjAmdg0aaTGSHCgGYAAAAAv3xjh0p9dMh74GWT1mnJ1w==; path=/; Domain=.semaine-industrie.gouv.fr\r\nX-Iinfo: 57-99313320-0 0NNN RT(1719714337820 51) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2024-06-23T02:25:14.564400701Z",
+      "timestamp": "2024-06-30T02:25:38.177319199Z",
       "interaction": {
         "protocol": "dns",
-        "unique-id": "cproem6ebrgv7fl7vhn05tauk6mxs4y35",
-        "full-id": "cproem6ebrgv7fl7vhn05tauk6mxs4y35",
+        "unique-id": "cq0c3rt8e4kv7eoaeneg7cubja1srfncx",
+        "full-id": "cq0c3rt8e4kv7eoaeneg7cubja1srfncx",
         "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 34166\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cproem6ebrgv7fl7vhn05tauk6mxs4y35.oast.site.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 34166\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cproem6ebrgv7fl7vhn05tauk6mxs4y35.oast.site.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncproem6ebrgv7fl7vhn05tauk6mxs4y35.oast.site.\t3600\tIN\tA\t178.128.16.97\n\n;; AUTHORITY SECTION:\ncproem6ebrgv7fl7vhn05tauk6mxs4y35.oast.site.\t3600\tIN\tNS\tns1.oast.site.\ncproem6ebrgv7fl7vhn05tauk6mxs4y35.oast.site.\t3600\tIN\tNS\tns2.oast.site.\n\n;; ADDITIONAL SECTION:\nns1.oast.site.\t3600\tIN\tA\t178.128.16.97\nns2.oast.site.\t3600\tIN\tA\t178.128.16.97\n",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 59550\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cq0c3rt8e4kv7eoaeneg7cubja1srfncx.oast.pro.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 59550\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cq0c3rt8e4kv7eoaeneg7cubja1srfncx.oast.pro.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncq0c3rt8e4kv7eoaeneg7cubja1srfncx.oast.pro.\t3600\tIN\tA\t178.128.212.209\n\n;; AUTHORITY SECTION:\ncq0c3rt8e4kv7eoaeneg7cubja1srfncx.oast.pro.\t3600\tIN\tNS\tns1.oast.pro.\ncq0c3rt8e4kv7eoaeneg7cubja1srfncx.oast.pro.\t3600\tIN\tNS\tns2.oast.pro.\n\n;; ADDITIONAL SECTION:\nns1.oast.pro.\t3600\tIN\tA\t178.128.212.209\nns2.oast.pro.\t3600\tIN\tA\t178.128.212.209\n",
         "remote-address": "198.143.37.68",
-        "timestamp": "2024-06-23T02:25:08.851912609Z"
+        "timestamp": "2024-06-30T02:25:32.157693376Z"
       },
       "curl-command": "curl -X 'GET' -d '' -H 'Host: www.semaine-industrie.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.semaine-industrie.gouv.fr'",
       "matcher-status": true
@@ -305,19 +391,19 @@
       "type": "http",
       "host": "https://www.semaine-industrie.gouv.fr",
       "matched-at": "https://www.semaine-industrie.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: cproem6ebrgv7fl7vhn0d4dcpypquj9na.oast.site\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 692\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1002-22820731-0 0NNN RT(1719109514447 7) q(0 -1 -1 -1) r(58 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1002-22820731-0%200NNN%20RT%281719109514447%207%29%20q%280%20-1%20-1%20-1%29%20r%2858%20-1%29&incident_id=0-143617921089143682&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-143617921089143682</iframe></body></html>",
+      "request": "GET / HTTP/1.1\r\nHost: cq0c3rt8e4kv7eoaeneg6tstq9huaxhnm.oast.pro\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 692\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1057-99313500-0 0NNN RT(1719714338426 7) q(0 -1 -1 -1) r(61 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1057-99313500-0%200NNN%20RT%281719714338426%207%29%20q%280%20-1%20-1%20-1%29%20r%2861%20-1%29&incident_id=0-558132061092905593&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-558132061092905593</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2024-06-23T02:25:20.501362219Z",
+      "timestamp": "2024-06-30T02:25:44.870694211Z",
       "interaction": {
         "protocol": "dns",
-        "unique-id": "cproem6ebrgv7fl7vhn0d4dcpypquj9na",
-        "full-id": "cproem6ebrgv7fl7vhn0d4dcpypquj9na",
+        "unique-id": "cq0c3rt8e4kv7eoaeneg6tstq9huaxhnm",
+        "full-id": "cq0c3rt8e4kv7eoaeneg6tstq9huaxhnm",
         "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 39843\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cproem6ebrgv7fl7vhn0d4dcpypquj9na.oast.site.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 39843\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cproem6ebrgv7fl7vhn0d4dcpypquj9na.oast.site.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncproem6ebrgv7fl7vhn0d4dcpypquj9na.oast.site.\t3600\tIN\tA\t178.128.16.97\n\n;; AUTHORITY SECTION:\ncproem6ebrgv7fl7vhn0d4dcpypquj9na.oast.site.\t3600\tIN\tNS\tns1.oast.site.\ncproem6ebrgv7fl7vhn0d4dcpypquj9na.oast.site.\t3600\tIN\tNS\tns2.oast.site.\n\n;; ADDITIONAL SECTION:\nns1.oast.site.\t3600\tIN\tA\t178.128.16.97\nns2.oast.site.\t3600\tIN\tA\t178.128.16.97\n",
-        "remote-address": "198.143.37.11",
-        "timestamp": "2024-06-23T02:25:14.857258788Z"
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 17525\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cq0c3rt8e4kv7eoaeneg6tstq9huaxhnm.oast.pro.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 17525\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cq0c3rt8e4kv7eoaeneg6tstq9huaxhnm.oast.pro.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncq0c3rt8e4kv7eoaeneg6tstq9huaxhnm.oast.pro.\t3600\tIN\tA\t178.128.212.209\n\n;; AUTHORITY SECTION:\ncq0c3rt8e4kv7eoaeneg6tstq9huaxhnm.oast.pro.\t3600\tIN\tNS\tns1.oast.pro.\ncq0c3rt8e4kv7eoaeneg6tstq9huaxhnm.oast.pro.\t3600\tIN\tNS\tns2.oast.pro.\n\n;; ADDITIONAL SECTION:\nns1.oast.pro.\t3600\tIN\tA\t178.128.212.209\nns2.oast.pro.\t3600\tIN\tA\t178.128.212.209\n",
+        "remote-address": "198.143.37.68",
+        "timestamp": "2024-06-30T02:25:38.869936123Z"
       },
       "matcher-status": true
     },
@@ -348,7 +434,7 @@
         "Gandi"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2024-06-23T02:26:07.780401247Z",
+      "timestamp": "2024-06-30T02:26:35.920861988Z",
       "matcher-status": true
     },
     {
@@ -375,26 +461,26 @@
       "host": "www.semaine-industrie.gouv.fr",
       "matched-at": "www.semaine-industrie.gouv.fr:443",
       "extracted-results": [
-        "rec-bo-dge-profile.bercy.actimage.net",
-        "www.industrielles.gouv.fr",
-        "www.tourisme-handicap.gouv.fr",
         "jobsinattendus.fr",
-        "qualite-tourisme.gouv.fr",
-        "semaine-industrie.gouv.fr",
-        "www.semaine-industrie.gouv.fr",
-        "www.qualite-tourisme.gouv.fr",
         "intelligence-artificielle.gouv.fr",
-        "tourisme-handicap.gouv.fr",
-        "www.sisse.entreprises.gouv.fr",
-        "industrielles.gouv.fr",
-        "jointhegame.fr",
         "metrologie.entreprises.gouv.fr",
+        "rec-bo-dge-profile.bercy.actimage.net",
         "sisse.entreprises.gouv.fr",
         "www.intelligence-artificielle.gouv.fr",
-        "www.jobsinattendus.fr"
+        "www.qualite-tourisme.gouv.fr",
+        "industrielles.gouv.fr",
+        "jointhegame.fr",
+        "www.jobsinattendus.fr",
+        "www.sisse.entreprises.gouv.fr",
+        "www.tourisme-handicap.gouv.fr",
+        "qualite-tourisme.gouv.fr",
+        "semaine-industrie.gouv.fr",
+        "tourisme-handicap.gouv.fr",
+        "www.industrielles.gouv.fr",
+        "www.semaine-industrie.gouv.fr"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2024-06-23T02:26:07.780526851Z",
+      "timestamp": "2024-06-30T02:26:35.920999716Z",
       "matcher-status": true
     },
     {
@@ -425,7 +511,7 @@
         "tls12"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2024-06-23T02:26:07.99595264Z",
+      "timestamp": "2024-06-30T02:26:36.41851818Z",
       "matcher-status": true
     },
     {
@@ -456,7 +542,7 @@
         "tls13"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2024-06-23T02:26:08.059159748Z",
+      "timestamp": "2024-06-30T02:26:36.479414955Z",
       "matcher-status": true
     }
   ]
