@@ -32,46 +32,43 @@
       "type": "dns",
       "host": "www.qualite-tourisme.gouv.fr.",
       "matched-at": "www.qualite-tourisme.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 41160\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.qualite-tourisme.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 41160\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.qualite-tourisme.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.qualite-tourisme.gouv.fr.\t600\tIN\tCNAME\tnhxlr8v.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
-      "timestamp": "2024-07-14T02:28:18.858115729Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 24064\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.qualite-tourisme.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 24064\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.qualite-tourisme.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.qualite-tourisme.gouv.fr.\t600\tIN\tCNAME\tnhxlr8v.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
+      "timestamp": "2024-07-21T02:22:07.704652004Z",
       "matcher-status": true
     },
     {
-      "template": "dns/dns-saas-service-detection.yaml",
-      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
-      "template-id": "dns-saas-service-detection",
-      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
+      "template": "dns/servfail-refused-hosts.yaml",
+      "template-url": "https://templates.nuclei.sh/public/servfail-refused-hosts",
+      "template-id": "servfail-refused-hosts",
+      "template-path": "/home/runner/nuclei-templates/dns/servfail-refused-hosts.yaml",
       "info": {
-        "name": "DNS SaaS Service Detection",
+        "name": "DNS Servfail Host Finder",
         "author": [
-          "noah @thesubtlety",
           "pdteam"
         ],
         "tags": [
           "dns",
-          "service"
+          "takeover"
         ],
-        "description": "A CNAME DNS record was discovered",
-        "reference": [
-          "https://ns1.com/resources/cname",
-          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
-          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
-        ],
+        "description": "A DNS ServFail error occurred. ServFail errors occur when there is an error communicating with a DNS server. This could have a number of causes, including an error on the DNS server itself, or a temporary networking issue.",
         "severity": "info",
         "metadata": {
           "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
         }
       },
       "type": "dns",
       "host": "www.qualite-tourisme.gouv.fr.",
       "matched-at": "www.qualite-tourisme.gouv.fr",
-      "extracted-results": [
-        "nhxlr8v.ng.impervadns.net."
-      ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 14175\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.qualite-tourisme.gouv.fr.\tIN\t CNAME\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 14175\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.qualite-tourisme.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.qualite-tourisme.gouv.fr.\t600\tIN\tCNAME\tnhxlr8v.ng.impervadns.net.\n",
-      "timestamp": "2024-07-14T02:28:19.183672589Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 20931\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.qualite-tourisme.gouv.fr.\tIN\t A\n",
+      "response": ";; opcode: QUERY, status: SERVFAIL, id: 20931\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n; EDE: 0 (Other): ([193.17.19.59] Lame delegation at www.qualite-tourisme.gouv.fr for www.qualite-tourisme.gouv.fr/a)\n; EDE: 22 (No Reachable Authority): (At delegation www.qualite-tourisme.gouv.fr for www.qualite-tourisme.gouv.fr/a)\n\n;; QUESTION SECTION:\n;www.qualite-tourisme.gouv.fr.\tIN\t A\n",
+      "timestamp": "2024-07-21T02:22:07.948731399Z",
       "matcher-status": true
     },
     {
@@ -98,9 +95,9 @@
       "host": "https://www.qualite-tourisme.gouv.fr",
       "matched-at": "https://www.qualite-tourisme.gouv.fr/",
       "request": "GET / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.qualite-tourisme.gouv.fr/\r\nSet-Cookie: visid_incap_3071130=DTIMiwTwREGFEsKs4L3Sm9w3k2YAAAAAQUIPAAAAAACmQfVbfFcXoZvz8I8lFU8x; expires=Sun, 13 Jul 2025 06:48:32 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1825_3071130=VNKcWPXgRGQhaUL567NTGdw3k2YAAAAAiUInmNrjM2twNFLXo+zC5w==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 18-67009941-0 0NNN RT(1720924124129 6) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.qualite-tourisme.gouv.fr/\r\nSet-Cookie: visid_incap_3071130=xHFSgRF8TNOHFSydt7DJmelwnGYAAAAAQUIPAAAAAADoeaqjRqyi4P83n2gJRBRl; expires=Sun, 20 Jul 2025 06:58:23 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_444_3071130=uhNLCTfn9F5BrC/AwWcpBulwnGYAAAAAAohAEai5TaUr42ClMYmN6Q==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 5-43347097-0 0NNN RT(1721528553418 6) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2024-07-14T02:28:44.842855709Z",
+      "timestamp": "2024-07-21T02:22:34.393525766Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
       "matcher-status": true
     },
@@ -128,9 +125,399 @@
       "host": "https://www.qualite-tourisme.gouv.fr",
       "matched-at": "https://www.qualite-tourisme.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.qualite-tourisme.gouv.fr/\r\nSet-Cookie: visid_incap_3071130=x+9iDgHBRWeDigSVmMH9xtw3k2YAAAAAQUIPAAAAAADhqwUkpPDe1SIKs5MTXfOw; expires=Sun, 13 Jul 2025 06:48:32 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1825_3071130=qnylEJusUT/vaEL567NTGdw3k2YAAAAAqbCamnu8X8cFzIBNArtEuA==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 17-59714359-0 0NNN RT(1720924124105 4) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.qualite-tourisme.gouv.fr/\r\nSet-Cookie: visid_incap_3071130=rJBtS6ULTHGv50rT6CLF4+lwnGYAAAAAQUIPAAAAAAAI3xDoNgNZ3oH4sub6wr0c; expires=Sun, 20 Jul 2025 06:58:23 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_444_3071130=QYL2QAhyjFMjrC/AwWcpBulwnGYAAAAABz8pjT6wqll31o369I6YpA==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 10-52559795-0 0NNN RT(1721528553394 6) q(0 -1 -1 -1) r(1 -1) B13(4,200,0) U18\r\n\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2024-07-14T02:28:44.919457705Z",
+      "timestamp": "2024-07-21T02:22:34.471338903Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "permissions-policy",
+      "type": "http",
+      "host": "https://www.qualite-tourisme.gouv.fr",
+      "matched-at": "https://www.qualite-tourisme.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 861\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: visid_incap_3071130=eM71eibtQBWOnAdFsPlcs+9wnGYAAAAAQUIPAAAAAAB2BGN4MXYvzekg6vOHDBE+; expires=Sun, 20 Jul 2025 08:33:16 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1834_3071130=mOQIRDZX0g8oVXNzXa1zGe9wnGYAAAAAEQPnrxAFa38nrlgQSIMEow==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-12552093-0 0NNN RT(1721528559841 4) q(0 -1 -1 -1) r(0 -1) B15(4,200,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=11-12552093-0%200NNN%20RT%281721528559841%204%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%284%2c200%2c0%29%20U18&incident_id=1834000090150425866-66863325134848587&edet=15&cinfo=04000000&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 1834000090150425866-66863325134848587</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-07-21T02:22:40.302314755Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-content-type-options",
+      "type": "http",
+      "host": "https://www.qualite-tourisme.gouv.fr",
+      "matched-at": "https://www.qualite-tourisme.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 861\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: visid_incap_3071130=eM71eibtQBWOnAdFsPlcs+9wnGYAAAAAQUIPAAAAAAB2BGN4MXYvzekg6vOHDBE+; expires=Sun, 20 Jul 2025 08:33:16 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1834_3071130=mOQIRDZX0g8oVXNzXa1zGe9wnGYAAAAAEQPnrxAFa38nrlgQSIMEow==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-12552093-0 0NNN RT(1721528559841 4) q(0 -1 -1 -1) r(0 -1) B15(4,200,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=11-12552093-0%200NNN%20RT%281721528559841%204%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%284%2c200%2c0%29%20U18&incident_id=1834000090150425866-66863325134848587&edet=15&cinfo=04000000&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 1834000090150425866-66863325134848587</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-07-21T02:22:40.30323645Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-permitted-cross-domain-policies",
+      "type": "http",
+      "host": "https://www.qualite-tourisme.gouv.fr",
+      "matched-at": "https://www.qualite-tourisme.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 861\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: visid_incap_3071130=eM71eibtQBWOnAdFsPlcs+9wnGYAAAAAQUIPAAAAAAB2BGN4MXYvzekg6vOHDBE+; expires=Sun, 20 Jul 2025 08:33:16 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1834_3071130=mOQIRDZX0g8oVXNzXa1zGe9wnGYAAAAAEQPnrxAFa38nrlgQSIMEow==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-12552093-0 0NNN RT(1721528559841 4) q(0 -1 -1 -1) r(0 -1) B15(4,200,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=11-12552093-0%200NNN%20RT%281721528559841%204%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%284%2c200%2c0%29%20U18&incident_id=1834000090150425866-66863325134848587&edet=15&cinfo=04000000&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 1834000090150425866-66863325134848587</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-07-21T02:22:40.304105918Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "clear-site-data",
+      "type": "http",
+      "host": "https://www.qualite-tourisme.gouv.fr",
+      "matched-at": "https://www.qualite-tourisme.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 861\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: visid_incap_3071130=eM71eibtQBWOnAdFsPlcs+9wnGYAAAAAQUIPAAAAAAB2BGN4MXYvzekg6vOHDBE+; expires=Sun, 20 Jul 2025 08:33:16 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1834_3071130=mOQIRDZX0g8oVXNzXa1zGe9wnGYAAAAAEQPnrxAFa38nrlgQSIMEow==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-12552093-0 0NNN RT(1721528559841 4) q(0 -1 -1 -1) r(0 -1) B15(4,200,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=11-12552093-0%200NNN%20RT%281721528559841%204%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%284%2c200%2c0%29%20U18&incident_id=1834000090150425866-66863325134848587&edet=15&cinfo=04000000&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 1834000090150425866-66863325134848587</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-07-21T02:22:40.304914441Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-embedder-policy",
+      "type": "http",
+      "host": "https://www.qualite-tourisme.gouv.fr",
+      "matched-at": "https://www.qualite-tourisme.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 861\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: visid_incap_3071130=eM71eibtQBWOnAdFsPlcs+9wnGYAAAAAQUIPAAAAAAB2BGN4MXYvzekg6vOHDBE+; expires=Sun, 20 Jul 2025 08:33:16 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1834_3071130=mOQIRDZX0g8oVXNzXa1zGe9wnGYAAAAAEQPnrxAFa38nrlgQSIMEow==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-12552093-0 0NNN RT(1721528559841 4) q(0 -1 -1 -1) r(0 -1) B15(4,200,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=11-12552093-0%200NNN%20RT%281721528559841%204%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%284%2c200%2c0%29%20U18&incident_id=1834000090150425866-66863325134848587&edet=15&cinfo=04000000&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 1834000090150425866-66863325134848587</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-07-21T02:22:40.305619911Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "content-security-policy",
+      "type": "http",
+      "host": "https://www.qualite-tourisme.gouv.fr",
+      "matched-at": "https://www.qualite-tourisme.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 861\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: visid_incap_3071130=eM71eibtQBWOnAdFsPlcs+9wnGYAAAAAQUIPAAAAAAB2BGN4MXYvzekg6vOHDBE+; expires=Sun, 20 Jul 2025 08:33:16 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1834_3071130=mOQIRDZX0g8oVXNzXa1zGe9wnGYAAAAAEQPnrxAFa38nrlgQSIMEow==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-12552093-0 0NNN RT(1721528559841 4) q(0 -1 -1 -1) r(0 -1) B15(4,200,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=11-12552093-0%200NNN%20RT%281721528559841%204%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%284%2c200%2c0%29%20U18&incident_id=1834000090150425866-66863325134848587&edet=15&cinfo=04000000&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 1834000090150425866-66863325134848587</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-07-21T02:22:40.306462709Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "referrer-policy",
+      "type": "http",
+      "host": "https://www.qualite-tourisme.gouv.fr",
+      "matched-at": "https://www.qualite-tourisme.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 861\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: visid_incap_3071130=eM71eibtQBWOnAdFsPlcs+9wnGYAAAAAQUIPAAAAAAB2BGN4MXYvzekg6vOHDBE+; expires=Sun, 20 Jul 2025 08:33:16 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1834_3071130=mOQIRDZX0g8oVXNzXa1zGe9wnGYAAAAAEQPnrxAFa38nrlgQSIMEow==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-12552093-0 0NNN RT(1721528559841 4) q(0 -1 -1 -1) r(0 -1) B15(4,200,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=11-12552093-0%200NNN%20RT%281721528559841%204%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%284%2c200%2c0%29%20U18&incident_id=1834000090150425866-66863325134848587&edet=15&cinfo=04000000&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 1834000090150425866-66863325134848587</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-07-21T02:22:40.307218303Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-opener-policy",
+      "type": "http",
+      "host": "https://www.qualite-tourisme.gouv.fr",
+      "matched-at": "https://www.qualite-tourisme.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 861\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: visid_incap_3071130=eM71eibtQBWOnAdFsPlcs+9wnGYAAAAAQUIPAAAAAAB2BGN4MXYvzekg6vOHDBE+; expires=Sun, 20 Jul 2025 08:33:16 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1834_3071130=mOQIRDZX0g8oVXNzXa1zGe9wnGYAAAAAEQPnrxAFa38nrlgQSIMEow==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-12552093-0 0NNN RT(1721528559841 4) q(0 -1 -1 -1) r(0 -1) B15(4,200,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=11-12552093-0%200NNN%20RT%281721528559841%204%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%284%2c200%2c0%29%20U18&incident_id=1834000090150425866-66863325134848587&edet=15&cinfo=04000000&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 1834000090150425866-66863325134848587</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-07-21T02:22:40.308028379Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-resource-policy",
+      "type": "http",
+      "host": "https://www.qualite-tourisme.gouv.fr",
+      "matched-at": "https://www.qualite-tourisme.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 861\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: visid_incap_3071130=eM71eibtQBWOnAdFsPlcs+9wnGYAAAAAQUIPAAAAAAB2BGN4MXYvzekg6vOHDBE+; expires=Sun, 20 Jul 2025 08:33:16 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1834_3071130=mOQIRDZX0g8oVXNzXa1zGe9wnGYAAAAAEQPnrxAFa38nrlgQSIMEow==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-12552093-0 0NNN RT(1721528559841 4) q(0 -1 -1 -1) r(0 -1) B15(4,200,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=11-12552093-0%200NNN%20RT%281721528559841%204%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%284%2c200%2c0%29%20U18&incident_id=1834000090150425866-66863325134848587&edet=15&cinfo=04000000&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 1834000090150425866-66863325134848587</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-07-21T02:22:40.308884211Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-frame-options",
+      "type": "http",
+      "host": "https://www.qualite-tourisme.gouv.fr",
+      "matched-at": "https://www.qualite-tourisme.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 861\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: visid_incap_3071130=eM71eibtQBWOnAdFsPlcs+9wnGYAAAAAQUIPAAAAAAB2BGN4MXYvzekg6vOHDBE+; expires=Sun, 20 Jul 2025 08:33:16 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1834_3071130=mOQIRDZX0g8oVXNzXa1zGe9wnGYAAAAAEQPnrxAFa38nrlgQSIMEow==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-12552093-0 0NNN RT(1721528559841 4) q(0 -1 -1 -1) r(0 -1) B15(4,200,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=11-12552093-0%200NNN%20RT%281721528559841%204%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%284%2c200%2c0%29%20U18&incident_id=1834000090150425866-66863325134848587&edet=15&cinfo=04000000&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 1834000090150425866-66863325134848587</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2024-07-21T02:22:40.309536683Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
       "matcher-status": true
     },
@@ -171,21 +558,21 @@
       "type": "http",
       "host": "https://www.qualite-tourisme.gouv.fr",
       "matched-at": "https://www.qualite-tourisme.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: cq9jfgkbkmbv7m2onjugjxumoh76hkx8o.oast.online\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 692\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1014-28370779-0 0NNN RT(1720924137061 4) q(0 -1 -1 -1) r(41 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1014-28370779-0%200NNN%20RT%281720924137061%204%29%20q%280%20-1%20-1%20-1%29%20r%2841%20-1%29&incident_id=0-159785389259817614&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-159785389259817614</iframe></body></html>",
+      "request": "GET / HTTP/1.1\r\nHost: cqe71k3f3bff733jiqa0k6m9nz9ihruue.oast.site\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 692\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1000-20967645-0 0NNN RT(1721528566335 5) q(0 -1 -1 -1) r(42 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1000-20967645-0%200NNN%20RT%281721528566335%205%29%20q%280%20-1%20-1%20-1%29%20r%2842%20-1%29&incident_id=0-117017831412597504&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-117017831412597504</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2024-07-14T02:29:01.844085161Z",
+      "timestamp": "2024-07-21T02:22:51.447694369Z",
       "interaction": {
         "protocol": "dns",
-        "unique-id": "cq9jfgkbkmbv7m2onjugjxumoh76hkx8o",
-        "full-id": "cq9jfgkbkmbv7m2onjugjxumoh76hkx8o",
+        "unique-id": "cqe71k3f3bff733jiqa0k6m9nz9ihruue",
+        "full-id": "cqe71k3f3bff733jiqa0k6m9nz9ihruue",
         "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 47266\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cq9jfgkbkmbv7m2onjugjxumoh76hkx8o.oast.online.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 47266\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cq9jfgkbkmbv7m2onjugjxumoh76hkx8o.oast.online.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncq9jfgkbkmbv7m2onjugjxumoh76hkx8o.oast.online.\t3600\tIN\tA\t167.99.69.236\n\n;; AUTHORITY SECTION:\ncq9jfgkbkmbv7m2onjugjxumoh76hkx8o.oast.online.\t3600\tIN\tNS\tns1.oast.online.\ncq9jfgkbkmbv7m2onjugjxumoh76hkx8o.oast.online.\t3600\tIN\tNS\tns2.oast.online.\n\n;; ADDITIONAL SECTION:\nns1.oast.online.\t3600\tIN\tA\t167.99.69.236\nns2.oast.online.\t3600\tIN\tA\t167.99.69.236\n",
-        "remote-address": "198.143.34.26",
-        "timestamp": "2024-07-14T02:28:57.832327761Z"
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 50966\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cqe71k3f3bff733jiqa0k6m9nz9ihruue.oast.site.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 50966\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cqe71k3f3bff733jiqa0k6m9nz9ihruue.oast.site.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncqe71k3f3bff733jiqa0k6m9nz9ihruue.oast.site.\t3600\tIN\tA\t178.128.16.97\n\n;; AUTHORITY SECTION:\ncqe71k3f3bff733jiqa0k6m9nz9ihruue.oast.site.\t3600\tIN\tNS\tns1.oast.site.\ncqe71k3f3bff733jiqa0k6m9nz9ihruue.oast.site.\t3600\tIN\tNS\tns2.oast.site.\n\n;; ADDITIONAL SECTION:\nns1.oast.site.\t3600\tIN\tA\t178.128.16.97\nns2.oast.site.\t3600\tIN\tA\t178.128.16.97\n",
+        "remote-address": "198.143.34.7",
+        "timestamp": "2024-07-21T02:22:47.322311098Z"
       },
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Host: cq9jfgkbkmbv7m2onjugjxumoh76hkx8o.oast.online' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Host: cqe71k3f3bff733jiqa0k6m9nz9ihruue.oast.site' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
       "matcher-status": true
     },
     {
@@ -224,9 +611,9 @@
       "host": "https://www.qualite-tourisme.gouv.fr",
       "matched-at": "https://www.qualite-tourisme.gouv.fr/",
       "request": "POST / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.qualite-tourisme.gouv.fr/\r\nSet-Cookie: visid_incap_3071130=p70b2SyJRv2LB+2NYVZfcPI3k2YAAAAAQUIPAAAAAABG8vmed58Zatn5O2TJujJS; expires=Sun, 13 Jul 2025 06:48:33 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1825_3071130=pvEccsu5JiGZikL567NTGfI3k2YAAAAA26UNarBDHwvvgoSPCDlkAQ==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 15-39125282-0 0NNN RT(1720924146097 9) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 863\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: visid_incap_3071130=YiQB74JASo6RSetXk1gDNv9wnGYAAAAAQUIPAAAAAACffSi/4qa/L53H/QOhnwpj; expires=Sun, 20 Jul 2025 08:33:11 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1834_3071130=gH4qPDQ61hJvYHNzXa1zGf9wnGYAAAAAf8KgWDdDLXyv9fZTTeeJIw==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 15-66878628-0 0NNN RT(1721528575781 4) q(0 -1 -1 -1) r(0 -1) B15(4,200,0) U6\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=15-66878628-0%200NNN%20RT%281721528575781%204%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%284%2c200%2c0%29%20U6&incident_id=1834000090150425866-365219039442240079&edet=15&cinfo=04000000&rpinfo=0&mth=POST\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 1834000090150425866-365219039442240079</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2024-07-14T02:29:06.773047367Z",
+      "timestamp": "2024-07-21T02:22:56.25636206Z",
       "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.qualite-tourisme.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr/'",
       "matcher-status": true
     },
@@ -261,18 +648,18 @@
       "host": "https://www.qualite-tourisme.gouv.fr",
       "matched-at": "https://www.qualite-tourisme.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: www.qualite-tourisme.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.qualite-tourisme.gouv.fr/\r\nSet-Cookie: visid_incap_3071130=MC/TU1uxSg6MrExG9PXRLfU3k2YAAAAAQUIPAAAAAACIAG7O0Bcj/Us5WnAGAUwE; expires=Sun, 13 Jul 2025 06:48:32 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1825_3071130=8JtYQP2v/H3ajkL567NTGfU3k2YAAAAA6+I0nv8PYQa/1kRRflLhgw==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 17-59718140-0 0NNN RT(1720924149153 5) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.qualite-tourisme.gouv.fr/\r\nSet-Cookie: visid_incap_3071130=RA0Vmq2iTVKvIKRWy6YNZQBxnGYAAAAAQUIPAAAAAAAH94AAYBe9+5Z83XbTdLfG; expires=Sun, 20 Jul 2025 06:58:23 GMT; HttpOnly; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_444_3071130=sSKySLdYOysGxC/AwWcpBgBxnGYAAAAALLEDrkzjZIolppburUJjhg==; path=/; Domain=.qualite-tourisme.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 5-43348295-0 0NNN RT(1721528576989 4) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2024-07-14T02:29:09.817602085Z",
+      "timestamp": "2024-07-21T02:22:57.881543041Z",
       "interaction": {
         "protocol": "dns",
-        "unique-id": "cq9jfgkbkmbv7m2onjugnc7rjxes7y8i8",
-        "full-id": "cq9jfgkbkmbv7m2onjugnc7rjxes7y8i8",
+        "unique-id": "cqe71k3f3bff733jiqa0fjcxjeyu5ef7c",
+        "full-id": "cqe71k3f3bff733jiqa0fjcxjeyu5ef7c",
         "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 15928\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cq9jfgkbkmbv7m2onjugnc7rjxes7y8i8.oast.online.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 15928\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cq9jfgkbkmbv7m2onjugnc7rjxes7y8i8.oast.online.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncq9jfgkbkmbv7m2onjugnc7rjxes7y8i8.oast.online.\t3600\tIN\tA\t167.99.69.236\n\n;; AUTHORITY SECTION:\ncq9jfgkbkmbv7m2onjugnc7rjxes7y8i8.oast.online.\t3600\tIN\tNS\tns1.oast.online.\ncq9jfgkbkmbv7m2onjugnc7rjxes7y8i8.oast.online.\t3600\tIN\tNS\tns2.oast.online.\n\n;; ADDITIONAL SECTION:\nns1.oast.online.\t3600\tIN\tA\t167.99.69.236\nns2.oast.online.\t3600\tIN\tA\t167.99.69.236\n",
-        "remote-address": "198.143.34.26",
-        "timestamp": "2024-07-14T02:29:03.884884623Z"
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 33400\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cqe71k3f3bff733jiqa0fjcxjeyu5ef7c.oast.site.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 33400\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cqe71k3f3bff733jiqa0fjcxjeyu5ef7c.oast.site.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncqe71k3f3bff733jiqa0fjcxjeyu5ef7c.oast.site.\t3600\tIN\tA\t178.128.16.97\n\n;; AUTHORITY SECTION:\ncqe71k3f3bff733jiqa0fjcxjeyu5ef7c.oast.site.\t3600\tIN\tNS\tns1.oast.site.\ncqe71k3f3bff733jiqa0fjcxjeyu5ef7c.oast.site.\t3600\tIN\tNS\tns2.oast.site.\n\n;; ADDITIONAL SECTION:\nns1.oast.site.\t3600\tIN\tA\t178.128.16.97\nns2.oast.site.\t3600\tIN\tA\t178.128.16.97\n",
+        "remote-address": "198.143.34.7",
+        "timestamp": "2024-07-21T02:22:53.336948873Z"
       },
       "curl-command": "curl -X 'GET' -d '' -H 'Host: www.qualite-tourisme.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.qualite-tourisme.gouv.fr'",
       "matcher-status": true
@@ -305,19 +692,19 @@
       "type": "http",
       "host": "https://www.qualite-tourisme.gouv.fr",
       "matched-at": "https://www.qualite-tourisme.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: cq9jfgkbkmbv7m2onjug3puo334be37ku.oast.online\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 692\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1017-59718124-0 0NNN RT(1720924149095 5) q(0 -1 -1 -1) r(45 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1017-59718124-0%200NNN%20RT%281720924149095%205%29%20q%280%20-1%20-1%20-1%29%20r%2845%20-1%29&incident_id=0-336852378179404433&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-336852378179404433</iframe></body></html>",
+      "request": "GET / HTTP/1.1\r\nHost: cqe71k3f3bff733jiqa05iymma754pfyn.oast.site\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 689\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1010-7891176-0 0NNN RT(1721528578793 6) q(0 -1 -1 -1) r(49 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1010-7891176-0%200NNN%20RT%281721528578793%206%29%20q%280%20-1%20-1%20-1%29%20r%2849%20-1%29&incident_id=0-48307567472542282&edet=22&cinfo=ffffffff&rpinfo=0&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-48307567472542282</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2024-07-14T02:29:14.310095047Z",
+      "timestamp": "2024-07-21T02:23:04.089600141Z",
       "interaction": {
         "protocol": "dns",
-        "unique-id": "cq9jfgkbkmbv7m2onjug3puo334be37ku",
-        "full-id": "cq9jfgkbkmbv7m2onjug3puo334be37ku",
+        "unique-id": "cqe71k3f3bff733jiqa05iymma754pfyn",
+        "full-id": "cqe71k3f3bff733jiqa05iymma754pfyn",
         "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 38579\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cq9jfgkbkmbv7m2onjug3puo334be37ku.oast.online.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 38579\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cq9jfgkbkmbv7m2onjug3puo334be37ku.oast.online.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncq9jfgkbkmbv7m2onjug3puo334be37ku.oast.online.\t3600\tIN\tA\t167.99.69.236\n\n;; AUTHORITY SECTION:\ncq9jfgkbkmbv7m2onjug3puo334be37ku.oast.online.\t3600\tIN\tNS\tns1.oast.online.\ncq9jfgkbkmbv7m2onjug3puo334be37ku.oast.online.\t3600\tIN\tNS\tns2.oast.online.\n\n;; ADDITIONAL SECTION:\nns1.oast.online.\t3600\tIN\tA\t167.99.69.236\nns2.oast.online.\t3600\tIN\tA\t167.99.69.236\n",
-        "remote-address": "198.143.34.26",
-        "timestamp": "2024-07-14T02:29:09.945293952Z"
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 40494\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cqe71k3f3bff733jiqa05iymma754pfyn.oast.site.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 40494\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;cqe71k3f3bff733jiqa05iymma754pfyn.oast.site.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncqe71k3f3bff733jiqa05iymma754pfyn.oast.site.\t3600\tIN\tA\t178.128.16.97\n\n;; AUTHORITY SECTION:\ncqe71k3f3bff733jiqa05iymma754pfyn.oast.site.\t3600\tIN\tNS\tns1.oast.site.\ncqe71k3f3bff733jiqa05iymma754pfyn.oast.site.\t3600\tIN\tNS\tns2.oast.site.\n\n;; ADDITIONAL SECTION:\nns1.oast.site.\t3600\tIN\tA\t178.128.16.97\nns2.oast.site.\t3600\tIN\tA\t178.128.16.97\n",
+        "remote-address": "198.143.34.35",
+        "timestamp": "2024-07-21T02:22:59.422212237Z"
       },
       "matcher-status": true
     },
@@ -348,7 +735,7 @@
         "Gandi"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2024-07-14T02:30:23.645453826Z",
+      "timestamp": "2024-07-21T02:23:52.388288703Z",
       "matcher-status": true
     },
     {
@@ -375,26 +762,26 @@
       "host": "www.qualite-tourisme.gouv.fr",
       "matched-at": "www.qualite-tourisme.gouv.fr:443",
       "extracted-results": [
-        "qualite-tourisme.gouv.fr",
-        "www.industrielles.gouv.fr",
-        "rec-bo-dge-profile.bercy.actimage.net",
-        "sisse.entreprises.gouv.fr",
-        "tourisme-handicap.gouv.fr",
         "www.intelligence-artificielle.gouv.fr",
-        "www.semaine-industrie.gouv.fr",
-        "www.sisse.entreprises.gouv.fr",
-        "metrologie.entreprises.gouv.fr",
         "www.jobsinattendus.fr",
+        "www.semaine-industrie.gouv.fr",
         "www.tourisme-handicap.gouv.fr",
-        "www.qualite-tourisme.gouv.fr",
-        "industrielles.gouv.fr",
+        "semaine-industrie.gouv.fr",
+        "www.industrielles.gouv.fr",
         "intelligence-artificielle.gouv.fr",
-        "jobsinattendus.fr",
         "jointhegame.fr",
-        "semaine-industrie.gouv.fr"
+        "metrologie.entreprises.gouv.fr",
+        "qualite-tourisme.gouv.fr",
+        "www.sisse.entreprises.gouv.fr",
+        "www.qualite-tourisme.gouv.fr",
+        "jobsinattendus.fr",
+        "rec-bo-dge-profile.bercy.actimage.net",
+        "tourisme-handicap.gouv.fr",
+        "industrielles.gouv.fr",
+        "sisse.entreprises.gouv.fr"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2024-07-14T02:30:23.645574291Z",
+      "timestamp": "2024-07-21T02:23:52.388416722Z",
       "matcher-status": true
     },
     {
@@ -425,7 +812,7 @@
         "tls12"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2024-07-14T02:30:30.658007283Z",
+      "timestamp": "2024-07-21T02:23:52.591968679Z",
       "matcher-status": true
     },
     {
@@ -456,7 +843,7 @@
         "tls13"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2024-07-14T02:30:30.694048723Z",
+      "timestamp": "2024-07-21T02:23:52.628660384Z",
       "matcher-status": true
     }
   ]
