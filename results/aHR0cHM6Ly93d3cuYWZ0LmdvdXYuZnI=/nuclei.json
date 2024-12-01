@@ -1,0 +1,588 @@
+[
+  [
+    {
+      "template": "dns/nameserver-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/nameserver-fingerprint",
+      "template-id": "nameserver-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/nameserver-fingerprint.yaml",
+      "info": {
+        "name": "NS Record Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "ns"
+        ],
+        "description": "An NS record was detected. An NS record delegates a subdomain to a set of name servers.",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.aft.gouv.fr.",
+      "matched-at": "www.aft.gouv.fr",
+      "extracted-results": [
+        "dns1.finances.gouv.fr.",
+        "dns1.impots.gouv.fr.",
+        "dns3.finances.gouv.fr.",
+        "dns2.impots.gouv.fr.",
+        "dns2.finances.gouv.fr."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 18148\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.aft.gouv.fr.\tIN\t NS\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 18148\n;; flags: qr rd ra; QUERY: 1, ANSWER: 6, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.aft.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nwww.aft.gouv.fr.\t300\tIN\tCNAME\taft.gouv.fr.\naft.gouv.fr.\t3600\tIN\tNS\tdns1.finances.gouv.fr.\naft.gouv.fr.\t3600\tIN\tNS\tdns1.impots.gouv.fr.\naft.gouv.fr.\t3600\tIN\tNS\tdns3.finances.gouv.fr.\naft.gouv.fr.\t3600\tIN\tNS\tdns2.impots.gouv.fr.\naft.gouv.fr.\t3600\tIN\tNS\tdns2.finances.gouv.fr.\n",
+      "timestamp": "2024-12-01T01:15:29.917505297Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/dns-saas-service-detection.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
+      "template-id": "dns-saas-service-detection",
+      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
+      "info": {
+        "name": "DNS SaaS Service Detection",
+        "author": [
+          "noah @thesubtlety",
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "service"
+        ],
+        "description": "A CNAME DNS record was discovered",
+        "reference": [
+          "https://ns1.com/resources/cname",
+          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
+          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "www.aft.gouv.fr.",
+      "matched-at": "www.aft.gouv.fr",
+      "extracted-results": [
+        "aft.gouv.fr."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 2265\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.aft.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 2265\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.aft.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.aft.gouv.fr.\t300\tIN\tCNAME\taft.gouv.fr.\n",
+      "timestamp": "2024-12-01T01:15:29.994170093Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/mx-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/mx-fingerprint",
+      "template-id": "mx-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/mx-fingerprint.yaml",
+      "info": {
+        "name": "MX Record Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "mx"
+        ],
+        "description": "An MX record was detected. MX records direct emails to a mail exchange server.",
+        "reference": [
+          "https://www.cloudflare.com/learning/dns/dns-records/dns-mx-record/",
+          "https://mxtoolbox.com/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.aft.gouv.fr.",
+      "matched-at": "www.aft.gouv.fr",
+      "extracted-results": [
+        "20 relaismsg.finances.gouv.fr."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 33583\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.aft.gouv.fr.\tIN\t MX\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 33583\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.aft.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nwww.aft.gouv.fr.\t300\tIN\tCNAME\taft.gouv.fr.\naft.gouv.fr.\t3600\tIN\tMX\t20 relaismsg.finances.gouv.fr.\n",
+      "timestamp": "2024-12-01T01:15:29.998745138Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/spf-record-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/spf-record-detect",
+      "template-id": "spf-record-detect",
+      "template-path": "/home/runner/nuclei-templates/dns/spf-record-detect.yaml",
+      "info": {
+        "name": "SPF Record - Detection",
+        "author": [
+          "rxerium"
+        ],
+        "tags": [
+          "dns",
+          "spf"
+        ],
+        "description": "An SPF TXT record was detected\n",
+        "reference": [
+          "https://www.mimecast.com/content/how-to-create-an-spf-txt-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "www.aft.gouv.fr.",
+      "matched-at": "www.aft.gouv.fr",
+      "extracted-results": [
+        "v=spf1 redirect=_spf.prd.finances.gouv.fr\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 34102\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.aft.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 34102\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.aft.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nwww.aft.gouv.fr.\t300\tIN\tCNAME\taft.gouv.fr.\naft.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 redirect=_spf.prd.finances.gouv.fr\"\n",
+      "timestamp": "2024-12-01T01:15:30.009293469Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/txt-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/txt-fingerprint",
+      "template-id": "txt-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/txt-fingerprint.yaml",
+      "info": {
+        "name": "DNS TXT Record Detected",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "txt"
+        ],
+        "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
+        "reference": [
+          "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.aft.gouv.fr.",
+      "matched-at": "www.aft.gouv.fr",
+      "extracted-results": [
+        "\"v=spf1 redirect=_spf.prd.finances.gouv.fr\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 34102\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.aft.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 34102\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.aft.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nwww.aft.gouv.fr.\t300\tIN\tCNAME\taft.gouv.fr.\naft.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 redirect=_spf.prd.finances.gouv.fr\"\n",
+      "timestamp": "2024-12-01T01:15:30.00935311Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.aft.gouv.fr.",
+      "matched-at": "www.aft.gouv.fr",
+      "extracted-results": [
+        "certigna.fr",
+        "letsencrypt.org"
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 20649\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.aft.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 20649\n;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.aft.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.aft.gouv.fr.\t300\tIN\tCNAME\taft.gouv.fr.\naft.gouv.fr.\t600\tIN\tCAA\t0 issue \"certigna.fr\"\naft.gouv.fr.\t600\tIN\tCAA\t0 issue \"letsencrypt.org\"\n",
+      "timestamp": "2024-12-01T01:15:30.026008584Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/google-floc-disabled.yaml",
+      "template-url": "https://templates.nuclei.sh/public/google-floc-disabled",
+      "template-id": "google-floc-disabled",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/google-floc-disabled.yaml",
+      "info": {
+        "name": "Google FLoC Disabled",
+        "author": [
+          "geeknik"
+        ],
+        "tags": [
+          "miscellaneous",
+          "google",
+          "floc",
+          "misc"
+        ],
+        "description": "The detected website has decided to explicitly exclude itself from Google FLoC tracking.",
+        "reference": [
+          "https://www.bleepingcomputer.com/news/security/github-disables-google-floc-user-tracking-on-its-website/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://www.aft.gouv.fr",
+      "matched-at": "https://www.aft.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.aft.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccept-Ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCache-Control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0\r\nCf-Chl-Out: n2Fm9Q6KYwzU+BzzMpy2DP01xR08/mrylDn604dlGACvk8EfTSICB41AfFIke35YcginaROHCPznzeZSdAOjR+cNyjxzNtdIJb7K8bRD3KZKT01xBq2yof+8KbmZWjDjaVWno+Jeu+z/GNbZRuioqg==$zjcvYxZV5V8SG7kBBAxIUg==\r\nCf-Mitigated: challenge\r\nCf-Ray: 8eaf3a499f9cebaa-CDG\r\nContent-Type: text/html; charset=UTF-8\r\nCritical-Ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA\r\nCross-Origin-Embedder-Policy: require-corp\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 01 Dec 2024 01:15:42 GMT\r\nExpires: Thu, 01 Jan 1970 00:00:01 GMT\r\nOrigin-Agent-Cluster: ?1\r\nPermissions-Policy: accelerometer=(),autoplay=(),browsing-topics=(),camera=(),clipboard-read=(),clipboard-write=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=()\r\nReferrer-Policy: same-origin\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=RbEX0QBgrfcwnLaySfsWSekgTVGP9Deic8KLzlAUCVA-1733015742-1.0.1.1-q1L0Xzkv9txZIJiM7GkOthJKCB1dvaJuqa9TXh44LMXEVkfxLheULviidCNSd5MbEZUtl_EaiebofYvZCVPxhw; path=/; expires=Sun, 01-Dec-24 01:45:42 GMT; domain=.aft.gouv.fr; HttpOnly; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains; preload\r\nVary: Accept-Encoding\r\nX-Content-Options: nosniff\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\n\r\n<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"><meta name=\"robots\" content=\"noindex,nofollow\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv=\"refresh\" content=\"390\"></head><body class=\"no-js\"><div class=\"main-wrapper\" role=\"main\"><div class=\"main-content\"><noscript><div class=\"h2\"><span id=\"challenge-error-text\">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: \"www.aft.gouv.fr\",cType: 'managed',cRay: '8eaf3a499f9cebaa',cH: 'S.1hpqOdsblKdlDRmiX1byV97sAoXMJ01ZlK2wO1wbg-1733015742-1.2.1.1-OcG9htygO0De0mWRVU3brJRhJXkaWWD9c0VAeYMR7jgeMEdYt.S7brlWQ1lqGmkM',cUPMDTk: \"\\/?__cf_chl_tk=kk6PKy1ktTSxAaLH__ynNZKkmHP8lI27CB7hiDN3M_4-1733015742-1.0.1.1-8gol_KufqR8xEO4TT3MZU5ZgpDmozYRRXZLpvh3xQFM\",cFPWv: 'b',cITimeS: '1733015742',cTTimeMs: '1000',cMTimeMs: '390000',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: \"\",fa: \"\\/?__cf_chl_f_tk=kk6PKy1ktTSxAaLH__ynNZKkmHP8lI27CB7hiDN3M_4-1733015742-1.0.1.1-8gol_KufqR8xEO4TT3MZU5ZgpDmozYRRXZLpvh3xQFM\",md: \"JBr8ZpD_blqHvO7yH1HF0VWo3k3dRGahA2L0dCPwzdo-1733015742-1.2.1.1-zL5QB7AC9U3QQZwsIBxrMB59B6dcDK0F8N1fdUCfD6jgQBCCuuC7Ho5FyXcgZ3O.68nrEFMEChPCnS3WdaBtX.8rgkpEZTlahhHcRoybYcdnBTc_RS9B7l6j2WybNOStW.p1lFY5taffgQOjiAu932Mdy6kFgLuakl_PH.MNb0mUP7fT2qyvxUmVkU7N4mReSo3_YJk61sHTtmb0nJlelTqWU103fVavEsYTQLXjZsN6ZpcSm8L40lHHBfwg2PCrHuYN58CD_lIXD_onFJMrakbx5Spk875tNPdR9QAFBe99fQ6pBxOlgemWD9qoLkR.7hVdLBtEDbOVjT2F.Vd8egO9s94Cgj66uNE8gPiwnVr4meniQ7i6fZFe2qsiqvDWmtHx4Qb0iS9utfL3I64XX.hBsZ9846xgl0rkc90pyZHd1p2Bo4BGCnuCMK3GvJJ688eml.4UD470yD..l26DNYduc9UqbPf24Sox4AR2noIfF8bujl3wNn.ZRqvxPTzv.WbglzAH9SedZZbPxs43oyZB3ic8gI.uS2CFqAyp4LHOVegvPpWWKQSImEcLqSZiQ0B2ZVXBbaKbEJLdjfkYihiPTVBwXlrAoNNXVf.PWsGSekSqu16_yGw3MY6XI_iky5tvZrILow97sReWtVDUukhBYbjfVVGfbH4MWW75vcUIxvjPwZFpwBhpP8jfDaIvX3rQold_18Y4z7_L1ziYrnRYkk0dPVxjhGGX4kEqgDEwmsQ_fTndbsw1g72lHIlu2RWkwwQEk6IooDP.e6mXqrZU4bgQ7Kf.SIa9byGJ5Q1uaCTwim6LHyLISNHCr1V9cMSwJE77VdSx8Kqm8oJw01HYHgBidlF0GOcV2fTb0W234UPciIXGOGtTvpjq81SekPiTKmgNuVPtO78vSA8v7JHRp.D7hBdH8Bum_q3iMVY20kiYoSFV9M9iLG5ho3Xe5gRfs6DG1L4UtXOnGm5rxy_foG9VVb2MJMacK3K.ApYY32r7qVL2c9M9tXurDfWBUKXumsLiGtC3LgqsiSzEhpYiDv6fGeP4_0_I7fHUR6YmAYEIwZzfGzXiLYWaAH2T1x2nut27FEllT.o9RoDacAK95zgRIf7WMGPbLoFH0aUzx6tSJMF8EqLnYjCYNmb015FwO5Gr3NKutBhx2TYdrtoYLI8gGUf0AuGe1iuA9INMlrBp5X_gzPTPJqq2HSFCTyczn5Xu9Pv_ZHwg3zkNLfSwPCynb3pME0YqxQEcapLkxgCOQudkgPIVKYTPkSKYhEagbf7gpYAT5Sz64CBbfvtxQEUNNYQ4im5TgyZpBh7sOpTU7dnwBVOn3KBiSPJ1oEt3rm5gga8va1OetK_j72Ve_vUzF5k80_NXkDs52Ra8Zj3dd0WaQ2R8txNzBzHNGNsqgZ0wrS7XNAGzwpzUbuLS983Yt2I.6xMyOhg05Wpb6InaE_djtVKFT1iLx.3mOfXY31ElOt9chtU4ratxOffDpzBc7Q27DIfx4AMO_NvP7YFuW1OrVGBFu2ZKrVIynL_toJjIo669fIX82BvhCnqECQXClpvd.MdxFly7YA6usvHCwtdCtZxjUsqCdbRh7EiM6E.vAs3PMAgI6ghcJCY4o3CUVaOF167F6mbk5uef2lqW5lEbEiE5QWOUdD3aGZJMh9ljo_WmOC7udcWwlyD4AicDteMX94Ak2kY_j8x2Q_3_j3Egqsdz3RyZAARxaxnhtJ4SfWXa4kN_OIuDW9GblP7pMLO_3sOQGYBBcl9YFPdATV0DweH8FryB23HW6ClYDfODuGJBnc16cX_rLIpjDV9Tm8MbQR6aysyo4HKjvTmX7tnbBHBcD6j_k.V.ge8H6s2XdtDaOOnsLt5rknzDSWVMvsRS.ehEdk3gSekpVq5aj6HmBpPQVkx9MZBqE6VKffdxPH4iTJzoDFBqtVlQnd0lV34PhEQsyR9xQyLAT4Zy0Xle5Hkjzia5pN1YAyshRYS5vGSsmpC.n1C9nf5QsEZ_wW5rvTlnUu6Kf8zVJqTHySjjbUHAJ3E_k40HSHcAN7phpofDJihU0F.NKAY0RNa9V7xignwM5heqj_VOcMcrSwFLpvS7XisXRQrZWa4WRX9sav5YQynYMQv47HameQL2KfrQgDt5AGQ68Vpf4M4qJUWLDaFVZyFQPjXRUDErHSmFmj.pEJOICmkD9gIgjefhl_m3xzo5f2tln3sMWHguMDXDGAnE7WsPAqAID1Wfaf9BCRyYa2oxuXIpEusB8rhZX0Q2LdnUQqZ440dZMUsI027KLWgAkPmZKu3RYOFQHVAM88CQ2UUhhbLVjX7ZSjUu1_X3gsPQzHZOIVcQty8PR_BgxbD.ahFmautJoUvkKvhZO5MljdVxGkxejm3Ap9Jp1JF5LPEZeEMTfTcLjNI.nIASlGXy7HB_yj2tIpB5fb3hlC0ewXb5nQ5grek49jXfdaCSfe_zY0rw6xEoXabWkYDxahejUZXGFI2N\",mdrd: \"o0J6DWp7R56JSgxitx3SioDaC4sShxFZOPKTMkAzviU-1733015742-1.2.1.1-IlM_TrYy_Ok3NmDo_uJI1PIN7R4Khn9tcNsvhlc0w3lXumYT_xgb.Kpiwt6JnV730rAg4uTRooxbcTg6KzfbAgG7wHxy.mx6Ye934xGLuW3V23vZ5IJZuAYIiYaQ32ZNdgQH42P11qy.KG3X0ABPos9qa22UDraI_fQMQ_pUYoRZj7fTm.lpz2eM9wreJ2pG1xU_7VKUsc4kFpfhbX9eKDEG3rJpJ48iGlyY5DnDcVCt70.VWlIRir7Lonb3WQvz3u7JrGJTo0LGeO4hG1DlngJS1K0snxO.SvgDoUc332u8xSt8NbwYY.IjqCmjl8xLIrZxR7bUa9FMDdJPVhUYFHwg1EUGw2weaae3d1ilwTk5Qe7xxOebLmlcL_GEKBvdwShtwoWa4k8oHpMyfBQ6vm2Bufk5hQlvATgwbOXWz5wZ8E9thsl2zfOAxktT1y0mOC_nNrlw5mSGfUv5y.AnXi6oTgFXTE8jC9QUfIGObN4AhmtBRGm_eXESrdzzmpbuRIF4uy2ETO_KVPL1hupUoqE0z9sXfIdwS5prFXxBcvsj5zzA_Iw3wYKsJl2U5yFh33r0ksS5ZpsKpsFo9Z5Ta9YfVFsArIgH5YW3JmokX.Rw4cew0ELnM9Jvn3zuGlqaXbC6naGTQpIg7ivGCYNql4fXyZ4AYcARdd5qbvpixK9edy_ky9VaWnlNSICNH.wNfcdFRngGQLjoiRoHupFItz66O8mN0Wh_oJ1UY005KJMX.UZqvm6qnmrGAhxDJ_nYNUNzV07NCe3GVY8czEY_3hskKc0fHyIMWEJVV7p.3AKfS2YIw2C8dPzvozQsWYj8SGf7dxsvQhHEbKm.pZ95CsMUZ9yH.87RZPbbNgVUUeK8vAWkx6mk4Jxw8ZNdBnFglLjpwcZ9duG5tMmmQ6tkpRcrAOHrCA8NOMcj0Ckl2rOWBY3daEubv0fPlcNJDkt94veIPDtXUGlKAF9df1r2JJxb6KUJKZnZj76yAnrQtJ39QyC5AnFTDWRI_xCQ53ef7cSS9a075tmAu5eZhD1FRaJu7zP6L61dVwmIQ1uaI_GfggV.XQse7GNjNo2Du9Xj5JHMMbwLr_mLV5uue8HDd6m5sUkr_n9zgQK59qERXxv3Vz6XGw8gzgB1HZqhbd95RRPp_1AK06FhEJ0XkrfKwr0rmfpSmPODQDqvCFyu8LvivShDG9Pdwr8wWfXnf2M1SACn8Zb2gSPYpA9YObFwRVPjdzgkOj76QLsSLV9WCa1.ZdbOyKcrbcXzIlYFpDXVpqtWEHWd5AJ9tjJ3PRrR85E6NZKXjlAeE_MVzDvOTiGY72WjYpF5zIH6egwAAQoW9hiXITE50jgRByZe6KXkQU2dq7Y405GuhFGy.efw0k0Lpwmajr_R3r6kLtpiWxigy7lk0Fsa8Y14goz1zNCb80IazbYy1FzvD.4YUtZWbfCfTrS60Yyx5Eeou9IA4VxmAzwywWclgPpLnYGRixFQkFH.o1t.f8lG_5F70.7GdTpuya6586Uwsh3vVurgjymI.x3wVN4Ml7._zY4UawfaHL_acSBY2x89dZfe8fYnH3h338V1rpWekZHlRsRjaDV_TGNFD72CdLPrgEUBPTa8vgz536Mj__7mWOvCfj4K2cwxRZCwVi8gnWjHgbtR90VXK0FhPLqgkU4mZfb.dkE05i.XqXJDFeOA1gXjKaED_lZZDVMeQ.EGkkBC_6CdAeRuHfe8TgAoVpuBxz8S2uX3Hi4mghUaVRGLX52RaGdPO72FvfmRHb_xilcjSkFbkOIUaiaNyW.axlL.Tp7_Q4krQe1PWW7veQP1sgkNuhbUG_5cD8DGRtDzLs2cuIQdWe5WQJzQRGX2QLRzdfF7U42obVNr34zZwCAgcENgbDAAt3Il.01fbhWgif.w3yuFJMLciIzgMY5epwhli6ZeqBGwB2KKBCUl8ilnG3qwCFeXY7KrwD8xP7NILQDuspbrZvrN59dDhIeI50yxGrCOrJqreGcYOaEHUc0nkyxuhhsTjacKFsAc.re3FKpRZ_eOA.4JqUjk09ERB3Rvjwuy3BP3NQ\"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/b/orchestrate/chl_page/v1?ray=8eaf3a499f9cebaa';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, \"\\/?__cf_chl_rt_tk=kk6PKy1ktTSxAaLH__ynNZKkmHP8lI27CB7hiDN3M_4-1733015742-1.0.1.1-8gol_KufqR8xEO4TT3MZU5ZgpDmozYRRXZLpvh3xQFM\" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>",
+      "ip": "141.101.90.96",
+      "timestamp": "2024-12-01T01:15:43.080064585Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.aft.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod"
+        ],
+        "tags": [
+          "tech"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cloudflare",
+      "type": "http",
+      "host": "https://www.aft.gouv.fr",
+      "matched-at": "https://www.aft.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.aft.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccept-Ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCache-Control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0\r\nCf-Chl-Out: f7JnwSpKW8TaWYxvg2sYzlZX8ScyzO4R0hvSh5Fa0BNNl755wq8YaALS6J+BxA35Fkj90iGWh0Zyi2gLhIux5A5cpOc1toyNtVNDa5hunn4g1keoh/aEijaGwUsrbD+3bdnLYWp4QoaUDP/yy/p3CA==$wxwZofCitAJF5z96jXNYgQ==\r\nCf-Mitigated: challenge\r\nCf-Ray: 8eaf3b276f692a07-CDG\r\nContent-Type: text/html; charset=UTF-8\r\nCritical-Ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA\r\nCross-Origin-Embedder-Policy: require-corp\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 01 Dec 2024 01:16:18 GMT\r\nExpires: Thu, 01 Jan 1970 00:00:01 GMT\r\nOrigin-Agent-Cluster: ?1\r\nPermissions-Policy: accelerometer=(),autoplay=(),browsing-topics=(),camera=(),clipboard-read=(),clipboard-write=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=()\r\nReferrer-Policy: same-origin\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=e8xOD.S1sybuQRpLoG.ddUYp9z9a6_5BgK8ARCAuK2w-1733015778-1.0.1.1-S808RoH67yPlzH3PMu1nVC3.ZjH_qWkerwd7xnOHBwAvam4WRvhQHYdSoPbhMetcENsbpWz8WwG1ffwuQut9nw; path=/; expires=Sun, 01-Dec-24 01:46:18 GMT; domain=.aft.gouv.fr; HttpOnly; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains; preload\r\nVary: Accept-Encoding\r\nX-Content-Options: nosniff\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\n\r\n<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"><meta name=\"robots\" content=\"noindex,nofollow\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv=\"refresh\" content=\"390\"></head><body class=\"no-js\"><div class=\"main-wrapper\" role=\"main\"><div class=\"main-content\"><noscript><div class=\"h2\"><span id=\"challenge-error-text\">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: \"www.aft.gouv.fr\",cType: 'managed',cRay: '8eaf3b276f692a07',cH: 'AGwi_ypkL._HdH.zN7tdNS2TueabXrfNeunEyDzj_Cg-1733015778-1.2.1.1-3.KNZGVO6ceEfZmGODPLvqhgWHyzeaQe73pllBNfT8V48Is2eOMetJAfL.jqVTBr',cUPMDTk: \"\\/?__cf_chl_tk=e9mK0.Hlid0sul_WET7iBE5sP7BIbhNA0pnWgQ.lOdY-1733015778-1.0.1.1-VK0oJHuBt83iGzVHs0s26o3c77JHnUlv_DF7te4uWbQ\",cFPWv: 'b',cITimeS: '1733015778',cTTimeMs: '1000',cMTimeMs: '390000',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: \"\",fa: \"\\/?__cf_chl_f_tk=e9mK0.Hlid0sul_WET7iBE5sP7BIbhNA0pnWgQ.lOdY-1733015778-1.0.1.1-VK0oJHuBt83iGzVHs0s26o3c77JHnUlv_DF7te4uWbQ\",md: \"Uukbe73CZ6xLRAmTRO7bW.O9PzFPjombOnbq1N55Avg-1733015778-1.2.1.1-NoWLpn4KBF9vOoiCNjXEYDWgwIsF6O9ossrrmHu5rr7noAxkgvCz3ZxM1XiH.4KoeWbOy3lGKJbtLxZbmr5sIUOSCVJJKlQm2bPqjCznPUBk2q04tTrN9Y4y9w1AosJWeF.MRfRF.DEDqh6WJawy6uUJCD87CSmXN3_uyVP7kygRNFsZcxe_DmTSMga6OmVidszL0EoAw4rHrLXFpDSpeErEn_X0e_Axr1gO2pn662EG17XQD2pwwFpFazxU2mZzpzPNH11ifX..WouQtbB6HqLKePytZUUPaJ_tYCibmGfDRWkNW1bjS7eJ2yePybTRnt4xvV78wXLYAOpcEGS.QRL03tQoA2C3FD2ZC0Co0PHCDRd4JcRORH88Kp_i1008.a1EaWD1.ssiOzGvVGvodz3xXKXi80_wit4FZYOGwg7zhDxgE5gQto9mqoFTLZzrOFU1g9Imds5h6DcOFJOIeZuc.DSDdOr21ozWbQ5EHsdRy7pGQrTgXdpG.4ebF8sSYRiOIWxfnqMyQhOV7OuSE29.oZkoqJsWxboIN7plCpwdcTiKvraMIHfrTJOAL2rC82g9qjgEnqnpEuwLIqYW8aCDjK9DcknI8sNQSNtpu.3wCn.K4U4RHlmu2iTnhcvN3vGhgOMWx2iN5mQqKbIDv99Z1kULHzu6Oc_7HxyTej1P7nnRQKQRMUrgYDYYkiPnNwWCg5rinngXNAdDogAxVEL0m3QY7wLRj4xFDbmfEIMJpTTVFuqDaEBgW3828MKSPRaTf6khJ6HDtquHh7JM1A45G9V00fup8wAQ.31a2lv8OanoDOLMvOtu1z9nNR5Vk0SXQhd5uWrvCB7eAyTvFiCX8RBckhPDw6irJpDutg2MoOkc_1GU2Wz5ab.2gK2rils0KGZxsfV5JaVwyd5uxO86Z7IsKAZzwSM888eGQH9XwBoHT01h11_bG40zAsXGB5_5fD2st9yTmQF5VCMYzQKNaGabvPBVxB3jhS03TNxW0DKVvghdzcHJKVmPqOMigEn4seASfMltm4iuBiCn.47IUCDGAspOMszgz34VkQcmZTKyAE3EegK9esZZMzEDp5.DRhagkW.onDk2FCkSPUTN5MFd5ZzeGo.8.NZiXdhOE3Y_gwBYkMFSZss4IyO8HazF2wK8JzYFM2JaCqf8tpeBLmwLrjbFfNRxj2_K0kUWS8ophggnu3PKSB9zCqRh_TQPHje2h9nd0Hun2yLmmR0Z6DkblYQt6Ol46DgbSzjbQqLIpjdQD.OOXaIZCp6od3VD1mr2KiQeBRmn6ma6ISPF4ul1TB6zpVBknnG_8B5uTO9fO981aaGWmdW_OynxLSmtgGbIrlPjS7Q2rto_xu36n2f8TDlcZ_sMoT2BBXgm4uMJz_ly6LGMmLn1bxrw2yjj4JFBR2YDo4Gs_3UL11ht4GHCBhSXk61enKdjTAo8J1CqyMFM1QcT2KnxtsPe6mVdo51y6UwJW6otGkbYfSx6IPeumkByRybY_1w278dY703Ypw3IofdSiq.cfuQ6K5VNRhmihSXpP5y0_WUwu51YZDLTu2G0kTa7mshm1rjkqRxscMX0YbOH3MDE5L8hzCrcY3okCwVDsmyDMFudcgfGUwQVaOR6UzMG1D_scOSmMMLVTR8Hjmc1MXMWO561TQWbql8nBoYynpncl1f8bybkfvIy7mLsPxyCYntjPILTxsOEfepG4VJnV3nxoasYJT_JA4QWw1Qi7i_XEpLvrnobkKC.WCrZDjEknMymkrSLaUnJvT1ycx8fes.ibZwlvYAMhS_l17E1HoFgBu444mVQU4yYaUHaCHecgEVGypFLV3dmTt9.6L8T8SC26wkwEaLWDueZ5kkqevcssYp4RK37djMZTD6f7P6g0mEEXW.QcMvQ_3NxWQ4zpomTaqQXsL.46Ywj.N7.SIosX.6kETOgs37ayphu1lc1TnkIt4tvGv3X8rlbPIbf.YsZmVOeMW8KWFWtbNEvjzV6HO6RCX3rDxo8PDo6j0pRoJTtSJPPUUsmZhMEjNEr1jaC0IyOen51VX3oEXxJzzZpUuI2.i5NoZpP9FUgLVtXnxUlQSeVURDD6j7Ta2t3L4QYhqIGy68EVsxnvR5nds2.QrMfWJmeZdCVwgIZxegwsqqJW.y.5VFUYv9iELAzmwRQgKtrYHQzZFN4SFmPgA3Otu7L1qOugYwpo1Uw3fHb_hUI3Y1KiRsfrIiOzYCEEcD_VvekFqdKqX3abyrkHh1CNqONzELvTU82x5O3uouvjS9l0UWH871nThntsCQVQSCpF8Ax3Uv5DbvS4mSfhhg78qWYChaImdJ2FWsQi9O71BeLucUfH3HTZI0rJ8lGqa3H5CU2E.ZnKKnCCm5hpmYV95sPkTI6TXBllglodS_yrOfpVps6Vt6.tLGY5vmY.YOGqgY1ZggISCPl9JhBeM_3HdG4u8OkWZQHXvw9l5YMDG6jGoHjuRJhoptOPjOZ1fGCVERt\",mdrd: \"ss_zNldI.PNSe.KJHW8cqvyEMa.Jt33hB8EbVPf11Go-1733015778-1.2.1.1-MTz1qA4MOYnPYPXW7ZlSpEltV_LIw_9eUsKRF3yr9r0o0E3IPpOBGAOc030ghC_z9CoEYoQeSdgR8a45s.fM2h7Gc0gl_lIwx4Ur1j.eDXK8wvNBHGY7x1ObNwZ15KGn.mBa0m.x2QZr52fk.GsiiRbkQinWkiJ4PfEWslxYRTur3DCS4Vfoq.2OhZJdKyXao96MqcpSmd9T5Mb9Ju_ih.fC8u9yr6QcBoGd0TV1PjAyngouDYmNk10ahMYVrCcwQ4Q0Jtlbycrc_nPZPzLNVfufgVH7W1YJxSQQv_l1QhGIUcCgAy0znzRYTOxj.NeZ8YFCHD4BDTvywa1SDTNuG_sbJ98z81VqUkHPlBnkRbze1WflAS1D8rR31WEacEkfpkjIFbv_1pg0zn8wZH8lHcfgrp29WS27fjidqguwg7BX7p77DFudrHOdYt9qELgu2Gh3L_JO2YvtqH2veBxzJeg8Fcm.VoJEzHsHDYDrQ0UDRpzWea7z4NwNreQIm7oqkobnybwQyChQDsQyvr7X95ScUFYVpkOMBy3xEpoGpzjNsGaSwrcvmrCD0OuN8VgmHShtFR1DQqEglTEbzJEr0yHwuFGQVqNjfC4FABm5sAlyEQY8PTv7RmjYi370sHrwdPSPt7LpeFNPOFlzk5fkQmL_lA172ef3cbMKZZsV6NGTidwaYAk21G4S3juvsaHy6z9MKVIjKCdzpChrf24VMsQgUNoZyryFnzP5Vw7YcRA_Fr2f.Ld4_IurbYj5NRM5hRsrFvv1s2DEPgifQFuRz0vLnsFeyvHzeQ.U3.EKO9pnlKEUb1VM2phgSDeXiaGoOw1ah5zO_TNK9laSH_OVen7Yp2aPP3D5S4zshLKakm_mOAVXLtUwcafaliOIat5LaxUHUUyMfDKXSMwdVdt5bMJ.gdHGaeu3TaQEmSvRTGbYnmEbfTi6d4h0VKnYTwmeu1DIkEvO3ttV2.q4nbx2LsM.UUgoPAd1NnnPDdhzH0QNWImto1N2zvexh6nb.Uw906S2SMATSp2snTq3nW6v_z30yUbINJFuJky5ZeSofAcW3AoWg6hV3fSJwdI4_1FgnHRdX6skkg3esktZCIFsL71zF6mcoWGHA4fUcHPPProg3DVbAjFU4ATxp3bjai2yzdy35sBJlpnsScJ0Io5AmrN.TPg0Rd1vsM6AQYqUzwXCSywIe1TSc.D1raNa8camnAFKoHNrRsYizMI5m3_cS4l9F37Ph_.vnh_gj3.thQ5iwzJ.5IRr69K_mctCr.dJ59t4eRiXjlUz4EbfOESl3_4mzZ3zMPdD1qrfANxhjB1KQeDEsMrh.sln4B.xn9o0B2hIVqt9GCNjjteuaQe_dUzYUQf20D_qP3EMalqOgFCoFuR1dXQ2sm4DxNWg9VB1S0DofyX0MulSkCXfg9F3rzQnca8URQU4033QF8V6zUTLPuWTUOowtWYg89sbZVbesTuMlMXK0LHB6RzRhipJqKQDs5pGSrjwEJRLyaWC6rMSliOSrOJSSjWWTATC2fNXJET72U2aJmWjR.UsYSKWPjDjPOCQoSIHAjktd_0CO6yWFH29TLnEZ0SoKKWbnIFSA5z1uSF4NqOy9XvYKGZjAE3wWQ3GKyl5.oi9wKjXohF.dLzpU4qPz1RBSGJWhjDg7n9fYi1pvEW7Xk5J0MV2ywHUDn1w6o0KveACauowMEaAJ6KHXpPahOSsKRkrOc5F2fhO4P1djtsowdq9d8prfhQd10N_m0oBn5y1l5IY1sUODcK8javiPk3490XxcW.aJs7dqYEIqKren7fETQsjygijUbxMn7rCl6ULhrPHanmsHLfCd62g..9XUQL2nRkREcZ7qqPIgnJzhMWFxgZpjUrqdc6wyDh2Un_hvLtWgO.WZ41CoEGhWdibgolJHbHD_X_ar8kneDwsoYqQf0_S4ibRtqNo6yoR3vKlPXuelcl80GSwBhAjVtO0Yn86Irg5MAh3kc7NRorPqKKdu6tjFzMnNr4bWMPnuBMQfbhNKK_rIO7mcG9ROT9JsgRFkJWneBqeZjzHeU.56KuXHT.jZg\"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/b/orchestrate/chl_page/v1?ray=8eaf3b276f692a07';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, \"\\/?__cf_chl_rt_tk=e9mK0.Hlid0sul_WET7iBE5sP7BIbhNA0pnWgQ.lOdY-1733015778-1.0.1.1-VK0oJHuBt83iGzVHs0s26o3c77JHnUlv_DF7te4uWbQ\" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>",
+      "ip": "141.101.90.96",
+      "timestamp": "2024-12-01T01:16:18.884264784Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.aft.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "clear-site-data",
+      "type": "http",
+      "host": "https://www.aft.gouv.fr",
+      "matched-at": "https://www.aft.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.aft.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccept-Ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCache-Control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0\r\nCf-Chl-Out: etPHADyNhyuCXWrm5fYAgzPg+6uPDnGtFMX+pLOyOK8xuuivJZ37rjPdJyJa74h1AjLUndFFVzyt6QsMjPlA3oNNurh55nVmetpJecY7bfWaVMiqnyFF3+3GzD85QBBMvyaiR4fdMQu3rHUpMxQHwg==$8cNxUAg/pdrcu9oSPVuvYw==\r\nCf-Mitigated: challenge\r\nCf-Ray: 8eaf3b7b0e9299ee-CDG\r\nContent-Type: text/html; charset=UTF-8\r\nCritical-Ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA\r\nCross-Origin-Embedder-Policy: require-corp\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 01 Dec 2024 01:16:31 GMT\r\nExpires: Thu, 01 Jan 1970 00:00:01 GMT\r\nOrigin-Agent-Cluster: ?1\r\nPermissions-Policy: accelerometer=(),autoplay=(),browsing-topics=(),camera=(),clipboard-read=(),clipboard-write=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=()\r\nReferrer-Policy: same-origin\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=iduPVQYXKsJ450PGtHQsvHDTqOrgmAYdeTyOffubsx4-1733015791-1.0.1.1-wAZ64HE0zVIOHN1LNCS0LEwqTPAjrqZtwBww9gc0lytc3EL4gwDnHIP2VMHsUTHT7GdAk9Brno_IM_0QEVfkAw; path=/; expires=Sun, 01-Dec-24 01:46:31 GMT; domain=.aft.gouv.fr; HttpOnly; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains; preload\r\nVary: Accept-Encoding\r\nX-Content-Options: nosniff\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\n\r\n<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"><meta name=\"robots\" content=\"noindex,nofollow\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv=\"refresh\" content=\"390\"></head><body class=\"no-js\"><div class=\"main-wrapper\" role=\"main\"><div class=\"main-content\"><noscript><div class=\"h2\"><span id=\"challenge-error-text\">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: \"www.aft.gouv.fr\",cType: 'managed',cRay: '8eaf3b7b0e9299ee',cH: 'PAfBRHMFUDLpYiJTXOwDVWa_ehdns7lUy5dB704wrug-1733015791-1.2.1.1-ZChIa94W_7ie7BmxW4sn6suQgAbLLSnDzQnuKScXJhzTnnaC9faLpy8MOZwdWGr6',cUPMDTk: \"\\/?__cf_chl_tk=uJgg5zLgJ.Bu.vsL3qTxIW3rkoIS1gUkeMnmPRKabv4-1733015791-1.0.1.1-5jTF0BRcPJ6_rfpk1GcNG8Pkhee_kjewFr9S4mxHbdY\",cFPWv: 'b',cITimeS: '1733015791',cTTimeMs: '1000',cMTimeMs: '390000',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: \"\",fa: \"\\/?__cf_chl_f_tk=uJgg5zLgJ.Bu.vsL3qTxIW3rkoIS1gUkeMnmPRKabv4-1733015791-1.0.1.1-5jTF0BRcPJ6_rfpk1GcNG8Pkhee_kjewFr9S4mxHbdY\",md: \"YT.ntW_PC.qH3Af1SVrEDGqtSE18UvBNyToXVDGEAP0-1733015791-1.2.1.1-zFn2KcpVI6qJW_IrSAXPsAh2Du0d7Aw3Kf8AE2ycHLg.TMutE1kPEfWe6kKDDGNvR_cY1t8CVYBq9o7nQ3q2Dighr_WJJy70RheM9ipUWxgSvreuNDPZ_iYBgS6H.o5Oh7CRvi.ewFojdpDTi.K7w4PYXgEZPIZwMvcAqH2nlozJIOlYHBNg8Qs1d5S27zDaHcsH_5bSxXTz7IYfQTEQMmQ_KxLzLbdlPSMAIk9bVQgsOmbQNVJJ_t4XU0QkOLu56ZrMj4G9C3fCIDglj7QpVcJpqoQmbVOwrMuugM_TW8DzKuluL5hrBEj2kYB7wJJRO3Q98RhZgoW3Cv8._Fp2rMf_2PEMspCvEN6u7Tr1Pdge1h6NEHxzMJgSOksaIn1Xd59RQO.ugnzfgVN_oPzJ8_sb3n_sFyiqTuurhue2j.NdrJQ02lRjkZ10HB9aGpMlI2t7zYV_zHVdRKgzgQrnhwg1mgA95SWKAhCNNcJfMC6OlGACuGOtQivcUfBPAAldmzZo_kad1eu_e5NTjdjG47rnu4TrPUVqdMkRq.XfMaCGQmTEB55Y9lWwLR9vn6iFQjekq2Z3WnUHR78xO2YPtFxlo6Lz2bL7.rHpi1u4xSb_JPHgoBCRpiTDNdk6bA3zkYDti4ZfErrBLXNqUccaawtRqdl1axPg3qRWT5yC6JUk.LGBL4zD3peNpxm.4_ShzcEm373uqSRdfUi.N_X5jkAJs_Ltj9HA0d7EccHAVv6ca0xNo.iraH11OXaCdAS_L.W5O9wjhPhPNCyHlmfMS8J1uZJpWzTulT0A.OttPIWgTrMc0xC4FQLvcqtYmPGdEEI4rUgpkyhhnCB9tHK1SdU0xl7wE3v5H.W21MrBXiVcKQFALu8Htxc2Rl1uCtDqkRyP2mo.UrsUw.Lx39mHzYepG4UZX19.ILCCxc91ih0yk_cQRPvx4cQ1d7_wtrBJ.mF1C_4VmR3qDa5f5v1JMznvt4ph8NrrGUWrB4zAThmzld4RtkbO38LpoxImk9ujiEhC3ONs2Pg9hW6of6Nzs3HZKL6VQDAARYmRY_Y5wet85YHeilqb03ICrdEWFzPgqaqVMpd070tnNl_7saAzjiMTCV7E.0AE1FtEgm3YVuZR9AIBJPrQ8goTvDyJbvMJZqtvb8dmGkC_4lI.oqM0QEDQep5pPGk6cDLRjgvv0oqBUEN.X6zofNAWvK9SjAt7QkyWEGJzc9GhDVHB9Fw3IREd51a9.IOUGEmcKsCL.8VDE6kNS7dXkg6EBC2vesGk85i5LhjhVVaM_g7vx2vyDKFppN3rPviSgusEqcHj5_gtgMwYw50FjF0IWaVGmmu2ZumLlwc.pxYrJlLjtXUMleDAZM7K4KWg.eM79h07r.5n2hD2VNHTwjZXOfRkbOh17BkYEi3oovO5VcpWPpJW657PAyigcg1ED3zfgp86Vb5AmQAo1rWuURh8B6laRlXEaAJ7JkNeBUpbYHfhaf4qBUnLe9SzB7SMTXhVYHWbRH9d6QBxONxTcw.BWprrsLtAFV54ZG553oaua6094nLG.hwLhkd1bXmalTN5VuDVRr6rlz_Xy0AUzn7MNuQpRcjLBGIDmyjrJAZ_eja1eeNJUGhDS1s2rY8ktrkt_LfkOyIrM1vHBtrUX23vSOsmDdO8DOxsf9JkVJX1uhL0xo9QY3DpcvN6KiZwtL.72.oVpkl1vY2RZFETzKBFLqNeidUS7FhPkuYy5TjyxnsoBkjoqff3vD8_dgOYPyQ0Twgr434wzCRFMjU7cbfFkZY2zkiJIkRvZCV5MQ5r8hoVDj5u54s.iC1dM0j6M1_WWoGIPzTO7U0Att6FAx.pWREdYXV0Py4XLx_PXvjdkiz4vHVeoSXJOekGknEkLw0nSj.NxaXnbuPTQRRNyoWlhoVsDH2O.2jxRFdR1nKgPeMf3ap4T8v_fDpWkl6nI6tUbmVt9fawCbkvx0MhyyMtZO1OQTCECUNOagQpq4xf3N7a_YjQXvRglZ7F_ZH8mlBJ_WSYy.X5IyDvHG4kcZMs8YKprzrO.3Q3VwDl1DaJ.T7E40zg82BIOWbYdkD31Z4Jk6yZygSRlcO9YiT7cR8DMy7IGzNCBATdNizMd90CLo_BvR.fNbwB3zi4dbAv5q4pYKncTc.0yknPZXxSFSxCBmPEQ8ptRBP1fzGdeFJxH7LiseN8vFvI2Qwtw5eg4cbbtR0ZX40WnsWoUpC_rkoeboPPNzvTwe7fs3cwHWAGs8CABIiilHUsrBXstxyq9NGhns_0LNBq_KMc6a3nY74nCCKCpAKIfxyihXxCqV.3no5iYylSPvrREV6qCH560xxBeeHrJhMOGWBPTUEebP_NFUzHyo6J9yj7M04QGNo7IMvL9FLnyNDrEQQoJ7Zi6JyaLF2jaeYk3wxTHTFMNoBiwtyWatUpLu44web15QE3Perf4.3FX_ksR2aY3yXridBw6tNuTV3zfu7e7pBm0wGHPJC8_xfz\",mdrd: \"qrKGUnT3rHbtovpTaSI_LC.Vn8Rf1TJ59NXgq6y6mEs-1733015791-1.2.1.1-zJNrOQr2DORZLRdzeqFTQeR0KlvIE60kF0aLMSGfAu77bJZ5adlH9sT8VVzEP2BduRLkirGi1qIHSUp1WXgzG643EuMAtsta2wd6pZ1lyliQLYdPxVsIYTHSufDiKI_LQH1kxKH.zbQT41TBWsHzhmNXjf1f7jj.dXrReOduRtkgDNEGtkWymA5MjQAWdx1saMbG2qj9omFVzOqcP3FG2UEkI7iFui_1IuuNCO1T9C9SzDMTAWRMtLnUPRojfcbHZgNlmpyiyIHP3n1dBjKGb1W9LbrhcipyOkzuLS0p9.5Oh4lhRUpVJgOAeRBJV74DPW4KY9tVqgh96wayWlQhrLtbQEiEMP_7ZpP0Oioys6nPwKTrkwjUz4SiOAKNcXRexPiAMsg3fU7bmTZ1kUcjgLaKDkPDS67gRqznfeF7NqmkoghB6wBDDLCxQFH_PPTQ04VSArWOl0Fr6pjLwnzIDTcd0kXYdP664mos5xD6sno0gzihxpeMRiTjoULB_4GbgRelKwnVakAFkjZxfvoxuTvPH89YFeL2Southk.of95uxtV7ER2CDiC3B7DffKMqlI4VEggCY4s7i3dy06yeAjf.zhFeUPOaMd75dKwLFNavjmInW8sbKhGBrfthXUWi8HSI7ScapF2JwxOzJmR3uGuXtC3qMB68ndsuqZLl_fqX0uLh8IY1PhOACnIT11eyOPxpMSVBdve6_x2jMRB4lMbcGn0Tfq_qfVbRn3FeYx6Ie1aPNrOLnVKVGOAqgtAKl8vjxNup2ikDHs6Dj1WcKau4SNxr3d8L5HG9r09qXoP7_8xV3scRvynEV4CgUQizI1gHwh6ZOpBH6NTA_uv8aRYte0_2n18tlhVgZp3V3hBWrrNYIPsiC21Is8F1YrslRqSGmMct08yH10b.VeCmumUUcgQtPRmScAaU64rmASyZhUKpGYw.FivuzZwuNMZnvRe5V1PhqVcIqZkKKeZIv_U0dIaBjksgpDlkO2W4OzTflMxWZpG0QCh.ZfhoB4RK3NPKBOSIbthZ.UFLxJkzkZPWJzOOPo_J8YxJTUFZGfQl.mpY8TwZpdfSOHpq6CjeLbCwx0mDWifwZG3RPTDvwto4goTxFXc6uLSDiHvRaxim_0gEA8p_ioXGlo8V4xg0_9uB8khlzNquvkHY_e4HAJsGvknc5RojNnAUiwQf1O25suwvTtS0o3iWUo5hEuhRvVgWVxIw1A9cnJ88zdIIM1PR9HrKI.5IL2MescCKepAAqlvRhB4HKQXrrrXufPOIkpq9GwCiP_WQOR5ALv4ML.qChgDRXhOI4AllmVX_AMl4vPu4lqnMwxwT.KgjFury.H8MAgOpauk0hlNdzft5BRdEoAmAmz8jCCnh2KIn63_8eE49Peonc7Nt3j4P3R0UrcLl2BGEJMbNbKCEocwT6v5EbWKNSeOjJ_m_meD6KhdcSefsEyrxGNZUPsEFiRYBk2DYf.y0F1xv2tXlPnRYiq2KBvsVXXA_CzS1Zaa8A5YvMcWAaQqgjXCEYIY_uj4emfIyyDq4t4TStSWg7_LgmsvWZefcSIPEl3Trz26xndP1Cry2IGLEKhxaG08pkF699WrHm3_cthCWEoeGkq2Qf9cxHx72ceAWSld8AfIZPXAu5VuGyACS5i6wK757VtqURlLm_45ocn8za1UiClvj5jz08xpD2_cRklgi_6I.9WB6Hjg5gyolRPEFhtnKNdrinbPtIEs0s8J1e_vI43NpFob_3EoarVi5PthHdYsA6hNfOdqDBcMgW8FUq3pJW8960nZWPGpTNK8f9MLkJ48Gcp9VRt.saSKUPH7guq3HavYGDxFcHlAj9l9iJ.m9PLUftHULrwFkcQDgZB7fBEtxKdlKgyiH0kFf579GoYB0cnJ11HdHf7EfjV0X35_3p0oIP6WY2hh.7xJNvK4KEa.ktJXandnLn2U6S315x_hkv0P15mO2H6bwKcUTnZ9qLmYpBczIlICl4f42nZWgl7RIhRN60hPN0r3RceB9UKF9snPK2BYLtA9ohp8ZFw3GGCP9YtLH2coGturBHcHLmKc.Tg\"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/b/orchestrate/chl_page/v1?ray=8eaf3b7b0e9299ee';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, \"\\/?__cf_chl_rt_tk=uJgg5zLgJ.Bu.vsL3qTxIW3rkoIS1gUkeMnmPRKabv4-1733015791-1.0.1.1-5jTF0BRcPJ6_rfpk1GcNG8Pkhee_kjewFr9S4mxHbdY\" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>",
+      "ip": "141.101.90.96",
+      "timestamp": "2024-12-01T01:16:31.906523335Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.aft.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "content-security-policy",
+      "type": "http",
+      "host": "https://www.aft.gouv.fr",
+      "matched-at": "https://www.aft.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.aft.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccept-Ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCache-Control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0\r\nCf-Chl-Out: etPHADyNhyuCXWrm5fYAgzPg+6uPDnGtFMX+pLOyOK8xuuivJZ37rjPdJyJa74h1AjLUndFFVzyt6QsMjPlA3oNNurh55nVmetpJecY7bfWaVMiqnyFF3+3GzD85QBBMvyaiR4fdMQu3rHUpMxQHwg==$8cNxUAg/pdrcu9oSPVuvYw==\r\nCf-Mitigated: challenge\r\nCf-Ray: 8eaf3b7b0e9299ee-CDG\r\nContent-Type: text/html; charset=UTF-8\r\nCritical-Ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA\r\nCross-Origin-Embedder-Policy: require-corp\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 01 Dec 2024 01:16:31 GMT\r\nExpires: Thu, 01 Jan 1970 00:00:01 GMT\r\nOrigin-Agent-Cluster: ?1\r\nPermissions-Policy: accelerometer=(),autoplay=(),browsing-topics=(),camera=(),clipboard-read=(),clipboard-write=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=()\r\nReferrer-Policy: same-origin\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=iduPVQYXKsJ450PGtHQsvHDTqOrgmAYdeTyOffubsx4-1733015791-1.0.1.1-wAZ64HE0zVIOHN1LNCS0LEwqTPAjrqZtwBww9gc0lytc3EL4gwDnHIP2VMHsUTHT7GdAk9Brno_IM_0QEVfkAw; path=/; expires=Sun, 01-Dec-24 01:46:31 GMT; domain=.aft.gouv.fr; HttpOnly; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains; preload\r\nVary: Accept-Encoding\r\nX-Content-Options: nosniff\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\n\r\n<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"><meta name=\"robots\" content=\"noindex,nofollow\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv=\"refresh\" content=\"390\"></head><body class=\"no-js\"><div class=\"main-wrapper\" role=\"main\"><div class=\"main-content\"><noscript><div class=\"h2\"><span id=\"challenge-error-text\">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: \"www.aft.gouv.fr\",cType: 'managed',cRay: '8eaf3b7b0e9299ee',cH: 'PAfBRHMFUDLpYiJTXOwDVWa_ehdns7lUy5dB704wrug-1733015791-1.2.1.1-ZChIa94W_7ie7BmxW4sn6suQgAbLLSnDzQnuKScXJhzTnnaC9faLpy8MOZwdWGr6',cUPMDTk: \"\\/?__cf_chl_tk=uJgg5zLgJ.Bu.vsL3qTxIW3rkoIS1gUkeMnmPRKabv4-1733015791-1.0.1.1-5jTF0BRcPJ6_rfpk1GcNG8Pkhee_kjewFr9S4mxHbdY\",cFPWv: 'b',cITimeS: '1733015791',cTTimeMs: '1000',cMTimeMs: '390000',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: \"\",fa: \"\\/?__cf_chl_f_tk=uJgg5zLgJ.Bu.vsL3qTxIW3rkoIS1gUkeMnmPRKabv4-1733015791-1.0.1.1-5jTF0BRcPJ6_rfpk1GcNG8Pkhee_kjewFr9S4mxHbdY\",md: \"YT.ntW_PC.qH3Af1SVrEDGqtSE18UvBNyToXVDGEAP0-1733015791-1.2.1.1-zFn2KcpVI6qJW_IrSAXPsAh2Du0d7Aw3Kf8AE2ycHLg.TMutE1kPEfWe6kKDDGNvR_cY1t8CVYBq9o7nQ3q2Dighr_WJJy70RheM9ipUWxgSvreuNDPZ_iYBgS6H.o5Oh7CRvi.ewFojdpDTi.K7w4PYXgEZPIZwMvcAqH2nlozJIOlYHBNg8Qs1d5S27zDaHcsH_5bSxXTz7IYfQTEQMmQ_KxLzLbdlPSMAIk9bVQgsOmbQNVJJ_t4XU0QkOLu56ZrMj4G9C3fCIDglj7QpVcJpqoQmbVOwrMuugM_TW8DzKuluL5hrBEj2kYB7wJJRO3Q98RhZgoW3Cv8._Fp2rMf_2PEMspCvEN6u7Tr1Pdge1h6NEHxzMJgSOksaIn1Xd59RQO.ugnzfgVN_oPzJ8_sb3n_sFyiqTuurhue2j.NdrJQ02lRjkZ10HB9aGpMlI2t7zYV_zHVdRKgzgQrnhwg1mgA95SWKAhCNNcJfMC6OlGACuGOtQivcUfBPAAldmzZo_kad1eu_e5NTjdjG47rnu4TrPUVqdMkRq.XfMaCGQmTEB55Y9lWwLR9vn6iFQjekq2Z3WnUHR78xO2YPtFxlo6Lz2bL7.rHpi1u4xSb_JPHgoBCRpiTDNdk6bA3zkYDti4ZfErrBLXNqUccaawtRqdl1axPg3qRWT5yC6JUk.LGBL4zD3peNpxm.4_ShzcEm373uqSRdfUi.N_X5jkAJs_Ltj9HA0d7EccHAVv6ca0xNo.iraH11OXaCdAS_L.W5O9wjhPhPNCyHlmfMS8J1uZJpWzTulT0A.OttPIWgTrMc0xC4FQLvcqtYmPGdEEI4rUgpkyhhnCB9tHK1SdU0xl7wE3v5H.W21MrBXiVcKQFALu8Htxc2Rl1uCtDqkRyP2mo.UrsUw.Lx39mHzYepG4UZX19.ILCCxc91ih0yk_cQRPvx4cQ1d7_wtrBJ.mF1C_4VmR3qDa5f5v1JMznvt4ph8NrrGUWrB4zAThmzld4RtkbO38LpoxImk9ujiEhC3ONs2Pg9hW6of6Nzs3HZKL6VQDAARYmRY_Y5wet85YHeilqb03ICrdEWFzPgqaqVMpd070tnNl_7saAzjiMTCV7E.0AE1FtEgm3YVuZR9AIBJPrQ8goTvDyJbvMJZqtvb8dmGkC_4lI.oqM0QEDQep5pPGk6cDLRjgvv0oqBUEN.X6zofNAWvK9SjAt7QkyWEGJzc9GhDVHB9Fw3IREd51a9.IOUGEmcKsCL.8VDE6kNS7dXkg6EBC2vesGk85i5LhjhVVaM_g7vx2vyDKFppN3rPviSgusEqcHj5_gtgMwYw50FjF0IWaVGmmu2ZumLlwc.pxYrJlLjtXUMleDAZM7K4KWg.eM79h07r.5n2hD2VNHTwjZXOfRkbOh17BkYEi3oovO5VcpWPpJW657PAyigcg1ED3zfgp86Vb5AmQAo1rWuURh8B6laRlXEaAJ7JkNeBUpbYHfhaf4qBUnLe9SzB7SMTXhVYHWbRH9d6QBxONxTcw.BWprrsLtAFV54ZG553oaua6094nLG.hwLhkd1bXmalTN5VuDVRr6rlz_Xy0AUzn7MNuQpRcjLBGIDmyjrJAZ_eja1eeNJUGhDS1s2rY8ktrkt_LfkOyIrM1vHBtrUX23vSOsmDdO8DOxsf9JkVJX1uhL0xo9QY3DpcvN6KiZwtL.72.oVpkl1vY2RZFETzKBFLqNeidUS7FhPkuYy5TjyxnsoBkjoqff3vD8_dgOYPyQ0Twgr434wzCRFMjU7cbfFkZY2zkiJIkRvZCV5MQ5r8hoVDj5u54s.iC1dM0j6M1_WWoGIPzTO7U0Att6FAx.pWREdYXV0Py4XLx_PXvjdkiz4vHVeoSXJOekGknEkLw0nSj.NxaXnbuPTQRRNyoWlhoVsDH2O.2jxRFdR1nKgPeMf3ap4T8v_fDpWkl6nI6tUbmVt9fawCbkvx0MhyyMtZO1OQTCECUNOagQpq4xf3N7a_YjQXvRglZ7F_ZH8mlBJ_WSYy.X5IyDvHG4kcZMs8YKprzrO.3Q3VwDl1DaJ.T7E40zg82BIOWbYdkD31Z4Jk6yZygSRlcO9YiT7cR8DMy7IGzNCBATdNizMd90CLo_BvR.fNbwB3zi4dbAv5q4pYKncTc.0yknPZXxSFSxCBmPEQ8ptRBP1fzGdeFJxH7LiseN8vFvI2Qwtw5eg4cbbtR0ZX40WnsWoUpC_rkoeboPPNzvTwe7fs3cwHWAGs8CABIiilHUsrBXstxyq9NGhns_0LNBq_KMc6a3nY74nCCKCpAKIfxyihXxCqV.3no5iYylSPvrREV6qCH560xxBeeHrJhMOGWBPTUEebP_NFUzHyo6J9yj7M04QGNo7IMvL9FLnyNDrEQQoJ7Zi6JyaLF2jaeYk3wxTHTFMNoBiwtyWatUpLu44web15QE3Perf4.3FX_ksR2aY3yXridBw6tNuTV3zfu7e7pBm0wGHPJC8_xfz\",mdrd: \"qrKGUnT3rHbtovpTaSI_LC.Vn8Rf1TJ59NXgq6y6mEs-1733015791-1.2.1.1-zJNrOQr2DORZLRdzeqFTQeR0KlvIE60kF0aLMSGfAu77bJZ5adlH9sT8VVzEP2BduRLkirGi1qIHSUp1WXgzG643EuMAtsta2wd6pZ1lyliQLYdPxVsIYTHSufDiKI_LQH1kxKH.zbQT41TBWsHzhmNXjf1f7jj.dXrReOduRtkgDNEGtkWymA5MjQAWdx1saMbG2qj9omFVzOqcP3FG2UEkI7iFui_1IuuNCO1T9C9SzDMTAWRMtLnUPRojfcbHZgNlmpyiyIHP3n1dBjKGb1W9LbrhcipyOkzuLS0p9.5Oh4lhRUpVJgOAeRBJV74DPW4KY9tVqgh96wayWlQhrLtbQEiEMP_7ZpP0Oioys6nPwKTrkwjUz4SiOAKNcXRexPiAMsg3fU7bmTZ1kUcjgLaKDkPDS67gRqznfeF7NqmkoghB6wBDDLCxQFH_PPTQ04VSArWOl0Fr6pjLwnzIDTcd0kXYdP664mos5xD6sno0gzihxpeMRiTjoULB_4GbgRelKwnVakAFkjZxfvoxuTvPH89YFeL2Southk.of95uxtV7ER2CDiC3B7DffKMqlI4VEggCY4s7i3dy06yeAjf.zhFeUPOaMd75dKwLFNavjmInW8sbKhGBrfthXUWi8HSI7ScapF2JwxOzJmR3uGuXtC3qMB68ndsuqZLl_fqX0uLh8IY1PhOACnIT11eyOPxpMSVBdve6_x2jMRB4lMbcGn0Tfq_qfVbRn3FeYx6Ie1aPNrOLnVKVGOAqgtAKl8vjxNup2ikDHs6Dj1WcKau4SNxr3d8L5HG9r09qXoP7_8xV3scRvynEV4CgUQizI1gHwh6ZOpBH6NTA_uv8aRYte0_2n18tlhVgZp3V3hBWrrNYIPsiC21Is8F1YrslRqSGmMct08yH10b.VeCmumUUcgQtPRmScAaU64rmASyZhUKpGYw.FivuzZwuNMZnvRe5V1PhqVcIqZkKKeZIv_U0dIaBjksgpDlkO2W4OzTflMxWZpG0QCh.ZfhoB4RK3NPKBOSIbthZ.UFLxJkzkZPWJzOOPo_J8YxJTUFZGfQl.mpY8TwZpdfSOHpq6CjeLbCwx0mDWifwZG3RPTDvwto4goTxFXc6uLSDiHvRaxim_0gEA8p_ioXGlo8V4xg0_9uB8khlzNquvkHY_e4HAJsGvknc5RojNnAUiwQf1O25suwvTtS0o3iWUo5hEuhRvVgWVxIw1A9cnJ88zdIIM1PR9HrKI.5IL2MescCKepAAqlvRhB4HKQXrrrXufPOIkpq9GwCiP_WQOR5ALv4ML.qChgDRXhOI4AllmVX_AMl4vPu4lqnMwxwT.KgjFury.H8MAgOpauk0hlNdzft5BRdEoAmAmz8jCCnh2KIn63_8eE49Peonc7Nt3j4P3R0UrcLl2BGEJMbNbKCEocwT6v5EbWKNSeOjJ_m_meD6KhdcSefsEyrxGNZUPsEFiRYBk2DYf.y0F1xv2tXlPnRYiq2KBvsVXXA_CzS1Zaa8A5YvMcWAaQqgjXCEYIY_uj4emfIyyDq4t4TStSWg7_LgmsvWZefcSIPEl3Trz26xndP1Cry2IGLEKhxaG08pkF699WrHm3_cthCWEoeGkq2Qf9cxHx72ceAWSld8AfIZPXAu5VuGyACS5i6wK757VtqURlLm_45ocn8za1UiClvj5jz08xpD2_cRklgi_6I.9WB6Hjg5gyolRPEFhtnKNdrinbPtIEs0s8J1e_vI43NpFob_3EoarVi5PthHdYsA6hNfOdqDBcMgW8FUq3pJW8960nZWPGpTNK8f9MLkJ48Gcp9VRt.saSKUPH7guq3HavYGDxFcHlAj9l9iJ.m9PLUftHULrwFkcQDgZB7fBEtxKdlKgyiH0kFf579GoYB0cnJ11HdHf7EfjV0X35_3p0oIP6WY2hh.7xJNvK4KEa.ktJXandnLn2U6S315x_hkv0P15mO2H6bwKcUTnZ9qLmYpBczIlICl4f42nZWgl7RIhRN60hPN0r3RceB9UKF9snPK2BYLtA9ohp8ZFw3GGCP9YtLH2coGturBHcHLmKc.Tg\"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/b/orchestrate/chl_page/v1?ray=8eaf3b7b0e9299ee';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, \"\\/?__cf_chl_rt_tk=uJgg5zLgJ.Bu.vsL3qTxIW3rkoIS1gUkeMnmPRKabv4-1733015791-1.0.1.1-5jTF0BRcPJ6_rfpk1GcNG8Pkhee_kjewFr9S4mxHbdY\" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>",
+      "ip": "141.101.90.96",
+      "timestamp": "2024-12-01T01:16:31.906567828Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.aft.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-permitted-cross-domain-policies",
+      "type": "http",
+      "host": "https://www.aft.gouv.fr",
+      "matched-at": "https://www.aft.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.aft.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccept-Ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCache-Control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0\r\nCf-Chl-Out: etPHADyNhyuCXWrm5fYAgzPg+6uPDnGtFMX+pLOyOK8xuuivJZ37rjPdJyJa74h1AjLUndFFVzyt6QsMjPlA3oNNurh55nVmetpJecY7bfWaVMiqnyFF3+3GzD85QBBMvyaiR4fdMQu3rHUpMxQHwg==$8cNxUAg/pdrcu9oSPVuvYw==\r\nCf-Mitigated: challenge\r\nCf-Ray: 8eaf3b7b0e9299ee-CDG\r\nContent-Type: text/html; charset=UTF-8\r\nCritical-Ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA\r\nCross-Origin-Embedder-Policy: require-corp\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 01 Dec 2024 01:16:31 GMT\r\nExpires: Thu, 01 Jan 1970 00:00:01 GMT\r\nOrigin-Agent-Cluster: ?1\r\nPermissions-Policy: accelerometer=(),autoplay=(),browsing-topics=(),camera=(),clipboard-read=(),clipboard-write=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=()\r\nReferrer-Policy: same-origin\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=iduPVQYXKsJ450PGtHQsvHDTqOrgmAYdeTyOffubsx4-1733015791-1.0.1.1-wAZ64HE0zVIOHN1LNCS0LEwqTPAjrqZtwBww9gc0lytc3EL4gwDnHIP2VMHsUTHT7GdAk9Brno_IM_0QEVfkAw; path=/; expires=Sun, 01-Dec-24 01:46:31 GMT; domain=.aft.gouv.fr; HttpOnly; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains; preload\r\nVary: Accept-Encoding\r\nX-Content-Options: nosniff\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\n\r\n<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"><meta name=\"robots\" content=\"noindex,nofollow\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv=\"refresh\" content=\"390\"></head><body class=\"no-js\"><div class=\"main-wrapper\" role=\"main\"><div class=\"main-content\"><noscript><div class=\"h2\"><span id=\"challenge-error-text\">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: \"www.aft.gouv.fr\",cType: 'managed',cRay: '8eaf3b7b0e9299ee',cH: 'PAfBRHMFUDLpYiJTXOwDVWa_ehdns7lUy5dB704wrug-1733015791-1.2.1.1-ZChIa94W_7ie7BmxW4sn6suQgAbLLSnDzQnuKScXJhzTnnaC9faLpy8MOZwdWGr6',cUPMDTk: \"\\/?__cf_chl_tk=uJgg5zLgJ.Bu.vsL3qTxIW3rkoIS1gUkeMnmPRKabv4-1733015791-1.0.1.1-5jTF0BRcPJ6_rfpk1GcNG8Pkhee_kjewFr9S4mxHbdY\",cFPWv: 'b',cITimeS: '1733015791',cTTimeMs: '1000',cMTimeMs: '390000',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: \"\",fa: \"\\/?__cf_chl_f_tk=uJgg5zLgJ.Bu.vsL3qTxIW3rkoIS1gUkeMnmPRKabv4-1733015791-1.0.1.1-5jTF0BRcPJ6_rfpk1GcNG8Pkhee_kjewFr9S4mxHbdY\",md: \"YT.ntW_PC.qH3Af1SVrEDGqtSE18UvBNyToXVDGEAP0-1733015791-1.2.1.1-zFn2KcpVI6qJW_IrSAXPsAh2Du0d7Aw3Kf8AE2ycHLg.TMutE1kPEfWe6kKDDGNvR_cY1t8CVYBq9o7nQ3q2Dighr_WJJy70RheM9ipUWxgSvreuNDPZ_iYBgS6H.o5Oh7CRvi.ewFojdpDTi.K7w4PYXgEZPIZwMvcAqH2nlozJIOlYHBNg8Qs1d5S27zDaHcsH_5bSxXTz7IYfQTEQMmQ_KxLzLbdlPSMAIk9bVQgsOmbQNVJJ_t4XU0QkOLu56ZrMj4G9C3fCIDglj7QpVcJpqoQmbVOwrMuugM_TW8DzKuluL5hrBEj2kYB7wJJRO3Q98RhZgoW3Cv8._Fp2rMf_2PEMspCvEN6u7Tr1Pdge1h6NEHxzMJgSOksaIn1Xd59RQO.ugnzfgVN_oPzJ8_sb3n_sFyiqTuurhue2j.NdrJQ02lRjkZ10HB9aGpMlI2t7zYV_zHVdRKgzgQrnhwg1mgA95SWKAhCNNcJfMC6OlGACuGOtQivcUfBPAAldmzZo_kad1eu_e5NTjdjG47rnu4TrPUVqdMkRq.XfMaCGQmTEB55Y9lWwLR9vn6iFQjekq2Z3WnUHR78xO2YPtFxlo6Lz2bL7.rHpi1u4xSb_JPHgoBCRpiTDNdk6bA3zkYDti4ZfErrBLXNqUccaawtRqdl1axPg3qRWT5yC6JUk.LGBL4zD3peNpxm.4_ShzcEm373uqSRdfUi.N_X5jkAJs_Ltj9HA0d7EccHAVv6ca0xNo.iraH11OXaCdAS_L.W5O9wjhPhPNCyHlmfMS8J1uZJpWzTulT0A.OttPIWgTrMc0xC4FQLvcqtYmPGdEEI4rUgpkyhhnCB9tHK1SdU0xl7wE3v5H.W21MrBXiVcKQFALu8Htxc2Rl1uCtDqkRyP2mo.UrsUw.Lx39mHzYepG4UZX19.ILCCxc91ih0yk_cQRPvx4cQ1d7_wtrBJ.mF1C_4VmR3qDa5f5v1JMznvt4ph8NrrGUWrB4zAThmzld4RtkbO38LpoxImk9ujiEhC3ONs2Pg9hW6of6Nzs3HZKL6VQDAARYmRY_Y5wet85YHeilqb03ICrdEWFzPgqaqVMpd070tnNl_7saAzjiMTCV7E.0AE1FtEgm3YVuZR9AIBJPrQ8goTvDyJbvMJZqtvb8dmGkC_4lI.oqM0QEDQep5pPGk6cDLRjgvv0oqBUEN.X6zofNAWvK9SjAt7QkyWEGJzc9GhDVHB9Fw3IREd51a9.IOUGEmcKsCL.8VDE6kNS7dXkg6EBC2vesGk85i5LhjhVVaM_g7vx2vyDKFppN3rPviSgusEqcHj5_gtgMwYw50FjF0IWaVGmmu2ZumLlwc.pxYrJlLjtXUMleDAZM7K4KWg.eM79h07r.5n2hD2VNHTwjZXOfRkbOh17BkYEi3oovO5VcpWPpJW657PAyigcg1ED3zfgp86Vb5AmQAo1rWuURh8B6laRlXEaAJ7JkNeBUpbYHfhaf4qBUnLe9SzB7SMTXhVYHWbRH9d6QBxONxTcw.BWprrsLtAFV54ZG553oaua6094nLG.hwLhkd1bXmalTN5VuDVRr6rlz_Xy0AUzn7MNuQpRcjLBGIDmyjrJAZ_eja1eeNJUGhDS1s2rY8ktrkt_LfkOyIrM1vHBtrUX23vSOsmDdO8DOxsf9JkVJX1uhL0xo9QY3DpcvN6KiZwtL.72.oVpkl1vY2RZFETzKBFLqNeidUS7FhPkuYy5TjyxnsoBkjoqff3vD8_dgOYPyQ0Twgr434wzCRFMjU7cbfFkZY2zkiJIkRvZCV5MQ5r8hoVDj5u54s.iC1dM0j6M1_WWoGIPzTO7U0Att6FAx.pWREdYXV0Py4XLx_PXvjdkiz4vHVeoSXJOekGknEkLw0nSj.NxaXnbuPTQRRNyoWlhoVsDH2O.2jxRFdR1nKgPeMf3ap4T8v_fDpWkl6nI6tUbmVt9fawCbkvx0MhyyMtZO1OQTCECUNOagQpq4xf3N7a_YjQXvRglZ7F_ZH8mlBJ_WSYy.X5IyDvHG4kcZMs8YKprzrO.3Q3VwDl1DaJ.T7E40zg82BIOWbYdkD31Z4Jk6yZygSRlcO9YiT7cR8DMy7IGzNCBATdNizMd90CLo_BvR.fNbwB3zi4dbAv5q4pYKncTc.0yknPZXxSFSxCBmPEQ8ptRBP1fzGdeFJxH7LiseN8vFvI2Qwtw5eg4cbbtR0ZX40WnsWoUpC_rkoeboPPNzvTwe7fs3cwHWAGs8CABIiilHUsrBXstxyq9NGhns_0LNBq_KMc6a3nY74nCCKCpAKIfxyihXxCqV.3no5iYylSPvrREV6qCH560xxBeeHrJhMOGWBPTUEebP_NFUzHyo6J9yj7M04QGNo7IMvL9FLnyNDrEQQoJ7Zi6JyaLF2jaeYk3wxTHTFMNoBiwtyWatUpLu44web15QE3Perf4.3FX_ksR2aY3yXridBw6tNuTV3zfu7e7pBm0wGHPJC8_xfz\",mdrd: \"qrKGUnT3rHbtovpTaSI_LC.Vn8Rf1TJ59NXgq6y6mEs-1733015791-1.2.1.1-zJNrOQr2DORZLRdzeqFTQeR0KlvIE60kF0aLMSGfAu77bJZ5adlH9sT8VVzEP2BduRLkirGi1qIHSUp1WXgzG643EuMAtsta2wd6pZ1lyliQLYdPxVsIYTHSufDiKI_LQH1kxKH.zbQT41TBWsHzhmNXjf1f7jj.dXrReOduRtkgDNEGtkWymA5MjQAWdx1saMbG2qj9omFVzOqcP3FG2UEkI7iFui_1IuuNCO1T9C9SzDMTAWRMtLnUPRojfcbHZgNlmpyiyIHP3n1dBjKGb1W9LbrhcipyOkzuLS0p9.5Oh4lhRUpVJgOAeRBJV74DPW4KY9tVqgh96wayWlQhrLtbQEiEMP_7ZpP0Oioys6nPwKTrkwjUz4SiOAKNcXRexPiAMsg3fU7bmTZ1kUcjgLaKDkPDS67gRqznfeF7NqmkoghB6wBDDLCxQFH_PPTQ04VSArWOl0Fr6pjLwnzIDTcd0kXYdP664mos5xD6sno0gzihxpeMRiTjoULB_4GbgRelKwnVakAFkjZxfvoxuTvPH89YFeL2Southk.of95uxtV7ER2CDiC3B7DffKMqlI4VEggCY4s7i3dy06yeAjf.zhFeUPOaMd75dKwLFNavjmInW8sbKhGBrfthXUWi8HSI7ScapF2JwxOzJmR3uGuXtC3qMB68ndsuqZLl_fqX0uLh8IY1PhOACnIT11eyOPxpMSVBdve6_x2jMRB4lMbcGn0Tfq_qfVbRn3FeYx6Ie1aPNrOLnVKVGOAqgtAKl8vjxNup2ikDHs6Dj1WcKau4SNxr3d8L5HG9r09qXoP7_8xV3scRvynEV4CgUQizI1gHwh6ZOpBH6NTA_uv8aRYte0_2n18tlhVgZp3V3hBWrrNYIPsiC21Is8F1YrslRqSGmMct08yH10b.VeCmumUUcgQtPRmScAaU64rmASyZhUKpGYw.FivuzZwuNMZnvRe5V1PhqVcIqZkKKeZIv_U0dIaBjksgpDlkO2W4OzTflMxWZpG0QCh.ZfhoB4RK3NPKBOSIbthZ.UFLxJkzkZPWJzOOPo_J8YxJTUFZGfQl.mpY8TwZpdfSOHpq6CjeLbCwx0mDWifwZG3RPTDvwto4goTxFXc6uLSDiHvRaxim_0gEA8p_ioXGlo8V4xg0_9uB8khlzNquvkHY_e4HAJsGvknc5RojNnAUiwQf1O25suwvTtS0o3iWUo5hEuhRvVgWVxIw1A9cnJ88zdIIM1PR9HrKI.5IL2MescCKepAAqlvRhB4HKQXrrrXufPOIkpq9GwCiP_WQOR5ALv4ML.qChgDRXhOI4AllmVX_AMl4vPu4lqnMwxwT.KgjFury.H8MAgOpauk0hlNdzft5BRdEoAmAmz8jCCnh2KIn63_8eE49Peonc7Nt3j4P3R0UrcLl2BGEJMbNbKCEocwT6v5EbWKNSeOjJ_m_meD6KhdcSefsEyrxGNZUPsEFiRYBk2DYf.y0F1xv2tXlPnRYiq2KBvsVXXA_CzS1Zaa8A5YvMcWAaQqgjXCEYIY_uj4emfIyyDq4t4TStSWg7_LgmsvWZefcSIPEl3Trz26xndP1Cry2IGLEKhxaG08pkF699WrHm3_cthCWEoeGkq2Qf9cxHx72ceAWSld8AfIZPXAu5VuGyACS5i6wK757VtqURlLm_45ocn8za1UiClvj5jz08xpD2_cRklgi_6I.9WB6Hjg5gyolRPEFhtnKNdrinbPtIEs0s8J1e_vI43NpFob_3EoarVi5PthHdYsA6hNfOdqDBcMgW8FUq3pJW8960nZWPGpTNK8f9MLkJ48Gcp9VRt.saSKUPH7guq3HavYGDxFcHlAj9l9iJ.m9PLUftHULrwFkcQDgZB7fBEtxKdlKgyiH0kFf579GoYB0cnJ11HdHf7EfjV0X35_3p0oIP6WY2hh.7xJNvK4KEa.ktJXandnLn2U6S315x_hkv0P15mO2H6bwKcUTnZ9qLmYpBczIlICl4f42nZWgl7RIhRN60hPN0r3RceB9UKF9snPK2BYLtA9ohp8ZFw3GGCP9YtLH2coGturBHcHLmKc.Tg\"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/b/orchestrate/chl_page/v1?ray=8eaf3b7b0e9299ee';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, \"\\/?__cf_chl_rt_tk=uJgg5zLgJ.Bu.vsL3qTxIW3rkoIS1gUkeMnmPRKabv4-1733015791-1.0.1.1-5jTF0BRcPJ6_rfpk1GcNG8Pkhee_kjewFr9S4mxHbdY\" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>",
+      "ip": "141.101.90.96",
+      "timestamp": "2024-12-01T01:16:31.906595229Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.aft.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "cloudflare",
+      "type": "http",
+      "host": "https://www.aft.gouv.fr",
+      "matched-at": "https://www.aft.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: www.aft.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccept-Ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCache-Control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0\r\nCf-Chl-Out: PFQ4utHixA1SFOOIR4CLVZoiNMh4jt5STV+j/zcELk6Y9z2BkNY7Vlhhw9g3iiplXY5AewQ02E0UmzjPMTK6+abj+dr6tKHP3hYS8loGiapX4vdlIxDA4NJo9h1Pggh8UvFaQzeSMxZFPxsOXzC1Ew==$8ARYezl8043pwoV1x3FJ3Q==\r\nCf-Mitigated: challenge\r\nCf-Ray: 8eaf3c45b9b5d097-CDG\r\nContent-Type: text/html; charset=UTF-8\r\nCritical-Ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA\r\nCross-Origin-Embedder-Policy: require-corp\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 01 Dec 2024 01:17:04 GMT\r\nExpires: Thu, 01 Jan 1970 00:00:01 GMT\r\nOrigin-Agent-Cluster: ?1\r\nPermissions-Policy: accelerometer=(),autoplay=(),browsing-topics=(),camera=(),clipboard-read=(),clipboard-write=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=()\r\nReferrer-Policy: same-origin\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=JSXyHXdAD_Zk4_QnTB2Yvb613zBLOYR.zFIlczUc_.c-1733015824-1.0.1.1-jCgK6GR0FpbBHhDom40nkvIPZNQetxAEpShHt6wOMfnTOLmMWto6JyoVNZrmmk_S5EyG_PUahTNI45Voy0Ht2A; path=/; expires=Sun, 01-Dec-24 01:47:04 GMT; domain=.aft.gouv.fr; HttpOnly; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains; preload\r\nVary: Accept-Encoding\r\nX-Content-Options: nosniff\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\n\r\n<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"><meta name=\"robots\" content=\"noindex,nofollow\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv=\"refresh\" content=\"390\"></head><body class=\"no-js\"><div class=\"main-wrapper\" role=\"main\"><div class=\"main-content\"><noscript><div class=\"h2\"><span id=\"challenge-error-text\">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: \"www.aft.gouv.fr\",cType: 'managed',cRay: '8eaf3c45b9b5d097',cH: 'd7.vBBhC6GPDd52sw.6Zh86zUet0xfEXfllpfQjWkJE-1733015824-1.2.1.1-rhz_YTO0BNLruQtUvV4pjNCwQ3KdwPu9qse6ewQkptErZdpB.pTl350O_vRAqGe8',cUPMDTk: \"\\/?__cf_chl_tk=eyXmo2PYi_FDo1.O7kBXU_l4VdJhLO9d3qfgBuM0pA8-1733015824-1.0.1.1-07OTDF3SMzW3yg0aecN6UWH4cEo0ApQUztwC9L_cezU\",cFPWv: 'b',cITimeS: '1733015824',cTTimeMs: '1000',cMTimeMs: '390000',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: \"\",fa: \"\\/?__cf_chl_f_tk=eyXmo2PYi_FDo1.O7kBXU_l4VdJhLO9d3qfgBuM0pA8-1733015824-1.0.1.1-07OTDF3SMzW3yg0aecN6UWH4cEo0ApQUztwC9L_cezU\",md: \"B6sstUzuHVIHZSsBP.yIt2CLOWVGsqKYVnbXi4cSKt0-1733015824-1.2.1.1-gTvI3j2SmuDxoISeRZdTLsHPkwvam5_yqAfvW8Q.sTp0IjIGPcFmfrDvC8Cq65iB5_.NxcBEjpGpnuInxPk6KL099lI_4N3SQ2NDd.h4hMjHpKpScj6HL1v.IERAiBAFgFKIDZabNyoXYzh5p_DWslfXWu597vnCbAGucAmKXYfn8qAEE4Pl2Qtc7588SDdrZpIy2WGnp2v.ulNtBqPYQzbvhoUctlfYRMdxMCJDN3v1UF_7BzCuMADM49DwprlBtwZlIm7EOiK0rYR0ojWCmypk8M7SQ9O6.P5Ww.ljiGEtryXlz.jdhn9dIehFx9lh5sh1ooMPr0R.g1ZFr1wO_K2p7.bh04mLddxrFYUdG0ihfcFSS9CPh6mnZgY9BfwTLaJWg.7WFW17X26toX2H1VBRcxQD3vyztYMVTk4or4YetndEkYyw47YPyYO_aLeZCqu4pAHHwfsmZFRtZWaUGCTZ3JbSS1tbMX0WqwrHbwCCLOzZcVqsWTFIP9tWpzt6WOzVFHrvFLjTMiIYKfPifqDpSv2o1g7b0PBV3LC75AtulDT3Z5J1PR6cFUJFe5qpWA._LQN297C2kkYoZAVu6JRYVZvBOPxPvBZn_CuTGBewu4X7LxKw5iYKnZbGSfpUHZ.vmw4EH8iVKj8AqRpo7cKTBsGEZi8ZeKkYWJcuUDIC_oO_kFhez6e8.8OstUxxVufZY4fqhHn0Br3xwLuxy.TmfEquGHST3HwlAqeEOgu0lWXSm7SkLSd6bQEae6PoN7go5MqcvPaYWFyatstcZmfBOzNxszz8PD09L7TfayV4GfGJj.ZMG_HP6hmgaS9PUK5Sx24lo.5e16pMry8Z7pxd3P6aDA5F72JtyR6C6Uz5tM2.rZOCKTL0VhzfQ512O7EK2m1GBIKU7HAiCLsxVa9SbIj8of0saeNr9sJL4w6xRQJqUJRX_j_zyp4SvWBaaLds.jy3hM3ANztLY7W8CwtTomZwQ0RvG8UYiQOm0vtbFIzXX6vu_FkE.IYF4wwtgdMblyHZ9BM1gV73Q9RZ_CU1X3l8jAKpMinwn8SIS7I1hR.75uD6XjZObKRF8C6HPF8oBQ4gRRqnt7Mx8x_5AGpM228trsApFGTtT4CUF0W6PZ8vt9wLVk.8GiHS.4qq4_0MW0kOpmGk1JqKxkAx0eQA9IU5gA3zUSNjbgYgRWEcNRKJfQp7pySiw37jEaPYvJp8GQnmcKxs5hZPz5BTUWq_aTxU3G06G26Ep3bE_7.td9k4GR4cDNI0Wt57QyAemXjeUOQiYshniHklrbJP9psH0fRh9KAhsK3_miG9Hqsc_EDOTHQ5lDea6tI4KMDI_NnXMKjG_nzc3k.BtHfIoi4Sr6HK_zwXQM5Qx00fqBZ4h2rTauR2rL7Eszlotj_p5o_x0MS2kZUdBMe9J1fwweb49lziidQqooQKQ4K58nE77yDeIzm2lIhoilB2edAwrEqfMWiShuv.h59LdOrZkjBlnldXWKdb_P890ncqj6l3IohAoGrLzwbhuNvvRwEMc1gJSEocYuxORp5ojwO9b_AbeOcMq8UqPAzwAZa6sWsVTjBwNGX.lNMjFDYLo1vMdSRjC4t1htPT8iXycriLYPGQC26pzmU8us.eyk5HhQoESyn0pOriCmUVFuUK0uJM5W.Q7iO1PXXHGUGWoFz2C4adj426DZ82OYkbd_CrAmu_hqrAJuQYkplvzj_Fpw9gOFZs5jzQtOf1ExSpz0ei3kiJ7cdqBEv61CXVIctsBACn8WWUwOXttrtxSdQYlmvfaRXI2TCJQ0Vw68EH5i1IwRuJbY_96qdG2IHVXFrP72lxYGLio6JQ1ts.7WxIlqw.9JySx0kWGgva_GGjwI.B7kELOTbdG0P6i5YCGHT435bAdmWBNOR6PBWohLQAfD2ZU34JH5KqAtoMOAIeEVYnSJxGbWU7_Z3w3p21D_F15Vj1i2zafA_JcGKW1ybtrLirgSzVH2EO7UV2KeV7fvJOYmmw3KF8uSs9s.IOLekiWE0ysY9t_fBOZzTLPbrlLrwXCCDOH5T_Ls3iwXxdJ2gxmdQ1hKuLknGwneOYyz4l2xZjBxhcz7NNzYm815L6BCQnuMLzETaV2W1uH8HuSUzF4TSfw0MFyGNuleIJVAr3Ex1cPkJOJgcil5qeqZ4rPz714PbDp.5rnx77VH1Vi1ZFEbtTov8xkKV_HxKODfX21eMMo8IWYuOzdMWD_Q7cgIm8ua3lOUo2yP01hjMcyd7JGcrVBYVXVKRn5Jbll7nuPk7.TbgIEGhqqeA3shG.JSsbJNZN09xJSP4dAyDKYz9oCFoNo_J3fQIMKw5vXrRR2XLTZBnyzG.Y7IO6IKLBOfwTOVT1Ny_m_fCC4iQVVNMp7FUAhM5hAHJxomqI46Q_sHUqlv5l3mVmLwhP0n37kIFk3VPvvjkTcEGxBRQPiLDbhazsMkaf736h223fFJO4h1oHjWmargriKgZFlE5cwVnS\",mdrd: \"vqfdEP472gULgDV_it9YHSQm7.RrqhI5F2cvyxtf9Wk-1733015824-1.2.1.1-IXvDkrjK3W7LrH7HsggG5kV3f0wFCGK.lriEZcaOj_3k3W8iUrvz_2GkH.2zs.zIWSH5XIQMM66sSgnEelWkLMw1ZCckJkRjOguLuziKw.slIiewTWcgIUsLM.LoyR1Ae40sDx25retcAINn26hkXa.IJRfp1T6NpjS6hycaJERHDWwQwbt7XnWg9z9OIOS805rQvE2o1KR_saAfYHjFR3.z2U5wlwoi5UVZX743hCMVYxB06gw0JZal9Zur3ODRVIqiZMnCgHvmvlLvtwNtOCxax53u_JzFcGi2jlGhpp4oIzmIkT.z.RIxK8fiWC8T2s5QXmN.46AZfKTVHJu9vY6VNOKLZwwzSGMdbiDyEJPPf9oPOHJidP2ByU58.E4iko0mpPlxksATHaa9aySoOHL6TmNsVs4qs7G1KFyHCzOHsnfTiNCS8x9lntUeL3dXn5TvjkUc49o53jJHYYBrXfik4uig7KzXsn5v2a.YGJNa0z.fDXuDziSK2w8L30tbXHxQLw7lrffcPDQwpLm72hlKzO4ZjlBPS9sD_cR1sZdU21FYKfZNhR.4S6foxBddVkSYPtr7vtmdx15JynKhG2MhJULYmuuT9rxWBf0g91B7ltpEMfZeIdyKXfAtQo_iNikuiv9sfqACHa2r3wiNoa3E0uo2ub27IhfYIawAX_x3jDlXKu0T18P_gMClM9SDrp_V7NpPbf7pLxICd67kr6ylHi3QjntZjt_0zsI8BLQdNs9vUetlsOQDHZb20WBhqFLY_q5unIU5vdVsOPxhilDDESfDYRDuoL4YNdgwYHl_Ljp6DpnxXBnNAn_Ye6t6wYso43Abc.39QcisNLzHYqsmJ515NulFrKlmiR1kx0rmNhPJ_Jb2m3dQI2jv53Nq4rSRGZg1RiJogVv9Cqfzu5JGt7KxdZExuEL.bVhGzWOFD3ny28B1MbAi0DzYgAePzLxcz_Zf32WGoH4fh_spFxfCtnldg6jzjMqAD0a9Xaa90vnVGuFxFgHHNLqwPcfhryBR8Gi5uyN9ZXjznNOaOE5T6KcefA8geuMVzVph5YnFmYGSnblNrCut2W1.U2OJtxvUT6kxXy6QZO4ON0lO.8Zq.UqG4w6J9DN3efGrojZwjCT4ylPB.O3_hk5FaScIU2Z1PN8bxA4lrZaaEEg8T1cLFODmtJ9iERwbvcTOLPxGjvVH3Nf6Mz4ttbSDX8UVe.AckpvcBW.oBX_FnRWKQY32mrlMpESPr_.7UxfYRl8V1bGSiFKoOac9YyenVsJWGpShfksqZLAh_ZlrOpwmXTnjRdw8CdwxcbH8n4DLoykrdC0YqqCQWlNHgw_yHBPaBozvRDlTQ5Xu3MNHe5CYLldIeK8dvCDg.w8xT.hmt6Jtq_diZ47GHqUYhcUAILEbAUT1FrcAbekvXN4DChshlPtZAT9MwrTCjov.9U.cXFDzwIlPvwH.ySC5Msgf8U1HiCQnnCZW6VFoDiJEWKN62GhV9ekAQtYEuERcW37KTK.04NOcsJyTfF1MFfd8EdXGV3YlMhIQdURnNjAHpdJRD0lo9IRcBWOviUOmnp3VluFquWLzf7BzG9UAAND0eGfkWNc_ICAnOAB.yNGb8NZW_ffAfkqlIAE81Ca5jwPJfjv7xcBH2wuiIhW4zeB5ivNzvty9ChxysN961VkM.LQK8P7LZLxzWqDMehfPblxNEHOiO4gFPIIulhPLnjw_hAVUsWSME8uuN6H94KajfglJuwLffoAUrRyzSgQUz0runDIRQM5ItckvXCptL2HBRD..j7V7FOyjL8B3yiExAnNuhVw.bZYRG4f2x5L7sjn9zGP03Fef8B63VekDJz0RPrBqdaKjGbLVmVibyPo85i.gjRuE_lnNKzTqSgZ6A8oCA3xzDvpd9eIDMU_N8I.71PJKlTQALFSDkgTGbY_0k0DQWg7H4btTdaw9zsB6k8DXwHixOmSk4PGD38.UimmYGujEp0Tlb1HZK_sqU7sJ6eCJScie7rpis6pEX29r6K3beCz66Pb3px1yJru9zAvP.HkYU6y.mbpFYfx3vw9DADiY5Xe8vSFwsngekxLASBMWMYkjGQPrQ_RqfdcvQXhOf6FY\"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/b/orchestrate/chl_page/v1?ray=8eaf3c45b9b5d097';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, \"\\/?__cf_chl_rt_tk=eyXmo2PYi_FDo1.O7kBXU_l4VdJhLO9d3qfgBuM0pA8-1733015824-1.0.1.1-07OTDF3SMzW3yg0aecN6UWH4cEo0ApQUztwC9L_cezU\" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>",
+      "ip": "141.101.90.96",
+      "timestamp": "2024-12-01T01:17:04.385260739Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.aft.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.aft.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.aft.gouv.fr",
+      "matched-at": "www.aft.gouv.fr:443",
+      "extracted-results": [
+        "DHIMYOTIS"
+      ],
+      "ip": "141.101.90.96",
+      "timestamp": "2024-12-01T01:17:38.915598182Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.aft.gouv.fr",
+      "matched-at": "www.aft.gouv.fr:443",
+      "extracted-results": [
+        "www.aft.gouv.fr",
+        "aft.gouv.fr"
+      ],
+      "ip": "141.101.90.96",
+      "timestamp": "2024-12-01T01:17:38.915737872Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.aft.gouv.fr",
+      "matched-at": "www.aft.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "141.101.90.96",
+      "timestamp": "2024-12-01T01:17:39.309725043Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.aft.gouv.fr",
+      "matched-at": "www.aft.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "141.101.90.96",
+      "timestamp": "2024-12-01T01:17:40.267508658Z",
+      "matcher-status": true
+    }
+  ]
+]
