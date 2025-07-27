@@ -1,28 +1,28 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "B+",
+    "grade": "B",
     "error": null,
-    "score": 80,
+    "score": 75,
     "statusCode": 200,
-    "testsFailed": 1,
-    "testsPassed": 9,
+    "testsFailed": 2,
+    "testsPassed": 8,
     "testsQuantity": 10,
     "responseHeaders": {
       "server": "nginx",
-      "date": "Sun, 20 Jul 2025 02:02:20 GMT",
+      "date": "Sun, 27 Jul 2025 02:02:42 GMT",
       "content-type": "text/html; charset=UTF-8",
       "connection": "close",
       "cache-control": "max-age=600",
-      "x-drupal-dynamic-cache": "MISS",
+      "x-drupal-dynamic-cache": "HIT",
       "content-language": "fr",
       "x-content-type-options": "nosniff",
       "x-frame-options": "SAMEORIGIN",
-      "expires": "Sun, 20 Jul 2025 02:12:20 GMT",
-      "last-modified": "Thu, 17 Jul 2025 09:58:06 GMT",
-      "etag": "\"1752746286\"",
+      "expires": "Sun, 27 Jul 2025 02:12:42 GMT",
+      "last-modified": "Thu, 24 Jul 2025 13:45:08 GMT",
+      "etag": "\"1753364708\"",
       "vary": "Cookie,Accept-Encoding",
-      "x-drupal-cache": "MISS",
+      "x-drupal-cache": "HIT",
       "x-proxy-cache": "HIT",
       "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:; font-src 'self' data: https:;",
       "referrer-policy": "same-origin",
@@ -35,12 +35,12 @@
       "x-xss-protection": "1;mode=block",
       "upgrade-insecure-requests": "1",
       "set-cookie": [
-        "visid_incap_3065112=qkCNccmhTPyeHGCnHExIWSxOfGgAAAAAQUIPAAAAAAAhpqCCfmUhg0Dpz8ZKjkLO; expires=Sun, 19 Jul 2026 06:24:03 GMT; HttpOnly; path=/; Domain=.cnnumerique.fr; Secure; SameSite=None",
-        "incap_ses_887_3065112=/yBOV8Pvkj3RlqQKMUJPDCxOfGgAAAAAGyyqt0KtlxEUgsm+bG7hDg==; path=/; Domain=.cnnumerique.fr; Secure; SameSite=None"
+        "visid_incap_3238491=zJgYkFaBTUOLO7CCHcJVksGIhWgAAAAAQUIPAAAAAAAXF0sczxjsC1CoSRpwmF6a; expires=Sun, 26 Jul 2026 07:02:05 GMT; HttpOnly; path=/; Domain=.conseil-ia-numerique.fr",
+        "incap_ses_1841_3238491=kODqAXHgulNT9z/SPIyMGcKIhWgAAAAApaon8E0OBQmytZcj05rihQ==; path=/; Domain=.conseil-ia-numerique.fr"
       ],
       "x-cdn": "Imperva",
       "transfer-encoding": "chunked",
-      "x-iinfo": "3-3377671-3377673 NNYN CT(105 106 0) RT(1752976940626 23) q(0 0 2 -1) r(3 4) U12"
+      "x-iinfo": "55-68893770-68893776 NNYN CT(122 189 0) RT(1753581761675 4) q(0 0 3 0) r(5 6) U12"
     }
   },
   "tests": {
@@ -91,28 +91,24 @@
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
-      "pass": true,
-      "result": "cookies-secure-with-httponly-sessions-and-samesite",
-      "scoreModifier": 5,
+      "pass": false,
+      "result": "cookies-without-secure-flag-but-protected-by-hsts",
+      "scoreModifier": -5,
       "data": {
-        "visid_incap_3065112": {
-          "domain": "cnnumerique.fr",
-          "expires": "2026-07-19T06:24:03.000Z",
+        "visid_incap_3238491": {
+          "domain": "conseil-ia-numerique.fr",
+          "expires": "2026-07-26T07:02:05.000Z",
           "httponly": true,
           "path": "/",
-          "port": null,
-          "samesite": "none",
-          "secure": true
+          "port": null
         },
-        "incap_ses_887_3065112": {
-          "domain": "cnnumerique.fr",
+        "incap_ses_1841_3238491": {
+          "domain": "conseil-ia-numerique.fr",
           "path": "/",
-          "port": null,
-          "samesite": "none",
-          "secure": true
+          "port": null
         }
       },
-      "sameSite": true
+      "sameSite": false
     },
     "cross-origin-resource-sharing": {
       "expectation": "cross-origin-resource-sharing-not-implemented",
@@ -124,13 +120,14 @@
     "redirection": {
       "expectation": "redirection-to-https",
       "pass": true,
-      "result": "redirection-all-redirects-preloaded",
+      "result": "redirection-to-https",
       "scoreModifier": 0,
-      "destination": "https://cnnumerique.fr/",
+      "destination": "https://www.conseil-ia-numerique.fr/",
       "redirects": true,
       "route": [
         "http://cnnumerique.fr/",
-        "https://cnnumerique.fr/"
+        "https://cnnumerique.fr/",
+        "https://www.conseil-ia-numerique.fr/"
       ],
       "statusCode": 200
     },
