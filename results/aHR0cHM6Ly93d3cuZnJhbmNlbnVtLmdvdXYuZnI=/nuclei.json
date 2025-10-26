@@ -1,0 +1,588 @@
+[
+  [
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.francenum.gouv.fr.",
+      "matched-at": "www.francenum.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 20649\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.francenum.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 20649\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.francenum.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.francenum.gouv.fr.\t600\tIN\tCNAME\tq9xi78d.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
+      "timestamp": "2025-10-26T03:06:18.758669262Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/dns-saas-service-detection.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
+      "template-id": "dns-saas-service-detection",
+      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
+      "info": {
+        "name": "DNS SaaS Service Detection",
+        "author": [
+          "noah @thesubtlety",
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "service"
+        ],
+        "description": "A CNAME DNS record was discovered",
+        "reference": [
+          "https://ns1.com/resources/cname",
+          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
+          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "www.francenum.gouv.fr.",
+      "matched-at": "www.francenum.gouv.fr",
+      "extracted-results": [
+        "q9xi78d.ng.impervadns.net."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 55926\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.francenum.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 55926\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.francenum.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.francenum.gouv.fr.\t600\tIN\tCNAME\tq9xi78d.ng.impervadns.net.\n",
+      "timestamp": "2025-10-26T03:06:18.769269334Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.francenum.gouv.fr",
+      "matched-at": "https://www.francenum.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3062846=dqrycUd1T7ypErnHehcv7E2Q/WgAAAAAQUIPAAAAAADhZqdGr4OO1SpxH8OTpJ90; expires=Sun, 25 Oct 2026 07:22:41 GMT; HttpOnly; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None incap_ses_420_3062846=+OQuZVT7cjRv86HJMyTUBU2Q/WgAAAAAckvtE58cwliHierKgeA9QA==; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.francenum.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.francenum.gouv.fr/\r\nSet-Cookie: visid_incap_3062846=dqrycUd1T7ypErnHehcv7E2Q/WgAAAAAQUIPAAAAAADhZqdGr4OO1SpxH8OTpJ90; expires=Sun, 25 Oct 2026 07:22:41 GMT; HttpOnly; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_420_3062846=+OQuZVT7cjRv86HJMyTUBU2Q/WgAAAAAckvtE58cwliHierKgeA9QA==; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 18-41813506-0 0NNN RT(1761448013694 18) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-10-26T03:06:53.725694114Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.francenum.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod"
+        ],
+        "tags": [
+          "tech"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.francenum.gouv.fr",
+      "matched-at": "https://www.francenum.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.francenum.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.francenum.gouv.fr/\r\nSet-Cookie: visid_incap_3062846=dqrycUd1T7ypErnHehcv7E2Q/WgAAAAAQUIPAAAAAADhZqdGr4OO1SpxH8OTpJ90; expires=Sun, 25 Oct 2026 07:22:41 GMT; HttpOnly; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_420_3062846=+OQuZVT7cjRv86HJMyTUBU2Q/WgAAAAAckvtE58cwliHierKgeA9QA==; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 18-41813506-0 0NNN RT(1761448013694 18) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-10-26T03:06:53.750288971Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.francenum.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.francenum.gouv.fr",
+      "matched-at": "https://www.francenum.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3062846=RoBCm5qGS7aTqTczOSbyRk2Q/WgAAAAAQUIPAAAAAABrXtO+4Cr3GjXmTfu2Dw/P; expires=Sun, 25 Oct 2026 08:40:36 GMT; HttpOnly; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None incap_ses_420_3062846=PFcaSNk3xDBm86HJMyTUBU2Q/WgAAAAAg4pTfj2DgbfpOBX56dn4vQ==; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.francenum.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.francenum.gouv.fr/\r\nSet-Cookie: visid_incap_3062846=RoBCm5qGS7aTqTczOSbyRk2Q/WgAAAAAQUIPAAAAAABrXtO+4Cr3GjXmTfu2Dw/P; expires=Sun, 25 Oct 2026 08:40:36 GMT; HttpOnly; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_420_3062846=PFcaSNk3xDBm86HJMyTUBU2Q/WgAAAAAg4pTfj2DgbfpOBX56dn4vQ==; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 8-5331831-0 0NNN RT(1761448013646 17) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-10-26T03:06:54.268232069Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.francenum.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.francenum.gouv.fr",
+      "matched-at": "https://www.francenum.gouv.fr",
+      "extracted-results": [
+        "visid_incap_3062846=/mxMyysvRBS8d5WmpvkXSU2Q/WgAAAAAQUIPAAAAAABAN/3T7lO+Awn8U8vl1ncN; expires=Sun, 25 Oct 2026 07:30:36 GMT; HttpOnly; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None incap_ses_420_3062846=k9y5F7jaXW5i86HJMyTUBU2Q/WgAAAAABqoEmENeuwNtyLqehxuxZg==; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.francenum.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.francenum.gouv.fr/\r\nSet-Cookie: visid_incap_3062846=/mxMyysvRBS8d5WmpvkXSU2Q/WgAAAAAQUIPAAAAAABAN/3T7lO+Awn8U8vl1ncN; expires=Sun, 25 Oct 2026 07:30:36 GMT; HttpOnly; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_420_3062846=k9y5F7jaXW5i86HJMyTUBU2Q/WgAAAAABqoEmENeuwNtyLqehxuxZg==; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-7835204-0 0NNN RT(1761448013593 26) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-10-26T03:06:54.790702771Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.francenum.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod"
+        ],
+        "tags": [
+          "tech"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.francenum.gouv.fr",
+      "matched-at": "https://www.francenum.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.francenum.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.francenum.gouv.fr/\r\nSet-Cookie: visid_incap_3062846=/mxMyysvRBS8d5WmpvkXSU2Q/WgAAAAAQUIPAAAAAABAN/3T7lO+Awn8U8vl1ncN; expires=Sun, 25 Oct 2026 07:30:36 GMT; HttpOnly; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_420_3062846=k9y5F7jaXW5i86HJMyTUBU2Q/WgAAAAABqoEmENeuwNtyLqehxuxZg==; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-7835204-0 0NNN RT(1761448013593 26) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-10-26T03:06:54.813767617Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.francenum.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/external-service-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/external-service-interaction",
+      "template-id": "external-service-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/external-service-interaction.yaml",
+      "info": {
+        "name": "External Service Interaction",
+        "author": [
+          "andreluna"
+        ],
+        "tags": [
+          "miscellaneous",
+          "http",
+          "misc",
+          "oast"
+        ],
+        "description": "External Service interaction via Host Header Injection.",
+        "reference": [
+          "https://portswigger.net/kb/issues/00300210_external-service-interaction-http",
+          "https://success.qualys.com/support/s/article/000006843",
+          "https://owasp.org/www-project-web-security-testing-guide/latest/4-web_application_security_testing/07-input_validation_testing/17-testing_for_host_header_injection"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-918",
+            "cwe-406"
+          ]
+        }
+      },
+      "type": "http",
+      "host": "https://www.francenum.gouv.fr",
+      "matched-at": "https://www.francenum.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d3up0ag8e2gnjnkv994gfs7zm8b8h8o61.oast.fun\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 712\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1017-36691607-0 0NNN RT(1761448259798 40) q(0 -1 -1 -1) r(64 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1017-36691607-0%200NNN%20RT%281761448259798%2040%29%20q%280%20-1%20-1%20-1%29%20r%2864%20-1%29&incident_id=0-227078614638922705&edet=22&cinfo=ffffffff&rpinfo=0&cip=52.154.130.212&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-227078614638922705</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-10-26T03:11:06.202417267Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d3up0ag8e2gnjnkv994gfs7zm8b8h8o61",
+        "full-id": "d3up0ag8e2gnjnkv994gfs7zm8b8h8o61",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 53900\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d3up0ag8e2gnjnkv994gfs7zm8b8h8o61.oast.fun.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 53900\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d3up0ag8e2gnjnkv994gfs7zm8b8h8o61.oast.fun.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd3up0ag8e2gnjnkv994gfs7zm8b8h8o61.oast.fun.\t3600\tIN\tA\t206.189.156.69\n\n;; AUTHORITY SECTION:\nd3up0ag8e2gnjnkv994gfs7zm8b8h8o61.oast.fun.\t3600\tIN\tNS\tns1.oast.fun.\nd3up0ag8e2gnjnkv994gfs7zm8b8h8o61.oast.fun.\t3600\tIN\tNS\tns2.oast.fun.\n\n;; ADDITIONAL SECTION:\nns1.oast.fun.\t3600\tIN\tA\t206.189.156.69\nns2.oast.fun.\t3600\tIN\tA\t206.189.156.69\n",
+        "remote-address": "107.154.186.18",
+        "timestamp": "2025-10-26T03:10:59.993656577Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: d3up0ag8e2gnjnkv994gfs7zm8b8h8o61.oast.fun' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.francenum.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/tls-sni-proxy.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-sni-proxy",
+      "template-id": "tls-sni-proxy",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/tls-sni-proxy.yaml",
+      "info": {
+        "name": "TLS SNI Proxy Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "misconfig",
+          "ssrf",
+          "oast",
+          "tls",
+          "sni",
+          "proxy"
+        ],
+        "reference": [
+          "https://www.invicti.com/blog/web-security/ssrf-vulnerabilities-caused-by-sni-proxy-misconfigurations/",
+          "https://www.bamsoftware.com/computers/sniproxy/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://www.francenum.gouv.fr",
+      "matched-at": "https://www.francenum.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.francenum.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.francenum.gouv.fr/\r\nSet-Cookie: visid_incap_3062846=ofo4QMR+Q12+YO8PMS1MKVSR/WgAAAAAQUIPAAAAAADo1o+SCloXkfy+CgX+UpcN; expires=Sun, 25 Oct 2026 06:35:25 GMT; HttpOnly; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1417_3062846=Y7PuKz3qIGsZUGOOZDKqE1SR/WgAAAAAeBGqDXf3Kg355xyGY6GL0w==; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 5-20180252-0 0NNN RT(1761448277145 36) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-10-26T03:11:17.190159658Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d3up0ag8e2gnjnkv994gmnpeyrpp3ghjq",
+        "full-id": "d3up0ag8e2gnjnkv994gmnpeyrpp3ghjq",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 57990\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d3up0ag8e2gnjnkv994gmnpeyrpp3ghjq.oast.fun.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 57990\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d3up0ag8e2gnjnkv994gmnpeyrpp3ghjq.oast.fun.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd3up0ag8e2gnjnkv994gmnpeyrpp3ghjq.oast.fun.\t3600\tIN\tA\t206.189.156.69\n\n;; AUTHORITY SECTION:\nd3up0ag8e2gnjnkv994gmnpeyrpp3ghjq.oast.fun.\t3600\tIN\tNS\tns1.oast.fun.\nd3up0ag8e2gnjnkv994gmnpeyrpp3ghjq.oast.fun.\t3600\tIN\tNS\tns2.oast.fun.\n\n;; ADDITIONAL SECTION:\nns1.oast.fun.\t3600\tIN\tA\t206.189.156.69\nns2.oast.fun.\t3600\tIN\tA\t206.189.156.69\n",
+        "remote-address": "107.154.186.18",
+        "timestamp": "2025-10-26T03:11:11.301784386Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: www.francenum.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.francenum.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "incapsula",
+      "type": "http",
+      "host": "https://www.francenum.gouv.fr",
+      "matched-at": "https://www.francenum.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: www.francenum.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.francenum.gouv.fr/\r\nSet-Cookie: visid_incap_3062846=jN8S2VTpSvyhHgAqt/SgKF6R/WgAAAAAQUIPAAAAAAB4ayae+ecFyo6P2PWiM8hm; expires=Sun, 25 Oct 2026 07:25:36 GMT; HttpOnly; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_420_3062846=0+EZL25CMxDsAaPJMyTUBV6R/WgAAAAA+8FsDo1DEF/egC+nuUsytw==; path=/; Domain=.francenum.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 16-31275681-0 0NNN RT(1761448286695 17) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-10-26T03:11:26.726676688Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.francenum.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.francenum.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/vulnerabilities/generic/request-based-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/request-based-interaction",
+      "template-id": "request-based-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/vulnerabilities/generic/request-based-interaction.yaml",
+      "info": {
+        "name": "OOB Request Based Interaction",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "oast",
+          "ssrf",
+          "generic"
+        ],
+        "description": "The remote server fetched a spoofed DNS Name from the request.",
+        "reference": [
+          "https://portswigger.net/research/cracking-the-lens-targeting-https-hidden-attack-surface"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 5
+        }
+      },
+      "matcher-name": "dns",
+      "type": "http",
+      "host": "https://www.francenum.gouv.fr",
+      "matched-at": "https://www.francenum.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d3up0ag8e2gnjnkv994gtjfru8fma3ckw.oast.fun\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 712\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1015-24329450-0 0NNN RT(1761448292660 44) q(0 -1 -1 -1) r(65 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1015-24329450-0%200NNN%20RT%281761448292660%2044%29%20q%280%20-1%20-1%20-1%29%20r%2865%20-1%29&incident_id=0-151980377028955087&edet=22&cinfo=ffffffff&rpinfo=0&cip=52.154.130.212&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-151980377028955087</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-10-26T03:11:39.243137554Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d3up0ag8e2gnjnkv994gtjfru8fma3ckw",
+        "full-id": "d3up0ag8e2gnjnkv994gtjfru8fma3ckw",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 64034\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d3up0ag8e2gnjnkv994gtjfru8fma3ckw.oast.fun.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 64034\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d3up0ag8e2gnjnkv994gtjfru8fma3ckw.oast.fun.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd3up0ag8e2gnjnkv994gtjfru8fma3ckw.oast.fun.\t3600\tIN\tA\t206.189.156.69\n\n;; AUTHORITY SECTION:\nd3up0ag8e2gnjnkv994gtjfru8fma3ckw.oast.fun.\t3600\tIN\tNS\tns1.oast.fun.\nd3up0ag8e2gnjnkv994gtjfru8fma3ckw.oast.fun.\t3600\tIN\tNS\tns2.oast.fun.\n\n;; ADDITIONAL SECTION:\nns1.oast.fun.\t3600\tIN\tA\t206.189.156.69\nns2.oast.fun.\t3600\tIN\tA\t206.189.156.69\n",
+        "remote-address": "107.154.186.18",
+        "timestamp": "2025-10-26T03:11:32.887696232Z"
+      },
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.francenum.gouv.fr",
+      "matched-at": "www.francenum.gouv.fr:443",
+      "extracted-results": [
+        "Certigna"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2025-10-26T03:14:09.444981177Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.francenum.gouv.fr",
+      "matched-at": "www.francenum.gouv.fr:443",
+      "extracted-results": [
+        "www.francenum.gouv.fr",
+        "cheque.francenum.gouv.fr",
+        "francenum.gouv.fr",
+        "www.cheque.francenum.gouv.fr"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2025-10-26T03:14:09.445162324Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.francenum.gouv.fr",
+      "matched-at": "www.francenum.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2025-10-26T03:14:36.529295333Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.francenum.gouv.fr",
+      "matched-at": "www.francenum.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2025-10-26T03:14:36.791889657Z",
+      "matcher-status": true
+    }
+  ]
+]
