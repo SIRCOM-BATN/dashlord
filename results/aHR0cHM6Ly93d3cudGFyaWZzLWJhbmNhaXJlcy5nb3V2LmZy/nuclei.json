@@ -1,0 +1,601 @@
+[
+  [
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa",
+          "discovery"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.tarifs-bancaires.gouv.fr.",
+      "matched-at": "www.tarifs-bancaires.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 26659\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.tarifs-bancaires.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 26659\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.tarifs-bancaires.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.tarifs-bancaires.gouv.fr.\t86400\tIN\tCNAME\txfxoxzq.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
+      "timestamp": "2025-11-09T03:43:55.418356961Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/dns-saas-service-detection.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
+      "template-id": "dns-saas-service-detection",
+      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
+      "info": {
+        "name": "DNS SaaS Service Detection",
+        "author": [
+          "noah @thesubtlety",
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "service",
+          "discovery"
+        ],
+        "description": "A CNAME DNS record was discovered",
+        "reference": [
+          "https://ns1.com/resources/cname",
+          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
+          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "www.tarifs-bancaires.gouv.fr.",
+      "matched-at": "www.tarifs-bancaires.gouv.fr",
+      "extracted-results": [
+        "xfxoxzq.ng.impervadns.net."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 43462\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.tarifs-bancaires.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 43462\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.tarifs-bancaires.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.tarifs-bancaires.gouv.fr.\t21600\tIN\tCNAME\txfxoxzq.ng.impervadns.net.\n",
+      "timestamp": "2025-11-09T03:43:55.564645873Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.tarifs-bancaires.gouv.fr",
+      "matched-at": "https://www.tarifs-bancaires.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3065003=4Rj7iaflSgOkIZ8F6C1VBwAOEGkAAAAAQUIPAAAAAACRyuW/R1TO+Q/lEEMmwwgC; expires=Sun, 08 Nov 2026 06:36:04 GMT; HttpOnly; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None incap_ses_8222_3065003=XaP6Z/3p/379rrRF22kacgAOEGkAAAAA2QhR3B0srw4ZkGRjspRsQg==; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.tarifs-bancaires.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.tarifs-bancaires.gouv.fr/\r\nSet-Cookie: visid_incap_3065003=4Rj7iaflSgOkIZ8F6C1VBwAOEGkAAAAAQUIPAAAAAACRyuW/R1TO+Q/lEEMmwwgC; expires=Sun, 08 Nov 2026 06:36:04 GMT; HttpOnly; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_8222_3065003=XaP6Z/3p/379rrRF22kacgAOEGkAAAAA2QhR3B0srw4ZkGRjspRsQg==; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 10-61686932-0 0NNN RT(1762659841408 10) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-09T03:44:01.426404772Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.tarifs-bancaires.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.tarifs-bancaires.gouv.fr",
+      "matched-at": "https://www.tarifs-bancaires.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.tarifs-bancaires.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.tarifs-bancaires.gouv.fr/\r\nSet-Cookie: visid_incap_3065003=4Rj7iaflSgOkIZ8F6C1VBwAOEGkAAAAAQUIPAAAAAACRyuW/R1TO+Q/lEEMmwwgC; expires=Sun, 08 Nov 2026 06:36:04 GMT; HttpOnly; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_8222_3065003=XaP6Z/3p/379rrRF22kacgAOEGkAAAAA2QhR3B0srw4ZkGRjspRsQg==; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 10-61686932-0 0NNN RT(1762659841408 10) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-09T03:44:01.453852391Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.tarifs-bancaires.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.tarifs-bancaires.gouv.fr",
+      "matched-at": "https://www.tarifs-bancaires.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3065003=RcFIOwDlR8OD9oOLoKm4nwAOEGkAAAAAQUIPAAAAAAAj5JriscKV/jN0y50on94t; expires=Sun, 08 Nov 2026 06:36:00 GMT; HttpOnly; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None incap_ses_8222_3065003=RLxhVkta1D70rrRF22kacgAOEGkAAAAAHc9BMRumdOTm5TvVmE4QMQ==; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.tarifs-bancaires.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.tarifs-bancaires.gouv.fr/\r\nSet-Cookie: visid_incap_3065003=RcFIOwDlR8OD9oOLoKm4nwAOEGkAAAAAQUIPAAAAAAAj5JriscKV/jN0y50on94t; expires=Sun, 08 Nov 2026 06:36:00 GMT; HttpOnly; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_8222_3065003=RLxhVkta1D70rrRF22kacgAOEGkAAAAAHc9BMRumdOTm5TvVmE4QMQ==; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 4-33199654-0 0NNN RT(1762659841394 8) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-09T03:44:01.964185649Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.tarifs-bancaires.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.tarifs-bancaires.gouv.fr",
+      "matched-at": "https://www.tarifs-bancaires.gouv.fr",
+      "extracted-results": [
+        "visid_incap_3065003=sin2CHdpSF2/uMWhGGWwoQAOEGkAAAAAQUIPAAAAAAD/eKpoZ/IW45lx9GAQFCp9; expires=Sun, 08 Nov 2026 07:13:57 GMT; HttpOnly; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None incap_ses_344_3065003=JrpWBVgozH81oWMypCLGBAAOEGkAAAAATg7gQTA6NkQjIeD4AZrlHw==; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.tarifs-bancaires.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.tarifs-bancaires.gouv.fr/\r\nSet-Cookie: visid_incap_3065003=sin2CHdpSF2/uMWhGGWwoQAOEGkAAAAAQUIPAAAAAAD/eKpoZ/IW45lx9GAQFCp9; expires=Sun, 08 Nov 2026 07:13:57 GMT; HttpOnly; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_344_3065003=JrpWBVgozH81oWMypCLGBAAOEGkAAAAATg7gQTA6NkQjIeD4AZrlHw==; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 16-78670343-0 0NNN RT(1762659841381 7) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-09T03:44:02.650179684Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.tarifs-bancaires.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.tarifs-bancaires.gouv.fr",
+      "matched-at": "https://www.tarifs-bancaires.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.tarifs-bancaires.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.tarifs-bancaires.gouv.fr/\r\nSet-Cookie: visid_incap_3065003=sin2CHdpSF2/uMWhGGWwoQAOEGkAAAAAQUIPAAAAAAD/eKpoZ/IW45lx9GAQFCp9; expires=Sun, 08 Nov 2026 07:13:57 GMT; HttpOnly; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_344_3065003=JrpWBVgozH81oWMypCLGBAAOEGkAAAAATg7gQTA6NkQjIeD4AZrlHw==; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 16-78670343-0 0NNN RT(1762659841381 7) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-09T03:44:02.673364101Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.tarifs-bancaires.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/external-service-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/external-service-interaction",
+      "template-id": "external-service-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/external-service-interaction.yaml",
+      "info": {
+        "name": "External Service Interaction",
+        "author": [
+          "andreluna"
+        ],
+        "tags": [
+          "miscellaneous",
+          "http",
+          "misc",
+          "oast",
+          "vuln"
+        ],
+        "description": "External Service interaction via Host Header Injection.",
+        "reference": [
+          "https://portswigger.net/kb/issues/00300210_external-service-interaction-http",
+          "https://success.qualys.com/support/s/article/000006843",
+          "https://owasp.org/www-project-web-security-testing-guide/latest/4-web_application_security_testing/07-input_validation_testing/17-testing_for_host_header_injection"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-918",
+            "cwe-406"
+          ]
+        }
+      },
+      "type": "http",
+      "host": "https://www.tarifs-bancaires.gouv.fr",
+      "matched-at": "https://www.tarifs-bancaires.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d480ruug6tr7gn4bpck0ywantjnxjh4ir.oast.live\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 711\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1014-48665221-0 0NNN RT(1762660116474 15) q(0 -1 -1 -1) r(56 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1014-48665221-0%200NNN%20RT%281762660116474%2015%29%20q%280%20-1%20-1%20-1%29%20r%2856%20-1%29&incident_id=0-267221187163589838&edet=22&cinfo=ffffffff&rpinfo=0&cip=64.236.145.82&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-267221187163589838</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-09T03:48:42.039542559Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d480ruug6tr7gn4bpck0ywantjnxjh4ir",
+        "full-id": "d480ruug6tr7gn4bpck0ywantjnxjh4ir",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 51927\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d480ruug6tr7gn4bpck0ywantjnxjh4ir.oast.live.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 51927\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d480ruug6tr7gn4bpck0ywantjnxjh4ir.oast.live.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd480ruug6tr7gn4bpck0ywantjnxjh4ir.oast.live.\t3600\tIN\tA\t178.128.210.172\n\n;; AUTHORITY SECTION:\nd480ruug6tr7gn4bpck0ywantjnxjh4ir.oast.live.\t3600\tIN\tNS\tns1.oast.live.\nd480ruug6tr7gn4bpck0ywantjnxjh4ir.oast.live.\t3600\tIN\tNS\tns2.oast.live.\n\n;; ADDITIONAL SECTION:\nns1.oast.live.\t3600\tIN\tA\t178.128.210.172\nns2.oast.live.\t3600\tIN\tA\t178.128.210.172\n",
+        "remote-address": "107.154.186.7",
+        "timestamp": "2025-11-09T03:48:36.633889281Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: d480ruug6tr7gn4bpck0ywantjnxjh4ir.oast.live' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.tarifs-bancaires.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/tls-sni-proxy.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-sni-proxy",
+      "template-id": "tls-sni-proxy",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/tls-sni-proxy.yaml",
+      "info": {
+        "name": "TLS SNI Proxy Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "misconfig",
+          "ssrf",
+          "oast",
+          "tls",
+          "sni",
+          "proxy",
+          "vuln"
+        ],
+        "reference": [
+          "https://www.invicti.com/blog/web-security/ssrf-vulnerabilities-caused-by-sni-proxy-misconfigurations/",
+          "https://www.bamsoftware.com/computers/sniproxy/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://www.tarifs-bancaires.gouv.fr",
+      "matched-at": "https://www.tarifs-bancaires.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.tarifs-bancaires.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.tarifs-bancaires.gouv.fr/\r\nSet-Cookie: visid_incap_3065003=j9VpZztGTt2X41r4krPykCUPEGkAAAAAQUIPAAAAAAB3iy9iCENcR7CWlJhmCRaK; expires=Sun, 08 Nov 2026 07:13:57 GMT; HttpOnly; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_344_3065003=y7njGm6qlVilOmQypCLGBCUPEGkAAAAAVKLUVtgNPgHS05V+hhWvDw==; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 15-63661566-0 0NNN RT(1762660134606 9) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-09T03:48:54.61807853Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d480ruug6tr7gn4bpck08b98xk6noun6d",
+        "full-id": "d480ruug6tr7gn4bpck08b98xk6noun6d",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 15828\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d480ruug6tr7gn4bpck08b98xk6noun6d.oast.live.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 15828\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d480ruug6tr7gn4bpck08b98xk6noun6d.oast.live.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd480ruug6tr7gn4bpck08b98xk6noun6d.oast.live.\t3600\tIN\tA\t178.128.210.172\n\n;; AUTHORITY SECTION:\nd480ruug6tr7gn4bpck08b98xk6noun6d.oast.live.\t3600\tIN\tNS\tns1.oast.live.\nd480ruug6tr7gn4bpck08b98xk6noun6d.oast.live.\t3600\tIN\tNS\tns2.oast.live.\n\n;; ADDITIONAL SECTION:\nns1.oast.live.\t3600\tIN\tA\t178.128.210.172\nns2.oast.live.\t3600\tIN\tA\t178.128.210.172\n",
+        "remote-address": "198.143.32.30",
+        "timestamp": "2025-11-09T03:48:49.019896608Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: www.tarifs-bancaires.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.tarifs-bancaires.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc",
+          "discovery"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "incapsula",
+      "type": "http",
+      "host": "https://www.tarifs-bancaires.gouv.fr",
+      "matched-at": "https://www.tarifs-bancaires.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: www.tarifs-bancaires.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.tarifs-bancaires.gouv.fr/\r\nSet-Cookie: visid_incap_3065003=9pz0ihYQTkaNjzNfWbYaHk4PEGkAAAAAQUIPAAAAAACcT53Zeu2OJTVqNHflqBOR; expires=Sun, 08 Nov 2026 07:13:57 GMT; HttpOnly; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_344_3065003=x0n8dTfisBWxTGQypCLGBE4PEGkAAAAA2cJ86Bh1itoyYpJ9r6Dymg==; path=/; Domain=.tarifs-bancaires.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 13-37868547-0 0NNN RT(1762660174946 8) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-09T03:49:34.965333792Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.tarifs-bancaires.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.tarifs-bancaires.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/vulnerabilities/generic/request-based-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/request-based-interaction",
+      "template-id": "request-based-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/vulnerabilities/generic/request-based-interaction.yaml",
+      "info": {
+        "name": "OOB Request Based Interaction",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "oast",
+          "ssrf",
+          "generic",
+          "vuln"
+        ],
+        "description": "The remote server fetched a spoofed DNS Name from the request.",
+        "reference": [
+          "https://portswigger.net/research/cracking-the-lens-targeting-https-hidden-attack-surface"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 5
+        }
+      },
+      "matcher-name": "dns",
+      "type": "http",
+      "host": "https://www.tarifs-bancaires.gouv.fr",
+      "matched-at": "https://www.tarifs-bancaires.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d480ruug6tr7gn4bpck0gaj17gg9n1hqc.oast.live\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 711\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1013-100984959-0 0NNN RT(1762660196655 7) q(0 -1 -1 -1) r(55 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1013-100984959-0%200NNN%20RT%281762660196655%207%29%20q%280%20-1%20-1%20-1%29%20r%2855%20-1%29&incident_id=0-550525124673932173&edet=22&cinfo=ffffffff&rpinfo=0&cip=64.236.145.82&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-550525124673932173</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-09T03:50:02.227538954Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d480ruug6tr7gn4bpck0gaj17gg9n1hqc",
+        "full-id": "d480ruug6tr7gn4bpck0gaj17gg9n1hqc",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 57314\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d480ruug6tr7gn4bpck0gaj17gg9n1hqc.oast.live.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 57314\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d480ruug6tr7gn4bpck0gaj17gg9n1hqc.oast.live.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd480ruug6tr7gn4bpck0gaj17gg9n1hqc.oast.live.\t3600\tIN\tA\t178.128.210.172\n\n;; AUTHORITY SECTION:\nd480ruug6tr7gn4bpck0gaj17gg9n1hqc.oast.live.\t3600\tIN\tNS\tns1.oast.live.\nd480ruug6tr7gn4bpck0gaj17gg9n1hqc.oast.live.\t3600\tIN\tNS\tns2.oast.live.\n\n;; ADDITIONAL SECTION:\nns1.oast.live.\t3600\tIN\tA\t178.128.210.172\nns2.oast.live.\t3600\tIN\tA\t178.128.210.172\n",
+        "remote-address": "198.143.32.30",
+        "timestamp": "2025-11-09T03:49:56.781969833Z"
+      },
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.tarifs-bancaires.gouv.fr",
+      "matched-at": "www.tarifs-bancaires.gouv.fr:443",
+      "extracted-results": [
+        "Gandi"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-09T03:52:36.529915957Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "vuln"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.tarifs-bancaires.gouv.fr",
+      "matched-at": "www.tarifs-bancaires.gouv.fr:443",
+      "extracted-results": [
+        "www.tarifs-bancaires.gouv.fr",
+        "tarifs-bancaires.gouv.fr"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-09T03:52:36.530103306Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.tarifs-bancaires.gouv.fr",
+      "matched-at": "www.tarifs-bancaires.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-09T03:52:38.982857379Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.tarifs-bancaires.gouv.fr",
+      "matched-at": "www.tarifs-bancaires.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-09T03:52:39.184792899Z",
+      "matcher-status": true
+    }
+  ]
+]
