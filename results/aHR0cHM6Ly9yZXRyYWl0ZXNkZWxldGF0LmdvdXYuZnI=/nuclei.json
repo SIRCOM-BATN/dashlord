@@ -1,0 +1,1327 @@
+[
+  [
+    {
+      "template": "dns/dmarc-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dmarc-detect",
+      "template-id": "dmarc-detect",
+      "template-path": "/home/runner/nuclei-templates/dns/dmarc-detect.yaml",
+      "info": {
+        "name": "DNS DMARC - Detect",
+        "author": [
+          "juliosmelo"
+        ],
+        "tags": [
+          "dns",
+          "dmarc",
+          "discovery"
+        ],
+        "description": "DNS DMARC information was detected.\n",
+        "reference": [
+          "https://dmarc.org/",
+          "https://dmarc.org/wiki/faq#why_is_dmarc_important.3f"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "dns",
+      "host": "retraitesdeletat.gouv.fr.",
+      "matched-at": "_dmarc.retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "\"v=DMARC1;p=reject;sp=reject;pct=100;aspf=s;fo=s;rua=mailto:rua@dgfip.finances.gouv.fr!5m;ruf=mailto:ruf@dgfip.finances.gouv.fr!5m\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 16367\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;_dmarc.retraitesdeletat.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 16367\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;_dmarc.retraitesdeletat.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\n_dmarc.retraitesdeletat.gouv.fr.\t3600\tIN\tTXT\t\"v=DMARC1;p=reject;sp=reject;pct=100;aspf=s;fo=s;rua=mailto:rua@dgfip.finances.gouv.fr!5m;ruf=mailto:ruf@dgfip.finances.gouv.fr!5m\"\n",
+      "timestamp": "2025-11-16T05:45:41.428083943Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/nameserver-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/nameserver-fingerprint",
+      "template-id": "nameserver-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/nameserver-fingerprint.yaml",
+      "info": {
+        "name": "NS Record Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "ns",
+          "discovery"
+        ],
+        "description": "An NS record was detected. An NS record delegates a subdomain to a set of name servers.",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "retraitesdeletat.gouv.fr.",
+      "matched-at": "retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "dns1.impots.gouv.fr.",
+        "dns2.impots.gouv.fr."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 8245\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;retraitesdeletat.gouv.fr.\tIN\t NS\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 8245\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;retraitesdeletat.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nretraitesdeletat.gouv.fr.\t3600\tIN\tNS\tdns1.impots.gouv.fr.\nretraitesdeletat.gouv.fr.\t3600\tIN\tNS\tdns2.impots.gouv.fr.\n",
+      "timestamp": "2025-11-16T05:45:41.4283148Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/spf-record-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/spf-record-detect",
+      "template-id": "spf-record-detect",
+      "template-path": "/home/runner/nuclei-templates/dns/spf-record-detect.yaml",
+      "info": {
+        "name": "SPF Record - Detection",
+        "author": [
+          "rxerium"
+        ],
+        "tags": [
+          "dns",
+          "spf",
+          "discovery"
+        ],
+        "description": "An SPF TXT record was detected\n",
+        "reference": [
+          "https://www.mimecast.com/content/how-to-create-an-spf-txt-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "retraitesdeletat.gouv.fr.",
+      "matched-at": "retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "v=spf1 -all\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 25440\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;retraitesdeletat.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 25440\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;retraitesdeletat.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nretraitesdeletat.gouv.fr.\t3600\tIN\tTXT\t\"v=spf1 -all\"\n",
+      "timestamp": "2025-11-16T05:45:41.428465814Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/txt-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/txt-fingerprint",
+      "template-id": "txt-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/txt-fingerprint.yaml",
+      "info": {
+        "name": "DNS TXT Record Detected",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "txt",
+          "discovery"
+        ],
+        "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
+        "reference": [
+          "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "retraitesdeletat.gouv.fr.",
+      "matched-at": "retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "\"v=spf1 -all\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 25440\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;retraitesdeletat.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 25440\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;retraitesdeletat.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nretraitesdeletat.gouv.fr.\t3600\tIN\tTXT\t\"v=spf1 -all\"\n",
+      "timestamp": "2025-11-16T05:45:41.428549776Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa",
+          "discovery"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "retraitesdeletat.gouv.fr.",
+      "matched-at": "retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "certigna.fr"
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 13369\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;retraitesdeletat.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 13369\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;retraitesdeletat.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nretraitesdeletat.gouv.fr.\t3600\tIN\tCAA\t0 issue \"certigna.fr\"\n",
+      "timestamp": "2025-11-16T05:45:41.505942142Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://retraitesdeletat.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3211280=vVPpCY97S+GHYMA2k/0LiQtlGWkAAAAAQUIPAAAAAABNqawfLigcZMpoa7ACPLlB; expires=Sun, 15 Nov 2026 10:01:14 GMT; HttpOnly; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None incap_ses_461_3211280=F8cIGKI3pAcGF78og81lBgtlGWkAAAAA4jS9VxkYZ/Hv8OaJnU6faQ==; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: retraitesdeletat.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://retraitesdeletat.gouv.fr/\r\nSet-Cookie: visid_incap_3211280=vVPpCY97S+GHYMA2k/0LiQtlGWkAAAAAQUIPAAAAAABNqawfLigcZMpoa7ACPLlB; expires=Sun, 15 Nov 2026 10:01:14 GMT; HttpOnly; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_461_3211280=F8cIGKI3pAcGF78og81lBgtlGWkAAAAA4jS9VxkYZ/Hv8OaJnU6faQ==; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000\r\nX-Iinfo: 16-38266019-0 0NNN RT(1763271947427 9) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-16T05:45:47.44372959Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://retraitesdeletat.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: retraitesdeletat.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://retraitesdeletat.gouv.fr/\r\nSet-Cookie: visid_incap_3211280=vVPpCY97S+GHYMA2k/0LiQtlGWkAAAAAQUIPAAAAAABNqawfLigcZMpoa7ACPLlB; expires=Sun, 15 Nov 2026 10:01:14 GMT; HttpOnly; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_461_3211280=F8cIGKI3pAcGF78og81lBgtlGWkAAAAA4jS9VxkYZ/Hv8OaJnU6faQ==; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000\r\nX-Iinfo: 16-38266019-0 0NNN RT(1763271947427 9) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-16T05:45:47.465904854Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://retraitesdeletat.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3211280=WcQzjMtNQhCkfTCa7ck0bAtlGWkAAAAAQUIPAAAAAAC14Id7Z2XMQlpQPzmCGY9d; expires=Sun, 15 Nov 2026 08:51:31 GMT; HttpOnly; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None incap_ses_261_3211280=AJyiBqupUBiNYkgZkEKfAwtlGWkAAAAABjuV3cMyInD2nnA6TAWO8A==; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: retraitesdeletat.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://retraitesdeletat.gouv.fr/\r\nSet-Cookie: visid_incap_3211280=WcQzjMtNQhCkfTCa7ck0bAtlGWkAAAAAQUIPAAAAAAC14Id7Z2XMQlpQPzmCGY9d; expires=Sun, 15 Nov 2026 08:51:31 GMT; HttpOnly; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_261_3211280=AJyiBqupUBiNYkgZkEKfAwtlGWkAAAAABjuV3cMyInD2nnA6TAWO8A==; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000\r\nX-Iinfo: 12-35190286-0 0NNN RT(1763271947413 6) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-16T05:45:47.939762534Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "visid_incap_3211280=piA5NQrcRVqcBeOqAwityQtlGWkAAAAAQUIPAAAAAACtVczetXon76/DQwfj7P8P; expires=Sun, 15 Nov 2026 09:59:14 GMT; HttpOnly; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None incap_ses_461_3211280=Gjn8bdKSWUz+Fr8og81lBgtlGWkAAAAA8oyyfS5WgiJcB0YKrhgYEw==; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: retraitesdeletat.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://retraitesdeletat.gouv.fr/\r\nSet-Cookie: visid_incap_3211280=piA5NQrcRVqcBeOqAwityQtlGWkAAAAAQUIPAAAAAACtVczetXon76/DQwfj7P8P; expires=Sun, 15 Nov 2026 09:59:14 GMT; HttpOnly; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_461_3211280=Gjn8bdKSWUz+Fr8og81lBgtlGWkAAAAA8oyyfS5WgiJcB0YKrhgYEw==; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000\r\nX-Iinfo: 14-23055162-0 0NNN RT(1763271947398 10) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-16T05:45:48.625004007Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://retraitesdeletat.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: retraitesdeletat.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://retraitesdeletat.gouv.fr/\r\nSet-Cookie: visid_incap_3211280=piA5NQrcRVqcBeOqAwityQtlGWkAAAAAQUIPAAAAAACtVczetXon76/DQwfj7P8P; expires=Sun, 15 Nov 2026 09:59:14 GMT; HttpOnly; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_461_3211280=Gjn8bdKSWUz+Fr8og81lBgtlGWkAAAAA8oyyfS5WgiJcB0YKrhgYEw==; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000\r\nX-Iinfo: 14-23055162-0 0NNN RT(1763271947398 10) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-16T05:45:48.647804189Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/rdap-whois.yaml",
+      "template-url": "https://templates.nuclei.sh/public/rdap-whois",
+      "template-id": "rdap-whois",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/rdap-whois.yaml",
+      "info": {
+        "name": "RDAP WHOIS",
+        "author": [
+          "ricardomaia",
+          "sttlr"
+        ],
+        "tags": [
+          "miscellaneous",
+          "whois",
+          "rdap",
+          "osint",
+          "misc",
+          "vuln"
+        ],
+        "description": "RDAP (Registration Data Access Protocol) is a standard defined by the IETF to replace the whois protocol\nin queries for information about Internet resource records such as domain names, IP addresses, and ASNs.\n",
+        "reference": [
+          "https://about.rdap.org/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "extractor-name": "registrantEmail",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "gestion.ndd@dgfip.finances.gouv.fr"
+      ],
+      "request": "GET /domain/retraitesdeletat.gouv.fr HTTP/1.1\r\nHost: www.rdap.net\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nContent-Disposition: inline;filename=f.txt\r\nContent-Type: application/rdap+json\r\nDate: Sun, 16 Nov 2025 05:49:15 GMT\r\nExpires: 0\r\nPragma: no-cache\r\nStrict-Transport-Security: max-age=17280000;includeSubDomains;preload\r\nVary: Origin\r\nVary: Access-Control-Request-Method\r\nVary: Access-Control-Request-Headers\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1;mode=block\r\n\r\n{\"rdapConformance\":[\"rdap_level_0\",\"icann_rdap_technical_implementation_guide_1\",\"icann_rdap_response_profile_1\"],\"objectClassName\":\"domain\",\"handle\":\"DOM000006206428-FRNIC\",\"ldhName\":\"retraitesdeletat.gouv.fr\",\"status\":[\"active\"],\"whoisStatus\":\"ACTIVE\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2015-08-17T12:25:10Z\"},{\"eventAction\":\"expiration\",\"eventDate\":\"2026-08-17T12:25:10Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-09-30T22:03:43.860423Z\"},{\"eventAction\":\"transfer\",\"eventDate\":\"2023-09-28T14:58:52.035716Z\"},{\"eventAction\":\"last update of RDAP database\",\"eventDate\":\"2025-11-16T05:49:15.929943894Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR202-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"433\"}],\"status\":[\"active\"],\"port43\":\"whois.ovh.com\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-10-18T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2022-10-01T11:40:48.761912Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"links\":[{\"href\":\"https://rdap.nic.fr/entity/{handle}\",\"value\":\"https://rdap.nic.fr/entity/{handle}\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Contact Abuse\"],[\"email\",{},\"text\",\"abuse@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"abuse\"]}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.320200958\"],[\"email\",{},\"text\",\"support@ovh.net\"],[\"url\",{},\"uri\",\"http://www.ovh.com\"],[\"adr\",{},\"text\",[\"\",\"\",\"2 Rue Kellermann\",\"ROUBAIX\",\"\",\"59100\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"CTC2134512-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2023-09-28T14:58:52.04611Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2024-03-27T13:10:50.672949Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Etat francais represente par DIRECTION GENERALE DES FINANCES PUBLIQUES\"],[\"org\",{},\"text\",\"DIRECTION GENERALE DES FINANCES PUBLIQ\"],[\"adr\",{},\"text\",[\"\",\"\",\"4, avenue Montaigne\",\"Noisy le Grand\",\"\",\"93468\",\"FR\"]],[\"email\",{},\"text\",\"gestion.ndd@dgfip.finances.gouv.fr\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.157336126\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.157336126\"]]],\"roles\":[\"registrant\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reach medium\",\"description\":[\"EMAIL\"]},{\"type\":\"reach date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"reach source\",\"description\":[\"REGISTRY\"]},{\"type\":\"reachable\",\"description\":[\"YES\"]},{\"type\":\"eligibility status\",\"description\":[\"OK\"]},{\"type\":\"eligibility source\",\"description\":[\"REGISTRY\"]},{\"type\":\"eligibility date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"OVH5-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-12-22T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-11-16T02:37:52.875258Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH NET\"],[\"org\",{},\"text\",\"\"],[\"adr\",{},\"text\",[\"\",\"\",[\"OVH\",\"140, quai du Sartel\"],\"Roubaix\",\"\",\"59100\",\"FR\"]],[\"email\",{},\"text\",\"tech@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"technical\",\"administrative\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reachable\",\"description\":[\"NO\"]},{\"type\":\"eligibility status\",\"description\":[\"NotIdentified\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]}],\"nameservers\":[{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123991-FRNIC\",\"ldhName\":\"dns1.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.11.22\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]},{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123992-FRNIC\",\"ldhName\":\"dns2.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.31.9\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"value\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"rel\":\"self\"}]}",
+      "ip": "64.176.191.126",
+      "timestamp": "2025-11-16T05:49:15.986269689Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.rdap.net/domain/retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/rdap-whois.yaml",
+      "template-url": "https://templates.nuclei.sh/public/rdap-whois",
+      "template-id": "rdap-whois",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/rdap-whois.yaml",
+      "info": {
+        "name": "RDAP WHOIS",
+        "author": [
+          "ricardomaia",
+          "sttlr"
+        ],
+        "tags": [
+          "miscellaneous",
+          "whois",
+          "rdap",
+          "osint",
+          "misc",
+          "vuln"
+        ],
+        "description": "RDAP (Registration Data Access Protocol) is a standard defined by the IETF to replace the whois protocol\nin queries for information about Internet resource records such as domain names, IP addresses, and ASNs.\n",
+        "reference": [
+          "https://about.rdap.org/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "extractor-name": "registrantPhone",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "tel:+33.157336126"
+      ],
+      "request": "GET /domain/retraitesdeletat.gouv.fr HTTP/1.1\r\nHost: www.rdap.net\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nContent-Disposition: inline;filename=f.txt\r\nContent-Type: application/rdap+json\r\nDate: Sun, 16 Nov 2025 05:49:15 GMT\r\nExpires: 0\r\nPragma: no-cache\r\nStrict-Transport-Security: max-age=17280000;includeSubDomains;preload\r\nVary: Origin\r\nVary: Access-Control-Request-Method\r\nVary: Access-Control-Request-Headers\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1;mode=block\r\n\r\n{\"rdapConformance\":[\"rdap_level_0\",\"icann_rdap_technical_implementation_guide_1\",\"icann_rdap_response_profile_1\"],\"objectClassName\":\"domain\",\"handle\":\"DOM000006206428-FRNIC\",\"ldhName\":\"retraitesdeletat.gouv.fr\",\"status\":[\"active\"],\"whoisStatus\":\"ACTIVE\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2015-08-17T12:25:10Z\"},{\"eventAction\":\"expiration\",\"eventDate\":\"2026-08-17T12:25:10Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-09-30T22:03:43.860423Z\"},{\"eventAction\":\"transfer\",\"eventDate\":\"2023-09-28T14:58:52.035716Z\"},{\"eventAction\":\"last update of RDAP database\",\"eventDate\":\"2025-11-16T05:49:15.929943894Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR202-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"433\"}],\"status\":[\"active\"],\"port43\":\"whois.ovh.com\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-10-18T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2022-10-01T11:40:48.761912Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"links\":[{\"href\":\"https://rdap.nic.fr/entity/{handle}\",\"value\":\"https://rdap.nic.fr/entity/{handle}\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Contact Abuse\"],[\"email\",{},\"text\",\"abuse@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"abuse\"]}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.320200958\"],[\"email\",{},\"text\",\"support@ovh.net\"],[\"url\",{},\"uri\",\"http://www.ovh.com\"],[\"adr\",{},\"text\",[\"\",\"\",\"2 Rue Kellermann\",\"ROUBAIX\",\"\",\"59100\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"CTC2134512-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2023-09-28T14:58:52.04611Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2024-03-27T13:10:50.672949Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Etat francais represente par DIRECTION GENERALE DES FINANCES PUBLIQUES\"],[\"org\",{},\"text\",\"DIRECTION GENERALE DES FINANCES PUBLIQ\"],[\"adr\",{},\"text\",[\"\",\"\",\"4, avenue Montaigne\",\"Noisy le Grand\",\"\",\"93468\",\"FR\"]],[\"email\",{},\"text\",\"gestion.ndd@dgfip.finances.gouv.fr\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.157336126\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.157336126\"]]],\"roles\":[\"registrant\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reach medium\",\"description\":[\"EMAIL\"]},{\"type\":\"reach date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"reach source\",\"description\":[\"REGISTRY\"]},{\"type\":\"reachable\",\"description\":[\"YES\"]},{\"type\":\"eligibility status\",\"description\":[\"OK\"]},{\"type\":\"eligibility source\",\"description\":[\"REGISTRY\"]},{\"type\":\"eligibility date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"OVH5-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-12-22T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-11-16T02:37:52.875258Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH NET\"],[\"org\",{},\"text\",\"\"],[\"adr\",{},\"text\",[\"\",\"\",[\"OVH\",\"140, quai du Sartel\"],\"Roubaix\",\"\",\"59100\",\"FR\"]],[\"email\",{},\"text\",\"tech@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"technical\",\"administrative\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reachable\",\"description\":[\"NO\"]},{\"type\":\"eligibility status\",\"description\":[\"NotIdentified\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]}],\"nameservers\":[{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123991-FRNIC\",\"ldhName\":\"dns1.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.11.22\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]},{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123992-FRNIC\",\"ldhName\":\"dns2.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.31.9\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"value\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"rel\":\"self\"}]}",
+      "ip": "64.176.191.126",
+      "timestamp": "2025-11-16T05:49:15.986340064Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.rdap.net/domain/retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/rdap-whois.yaml",
+      "template-url": "https://templates.nuclei.sh/public/rdap-whois",
+      "template-id": "rdap-whois",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/rdap-whois.yaml",
+      "info": {
+        "name": "RDAP WHOIS",
+        "author": [
+          "ricardomaia",
+          "sttlr"
+        ],
+        "tags": [
+          "miscellaneous",
+          "whois",
+          "rdap",
+          "osint",
+          "misc",
+          "vuln"
+        ],
+        "description": "RDAP (Registration Data Access Protocol) is a standard defined by the IETF to replace the whois protocol\nin queries for information about Internet resource records such as domain names, IP addresses, and ASNs.\n",
+        "reference": [
+          "https://about.rdap.org/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "extractor-name": "secureDNS",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "false"
+      ],
+      "request": "GET /domain/retraitesdeletat.gouv.fr HTTP/1.1\r\nHost: www.rdap.net\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nContent-Disposition: inline;filename=f.txt\r\nContent-Type: application/rdap+json\r\nDate: Sun, 16 Nov 2025 05:49:15 GMT\r\nExpires: 0\r\nPragma: no-cache\r\nStrict-Transport-Security: max-age=17280000;includeSubDomains;preload\r\nVary: Origin\r\nVary: Access-Control-Request-Method\r\nVary: Access-Control-Request-Headers\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1;mode=block\r\n\r\n{\"rdapConformance\":[\"rdap_level_0\",\"icann_rdap_technical_implementation_guide_1\",\"icann_rdap_response_profile_1\"],\"objectClassName\":\"domain\",\"handle\":\"DOM000006206428-FRNIC\",\"ldhName\":\"retraitesdeletat.gouv.fr\",\"status\":[\"active\"],\"whoisStatus\":\"ACTIVE\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2015-08-17T12:25:10Z\"},{\"eventAction\":\"expiration\",\"eventDate\":\"2026-08-17T12:25:10Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-09-30T22:03:43.860423Z\"},{\"eventAction\":\"transfer\",\"eventDate\":\"2023-09-28T14:58:52.035716Z\"},{\"eventAction\":\"last update of RDAP database\",\"eventDate\":\"2025-11-16T05:49:15.929943894Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR202-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"433\"}],\"status\":[\"active\"],\"port43\":\"whois.ovh.com\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-10-18T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2022-10-01T11:40:48.761912Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"links\":[{\"href\":\"https://rdap.nic.fr/entity/{handle}\",\"value\":\"https://rdap.nic.fr/entity/{handle}\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Contact Abuse\"],[\"email\",{},\"text\",\"abuse@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"abuse\"]}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.320200958\"],[\"email\",{},\"text\",\"support@ovh.net\"],[\"url\",{},\"uri\",\"http://www.ovh.com\"],[\"adr\",{},\"text\",[\"\",\"\",\"2 Rue Kellermann\",\"ROUBAIX\",\"\",\"59100\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"CTC2134512-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2023-09-28T14:58:52.04611Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2024-03-27T13:10:50.672949Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Etat francais represente par DIRECTION GENERALE DES FINANCES PUBLIQUES\"],[\"org\",{},\"text\",\"DIRECTION GENERALE DES FINANCES PUBLIQ\"],[\"adr\",{},\"text\",[\"\",\"\",\"4, avenue Montaigne\",\"Noisy le Grand\",\"\",\"93468\",\"FR\"]],[\"email\",{},\"text\",\"gestion.ndd@dgfip.finances.gouv.fr\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.157336126\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.157336126\"]]],\"roles\":[\"registrant\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reach medium\",\"description\":[\"EMAIL\"]},{\"type\":\"reach date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"reach source\",\"description\":[\"REGISTRY\"]},{\"type\":\"reachable\",\"description\":[\"YES\"]},{\"type\":\"eligibility status\",\"description\":[\"OK\"]},{\"type\":\"eligibility source\",\"description\":[\"REGISTRY\"]},{\"type\":\"eligibility date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"OVH5-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-12-22T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-11-16T02:37:52.875258Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH NET\"],[\"org\",{},\"text\",\"\"],[\"adr\",{},\"text\",[\"\",\"\",[\"OVH\",\"140, quai du Sartel\"],\"Roubaix\",\"\",\"59100\",\"FR\"]],[\"email\",{},\"text\",\"tech@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"technical\",\"administrative\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reachable\",\"description\":[\"NO\"]},{\"type\":\"eligibility status\",\"description\":[\"NotIdentified\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]}],\"nameservers\":[{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123991-FRNIC\",\"ldhName\":\"dns1.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.11.22\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]},{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123992-FRNIC\",\"ldhName\":\"dns2.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.31.9\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"value\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"rel\":\"self\"}]}",
+      "ip": "64.176.191.126",
+      "timestamp": "2025-11-16T05:49:15.98635154Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.rdap.net/domain/retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/rdap-whois.yaml",
+      "template-url": "https://templates.nuclei.sh/public/rdap-whois",
+      "template-id": "rdap-whois",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/rdap-whois.yaml",
+      "info": {
+        "name": "RDAP WHOIS",
+        "author": [
+          "ricardomaia",
+          "sttlr"
+        ],
+        "tags": [
+          "miscellaneous",
+          "whois",
+          "rdap",
+          "osint",
+          "misc",
+          "vuln"
+        ],
+        "description": "RDAP (Registration Data Access Protocol) is a standard defined by the IETF to replace the whois protocol\nin queries for information about Internet resource records such as domain names, IP addresses, and ASNs.\n",
+        "reference": [
+          "https://about.rdap.org/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "extractor-name": "registrantName",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "Etat francais represente par DIRECTION GENERALE DES FINANCES PUBLIQUES"
+      ],
+      "request": "GET /domain/retraitesdeletat.gouv.fr HTTP/1.1\r\nHost: www.rdap.net\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nContent-Disposition: inline;filename=f.txt\r\nContent-Type: application/rdap+json\r\nDate: Sun, 16 Nov 2025 05:49:15 GMT\r\nExpires: 0\r\nPragma: no-cache\r\nStrict-Transport-Security: max-age=17280000;includeSubDomains;preload\r\nVary: Origin\r\nVary: Access-Control-Request-Method\r\nVary: Access-Control-Request-Headers\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1;mode=block\r\n\r\n{\"rdapConformance\":[\"rdap_level_0\",\"icann_rdap_technical_implementation_guide_1\",\"icann_rdap_response_profile_1\"],\"objectClassName\":\"domain\",\"handle\":\"DOM000006206428-FRNIC\",\"ldhName\":\"retraitesdeletat.gouv.fr\",\"status\":[\"active\"],\"whoisStatus\":\"ACTIVE\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2015-08-17T12:25:10Z\"},{\"eventAction\":\"expiration\",\"eventDate\":\"2026-08-17T12:25:10Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-09-30T22:03:43.860423Z\"},{\"eventAction\":\"transfer\",\"eventDate\":\"2023-09-28T14:58:52.035716Z\"},{\"eventAction\":\"last update of RDAP database\",\"eventDate\":\"2025-11-16T05:49:15.929943894Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR202-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"433\"}],\"status\":[\"active\"],\"port43\":\"whois.ovh.com\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-10-18T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2022-10-01T11:40:48.761912Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"links\":[{\"href\":\"https://rdap.nic.fr/entity/{handle}\",\"value\":\"https://rdap.nic.fr/entity/{handle}\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Contact Abuse\"],[\"email\",{},\"text\",\"abuse@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"abuse\"]}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.320200958\"],[\"email\",{},\"text\",\"support@ovh.net\"],[\"url\",{},\"uri\",\"http://www.ovh.com\"],[\"adr\",{},\"text\",[\"\",\"\",\"2 Rue Kellermann\",\"ROUBAIX\",\"\",\"59100\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"CTC2134512-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2023-09-28T14:58:52.04611Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2024-03-27T13:10:50.672949Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Etat francais represente par DIRECTION GENERALE DES FINANCES PUBLIQUES\"],[\"org\",{},\"text\",\"DIRECTION GENERALE DES FINANCES PUBLIQ\"],[\"adr\",{},\"text\",[\"\",\"\",\"4, avenue Montaigne\",\"Noisy le Grand\",\"\",\"93468\",\"FR\"]],[\"email\",{},\"text\",\"gestion.ndd@dgfip.finances.gouv.fr\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.157336126\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.157336126\"]]],\"roles\":[\"registrant\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reach medium\",\"description\":[\"EMAIL\"]},{\"type\":\"reach date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"reach source\",\"description\":[\"REGISTRY\"]},{\"type\":\"reachable\",\"description\":[\"YES\"]},{\"type\":\"eligibility status\",\"description\":[\"OK\"]},{\"type\":\"eligibility source\",\"description\":[\"REGISTRY\"]},{\"type\":\"eligibility date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"OVH5-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-12-22T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-11-16T02:37:52.875258Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH NET\"],[\"org\",{},\"text\",\"\"],[\"adr\",{},\"text\",[\"\",\"\",[\"OVH\",\"140, quai du Sartel\"],\"Roubaix\",\"\",\"59100\",\"FR\"]],[\"email\",{},\"text\",\"tech@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"technical\",\"administrative\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reachable\",\"description\":[\"NO\"]},{\"type\":\"eligibility status\",\"description\":[\"NotIdentified\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]}],\"nameservers\":[{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123991-FRNIC\",\"ldhName\":\"dns1.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.11.22\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]},{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123992-FRNIC\",\"ldhName\":\"dns2.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.31.9\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"value\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"rel\":\"self\"}]}",
+      "ip": "64.176.191.126",
+      "timestamp": "2025-11-16T05:49:15.98636226Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.rdap.net/domain/retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/rdap-whois.yaml",
+      "template-url": "https://templates.nuclei.sh/public/rdap-whois",
+      "template-id": "rdap-whois",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/rdap-whois.yaml",
+      "info": {
+        "name": "RDAP WHOIS",
+        "author": [
+          "ricardomaia",
+          "sttlr"
+        ],
+        "tags": [
+          "miscellaneous",
+          "whois",
+          "rdap",
+          "osint",
+          "misc",
+          "vuln"
+        ],
+        "description": "RDAP (Registration Data Access Protocol) is a standard defined by the IETF to replace the whois protocol\nin queries for information about Internet resource records such as domain names, IP addresses, and ASNs.\n",
+        "reference": [
+          "https://about.rdap.org/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "extractor-name": "registrantOrg",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "DIRECTION GENERALE DES FINANCES PUBLIQ"
+      ],
+      "request": "GET /domain/retraitesdeletat.gouv.fr HTTP/1.1\r\nHost: www.rdap.net\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nContent-Disposition: inline;filename=f.txt\r\nContent-Type: application/rdap+json\r\nDate: Sun, 16 Nov 2025 05:49:15 GMT\r\nExpires: 0\r\nPragma: no-cache\r\nStrict-Transport-Security: max-age=17280000;includeSubDomains;preload\r\nVary: Origin\r\nVary: Access-Control-Request-Method\r\nVary: Access-Control-Request-Headers\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1;mode=block\r\n\r\n{\"rdapConformance\":[\"rdap_level_0\",\"icann_rdap_technical_implementation_guide_1\",\"icann_rdap_response_profile_1\"],\"objectClassName\":\"domain\",\"handle\":\"DOM000006206428-FRNIC\",\"ldhName\":\"retraitesdeletat.gouv.fr\",\"status\":[\"active\"],\"whoisStatus\":\"ACTIVE\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2015-08-17T12:25:10Z\"},{\"eventAction\":\"expiration\",\"eventDate\":\"2026-08-17T12:25:10Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-09-30T22:03:43.860423Z\"},{\"eventAction\":\"transfer\",\"eventDate\":\"2023-09-28T14:58:52.035716Z\"},{\"eventAction\":\"last update of RDAP database\",\"eventDate\":\"2025-11-16T05:49:15.929943894Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR202-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"433\"}],\"status\":[\"active\"],\"port43\":\"whois.ovh.com\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-10-18T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2022-10-01T11:40:48.761912Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"links\":[{\"href\":\"https://rdap.nic.fr/entity/{handle}\",\"value\":\"https://rdap.nic.fr/entity/{handle}\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Contact Abuse\"],[\"email\",{},\"text\",\"abuse@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"abuse\"]}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.320200958\"],[\"email\",{},\"text\",\"support@ovh.net\"],[\"url\",{},\"uri\",\"http://www.ovh.com\"],[\"adr\",{},\"text\",[\"\",\"\",\"2 Rue Kellermann\",\"ROUBAIX\",\"\",\"59100\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"CTC2134512-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2023-09-28T14:58:52.04611Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2024-03-27T13:10:50.672949Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Etat francais represente par DIRECTION GENERALE DES FINANCES PUBLIQUES\"],[\"org\",{},\"text\",\"DIRECTION GENERALE DES FINANCES PUBLIQ\"],[\"adr\",{},\"text\",[\"\",\"\",\"4, avenue Montaigne\",\"Noisy le Grand\",\"\",\"93468\",\"FR\"]],[\"email\",{},\"text\",\"gestion.ndd@dgfip.finances.gouv.fr\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.157336126\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.157336126\"]]],\"roles\":[\"registrant\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reach medium\",\"description\":[\"EMAIL\"]},{\"type\":\"reach date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"reach source\",\"description\":[\"REGISTRY\"]},{\"type\":\"reachable\",\"description\":[\"YES\"]},{\"type\":\"eligibility status\",\"description\":[\"OK\"]},{\"type\":\"eligibility source\",\"description\":[\"REGISTRY\"]},{\"type\":\"eligibility date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"OVH5-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-12-22T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-11-16T02:37:52.875258Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH NET\"],[\"org\",{},\"text\",\"\"],[\"adr\",{},\"text\",[\"\",\"\",[\"OVH\",\"140, quai du Sartel\"],\"Roubaix\",\"\",\"59100\",\"FR\"]],[\"email\",{},\"text\",\"tech@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"technical\",\"administrative\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reachable\",\"description\":[\"NO\"]},{\"type\":\"eligibility status\",\"description\":[\"NotIdentified\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]}],\"nameservers\":[{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123991-FRNIC\",\"ldhName\":\"dns1.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.11.22\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]},{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123992-FRNIC\",\"ldhName\":\"dns2.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.31.9\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"value\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"rel\":\"self\"}]}",
+      "ip": "64.176.191.126",
+      "timestamp": "2025-11-16T05:49:15.986372368Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.rdap.net/domain/retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/rdap-whois.yaml",
+      "template-url": "https://templates.nuclei.sh/public/rdap-whois",
+      "template-id": "rdap-whois",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/rdap-whois.yaml",
+      "info": {
+        "name": "RDAP WHOIS",
+        "author": [
+          "ricardomaia",
+          "sttlr"
+        ],
+        "tags": [
+          "miscellaneous",
+          "whois",
+          "rdap",
+          "osint",
+          "misc",
+          "vuln"
+        ],
+        "description": "RDAP (Registration Data Access Protocol) is a standard defined by the IETF to replace the whois protocol\nin queries for information about Internet resource records such as domain names, IP addresses, and ASNs.\n",
+        "reference": [
+          "https://about.rdap.org/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "extractor-name": "lastChangeDate",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "2025-09-30T22:03:43.860423Z"
+      ],
+      "request": "GET /domain/retraitesdeletat.gouv.fr HTTP/1.1\r\nHost: www.rdap.net\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nContent-Disposition: inline;filename=f.txt\r\nContent-Type: application/rdap+json\r\nDate: Sun, 16 Nov 2025 05:49:15 GMT\r\nExpires: 0\r\nPragma: no-cache\r\nStrict-Transport-Security: max-age=17280000;includeSubDomains;preload\r\nVary: Origin\r\nVary: Access-Control-Request-Method\r\nVary: Access-Control-Request-Headers\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1;mode=block\r\n\r\n{\"rdapConformance\":[\"rdap_level_0\",\"icann_rdap_technical_implementation_guide_1\",\"icann_rdap_response_profile_1\"],\"objectClassName\":\"domain\",\"handle\":\"DOM000006206428-FRNIC\",\"ldhName\":\"retraitesdeletat.gouv.fr\",\"status\":[\"active\"],\"whoisStatus\":\"ACTIVE\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2015-08-17T12:25:10Z\"},{\"eventAction\":\"expiration\",\"eventDate\":\"2026-08-17T12:25:10Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-09-30T22:03:43.860423Z\"},{\"eventAction\":\"transfer\",\"eventDate\":\"2023-09-28T14:58:52.035716Z\"},{\"eventAction\":\"last update of RDAP database\",\"eventDate\":\"2025-11-16T05:49:15.929943894Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR202-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"433\"}],\"status\":[\"active\"],\"port43\":\"whois.ovh.com\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-10-18T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2022-10-01T11:40:48.761912Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"links\":[{\"href\":\"https://rdap.nic.fr/entity/{handle}\",\"value\":\"https://rdap.nic.fr/entity/{handle}\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Contact Abuse\"],[\"email\",{},\"text\",\"abuse@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"abuse\"]}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.320200958\"],[\"email\",{},\"text\",\"support@ovh.net\"],[\"url\",{},\"uri\",\"http://www.ovh.com\"],[\"adr\",{},\"text\",[\"\",\"\",\"2 Rue Kellermann\",\"ROUBAIX\",\"\",\"59100\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"CTC2134512-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2023-09-28T14:58:52.04611Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2024-03-27T13:10:50.672949Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Etat francais represente par DIRECTION GENERALE DES FINANCES PUBLIQUES\"],[\"org\",{},\"text\",\"DIRECTION GENERALE DES FINANCES PUBLIQ\"],[\"adr\",{},\"text\",[\"\",\"\",\"4, avenue Montaigne\",\"Noisy le Grand\",\"\",\"93468\",\"FR\"]],[\"email\",{},\"text\",\"gestion.ndd@dgfip.finances.gouv.fr\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.157336126\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.157336126\"]]],\"roles\":[\"registrant\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reach medium\",\"description\":[\"EMAIL\"]},{\"type\":\"reach date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"reach source\",\"description\":[\"REGISTRY\"]},{\"type\":\"reachable\",\"description\":[\"YES\"]},{\"type\":\"eligibility status\",\"description\":[\"OK\"]},{\"type\":\"eligibility source\",\"description\":[\"REGISTRY\"]},{\"type\":\"eligibility date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"OVH5-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-12-22T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-11-16T02:37:52.875258Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH NET\"],[\"org\",{},\"text\",\"\"],[\"adr\",{},\"text\",[\"\",\"\",[\"OVH\",\"140, quai du Sartel\"],\"Roubaix\",\"\",\"59100\",\"FR\"]],[\"email\",{},\"text\",\"tech@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"technical\",\"administrative\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reachable\",\"description\":[\"NO\"]},{\"type\":\"eligibility status\",\"description\":[\"NotIdentified\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]}],\"nameservers\":[{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123991-FRNIC\",\"ldhName\":\"dns1.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.11.22\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]},{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123992-FRNIC\",\"ldhName\":\"dns2.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.31.9\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"value\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"rel\":\"self\"}]}",
+      "ip": "64.176.191.126",
+      "timestamp": "2025-11-16T05:49:15.98638637Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.rdap.net/domain/retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/rdap-whois.yaml",
+      "template-url": "https://templates.nuclei.sh/public/rdap-whois",
+      "template-id": "rdap-whois",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/rdap-whois.yaml",
+      "info": {
+        "name": "RDAP WHOIS",
+        "author": [
+          "ricardomaia",
+          "sttlr"
+        ],
+        "tags": [
+          "miscellaneous",
+          "whois",
+          "rdap",
+          "osint",
+          "misc",
+          "vuln"
+        ],
+        "description": "RDAP (Registration Data Access Protocol) is a standard defined by the IETF to replace the whois protocol\nin queries for information about Internet resource records such as domain names, IP addresses, and ASNs.\n",
+        "reference": [
+          "https://about.rdap.org/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "extractor-name": "expirationDate",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "2026-08-17T12:25:10Z"
+      ],
+      "request": "GET /domain/retraitesdeletat.gouv.fr HTTP/1.1\r\nHost: www.rdap.net\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nContent-Disposition: inline;filename=f.txt\r\nContent-Type: application/rdap+json\r\nDate: Sun, 16 Nov 2025 05:49:15 GMT\r\nExpires: 0\r\nPragma: no-cache\r\nStrict-Transport-Security: max-age=17280000;includeSubDomains;preload\r\nVary: Origin\r\nVary: Access-Control-Request-Method\r\nVary: Access-Control-Request-Headers\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1;mode=block\r\n\r\n{\"rdapConformance\":[\"rdap_level_0\",\"icann_rdap_technical_implementation_guide_1\",\"icann_rdap_response_profile_1\"],\"objectClassName\":\"domain\",\"handle\":\"DOM000006206428-FRNIC\",\"ldhName\":\"retraitesdeletat.gouv.fr\",\"status\":[\"active\"],\"whoisStatus\":\"ACTIVE\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2015-08-17T12:25:10Z\"},{\"eventAction\":\"expiration\",\"eventDate\":\"2026-08-17T12:25:10Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-09-30T22:03:43.860423Z\"},{\"eventAction\":\"transfer\",\"eventDate\":\"2023-09-28T14:58:52.035716Z\"},{\"eventAction\":\"last update of RDAP database\",\"eventDate\":\"2025-11-16T05:49:15.929943894Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR202-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"433\"}],\"status\":[\"active\"],\"port43\":\"whois.ovh.com\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-10-18T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2022-10-01T11:40:48.761912Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"links\":[{\"href\":\"https://rdap.nic.fr/entity/{handle}\",\"value\":\"https://rdap.nic.fr/entity/{handle}\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Contact Abuse\"],[\"email\",{},\"text\",\"abuse@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"abuse\"]}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.320200958\"],[\"email\",{},\"text\",\"support@ovh.net\"],[\"url\",{},\"uri\",\"http://www.ovh.com\"],[\"adr\",{},\"text\",[\"\",\"\",\"2 Rue Kellermann\",\"ROUBAIX\",\"\",\"59100\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"CTC2134512-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2023-09-28T14:58:52.04611Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2024-03-27T13:10:50.672949Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Etat francais represente par DIRECTION GENERALE DES FINANCES PUBLIQUES\"],[\"org\",{},\"text\",\"DIRECTION GENERALE DES FINANCES PUBLIQ\"],[\"adr\",{},\"text\",[\"\",\"\",\"4, avenue Montaigne\",\"Noisy le Grand\",\"\",\"93468\",\"FR\"]],[\"email\",{},\"text\",\"gestion.ndd@dgfip.finances.gouv.fr\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.157336126\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.157336126\"]]],\"roles\":[\"registrant\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reach medium\",\"description\":[\"EMAIL\"]},{\"type\":\"reach date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"reach source\",\"description\":[\"REGISTRY\"]},{\"type\":\"reachable\",\"description\":[\"YES\"]},{\"type\":\"eligibility status\",\"description\":[\"OK\"]},{\"type\":\"eligibility source\",\"description\":[\"REGISTRY\"]},{\"type\":\"eligibility date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"OVH5-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-12-22T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-11-16T02:37:52.875258Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH NET\"],[\"org\",{},\"text\",\"\"],[\"adr\",{},\"text\",[\"\",\"\",[\"OVH\",\"140, quai du Sartel\"],\"Roubaix\",\"\",\"59100\",\"FR\"]],[\"email\",{},\"text\",\"tech@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"technical\",\"administrative\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reachable\",\"description\":[\"NO\"]},{\"type\":\"eligibility status\",\"description\":[\"NotIdentified\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]}],\"nameservers\":[{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123991-FRNIC\",\"ldhName\":\"dns1.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.11.22\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]},{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123992-FRNIC\",\"ldhName\":\"dns2.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.31.9\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"value\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"rel\":\"self\"}]}",
+      "ip": "64.176.191.126",
+      "timestamp": "2025-11-16T05:49:15.986395315Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.rdap.net/domain/retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/rdap-whois.yaml",
+      "template-url": "https://templates.nuclei.sh/public/rdap-whois",
+      "template-id": "rdap-whois",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/rdap-whois.yaml",
+      "info": {
+        "name": "RDAP WHOIS",
+        "author": [
+          "ricardomaia",
+          "sttlr"
+        ],
+        "tags": [
+          "miscellaneous",
+          "whois",
+          "rdap",
+          "osint",
+          "misc",
+          "vuln"
+        ],
+        "description": "RDAP (Registration Data Access Protocol) is a standard defined by the IETF to replace the whois protocol\nin queries for information about Internet resource records such as domain names, IP addresses, and ASNs.\n",
+        "reference": [
+          "https://about.rdap.org/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "extractor-name": "registrantAddress",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "4, avenue Montaigne",
+        "Noisy le Grand",
+        "93468",
+        "FR"
+      ],
+      "request": "GET /domain/retraitesdeletat.gouv.fr HTTP/1.1\r\nHost: www.rdap.net\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nContent-Disposition: inline;filename=f.txt\r\nContent-Type: application/rdap+json\r\nDate: Sun, 16 Nov 2025 05:49:15 GMT\r\nExpires: 0\r\nPragma: no-cache\r\nStrict-Transport-Security: max-age=17280000;includeSubDomains;preload\r\nVary: Origin\r\nVary: Access-Control-Request-Method\r\nVary: Access-Control-Request-Headers\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1;mode=block\r\n\r\n{\"rdapConformance\":[\"rdap_level_0\",\"icann_rdap_technical_implementation_guide_1\",\"icann_rdap_response_profile_1\"],\"objectClassName\":\"domain\",\"handle\":\"DOM000006206428-FRNIC\",\"ldhName\":\"retraitesdeletat.gouv.fr\",\"status\":[\"active\"],\"whoisStatus\":\"ACTIVE\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2015-08-17T12:25:10Z\"},{\"eventAction\":\"expiration\",\"eventDate\":\"2026-08-17T12:25:10Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-09-30T22:03:43.860423Z\"},{\"eventAction\":\"transfer\",\"eventDate\":\"2023-09-28T14:58:52.035716Z\"},{\"eventAction\":\"last update of RDAP database\",\"eventDate\":\"2025-11-16T05:49:15.929943894Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR202-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"433\"}],\"status\":[\"active\"],\"port43\":\"whois.ovh.com\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-10-18T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2022-10-01T11:40:48.761912Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"links\":[{\"href\":\"https://rdap.nic.fr/entity/{handle}\",\"value\":\"https://rdap.nic.fr/entity/{handle}\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Contact Abuse\"],[\"email\",{},\"text\",\"abuse@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"abuse\"]}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.320200958\"],[\"email\",{},\"text\",\"support@ovh.net\"],[\"url\",{},\"uri\",\"http://www.ovh.com\"],[\"adr\",{},\"text\",[\"\",\"\",\"2 Rue Kellermann\",\"ROUBAIX\",\"\",\"59100\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"CTC2134512-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2023-09-28T14:58:52.04611Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2024-03-27T13:10:50.672949Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Etat francais represente par DIRECTION GENERALE DES FINANCES PUBLIQUES\"],[\"org\",{},\"text\",\"DIRECTION GENERALE DES FINANCES PUBLIQ\"],[\"adr\",{},\"text\",[\"\",\"\",\"4, avenue Montaigne\",\"Noisy le Grand\",\"\",\"93468\",\"FR\"]],[\"email\",{},\"text\",\"gestion.ndd@dgfip.finances.gouv.fr\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.157336126\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.157336126\"]]],\"roles\":[\"registrant\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reach medium\",\"description\":[\"EMAIL\"]},{\"type\":\"reach date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"reach source\",\"description\":[\"REGISTRY\"]},{\"type\":\"reachable\",\"description\":[\"YES\"]},{\"type\":\"eligibility status\",\"description\":[\"OK\"]},{\"type\":\"eligibility source\",\"description\":[\"REGISTRY\"]},{\"type\":\"eligibility date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"OVH5-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-12-22T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-11-16T02:37:52.875258Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH NET\"],[\"org\",{},\"text\",\"\"],[\"adr\",{},\"text\",[\"\",\"\",[\"OVH\",\"140, quai du Sartel\"],\"Roubaix\",\"\",\"59100\",\"FR\"]],[\"email\",{},\"text\",\"tech@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"technical\",\"administrative\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reachable\",\"description\":[\"NO\"]},{\"type\":\"eligibility status\",\"description\":[\"NotIdentified\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]}],\"nameservers\":[{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123991-FRNIC\",\"ldhName\":\"dns1.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.11.22\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]},{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123992-FRNIC\",\"ldhName\":\"dns2.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.31.9\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"value\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"rel\":\"self\"}]}",
+      "ip": "64.176.191.126",
+      "timestamp": "2025-11-16T05:49:15.986406123Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.rdap.net/domain/retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/rdap-whois.yaml",
+      "template-url": "https://templates.nuclei.sh/public/rdap-whois",
+      "template-id": "rdap-whois",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/rdap-whois.yaml",
+      "info": {
+        "name": "RDAP WHOIS",
+        "author": [
+          "ricardomaia",
+          "sttlr"
+        ],
+        "tags": [
+          "miscellaneous",
+          "whois",
+          "rdap",
+          "osint",
+          "misc",
+          "vuln"
+        ],
+        "description": "RDAP (Registration Data Access Protocol) is a standard defined by the IETF to replace the whois protocol\nin queries for information about Internet resource records such as domain names, IP addresses, and ASNs.\n",
+        "reference": [
+          "https://about.rdap.org/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "extractor-name": "registrantCountry",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "FR"
+      ],
+      "request": "GET /domain/retraitesdeletat.gouv.fr HTTP/1.1\r\nHost: www.rdap.net\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nContent-Disposition: inline;filename=f.txt\r\nContent-Type: application/rdap+json\r\nDate: Sun, 16 Nov 2025 05:49:15 GMT\r\nExpires: 0\r\nPragma: no-cache\r\nStrict-Transport-Security: max-age=17280000;includeSubDomains;preload\r\nVary: Origin\r\nVary: Access-Control-Request-Method\r\nVary: Access-Control-Request-Headers\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1;mode=block\r\n\r\n{\"rdapConformance\":[\"rdap_level_0\",\"icann_rdap_technical_implementation_guide_1\",\"icann_rdap_response_profile_1\"],\"objectClassName\":\"domain\",\"handle\":\"DOM000006206428-FRNIC\",\"ldhName\":\"retraitesdeletat.gouv.fr\",\"status\":[\"active\"],\"whoisStatus\":\"ACTIVE\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2015-08-17T12:25:10Z\"},{\"eventAction\":\"expiration\",\"eventDate\":\"2026-08-17T12:25:10Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-09-30T22:03:43.860423Z\"},{\"eventAction\":\"transfer\",\"eventDate\":\"2023-09-28T14:58:52.035716Z\"},{\"eventAction\":\"last update of RDAP database\",\"eventDate\":\"2025-11-16T05:49:15.929943894Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR202-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"433\"}],\"status\":[\"active\"],\"port43\":\"whois.ovh.com\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-10-18T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2022-10-01T11:40:48.761912Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"links\":[{\"href\":\"https://rdap.nic.fr/entity/{handle}\",\"value\":\"https://rdap.nic.fr/entity/{handle}\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Contact Abuse\"],[\"email\",{},\"text\",\"abuse@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"abuse\"]}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.320200958\"],[\"email\",{},\"text\",\"support@ovh.net\"],[\"url\",{},\"uri\",\"http://www.ovh.com\"],[\"adr\",{},\"text\",[\"\",\"\",\"2 Rue Kellermann\",\"ROUBAIX\",\"\",\"59100\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"CTC2134512-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2023-09-28T14:58:52.04611Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2024-03-27T13:10:50.672949Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Etat francais represente par DIRECTION GENERALE DES FINANCES PUBLIQUES\"],[\"org\",{},\"text\",\"DIRECTION GENERALE DES FINANCES PUBLIQ\"],[\"adr\",{},\"text\",[\"\",\"\",\"4, avenue Montaigne\",\"Noisy le Grand\",\"\",\"93468\",\"FR\"]],[\"email\",{},\"text\",\"gestion.ndd@dgfip.finances.gouv.fr\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.157336126\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.157336126\"]]],\"roles\":[\"registrant\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reach medium\",\"description\":[\"EMAIL\"]},{\"type\":\"reach date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"reach source\",\"description\":[\"REGISTRY\"]},{\"type\":\"reachable\",\"description\":[\"YES\"]},{\"type\":\"eligibility status\",\"description\":[\"OK\"]},{\"type\":\"eligibility source\",\"description\":[\"REGISTRY\"]},{\"type\":\"eligibility date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"OVH5-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-12-22T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-11-16T02:37:52.875258Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH NET\"],[\"org\",{},\"text\",\"\"],[\"adr\",{},\"text\",[\"\",\"\",[\"OVH\",\"140, quai du Sartel\"],\"Roubaix\",\"\",\"59100\",\"FR\"]],[\"email\",{},\"text\",\"tech@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"technical\",\"administrative\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reachable\",\"description\":[\"NO\"]},{\"type\":\"eligibility status\",\"description\":[\"NotIdentified\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]}],\"nameservers\":[{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123991-FRNIC\",\"ldhName\":\"dns1.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.11.22\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]},{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123992-FRNIC\",\"ldhName\":\"dns2.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.31.9\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"value\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"rel\":\"self\"}]}",
+      "ip": "64.176.191.126",
+      "timestamp": "2025-11-16T05:49:15.986424574Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.rdap.net/domain/retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/rdap-whois.yaml",
+      "template-url": "https://templates.nuclei.sh/public/rdap-whois",
+      "template-id": "rdap-whois",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/rdap-whois.yaml",
+      "info": {
+        "name": "RDAP WHOIS",
+        "author": [
+          "ricardomaia",
+          "sttlr"
+        ],
+        "tags": [
+          "miscellaneous",
+          "whois",
+          "rdap",
+          "osint",
+          "misc",
+          "vuln"
+        ],
+        "description": "RDAP (Registration Data Access Protocol) is a standard defined by the IETF to replace the whois protocol\nin queries for information about Internet resource records such as domain names, IP addresses, and ASNs.\n",
+        "reference": [
+          "https://about.rdap.org/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "extractor-name": "nameServers",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "dns1.impots.gouv.fr",
+        "dns2.impots.gouv.fr"
+      ],
+      "request": "GET /domain/retraitesdeletat.gouv.fr HTTP/1.1\r\nHost: www.rdap.net\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nContent-Disposition: inline;filename=f.txt\r\nContent-Type: application/rdap+json\r\nDate: Sun, 16 Nov 2025 05:49:15 GMT\r\nExpires: 0\r\nPragma: no-cache\r\nStrict-Transport-Security: max-age=17280000;includeSubDomains;preload\r\nVary: Origin\r\nVary: Access-Control-Request-Method\r\nVary: Access-Control-Request-Headers\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1;mode=block\r\n\r\n{\"rdapConformance\":[\"rdap_level_0\",\"icann_rdap_technical_implementation_guide_1\",\"icann_rdap_response_profile_1\"],\"objectClassName\":\"domain\",\"handle\":\"DOM000006206428-FRNIC\",\"ldhName\":\"retraitesdeletat.gouv.fr\",\"status\":[\"active\"],\"whoisStatus\":\"ACTIVE\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2015-08-17T12:25:10Z\"},{\"eventAction\":\"expiration\",\"eventDate\":\"2026-08-17T12:25:10Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-09-30T22:03:43.860423Z\"},{\"eventAction\":\"transfer\",\"eventDate\":\"2023-09-28T14:58:52.035716Z\"},{\"eventAction\":\"last update of RDAP database\",\"eventDate\":\"2025-11-16T05:49:15.929943894Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR202-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"433\"}],\"status\":[\"active\"],\"port43\":\"whois.ovh.com\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-10-18T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2022-10-01T11:40:48.761912Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"links\":[{\"href\":\"https://rdap.nic.fr/entity/{handle}\",\"value\":\"https://rdap.nic.fr/entity/{handle}\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Contact Abuse\"],[\"email\",{},\"text\",\"abuse@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"abuse\"]}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.320200958\"],[\"email\",{},\"text\",\"support@ovh.net\"],[\"url\",{},\"uri\",\"http://www.ovh.com\"],[\"adr\",{},\"text\",[\"\",\"\",\"2 Rue Kellermann\",\"ROUBAIX\",\"\",\"59100\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"CTC2134512-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2023-09-28T14:58:52.04611Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2024-03-27T13:10:50.672949Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Etat francais represente par DIRECTION GENERALE DES FINANCES PUBLIQUES\"],[\"org\",{},\"text\",\"DIRECTION GENERALE DES FINANCES PUBLIQ\"],[\"adr\",{},\"text\",[\"\",\"\",\"4, avenue Montaigne\",\"Noisy le Grand\",\"\",\"93468\",\"FR\"]],[\"email\",{},\"text\",\"gestion.ndd@dgfip.finances.gouv.fr\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.157336126\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.157336126\"]]],\"roles\":[\"registrant\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reach medium\",\"description\":[\"EMAIL\"]},{\"type\":\"reach date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"reach source\",\"description\":[\"REGISTRY\"]},{\"type\":\"reachable\",\"description\":[\"YES\"]},{\"type\":\"eligibility status\",\"description\":[\"OK\"]},{\"type\":\"eligibility source\",\"description\":[\"REGISTRY\"]},{\"type\":\"eligibility date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"OVH5-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-12-22T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-11-16T02:37:52.875258Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH NET\"],[\"org\",{},\"text\",\"\"],[\"adr\",{},\"text\",[\"\",\"\",[\"OVH\",\"140, quai du Sartel\"],\"Roubaix\",\"\",\"59100\",\"FR\"]],[\"email\",{},\"text\",\"tech@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"technical\",\"administrative\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reachable\",\"description\":[\"NO\"]},{\"type\":\"eligibility status\",\"description\":[\"NotIdentified\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]}],\"nameservers\":[{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123991-FRNIC\",\"ldhName\":\"dns1.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.11.22\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]},{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123992-FRNIC\",\"ldhName\":\"dns2.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.31.9\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"value\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"rel\":\"self\"}]}",
+      "ip": "64.176.191.126",
+      "timestamp": "2025-11-16T05:49:15.986435277Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.rdap.net/domain/retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/rdap-whois.yaml",
+      "template-url": "https://templates.nuclei.sh/public/rdap-whois",
+      "template-id": "rdap-whois",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/rdap-whois.yaml",
+      "info": {
+        "name": "RDAP WHOIS",
+        "author": [
+          "ricardomaia",
+          "sttlr"
+        ],
+        "tags": [
+          "miscellaneous",
+          "whois",
+          "rdap",
+          "osint",
+          "misc",
+          "vuln"
+        ],
+        "description": "RDAP (Registration Data Access Protocol) is a standard defined by the IETF to replace the whois protocol\nin queries for information about Internet resource records such as domain names, IP addresses, and ASNs.\n",
+        "reference": [
+          "https://about.rdap.org/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "extractor-name": "status",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "active"
+      ],
+      "request": "GET /domain/retraitesdeletat.gouv.fr HTTP/1.1\r\nHost: www.rdap.net\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nContent-Disposition: inline;filename=f.txt\r\nContent-Type: application/rdap+json\r\nDate: Sun, 16 Nov 2025 05:49:15 GMT\r\nExpires: 0\r\nPragma: no-cache\r\nStrict-Transport-Security: max-age=17280000;includeSubDomains;preload\r\nVary: Origin\r\nVary: Access-Control-Request-Method\r\nVary: Access-Control-Request-Headers\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1;mode=block\r\n\r\n{\"rdapConformance\":[\"rdap_level_0\",\"icann_rdap_technical_implementation_guide_1\",\"icann_rdap_response_profile_1\"],\"objectClassName\":\"domain\",\"handle\":\"DOM000006206428-FRNIC\",\"ldhName\":\"retraitesdeletat.gouv.fr\",\"status\":[\"active\"],\"whoisStatus\":\"ACTIVE\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2015-08-17T12:25:10Z\"},{\"eventAction\":\"expiration\",\"eventDate\":\"2026-08-17T12:25:10Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-09-30T22:03:43.860423Z\"},{\"eventAction\":\"transfer\",\"eventDate\":\"2023-09-28T14:58:52.035716Z\"},{\"eventAction\":\"last update of RDAP database\",\"eventDate\":\"2025-11-16T05:49:15.929943894Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR202-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"433\"}],\"status\":[\"active\"],\"port43\":\"whois.ovh.com\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-10-18T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2022-10-01T11:40:48.761912Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"links\":[{\"href\":\"https://rdap.nic.fr/entity/{handle}\",\"value\":\"https://rdap.nic.fr/entity/{handle}\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Contact Abuse\"],[\"email\",{},\"text\",\"abuse@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"abuse\"]}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.320200958\"],[\"email\",{},\"text\",\"support@ovh.net\"],[\"url\",{},\"uri\",\"http://www.ovh.com\"],[\"adr\",{},\"text\",[\"\",\"\",\"2 Rue Kellermann\",\"ROUBAIX\",\"\",\"59100\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"CTC2134512-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2023-09-28T14:58:52.04611Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2024-03-27T13:10:50.672949Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Etat francais represente par DIRECTION GENERALE DES FINANCES PUBLIQUES\"],[\"org\",{},\"text\",\"DIRECTION GENERALE DES FINANCES PUBLIQ\"],[\"adr\",{},\"text\",[\"\",\"\",\"4, avenue Montaigne\",\"Noisy le Grand\",\"\",\"93468\",\"FR\"]],[\"email\",{},\"text\",\"gestion.ndd@dgfip.finances.gouv.fr\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.157336126\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.157336126\"]]],\"roles\":[\"registrant\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reach medium\",\"description\":[\"EMAIL\"]},{\"type\":\"reach date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"reach source\",\"description\":[\"REGISTRY\"]},{\"type\":\"reachable\",\"description\":[\"YES\"]},{\"type\":\"eligibility status\",\"description\":[\"OK\"]},{\"type\":\"eligibility source\",\"description\":[\"REGISTRY\"]},{\"type\":\"eligibility date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"OVH5-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-12-22T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-11-16T02:37:52.875258Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH NET\"],[\"org\",{},\"text\",\"\"],[\"adr\",{},\"text\",[\"\",\"\",[\"OVH\",\"140, quai du Sartel\"],\"Roubaix\",\"\",\"59100\",\"FR\"]],[\"email\",{},\"text\",\"tech@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"technical\",\"administrative\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reachable\",\"description\":[\"NO\"]},{\"type\":\"eligibility status\",\"description\":[\"NotIdentified\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]}],\"nameservers\":[{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123991-FRNIC\",\"ldhName\":\"dns1.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.11.22\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]},{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123992-FRNIC\",\"ldhName\":\"dns2.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.31.9\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"value\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"rel\":\"self\"}]}",
+      "ip": "64.176.191.126",
+      "timestamp": "2025-11-16T05:49:15.986446107Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.rdap.net/domain/retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/rdap-whois.yaml",
+      "template-url": "https://templates.nuclei.sh/public/rdap-whois",
+      "template-id": "rdap-whois",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/rdap-whois.yaml",
+      "info": {
+        "name": "RDAP WHOIS",
+        "author": [
+          "ricardomaia",
+          "sttlr"
+        ],
+        "tags": [
+          "miscellaneous",
+          "whois",
+          "rdap",
+          "osint",
+          "misc",
+          "vuln"
+        ],
+        "description": "RDAP (Registration Data Access Protocol) is a standard defined by the IETF to replace the whois protocol\nin queries for information about Internet resource records such as domain names, IP addresses, and ASNs.\n",
+        "reference": [
+          "https://about.rdap.org/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "extractor-name": "registrationDate",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr",
+      "extracted-results": [
+        "2015-08-17T12:25:10Z"
+      ],
+      "request": "GET /domain/retraitesdeletat.gouv.fr HTTP/1.1\r\nHost: www.rdap.net\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nContent-Disposition: inline;filename=f.txt\r\nContent-Type: application/rdap+json\r\nDate: Sun, 16 Nov 2025 05:49:15 GMT\r\nExpires: 0\r\nPragma: no-cache\r\nStrict-Transport-Security: max-age=17280000;includeSubDomains;preload\r\nVary: Origin\r\nVary: Access-Control-Request-Method\r\nVary: Access-Control-Request-Headers\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1;mode=block\r\n\r\n{\"rdapConformance\":[\"rdap_level_0\",\"icann_rdap_technical_implementation_guide_1\",\"icann_rdap_response_profile_1\"],\"objectClassName\":\"domain\",\"handle\":\"DOM000006206428-FRNIC\",\"ldhName\":\"retraitesdeletat.gouv.fr\",\"status\":[\"active\"],\"whoisStatus\":\"ACTIVE\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2015-08-17T12:25:10Z\"},{\"eventAction\":\"expiration\",\"eventDate\":\"2026-08-17T12:25:10Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-09-30T22:03:43.860423Z\"},{\"eventAction\":\"transfer\",\"eventDate\":\"2023-09-28T14:58:52.035716Z\"},{\"eventAction\":\"last update of RDAP database\",\"eventDate\":\"2025-11-16T05:49:15.929943894Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR202-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"433\"}],\"status\":[\"active\"],\"port43\":\"whois.ovh.com\",\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-10-18T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2022-10-01T11:40:48.761912Z\"}],\"entities\":[{\"objectClassName\":\"entity\",\"links\":[{\"href\":\"https://rdap.nic.fr/entity/{handle}\",\"value\":\"https://rdap.nic.fr/entity/{handle}\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Contact Abuse\"],[\"email\",{},\"text\",\"abuse@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"abuse\"]}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR202-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.320200958\"],[\"email\",{},\"text\",\"support@ovh.net\"],[\"url\",{},\"uri\",\"http://www.ovh.com\"],[\"adr\",{},\"text\",[\"\",\"\",\"2 Rue Kellermann\",\"ROUBAIX\",\"\",\"59100\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"CTC2134512-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2023-09-28T14:58:52.04611Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2024-03-27T13:10:50.672949Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/CTC2134512-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Etat francais represente par DIRECTION GENERALE DES FINANCES PUBLIQUES\"],[\"org\",{},\"text\",\"DIRECTION GENERALE DES FINANCES PUBLIQ\"],[\"adr\",{},\"text\",[\"\",\"\",\"4, avenue Montaigne\",\"Noisy le Grand\",\"\",\"93468\",\"FR\"]],[\"email\",{},\"text\",\"gestion.ndd@dgfip.finances.gouv.fr\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.157336126\"],[\"tel\",{\"type\":\"fax\"},\"uri\",\"tel:+33.157336126\"]]],\"roles\":[\"registrant\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reach medium\",\"description\":[\"EMAIL\"]},{\"type\":\"reach date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"reach source\",\"description\":[\"REGISTRY\"]},{\"type\":\"reachable\",\"description\":[\"YES\"]},{\"type\":\"eligibility status\",\"description\":[\"OK\"]},{\"type\":\"eligibility source\",\"description\":[\"REGISTRY\"]},{\"type\":\"eligibility date\",\"description\":[\"2019-08-14T00:00:00Z\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]},{\"objectClassName\":\"entity\",\"handle\":\"OVH5-FRNIC\",\"status\":[\"associated\",\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"1999-12-22T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-11-16T02:37:52.875258Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/OVH5-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"OVH NET\"],[\"org\",{},\"text\",\"\"],[\"adr\",{},\"text\",[\"\",\"\",[\"OVH\",\"140, quai du Sartel\"],\"Roubaix\",\"\",\"59100\",\"FR\"]],[\"email\",{},\"text\",\"tech@ovh.net\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.899701761\"]]],\"roles\":[\"technical\",\"administrative\"],\"remarks\":[{\"type\":\"contact restricted publication\",\"description\":[\"NO\"]},{\"type\":\"contact obsolete\",\"description\":[\"NO\"]},{\"type\":\"contact type\",\"description\":[\"ORGANIZATION\"]},{\"type\":\"reachable\",\"description\":[\"NO\"]},{\"type\":\"eligibility status\",\"description\":[\"NotIdentified\"]},{\"type\":\"registrar name\",\"description\":[\"OVH\"]}]}],\"nameservers\":[{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123991-FRNIC\",\"ldhName\":\"dns1.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.11.22\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns1.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]},{\"objectClassName\":\"nameserver\",\"handle\":\"HOST123992-FRNIC\",\"ldhName\":\"dns2.impots.gouv.fr\",\"status\":[\"associated\",\"active\"],\"ipAddresses\":{\"v4\":[\"145.242.31.9\"]},\"entities\":[{\"objectClassName\":\"entity\",\"handle\":\"RAR672-FRNIC\",\"publicIds\":[{\"type\":\"IANA Registrar ID\",\"identifier\":\"14\"}],\"status\":[\"active\"],\"events\":[{\"eventAction\":\"registration\",\"eventDate\":\"2006-02-13T00:00:00Z\"},{\"eventAction\":\"last changed\",\"eventDate\":\"2025-08-01T08:56:11.28591Z\"}],\"links\":[{\"href\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"value\":\"https://rdap.nic.fr/entity/RAR672-FRNIC\",\"rel\":\"self\"}],\"vcardArray\":[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"ORANGE\"],[\"tel\",{\"type\":\"voice\"},\"uri\",\"tel:+33.800216000\"],[\"email\",{},\"text\",\"cloud.store@orange-business.com\"],[\"url\",{},\"uri\",\"https://cloud.orange-business.com/offres/infrastructure-iaas/nom-de-domaine/\"],[\"adr\",{},\"text\",[\"\",\"\",\"78 rue Olivier de Serres\",\"PARIS CEDEX 15\",\"\",\"75015\",\"FR\"]]]],\"roles\":[\"registrar\",\"sponsor\"],\"remarks\":[{\"type\":\"registrar restricted publication\",\"description\":[\"No\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"value\":\"https://rdap.nic.fr/nameserver/dns2.impots.gouv.fr\",\"rel\":\"self\"}],\"remarks\":[{\"title\":\"result set truncated due to authorization\",\"description\":[\"The list of results does not contain all results due to lack of authorization.\",\"This may indicate to some clients that proper authorization will yield a longer result set.\"]}]}],\"links\":[{\"href\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"value\":\"https://rdap.nic.fr/domain/retraitesdeletat.gouv.fr\",\"rel\":\"self\"}]}",
+      "ip": "64.176.191.126",
+      "timestamp": "2025-11-16T05:49:15.98645533Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.rdap.net/domain/retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/external-service-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/external-service-interaction",
+      "template-id": "external-service-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/external-service-interaction.yaml",
+      "info": {
+        "name": "External Service Interaction",
+        "author": [
+          "andreluna"
+        ],
+        "tags": [
+          "miscellaneous",
+          "http",
+          "misc",
+          "oast",
+          "vuln"
+        ],
+        "description": "External Service interaction via Host Header Injection.",
+        "reference": [
+          "https://portswigger.net/kb/issues/00300210_external-service-interaction-http",
+          "https://success.qualys.com/support/s/article/000006843",
+          "https://owasp.org/www-project-web-security-testing-guide/latest/4-web_application_security_testing/07-input_validation_testing/17-testing_for_host_header_injection"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-918",
+            "cwe-406"
+          ]
+        }
+      },
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://retraitesdeletat.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d4cma1efi7e7j1c8sn5g7r313qfd8qd8n.oast.live\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 713\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1014-43313063-0 0NNN RT(1763272152286 10) q(0 -1 -1 -1) r(56 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1014-43313063-0%200NNN%20RT%281763272152286%2010%29%20q%280%20-1%20-1%20-1%29%20r%2856%20-1%29&incident_id=0-234474569787051086&edet=22&cinfo=ffffffff&rpinfo=0&cip=172.183.135.242&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-234474569787051086</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-16T05:49:17.950640036Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d4cma1efi7e7j1c8sn5g7r313qfd8qd8n",
+        "full-id": "d4cma1efi7e7j1c8sn5g7r313qfd8qd8n",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 44667\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d4cma1efi7e7j1c8sn5g7r313qfd8qd8n.oast.live.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 44667\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d4cma1efi7e7j1c8sn5g7r313qfd8qd8n.oast.live.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd4cma1efi7e7j1c8sn5g7r313qfd8qd8n.oast.live.\t3600\tIN\tA\t178.128.210.172\n\n;; AUTHORITY SECTION:\nd4cma1efi7e7j1c8sn5g7r313qfd8qd8n.oast.live.\t3600\tIN\tNS\tns1.oast.live.\nd4cma1efi7e7j1c8sn5g7r313qfd8qd8n.oast.live.\t3600\tIN\tNS\tns2.oast.live.\n\n;; ADDITIONAL SECTION:\nns1.oast.live.\t3600\tIN\tA\t178.128.210.172\nns2.oast.live.\t3600\tIN\tA\t178.128.210.172\n",
+        "remote-address": "198.143.32.3",
+        "timestamp": "2025-11-16T05:49:12.574130318Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: d4cma1efi7e7j1c8sn5g7r313qfd8qd8n.oast.live' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://retraitesdeletat.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/tls-sni-proxy.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-sni-proxy",
+      "template-id": "tls-sni-proxy",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/tls-sni-proxy.yaml",
+      "info": {
+        "name": "TLS SNI Proxy Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "misconfig",
+          "ssrf",
+          "oast",
+          "tls",
+          "sni",
+          "proxy",
+          "vuln"
+        ],
+        "reference": [
+          "https://www.invicti.com/blog/web-security/ssrf-vulnerabilities-caused-by-sni-proxy-misconfigurations/",
+          "https://www.bamsoftware.com/computers/sniproxy/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://retraitesdeletat.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: retraitesdeletat.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://retraitesdeletat.gouv.fr/\r\nSet-Cookie: visid_incap_3211280=Hj5AofGjTHmyXLmLikPXvgtmGWkAAAAAQUIPAAAAAADLnuOhvYnXVL7fjq+u9Crb; expires=Sun, 15 Nov 2026 10:06:37 GMT; HttpOnly; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_461_3211280=zMvGYODe9jfNor8og81lBgtmGWkAAAAAwJCNInU8LP3pnvisO0Qf/w==; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000\r\nX-Iinfo: 9-11033776-0 0NNN RT(1763272203750 8) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-16T05:50:03.761493222Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d4cma1efi7e7j1c8sn5gk3traefcq7ctw",
+        "full-id": "d4cma1efi7e7j1c8sn5gk3traefcq7ctw",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 40247\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d4cma1efi7e7j1c8sn5gk3traefcq7ctw.oast.live.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 40247\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d4cma1efi7e7j1c8sn5gk3traefcq7ctw.oast.live.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd4cma1efi7e7j1c8sn5gk3traefcq7ctw.oast.live.\t3600\tIN\tA\t178.128.210.172\n\n;; AUTHORITY SECTION:\nd4cma1efi7e7j1c8sn5gk3traefcq7ctw.oast.live.\t3600\tIN\tNS\tns1.oast.live.\nd4cma1efi7e7j1c8sn5gk3traefcq7ctw.oast.live.\t3600\tIN\tNS\tns2.oast.live.\n\n;; ADDITIONAL SECTION:\nns1.oast.live.\t3600\tIN\tA\t178.128.210.172\nns2.oast.live.\t3600\tIN\tA\t178.128.210.172\n",
+        "remote-address": "107.154.186.20",
+        "timestamp": "2025-11-16T05:49:58.419914073Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: retraitesdeletat.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://retraitesdeletat.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc",
+          "discovery"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "incapsula",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://retraitesdeletat.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: retraitesdeletat.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://retraitesdeletat.gouv.fr/\r\nSet-Cookie: visid_incap_3211280=IPDUv9y7QoCJ0u0oJ14efhhmGWkAAAAAQUIPAAAAAAABkkZRgJI+nYCg/BnaZIHV; expires=Sun, 15 Nov 2026 10:01:14 GMT; HttpOnly; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_461_3211280=2VvTGgzJEWrHq78og81lBhhmGWkAAAAA6NV5D00bLuU/L+NJRmYwpg==; path=/; Domain=.retraitesdeletat.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000\r\nX-Iinfo: 16-38282239-0 0NNN RT(1763272217082 5) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-16T05:50:17.094039546Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: retraitesdeletat.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://retraitesdeletat.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/vulnerabilities/generic/request-based-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/request-based-interaction",
+      "template-id": "request-based-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/vulnerabilities/generic/request-based-interaction.yaml",
+      "info": {
+        "name": "OOB Request Based Interaction",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "oast",
+          "ssrf",
+          "generic",
+          "vuln"
+        ],
+        "description": "The remote server fetched a spoofed DNS Name from the request.",
+        "reference": [
+          "https://portswigger.net/research/cracking-the-lens-targeting-https-hidden-attack-surface"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 5
+        }
+      },
+      "matcher-name": "dns",
+      "type": "http",
+      "host": "https://retraitesdeletat.gouv.fr",
+      "matched-at": "https://retraitesdeletat.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d4cma1efi7e7j1c8sn5gytowr8d65apro.oast.live\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 712\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1013-40132775-0 0NNN RT(1763272221715 6) q(0 -1 -1 -1) r(55 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1013-40132775-0%200NNN%20RT%281763272221715%206%29%20q%280%20-1%20-1%20-1%29%20r%2855%20-1%29&incident_id=0-218355570410064973&edet=22&cinfo=ffffffff&rpinfo=0&cip=172.183.135.242&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-218355570410064973</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-16T05:50:27.251019549Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d4cma1efi7e7j1c8sn5gytowr8d65apro",
+        "full-id": "d4cma1efi7e7j1c8sn5gytowr8d65apro",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 22004\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d4cma1efi7e7j1c8sn5gytowr8d65apro.oast.live.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 22004\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d4cma1efi7e7j1c8sn5gytowr8d65apro.oast.live.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd4cma1efi7e7j1c8sn5gytowr8d65apro.oast.live.\t3600\tIN\tA\t178.128.210.172\n\n;; AUTHORITY SECTION:\nd4cma1efi7e7j1c8sn5gytowr8d65apro.oast.live.\t3600\tIN\tNS\tns1.oast.live.\nd4cma1efi7e7j1c8sn5gytowr8d65apro.oast.live.\t3600\tIN\tNS\tns2.oast.live.\n\n;; ADDITIONAL SECTION:\nns1.oast.live.\t3600\tIN\tA\t178.128.210.172\nns2.oast.live.\t3600\tIN\tA\t178.128.210.172\n",
+        "remote-address": "198.143.32.3",
+        "timestamp": "2025-11-16T05:50:21.866269739Z"
+      },
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "retraitesdeletat.gouv.fr",
+      "matched-at": "retraitesdeletat.gouv.fr:443",
+      "extracted-results": [
+        "Certigna"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-16T05:52:07.054955921Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "vuln"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "retraitesdeletat.gouv.fr",
+      "matched-at": "retraitesdeletat.gouv.fr:443",
+      "extracted-results": [
+        "retraitesdeletat.gouv.fr"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-16T05:52:07.055117692Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "retraitesdeletat.gouv.fr",
+      "matched-at": "retraitesdeletat.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-16T05:52:07.260150333Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "retraitesdeletat.gouv.fr",
+      "matched-at": "retraitesdeletat.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2025-11-16T05:52:07.486064816Z",
+      "matcher-status": true
+    }
+  ]
+]
