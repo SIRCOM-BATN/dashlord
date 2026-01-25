@@ -1,0 +1,601 @@
+[
+  [
+    {
+      "template": "dns/dns-saas-service-detection.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
+      "template-id": "dns-saas-service-detection",
+      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
+      "info": {
+        "name": "DNS SaaS Service Detection",
+        "author": [
+          "noah @thesubtlety",
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "service",
+          "discovery"
+        ],
+        "description": "A CNAME DNS record was discovered",
+        "reference": [
+          "https://ns1.com/resources/cname",
+          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
+          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "www.fonction-publique.gouv.fr.",
+      "matched-at": "www.fonction-publique.gouv.fr",
+      "extracted-results": [
+        "io9ih2u.ng.impervadns.net."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 30806\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.fonction-publique.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 30806\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.fonction-publique.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.fonction-publique.gouv.fr.\t600\tIN\tCNAME\tio9ih2u.ng.impervadns.net.\n",
+      "timestamp": "2026-01-25T03:26:13.976481161Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa",
+          "discovery"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.fonction-publique.gouv.fr.",
+      "matched-at": "www.fonction-publique.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 7429\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.fonction-publique.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 7429\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.fonction-publique.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.fonction-publique.gouv.fr.\t600\tIN\tCNAME\tio9ih2u.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
+      "timestamp": "2026-01-25T03:26:14.043220039Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.fonction-publique.gouv.fr",
+      "matched-at": "https://www.fonction-publique.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3059583=LzOsRqEgRrW1VeE6qDtVQlyNdWkAAAAAQUIPAAAAAAAsQ40YZ5vVLif1OR+8NDHI; expires=Sun, 24 Jan 2027 08:45:29 GMT; HttpOnly; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None incap_ses_8215_3059583=r9DHSDp7mx0vGt+/cosBclyNdWkAAAAALEvE/Snjf/pEMI9dJ9nPPQ==; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.fonction-publique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.fonction-publique.gouv.fr/\r\nSet-Cookie: visid_incap_3059583=LzOsRqEgRrW1VeE6qDtVQlyNdWkAAAAAQUIPAAAAAAAsQ40YZ5vVLif1OR+8NDHI; expires=Sun, 24 Jan 2027 08:45:29 GMT; HttpOnly; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_8215_3059583=r9DHSDp7mx0vGt+/cosBclyNdWkAAAAALEvE/Snjf/pEMI9dJ9nPPQ==; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-53685179-0 0NNN RT(1769311581063 16) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-01-25T03:26:21.093231532Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.fonction-publique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.fonction-publique.gouv.fr",
+      "matched-at": "https://www.fonction-publique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.fonction-publique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.fonction-publique.gouv.fr/\r\nSet-Cookie: visid_incap_3059583=LzOsRqEgRrW1VeE6qDtVQlyNdWkAAAAAQUIPAAAAAAAsQ40YZ5vVLif1OR+8NDHI; expires=Sun, 24 Jan 2027 08:45:29 GMT; HttpOnly; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_8215_3059583=r9DHSDp7mx0vGt+/cosBclyNdWkAAAAALEvE/Snjf/pEMI9dJ9nPPQ==; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-53685179-0 0NNN RT(1769311581063 16) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-01-25T03:26:21.124155418Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.fonction-publique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.fonction-publique.gouv.fr",
+      "matched-at": "https://www.fonction-publique.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3059583=xWef72+5REWHT5IOJHToAlyNdWkAAAAAQUIPAAAAAACcZCH/XFBcRdo8jk2PmbJI; expires=Sun, 24 Jan 2027 08:45:00 GMT; HttpOnly; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None incap_ses_8215_3059583=JdSUTfQaO0wcGt+/cosBclyNdWkAAAAA3lBU8ZQkyYT7YWzHPqXcUg==; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.fonction-publique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.fonction-publique.gouv.fr/\r\nSet-Cookie: visid_incap_3059583=xWef72+5REWHT5IOJHToAlyNdWkAAAAAQUIPAAAAAACcZCH/XFBcRdo8jk2PmbJI; expires=Sun, 24 Jan 2027 08:45:00 GMT; HttpOnly; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_8215_3059583=JdSUTfQaO0wcGt+/cosBclyNdWkAAAAA3lBU8ZQkyYT7YWzHPqXcUg==; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 6-39584942-0 0NNN RT(1769311581015 19) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-01-25T03:26:21.700991697Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.fonction-publique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.fonction-publique.gouv.fr",
+      "matched-at": "https://www.fonction-publique.gouv.fr",
+      "extracted-results": [
+        "visid_incap_3059583=9o+Q2pisR2WmTaDjuq3wB1yNdWkAAAAAQUIPAAAAAABIMz/rVCkMn3MU0DU/pxb4; expires=Sun, 24 Jan 2027 07:07:55 GMT; HttpOnly; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None incap_ses_685_3059583=9YC7ZdIZAS4UoEmqXJyBCVyNdWkAAAAAF8I4+MMfSjJyYoHeBQwtAQ==; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.fonction-publique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.fonction-publique.gouv.fr/\r\nSet-Cookie: visid_incap_3059583=9o+Q2pisR2WmTaDjuq3wB1yNdWkAAAAAQUIPAAAAAABIMz/rVCkMn3MU0DU/pxb4; expires=Sun, 24 Jan 2027 07:07:55 GMT; HttpOnly; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_685_3059583=9YC7ZdIZAS4UoEmqXJyBCVyNdWkAAAAAF8I4+MMfSjJyYoHeBQwtAQ==; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 4-4202365-0 0NNN RT(1769311580969 18) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-01-25T03:26:22.362328707Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.fonction-publique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.fonction-publique.gouv.fr",
+      "matched-at": "https://www.fonction-publique.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.fonction-publique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.fonction-publique.gouv.fr/\r\nSet-Cookie: visid_incap_3059583=9o+Q2pisR2WmTaDjuq3wB1yNdWkAAAAAQUIPAAAAAABIMz/rVCkMn3MU0DU/pxb4; expires=Sun, 24 Jan 2027 07:07:55 GMT; HttpOnly; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_685_3059583=9YC7ZdIZAS4UoEmqXJyBCVyNdWkAAAAAF8I4+MMfSjJyYoHeBQwtAQ==; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 4-4202365-0 0NNN RT(1769311580969 18) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-01-25T03:26:22.386808924Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.fonction-publique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/external-service-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/external-service-interaction",
+      "template-id": "external-service-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/external-service-interaction.yaml",
+      "info": {
+        "name": "External Service Interaction",
+        "author": [
+          "andreluna"
+        ],
+        "tags": [
+          "miscellaneous",
+          "http",
+          "misc",
+          "oast",
+          "vuln"
+        ],
+        "description": "External Service interaction via Host Header Injection.",
+        "reference": [
+          "https://portswigger.net/kb/issues/00300210_external-service-interaction-http",
+          "https://success.qualys.com/support/s/article/000006843",
+          "https://owasp.org/www-project-web-security-testing-guide/latest/4-web_application_security_testing/07-input_validation_testing/17-testing_for_host_header_injection"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-918",
+            "cwe-406"
+          ]
+        }
+      },
+      "type": "http",
+      "host": "https://www.fonction-publique.gouv.fr",
+      "matched-at": "https://www.fonction-publique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d5qoqlcv3kbnfrbdg1agpe4tar7etefrw.oast.online\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 712\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1012-67371773-0 0NNN RT(1769311730768 22) q(0 -1 -1 -1) r(76 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1012-67371773-0%200NNN%20RT%281769311730768%2022%29%20q%280%20-1%20-1%20-1%29%20r%2876%20-1%29&incident_id=0-445287211761863948&edet=22&cinfo=ffffffff&rpinfo=0&cip=52.173.237.213&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-445287211761863948</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-01-25T03:28:58.422240554Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d5qoqlcv3kbnfrbdg1agpe4tar7etefrw",
+        "full-id": "d5qoqlcv3kbnfrbdg1agpe4tar7etefrw",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 28545\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d5qoqlcv3kbnfrbdg1agpe4tar7etefrw.oast.online.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 28545\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d5qoqlcv3kbnfrbdg1agpe4tar7etefrw.oast.online.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd5qoqlcv3kbnfrbdg1agpe4tar7etefrw.oast.online.\t3600\tIN\tA\t167.99.69.236\n\n;; AUTHORITY SECTION:\nd5qoqlcv3kbnfrbdg1agpe4tar7etefrw.oast.online.\t3600\tIN\tNS\tns1.oast.online.\nd5qoqlcv3kbnfrbdg1agpe4tar7etefrw.oast.online.\t3600\tIN\tNS\tns2.oast.online.\n\n;; ADDITIONAL SECTION:\nns1.oast.online.\t3600\tIN\tA\t167.99.69.236\nns2.oast.online.\t3600\tIN\tA\t167.99.69.236\n",
+        "remote-address": "198.143.32.23",
+        "timestamp": "2026-01-25T03:28:51.138711219Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: d5qoqlcv3kbnfrbdg1agpe4tar7etefrw.oast.online' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.fonction-publique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/tls-sni-proxy.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-sni-proxy",
+      "template-id": "tls-sni-proxy",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/tls-sni-proxy.yaml",
+      "info": {
+        "name": "TLS SNI Proxy Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "misconfig",
+          "ssrf",
+          "oast",
+          "tls",
+          "sni",
+          "proxy",
+          "vuln"
+        ],
+        "reference": [
+          "https://www.invicti.com/blog/web-security/ssrf-vulnerabilities-caused-by-sni-proxy-misconfigurations/",
+          "https://www.bamsoftware.com/computers/sniproxy/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://www.fonction-publique.gouv.fr",
+      "matched-at": "https://www.fonction-publique.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.fonction-publique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-01-25T03:30:41.057089954Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d5qoqlcv3kbnfrbdg1agszzxgaug8c9yo",
+        "full-id": "d5qoqlcv3kbnfrbdg1agszzxgaug8c9yo",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 7326\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d5qoqlcv3kbnfrbdg1agszzxgaug8c9yo.oast.online.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 7326\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d5qoqlcv3kbnfrbdg1agszzxgaug8c9yo.oast.online.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd5qoqlcv3kbnfrbdg1agszzxgaug8c9yo.oast.online.\t3600\tIN\tA\t167.99.69.236\n\n;; AUTHORITY SECTION:\nd5qoqlcv3kbnfrbdg1agszzxgaug8c9yo.oast.online.\t3600\tIN\tNS\tns1.oast.online.\nd5qoqlcv3kbnfrbdg1agszzxgaug8c9yo.oast.online.\t3600\tIN\tNS\tns2.oast.online.\n\n;; ADDITIONAL SECTION:\nns1.oast.online.\t3600\tIN\tA\t167.99.69.236\nns2.oast.online.\t3600\tIN\tA\t167.99.69.236\n",
+        "remote-address": "198.143.32.23",
+        "timestamp": "2026-01-25T03:30:36.487820906Z"
+      },
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc",
+          "discovery"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "incapsula",
+      "type": "http",
+      "host": "https://www.fonction-publique.gouv.fr",
+      "matched-at": "https://www.fonction-publique.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: www.fonction-publique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.fonction-publique.gouv.fr/\r\nSet-Cookie: visid_incap_3059583=VzV5dPUQSOy6m7iGdOFJRHuOdWkAAAAAQUIPAAAAAADh2h7z6psjEZMCyVZDh47n; expires=Sun, 24 Jan 2027 08:45:00 GMT; HttpOnly; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_8215_3059583=KDK6NDeBlHqs2d+/cosBcnuOdWkAAAAAECg20lEn+jULLvAQ04Ou9Q==; path=/; Domain=.fonction-publique.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 7-47441777-0 0NNN RT(1769311867972 24) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-01-25T03:31:08.00735014Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.fonction-publique.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.fonction-publique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/vulnerabilities/generic/request-based-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/request-based-interaction",
+      "template-id": "request-based-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/vulnerabilities/generic/request-based-interaction.yaml",
+      "info": {
+        "name": "OOB Request Based Interaction",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "oast",
+          "ssrf",
+          "generic",
+          "vuln"
+        ],
+        "description": "The remote server fetched a spoofed DNS Name from the request.",
+        "reference": [
+          "https://portswigger.net/research/cracking-the-lens-targeting-https-hidden-attack-surface"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 5
+        }
+      },
+      "matcher-name": "dns",
+      "type": "http",
+      "host": "https://www.fonction-publique.gouv.fr",
+      "matched-at": "https://www.fonction-publique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d5qoqlcv3kbnfrbdg1aghmg3u4t8gf1u8.oast.online\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 710\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1007-13201704-0 0NNN RT(1769311873082 15) q(0 -1 -1 -1) r(54 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1007-13201704-0%200NNN%20RT%281769311873082%2015%29%20q%280%20-1%20-1%20-1%29%20r%2854%20-1%29&incident_id=0-71208839825657223&edet=22&cinfo=ffffffff&rpinfo=0&cip=52.173.237.213&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-71208839825657223</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-01-25T03:31:18.477145676Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d5qoqlcv3kbnfrbdg1aghmg3u4t8gf1u8",
+        "full-id": "d5qoqlcv3kbnfrbdg1aghmg3u4t8gf1u8",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 54932\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d5qoqlcv3kbnfrbdg1aghmg3u4t8gf1u8.oast.online.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 54932\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d5qoqlcv3kbnfrbdg1aghmg3u4t8gf1u8.oast.online.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd5qoqlcv3kbnfrbdg1aghmg3u4t8gf1u8.oast.online.\t3600\tIN\tA\t167.99.69.236\n\n;; AUTHORITY SECTION:\nd5qoqlcv3kbnfrbdg1aghmg3u4t8gf1u8.oast.online.\t3600\tIN\tNS\tns1.oast.online.\nd5qoqlcv3kbnfrbdg1aghmg3u4t8gf1u8.oast.online.\t3600\tIN\tNS\tns2.oast.online.\n\n;; ADDITIONAL SECTION:\nns1.oast.online.\t3600\tIN\tA\t167.99.69.236\nns2.oast.online.\t3600\tIN\tA\t167.99.69.236\n",
+        "remote-address": "107.154.186.28",
+        "timestamp": "2026-01-25T03:31:13.228784492Z"
+      },
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.fonction-publique.gouv.fr",
+      "matched-at": "www.fonction-publique.gouv.fr:443",
+      "extracted-results": [
+        "Gandi"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-01-25T03:33:07.82507184Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "vuln"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.fonction-publique.gouv.fr",
+      "matched-at": "www.fonction-publique.gouv.fr:443",
+      "extracted-results": [
+        "www.fonction-publique.gouv.fr",
+        "fonction-publique.gouv.fr"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-01-25T03:33:07.825220217Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.fonction-publique.gouv.fr",
+      "matched-at": "www.fonction-publique.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-01-25T03:33:08.749359185Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.fonction-publique.gouv.fr",
+      "matched-at": "www.fonction-publique.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-01-25T03:33:08.892324155Z",
+      "matcher-status": true
+    }
+  ]
+]
