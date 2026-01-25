@@ -1,16 +1,16 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "B",
+    "grade": "D+",
     "error": null,
-    "score": 75,
+    "score": 40,
     "statusCode": 200,
-    "testsFailed": 2,
-    "testsPassed": 8,
+    "testsFailed": 3,
+    "testsPassed": 7,
     "testsQuantity": 10,
     "responseHeaders": {
       "server": "nginx",
-      "date": "Sun, 18 Jan 2026 03:36:39 GMT",
+      "date": "Sun, 25 Jan 2026 03:30:03 GMT",
       "content-type": "text/html; charset=UTF-8",
       "transfer-encoding": "chunked",
       "connection": "close",
@@ -18,11 +18,11 @@
       "content-language": "fr",
       "x-content-type-options": "nosniff",
       "x-frame-options": "SAMEORIGIN",
-      "expires": "Sun, 18 Jan 2026 03:46:39 GMT",
-      "last-modified": "Sun, 18 Jan 2026 00:02:03 GMT",
-      "etag": "\"1768694523-gzip\"",
+      "expires": "Sun, 25 Jan 2026 03:40:03 GMT",
+      "last-modified": "Sat, 24 Jan 2026 20:45:21 GMT",
+      "etag": "\"1769287521-gzip\"",
       "vary": "Cookie,Accept-Encoding",
-      "x-proxy-cache": "EXPIRED",
+      "x-proxy-cache": "UPDATING",
       "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:; font-src 'self' data: https:;",
       "referrer-policy": "same-origin",
       "allow": "GET, POST, HEAD",
@@ -33,13 +33,8 @@
       "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
       "x-xss-protection": "1;mode=block",
       "upgrade-insecure-requests": "1",
-      "set-cookie": [
-        "visid_incap_3064998=1IrQFTt5S6+rxGhpVpPGaUdVbGkAAAAAQUIPAAAAAAA4cCB1SFh0erC5fXZD2NNC; expires=Sun, 17 Jan 2027 06:36:53 GMT; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None",
-        "nlbi_3064998=8xwJKcBL7gVX6ktRZDS+cAAAAABAPUu6oBSQdIg1qzI9kIQe; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None",
-        "incap_ses_326_3064998=eN6VFLSsjEjDXUaG3y+GBEdVbGkAAAAAtcAqBYwOZSXTdUKGCrWUWw==; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None"
-      ],
       "x-cdn": "Imperva",
-      "x-iinfo": "15-34260317-34260321 NNNN CT(124 142 0) RT(1768707398412 21) q(0 0 2 -1) r(7 9) U9"
+      "x-iinfo": "13-21145738-21145739 NNNN CT(1163 141 0) RT(1769311802536 16) q(0 0 13 3) r(14 16) U9"
     }
   },
   "tests": {
@@ -90,36 +85,30 @@
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
-      "pass": true,
-      "result": "cookies-secure-with-httponly-sessions-and-samesite",
-      "scoreModifier": 5,
+      "pass": false,
+      "result": "cookies-without-secure-flag",
+      "scoreModifier": -20,
       "data": {
         "visid_incap_3064998": {
           "domain": "modernisation.gouv.fr",
-          "expires": "2027-01-17T06:36:53.000Z",
+          "expires": "2027-01-24T06:21:10.000Z",
           "httponly": true,
           "path": "/",
-          "port": null,
-          "samesite": "none",
-          "secure": true
+          "port": null
         },
         "nlbi_3064998": {
           "domain": "modernisation.gouv.fr",
           "httponly": true,
           "path": "/",
-          "port": null,
-          "samesite": "none",
-          "secure": true
+          "port": null
         },
-        "incap_ses_326_3064998": {
+        "incap_ses_1320_3064998": {
           "domain": "modernisation.gouv.fr",
           "path": "/",
-          "port": null,
-          "samesite": "none",
-          "secure": true
+          "port": null
         }
       },
-      "sameSite": true
+      "sameSite": false
     },
     "cross-origin-resource-sharing": {
       "expectation": "cross-origin-resource-sharing-not-implemented",
@@ -152,26 +141,21 @@
     },
     "strict-transport-security": {
       "expectation": "hsts-implemented-max-age-at-least-six-months",
-      "pass": true,
-      "result": "hsts-implemented-max-age-at-least-six-months",
-      "scoreModifier": 0,
-      "data": "max-age=31536000; includeSubDomains; preload",
-      "includeSubDomains": true,
-      "maxAge": 31536000,
-      "preload": true,
+      "pass": false,
+      "result": "hsts-not-implemented-no-https",
+      "scoreModifier": -20,
+      "data": null,
+      "includeSubDomains": false,
+      "maxAge": null,
+      "preload": false,
       "preloaded": false
     },
     "subresource-integrity": {
       "expectation": "sri-implemented-and-external-scripts-loaded-securely",
-      "pass": false,
-      "result": "sri-not-implemented-but-external-scripts-loaded-securely",
-      "scoreModifier": -5,
-      "data": {
-        "https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js": {
-          "crossorigin": null,
-          "integrity": null
-        }
-      }
+      "pass": true,
+      "result": "sri-not-implemented-but-all-scripts-loaded-from-secure-origin",
+      "scoreModifier": 0,
+      "data": {}
     },
     "x-content-type-options": {
       "expectation": "x-content-type-options-nosniff",
