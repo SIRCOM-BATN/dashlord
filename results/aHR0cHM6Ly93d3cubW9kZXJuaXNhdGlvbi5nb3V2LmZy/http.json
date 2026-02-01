@@ -1,16 +1,16 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "D+",
+    "grade": "B+",
     "error": null,
-    "score": 40,
+    "score": 80,
     "statusCode": 200,
-    "testsFailed": 3,
-    "testsPassed": 7,
+    "testsFailed": 1,
+    "testsPassed": 9,
     "testsQuantity": 10,
     "responseHeaders": {
       "server": "nginx",
-      "date": "Sun, 25 Jan 2026 03:30:03 GMT",
+      "date": "Sun, 01 Feb 2026 04:09:23 GMT",
       "content-type": "text/html; charset=UTF-8",
       "transfer-encoding": "chunked",
       "connection": "close",
@@ -18,11 +18,11 @@
       "content-language": "fr",
       "x-content-type-options": "nosniff",
       "x-frame-options": "SAMEORIGIN",
-      "expires": "Sun, 25 Jan 2026 03:40:03 GMT",
-      "last-modified": "Sat, 24 Jan 2026 20:45:21 GMT",
-      "etag": "\"1769287521-gzip\"",
+      "expires": "Sun, 01 Feb 2026 04:19:23 GMT",
+      "last-modified": "Sat, 31 Jan 2026 22:46:24 GMT",
+      "etag": "\"1769899584-gzip\"",
       "vary": "Cookie,Accept-Encoding",
-      "x-proxy-cache": "UPDATING",
+      "x-proxy-cache": "EXPIRED",
       "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:; font-src 'self' data: https:;",
       "referrer-policy": "same-origin",
       "allow": "GET, POST, HEAD",
@@ -33,8 +33,13 @@
       "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
       "x-xss-protection": "1;mode=block",
       "upgrade-insecure-requests": "1",
+      "set-cookie": [
+        "visid_incap_3064998=aDhlRKRdRkiEUrW689BL2/PRfmkAAAAAQUIPAAAAAACiROq9IEvEPwXx67BQoP/L; expires=Sun, 31 Jan 2027 06:57:54 GMT; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None",
+        "nlbi_3064998=oAmRXlq6OFHO1OKfZDS+cAAAAADIXAFxOPXjROTs+WnLhmuB; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None",
+        "incap_ses_641_3064998=W3LYKyL0AA1WOWOomkrlCPPRfmkAAAAANDF41Ya5haXdm/LkjgcGPg==; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None"
+      ],
       "x-cdn": "Imperva",
-      "x-iinfo": "13-21145738-21145739 NNNN CT(1163 141 0) RT(1769311802536 16) q(0 0 13 3) r(14 16) U9"
+      "x-iinfo": "8-11479815-11479816 NNNN CT(114 116 0) RT(1769918963442 22) q(0 0 3 -1) r(5 6) U9"
     }
   },
   "tests": {
@@ -85,30 +90,36 @@
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
-      "pass": false,
-      "result": "cookies-without-secure-flag",
-      "scoreModifier": -20,
+      "pass": true,
+      "result": "cookies-secure-with-httponly-sessions-and-samesite",
+      "scoreModifier": 5,
       "data": {
         "visid_incap_3064998": {
           "domain": "modernisation.gouv.fr",
-          "expires": "2027-01-24T06:21:10.000Z",
+          "expires": "2027-01-31T06:57:54.000Z",
           "httponly": true,
           "path": "/",
-          "port": null
+          "port": null,
+          "samesite": "none",
+          "secure": true
         },
         "nlbi_3064998": {
           "domain": "modernisation.gouv.fr",
           "httponly": true,
           "path": "/",
-          "port": null
+          "port": null,
+          "samesite": "none",
+          "secure": true
         },
-        "incap_ses_1320_3064998": {
+        "incap_ses_641_3064998": {
           "domain": "modernisation.gouv.fr",
           "path": "/",
-          "port": null
+          "port": null,
+          "samesite": "none",
+          "secure": true
         }
       },
-      "sameSite": false
+      "sameSite": true
     },
     "cross-origin-resource-sharing": {
       "expectation": "cross-origin-resource-sharing-not-implemented",
@@ -141,13 +152,13 @@
     },
     "strict-transport-security": {
       "expectation": "hsts-implemented-max-age-at-least-six-months",
-      "pass": false,
-      "result": "hsts-not-implemented-no-https",
-      "scoreModifier": -20,
-      "data": null,
-      "includeSubDomains": false,
-      "maxAge": null,
-      "preload": false,
+      "pass": true,
+      "result": "hsts-implemented-max-age-at-least-six-months",
+      "scoreModifier": 0,
+      "data": "max-age=31536000; includeSubDomains; preload",
+      "includeSubDomains": true,
+      "maxAge": 31536000,
+      "preload": true,
       "preloaded": false
     },
     "subresource-integrity": {
