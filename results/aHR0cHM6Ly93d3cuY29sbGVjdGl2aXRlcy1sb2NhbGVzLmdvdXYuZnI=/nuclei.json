@@ -1,0 +1,603 @@
+[
+  [
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa",
+          "discovery"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.collectivites-locales.gouv.fr.",
+      "matched-at": "www.collectivites-locales.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 41400\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.collectivites-locales.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 41400\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.collectivites-locales.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.collectivites-locales.gouv.fr.\t71\tIN\tCNAME\t52tf7pf.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
+      "timestamp": "2026-02-08T03:36:54.361116701Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/dns-saas-service-detection.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
+      "template-id": "dns-saas-service-detection",
+      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
+      "info": {
+        "name": "DNS SaaS Service Detection",
+        "author": [
+          "noah @thesubtlety",
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "service",
+          "discovery"
+        ],
+        "description": "A CNAME DNS record was discovered",
+        "reference": [
+          "https://ns1.com/resources/cname",
+          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
+          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "www.collectivites-locales.gouv.fr.",
+      "matched-at": "www.collectivites-locales.gouv.fr",
+      "extracted-results": [
+        "52tf7pf.ng.impervadns.net."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 17409\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.collectivites-locales.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 17409\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.collectivites-locales.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.collectivites-locales.gouv.fr.\t600\tIN\tCNAME\t52tf7pf.ng.impervadns.net.\n",
+      "timestamp": "2026-02-08T03:36:54.488479702Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.collectivites-locales.gouv.fr",
+      "matched-at": "https://www.collectivites-locales.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3074951=WtJx+KwBQh+mx7hpyiuYaN0EiGkAAAAAQUIPAAAAAAASyEVAC2HnnPZ/idVE4y8c; expires=Sun, 07 Feb 2027 07:08:46 GMT; HttpOnly; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None incap_ses_1401_3074951=xZKxfpO+VBlYuO/Zk1pxE90EiGkAAAAAzm6j8rUHy3z5Wa2IECzJTQ==; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.collectivites-locales.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.collectivites-locales.gouv.fr/\r\nSet-Cookie: visid_incap_3074951=WtJx+KwBQh+mx7hpyiuYaN0EiGkAAAAAQUIPAAAAAAASyEVAC2HnnPZ/idVE4y8c; expires=Sun, 07 Feb 2027 07:08:46 GMT; HttpOnly; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1401_3074951=xZKxfpO+VBlYuO/Zk1pxE90EiGkAAAAAzm6j8rUHy3z5Wa2IECzJTQ==; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 12-72220714-0 0CNN RT(1770521821539 17) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0)\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-08T03:37:01.569791065Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.collectivites-locales.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.collectivites-locales.gouv.fr",
+      "matched-at": "https://www.collectivites-locales.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.collectivites-locales.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.collectivites-locales.gouv.fr/\r\nSet-Cookie: visid_incap_3074951=WtJx+KwBQh+mx7hpyiuYaN0EiGkAAAAAQUIPAAAAAAASyEVAC2HnnPZ/idVE4y8c; expires=Sun, 07 Feb 2027 07:08:46 GMT; HttpOnly; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1401_3074951=xZKxfpO+VBlYuO/Zk1pxE90EiGkAAAAAzm6j8rUHy3z5Wa2IECzJTQ==; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 12-72220714-0 0CNN RT(1770521821539 17) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0)\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-08T03:37:01.603575905Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.collectivites-locales.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.collectivites-locales.gouv.fr",
+      "matched-at": "https://www.collectivites-locales.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3074951=ePeiIxweQD2h6kbI/kGg990EiGkAAAAAQUIPAAAAAADNvMUK0YuWzq8YlHdnKuCe; expires=Sun, 07 Feb 2027 07:08:47 GMT; HttpOnly; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None incap_ses_1401_3074951=DAFuH88GMVdEuO/Zk1pxE90EiGkAAAAAl56FUmMMPKIh+bMA4EJ74Q==; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.collectivites-locales.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.collectivites-locales.gouv.fr/\r\nSet-Cookie: visid_incap_3074951=ePeiIxweQD2h6kbI/kGg990EiGkAAAAAQUIPAAAAAADNvMUK0YuWzq8YlHdnKuCe; expires=Sun, 07 Feb 2027 07:08:47 GMT; HttpOnly; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1401_3074951=DAFuH88GMVdEuO/Zk1pxE90EiGkAAAAAl56FUmMMPKIh+bMA4EJ74Q==; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-59403191-0 0CNN RT(1770521821509 11) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0)\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-08T03:37:02.126498612Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.collectivites-locales.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.collectivites-locales.gouv.fr",
+      "matched-at": "https://www.collectivites-locales.gouv.fr",
+      "extracted-results": [
+        "visid_incap_3074951=LUlk52BvRUG/x8ognPcgsd0EiGkAAAAAQUIPAAAAAABcqr2722qkMSvYU0Aj0dpk; expires=Sun, 07 Feb 2027 07:08:45 GMT; HttpOnly; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None incap_ses_1401_3074951=xX9Cfe//myg2uO/Zk1pxE90EiGkAAAAALdvgT+zYoK4E3glVa354Qw==; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.collectivites-locales.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.collectivites-locales.gouv.fr/\r\nSet-Cookie: visid_incap_3074951=LUlk52BvRUG/x8ognPcgsd0EiGkAAAAAQUIPAAAAAABcqr2722qkMSvYU0Aj0dpk; expires=Sun, 07 Feb 2027 07:08:45 GMT; HttpOnly; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1401_3074951=xX9Cfe//myg2uO/Zk1pxE90EiGkAAAAALdvgT+zYoK4E3glVa354Qw==; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 6-42670366-0 0CNN RT(1770521821479 11) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0)\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-08T03:37:02.824959465Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.collectivites-locales.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.collectivites-locales.gouv.fr",
+      "matched-at": "https://www.collectivites-locales.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.collectivites-locales.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.collectivites-locales.gouv.fr/\r\nSet-Cookie: visid_incap_3074951=LUlk52BvRUG/x8ognPcgsd0EiGkAAAAAQUIPAAAAAABcqr2722qkMSvYU0Aj0dpk; expires=Sun, 07 Feb 2027 07:08:45 GMT; HttpOnly; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1401_3074951=xX9Cfe//myg2uO/Zk1pxE90EiGkAAAAALdvgT+zYoK4E3glVa354Qw==; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 6-42670366-0 0CNN RT(1770521821479 11) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0)\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-08T03:37:02.852316002Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.collectivites-locales.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/external-service-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/external-service-interaction",
+      "template-id": "external-service-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/external-service-interaction.yaml",
+      "info": {
+        "name": "External Service Interaction",
+        "author": [
+          "andreluna"
+        ],
+        "tags": [
+          "miscellaneous",
+          "http",
+          "misc",
+          "oast",
+          "vuln"
+        ],
+        "description": "External Service interaction via Host Header Injection.",
+        "reference": [
+          "https://portswigger.net/kb/issues/00300210_external-service-interaction-http",
+          "https://success.qualys.com/support/s/article/000006843",
+          "https://owasp.org/www-project-web-security-testing-guide/latest/4-web_application_security_testing/07-input_validation_testing/17-testing_for_host_header_injection"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-918",
+            "cwe-406"
+          ]
+        }
+      },
+      "type": "http",
+      "host": "https://www.collectivites-locales.gouv.fr",
+      "matched-at": "https://www.collectivites-locales.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d6409lnckv1ngnrjct104gxgmwnf6bh8o.oast.live\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 711\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1014-95011235-0 0NNN RT(1770521883864 13) q(0 -1 -1 -1) r(59 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1014-95011235-0%200NNN%20RT%281770521883864%2013%29%20q%280%20-1%20-1%20-1%29%20r%2859%20-1%29&incident_id=0-504693163139075534&edet=22&cinfo=ffffffff&rpinfo=0&cip=52.173.108.18&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-504693163139075534</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-08T03:38:09.722445709Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d6409lnckv1ngnrjct104gxgmwnf6bh8o",
+        "full-id": "d6409lnckv1ngnrjct104gxgmwnf6bh8o",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 11271\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d6409lnckv1ngnrjct104gxgmwnf6bh8o.oast.live.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 11271\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d6409lnckv1ngnrjct104gxgmwnf6bh8o.oast.live.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd6409lnckv1ngnrjct104gxgmwnf6bh8o.oast.live.\t3600\tIN\tA\t178.128.210.172\n\n;; AUTHORITY SECTION:\nd6409lnckv1ngnrjct104gxgmwnf6bh8o.oast.live.\t3600\tIN\tNS\tns1.oast.live.\nd6409lnckv1ngnrjct104gxgmwnf6bh8o.oast.live.\t3600\tIN\tNS\tns2.oast.live.\n\n;; ADDITIONAL SECTION:\nns1.oast.live.\t3600\tIN\tA\t178.128.210.172\nns2.oast.live.\t3600\tIN\tA\t178.128.210.172\n",
+        "remote-address": "198.143.32.27",
+        "timestamp": "2026-02-08T03:38:04.031715178Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: d6409lnckv1ngnrjct104gxgmwnf6bh8o.oast.live' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.collectivites-locales.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/tls-sni-proxy.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-sni-proxy",
+      "template-id": "tls-sni-proxy",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/tls-sni-proxy.yaml",
+      "info": {
+        "name": "TLS SNI Proxy Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "misconfig",
+          "ssrf",
+          "oast",
+          "tls",
+          "sni",
+          "proxy",
+          "vuln"
+        ],
+        "reference": [
+          "https://www.invicti.com/blog/web-security/ssrf-vulnerabilities-caused-by-sni-proxy-misconfigurations/",
+          "https://www.bamsoftware.com/computers/sniproxy/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://www.collectivites-locales.gouv.fr",
+      "matched-at": "https://www.collectivites-locales.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.collectivites-locales.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.collectivites-locales.gouv.fr/\r\nSet-Cookie: visid_incap_3074951=alqSyrYkQYOA6bJ/k7kT3jQFiGkAAAAAQUIPAAAAAADtnfOhecFl7C5K0tB6Q9qJ; expires=Sun, 07 Feb 2027 06:58:11 GMT; HttpOnly; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_421_3074951=3ZiscS0RlCpbeWERzLHXBTQFiGkAAAAALA8R8KknFsBZS34jB0UBCw==; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 17-109222162-0 2NNN RT(1770521909466 32) q(0 -1 -1 -1) r(0 -1) B13(4,200,0)\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-08T03:38:29.508557191Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d6409lnckv1ngnrjct10bmpz4fwui3bmq",
+        "full-id": "d6409lnckv1ngnrjct10bmpz4fwui3bmq",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 48353\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d6409lnckv1ngnrjct10bmpz4fwui3bmq.oast.live.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 48353\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d6409lnckv1ngnrjct10bmpz4fwui3bmq.oast.live.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd6409lnckv1ngnrjct10bmpz4fwui3bmq.oast.live.\t3600\tIN\tA\t178.128.210.172\n\n;; AUTHORITY SECTION:\nd6409lnckv1ngnrjct10bmpz4fwui3bmq.oast.live.\t3600\tIN\tNS\tns1.oast.live.\nd6409lnckv1ngnrjct10bmpz4fwui3bmq.oast.live.\t3600\tIN\tNS\tns2.oast.live.\n\n;; ADDITIONAL SECTION:\nns1.oast.live.\t3600\tIN\tA\t178.128.210.172\nns2.oast.live.\t3600\tIN\tA\t178.128.210.172\n",
+        "remote-address": "198.143.32.48",
+        "timestamp": "2026-02-08T03:38:24.033148261Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: www.collectivites-locales.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.collectivites-locales.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc",
+          "discovery"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "incapsula",
+      "type": "http",
+      "host": "https://www.collectivites-locales.gouv.fr",
+      "matched-at": "https://www.collectivites-locales.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: www.collectivites-locales.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.collectivites-locales.gouv.fr/\r\nSet-Cookie: visid_incap_3074951=3qoBSoYVQ7O2W8EwhGAGl2kFiGkAAAAAQUIPAAAAAACBQ9vqgiau7XoDP3ThhKZ5; expires=Sun, 07 Feb 2027 07:00:46 GMT; HttpOnly; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_421_3074951=69MFMpCqzhAHlmERzLHXBWkFiGkAAAAAMm7pIONerH5OTTNtRzJAIA==; path=/; Domain=.collectivites-locales.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 18-121052488-0 0NNN RT(1770521962157 20) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-08T03:39:22.191658665Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.collectivites-locales.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.collectivites-locales.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/vulnerabilities/generic/request-based-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/request-based-interaction",
+      "template-id": "request-based-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/vulnerabilities/generic/request-based-interaction.yaml",
+      "info": {
+        "name": "OOB Request Based Interaction",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "oast",
+          "ssrf",
+          "generic",
+          "vuln"
+        ],
+        "description": "The remote server fetched a spoofed DNS Name from the request.",
+        "reference": [
+          "https://portswigger.net/research/cracking-the-lens-targeting-https-hidden-attack-surface"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 5
+        }
+      },
+      "matcher-name": "dns",
+      "type": "http",
+      "host": "https://www.collectivites-locales.gouv.fr",
+      "matched-at": "https://www.collectivites-locales.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d6409lnckv1ngnrjct10y8wgms63f5eue.oast.live\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 711\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1014-57426944-0 0NNN RT(1770521979832 14) q(0 -1 -1 -1) r(56 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1014-57426944-0%200NNN%20RT%281770521979832%2014%29%20q%280%20-1%20-1%20-1%29%20r%2856%20-1%29&incident_id=0-356627799087582862&edet=22&cinfo=ffffffff&rpinfo=0&cip=52.173.108.19&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-356627799087582862</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-08T03:39:45.404622574Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d6409lnckv1ngnrjct10y8wgms63f5eue",
+        "full-id": "d6409lnckv1ngnrjct10y8wgms63f5eue",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 42010\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d6409lnckv1ngnrjct10y8wgms63f5eue.oast.live.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 42010\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d6409lnckv1ngnrjct10y8wgms63f5eue.oast.live.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd6409lnckv1ngnrjct10y8wgms63f5eue.oast.live.\t3600\tIN\tA\t178.128.210.172\n\n;; AUTHORITY SECTION:\nd6409lnckv1ngnrjct10y8wgms63f5eue.oast.live.\t3600\tIN\tNS\tns1.oast.live.\nd6409lnckv1ngnrjct10y8wgms63f5eue.oast.live.\t3600\tIN\tNS\tns2.oast.live.\n\n;; ADDITIONAL SECTION:\nns1.oast.live.\t3600\tIN\tA\t178.128.210.172\nns2.oast.live.\t3600\tIN\tA\t178.128.210.172\n",
+        "remote-address": "107.154.186.19",
+        "timestamp": "2026-02-08T03:39:39.978988697Z"
+      },
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.collectivites-locales.gouv.fr",
+      "matched-at": "www.collectivites-locales.gouv.fr:443",
+      "extracted-results": [
+        "Gandi"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-08T03:42:03.779486223Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "vuln"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.collectivites-locales.gouv.fr",
+      "matched-at": "www.collectivites-locales.gouv.fr:443",
+      "extracted-results": [
+        "www.collectivites-locales.gouv.fr",
+        "collectivites-locales.gouv.fr"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-08T03:42:03.779632245Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.collectivites-locales.gouv.fr",
+      "matched-at": "www.collectivites-locales.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-08T03:42:04.260107156Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.collectivites-locales.gouv.fr",
+      "matched-at": "www.collectivites-locales.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-08T03:42:04.36386611Z",
+      "matcher-status": true
+    }
+  ]
+]
