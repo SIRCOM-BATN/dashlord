@@ -1,0 +1,609 @@
+[
+  [
+    {
+      "template": "dns/dns-saas-service-detection.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
+      "template-id": "dns-saas-service-detection",
+      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
+      "info": {
+        "name": "DNS SaaS Service Detection",
+        "author": [
+          "noah @thesubtlety",
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "service",
+          "discovery"
+        ],
+        "description": "A CNAME DNS record was discovered",
+        "reference": [
+          "https://ns1.com/resources/cname",
+          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
+          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "www.entreprises.gouv.fr.",
+      "matched-at": "www.entreprises.gouv.fr",
+      "extracted-results": [
+        "nzgk5iu.ng.impervadns.net."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 59154\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.entreprises.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 59154\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.entreprises.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.entreprises.gouv.fr.\t563\tIN\tCNAME\tnzgk5iu.ng.impervadns.net.\n",
+      "timestamp": "2026-02-15T03:26:13.464972446Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa",
+          "discovery"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.entreprises.gouv.fr.",
+      "matched-at": "www.entreprises.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 2961\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.entreprises.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 2961\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.entreprises.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.entreprises.gouv.fr.\t600\tIN\tCNAME\tnzgk5iu.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
+      "timestamp": "2026-02-15T03:26:13.638879123Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.entreprises.gouv.fr",
+      "matched-at": "https://www.entreprises.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3062843=fTszIPNWSG6pb8YOAn8C59s8kWkAAAAAQUIPAAAAAACt7y1IZW4NQ+4jUrvwXfjN; expires=Sun, 14 Feb 2027 07:20:33 GMT; HttpOnly; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None incap_ses_890_3062843=MjaybfuG1C0H0R0/2epZDNs8kWkAAAAAVnQr3XilIMJ0VRxpTxbGEQ==; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.entreprises.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.entreprises.gouv.fr/\r\nSet-Cookie: visid_incap_3062843=fTszIPNWSG6pb8YOAn8C59s8kWkAAAAAQUIPAAAAAACt7y1IZW4NQ+4jUrvwXfjN; expires=Sun, 14 Feb 2027 07:20:33 GMT; HttpOnly; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_890_3062843=MjaybfuG1C0H0R0/2epZDNs8kWkAAAAAVnQr3XilIMJ0VRxpTxbGEQ==; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 14-65867580-0 0NNN RT(1771125980514 14) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U12\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-15T03:26:20.539996596Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.entreprises.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.entreprises.gouv.fr",
+      "matched-at": "https://www.entreprises.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.entreprises.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.entreprises.gouv.fr/\r\nSet-Cookie: visid_incap_3062843=fTszIPNWSG6pb8YOAn8C59s8kWkAAAAAQUIPAAAAAACt7y1IZW4NQ+4jUrvwXfjN; expires=Sun, 14 Feb 2027 07:20:33 GMT; HttpOnly; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_890_3062843=MjaybfuG1C0H0R0/2epZDNs8kWkAAAAAVnQr3XilIMJ0VRxpTxbGEQ==; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 14-65867580-0 0NNN RT(1771125980514 14) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U12\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-15T03:26:20.58061445Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.entreprises.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.entreprises.gouv.fr",
+      "matched-at": "https://www.entreprises.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3062843=dSSc4r+hTpmVZ851784P4ts8kWkAAAAAQUIPAAAAAABuszZHyEZx3q0eTgT6dQUA; expires=Sun, 14 Feb 2027 07:21:07 GMT; HttpOnly; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None incap_ses_890_3062843=YEdDfLph9kPq0B0/2epZDNs8kWkAAAAA8vi6zRzBapiLQAdcUOGrIA==; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.entreprises.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.entreprises.gouv.fr/\r\nSet-Cookie: visid_incap_3062843=dSSc4r+hTpmVZ851784P4ts8kWkAAAAAQUIPAAAAAABuszZHyEZx3q0eTgT6dQUA; expires=Sun, 14 Feb 2027 07:21:07 GMT; HttpOnly; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_890_3062843=YEdDfLph9kPq0B0/2epZDNs8kWkAAAAA8vi6zRzBapiLQAdcUOGrIA==; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 13-54754408-0 0NNN RT(1771125980491 11) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U12\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-15T03:26:21.151172922Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.entreprises.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.entreprises.gouv.fr",
+      "matched-at": "https://www.entreprises.gouv.fr",
+      "extracted-results": [
+        "visid_incap_3062843=R4gP398fSYSSofKMhcFHfts8kWkAAAAAQUIPAAAAAABM9uXkjPGZe22b1xjsgc6X; expires=Sun, 14 Feb 2027 07:21:07 GMT; HttpOnly; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None incap_ses_890_3062843=pbvwfMbEoVvT0B0/2epZDNs8kWkAAAAAcUigqCXWQwgviCQ+qdcKMA==; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.entreprises.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.entreprises.gouv.fr/\r\nSet-Cookie: visid_incap_3062843=R4gP398fSYSSofKMhcFHfts8kWkAAAAAQUIPAAAAAABM9uXkjPGZe22b1xjsgc6X; expires=Sun, 14 Feb 2027 07:21:07 GMT; HttpOnly; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_890_3062843=pbvwfMbEoVvT0B0/2epZDNs8kWkAAAAAcUigqCXWQwgviCQ+qdcKMA==; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 13-54754406-0 0NNN RT(1771125980466 14) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U12\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-15T03:26:21.763531686Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.entreprises.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.entreprises.gouv.fr",
+      "matched-at": "https://www.entreprises.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.entreprises.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.entreprises.gouv.fr/\r\nSet-Cookie: visid_incap_3062843=R4gP398fSYSSofKMhcFHfts8kWkAAAAAQUIPAAAAAABM9uXkjPGZe22b1xjsgc6X; expires=Sun, 14 Feb 2027 07:21:07 GMT; HttpOnly; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_890_3062843=pbvwfMbEoVvT0B0/2epZDNs8kWkAAAAAcUigqCXWQwgviCQ+qdcKMA==; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 13-54754406-0 0NNN RT(1771125980466 14) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U12\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-15T03:26:21.789495551Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.entreprises.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/external-service-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/external-service-interaction",
+      "template-id": "external-service-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/external-service-interaction.yaml",
+      "info": {
+        "name": "External Service Interaction",
+        "author": [
+          "andreluna"
+        ],
+        "tags": [
+          "miscellaneous",
+          "http",
+          "misc",
+          "oast",
+          "vuln"
+        ],
+        "description": "External Service interaction via Host Header Injection.",
+        "reference": [
+          "https://portswigger.net/kb/issues/00300210_external-service-interaction-http",
+          "https://success.qualys.com/support/s/article/000006843",
+          "https://owasp.org/www-project-web-security-testing-guide/latest/4-web_application_security_testing/07-input_validation_testing/17-testing_for_host_header_injection"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-918",
+            "cwe-406"
+          ]
+        }
+      },
+      "type": "http",
+      "host": "https://www.entreprises.gouv.fr",
+      "matched-at": "https://www.entreprises.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d68jpleqlta76q9de11gk7ie5bz87w533.oast.me\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 710\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1007-47138820-0 0NNN RT(1771126236973 10) q(0 -1 -1 -1) r(58 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1007-47138820-0%200NNN%20RT%281771126236973%2010%29%20q%280%20-1%20-1%20-1%29%20r%2858%20-1%29&incident_id=0-227120413291450247&edet=22&cinfo=ffffffff&rpinfo=0&cip=20.161.60.19&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-227120413291450247</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-15T03:30:42.765888079Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d68jpleqlta76q9de11gk7ie5bz87w533",
+        "full-id": "d68jpleqlta76q9de11gk7ie5bz87w533",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 8416\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d68jpleqlta76q9de11gk7ie5bz87w533.oast.me.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 8416\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d68jpleqlta76q9de11gk7ie5bz87w533.oast.me.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd68jpleqlta76q9de11gk7ie5bz87w533.oast.me.\t3600\tIN\tA\t178.128.209.14\n\n;; AUTHORITY SECTION:\nd68jpleqlta76q9de11gk7ie5bz87w533.oast.me.\t3600\tIN\tNS\tns1.oast.me.\nd68jpleqlta76q9de11gk7ie5bz87w533.oast.me.\t3600\tIN\tNS\tns2.oast.me.\n\n;; ADDITIONAL SECTION:\nns1.oast.me.\t3600\tIN\tA\t178.128.209.14\nns2.oast.me.\t3600\tIN\tA\t178.128.209.14\n",
+        "remote-address": "198.143.37.21",
+        "timestamp": "2026-02-15T03:30:37.165880642Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: d68jpleqlta76q9de11gk7ie5bz87w533.oast.me' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.entreprises.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/tls-sni-proxy.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-sni-proxy",
+      "template-id": "tls-sni-proxy",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/tls-sni-proxy.yaml",
+      "info": {
+        "name": "TLS SNI Proxy Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "misconfig",
+          "ssrf",
+          "oast",
+          "tls",
+          "sni",
+          "proxy",
+          "vuln"
+        ],
+        "reference": [
+          "https://www.invicti.com/blog/web-security/ssrf-vulnerabilities-caused-by-sni-proxy-misconfigurations/",
+          "https://www.bamsoftware.com/computers/sniproxy/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://www.entreprises.gouv.fr",
+      "matched-at": "https://www.entreprises.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.entreprises.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.entreprises.gouv.fr/\r\nSet-Cookie: visid_incap_3062843=0yaxWVarSeeVPlTVZNz5pPs9kWkAAAAAQUIPAAAAAAAojY0Oytpcjej7YPTaSjEz; expires=Sun, 14 Feb 2027 07:21:07 GMT; HttpOnly; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_890_3062843=5sXELV4TnAqAHh8/2epZDPs9kWkAAAAAMfwRZKtUX4mwGJOas3GA4g==; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 13-54778604-0 0NNN RT(1771126268245 12) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U12\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-15T03:31:08.261522729Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d68jpleqlta76q9de11gmtfawifnqf7ax",
+        "full-id": "d68jpleqlta76q9de11gmtfawifnqf7ax",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 2301\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d68jpleqlta76q9de11gmtfawifnqf7ax.oast.me.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 2301\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d68jpleqlta76q9de11gmtfawifnqf7ax.oast.me.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd68jpleqlta76q9de11gmtfawifnqf7ax.oast.me.\t3600\tIN\tA\t178.128.209.14\n\n;; AUTHORITY SECTION:\nd68jpleqlta76q9de11gmtfawifnqf7ax.oast.me.\t3600\tIN\tNS\tns1.oast.me.\nd68jpleqlta76q9de11gmtfawifnqf7ax.oast.me.\t3600\tIN\tNS\tns2.oast.me.\n\n;; ADDITIONAL SECTION:\nns1.oast.me.\t3600\tIN\tA\t178.128.209.14\nns2.oast.me.\t3600\tIN\tA\t178.128.209.14\n",
+        "remote-address": "198.143.37.21",
+        "timestamp": "2026-02-15T03:31:02.564886605Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: www.entreprises.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.entreprises.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc",
+          "discovery"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "incapsula",
+      "type": "http",
+      "host": "https://www.entreprises.gouv.fr",
+      "matched-at": "https://www.entreprises.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: www.entreprises.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.entreprises.gouv.fr/\r\nSet-Cookie: visid_incap_3062843=pXgv83zSQ6S76hAtK8kTRgw+kWkAAAAAQUIPAAAAAAA/ro1nbYCTNiqMgJd9rqsH; expires=Sun, 14 Feb 2027 07:21:45 GMT; HttpOnly; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_890_3062843=ccFdWw4tMWNGNR8/2epZDAw+kWkAAAAAOC/lCjWJ0YJY9NsQ3JcFww==; path=/; Domain=.entreprises.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 0-10183279-0 0NNN RT(1771126284902 11) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U12\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-15T03:31:24.924176041Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.entreprises.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.entreprises.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/vulnerabilities/generic/request-based-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/request-based-interaction",
+      "template-id": "request-based-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/vulnerabilities/generic/request-based-interaction.yaml",
+      "info": {
+        "name": "OOB Request Based Interaction",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "oast",
+          "ssrf",
+          "generic",
+          "vuln"
+        ],
+        "description": "The remote server fetched a spoofed DNS Name from the request.",
+        "reference": [
+          "https://portswigger.net/research/cracking-the-lens-targeting-https-hidden-attack-surface"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 5
+        }
+      },
+      "matcher-name": "dns",
+      "type": "http",
+      "host": "https://www.entreprises.gouv.fr",
+      "matched-at": "https://www.entreprises.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d68jpleqlta76q9de11gzm9u7c4oe3sby.oast.me\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 710\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1006-42654249-0 0NNN RT(1771126293322 10) q(0 -1 -1 -1) r(60 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1006-42654249-0%200NNN%20RT%281771126293322%2010%29%20q%280%20-1%20-1%20-1%29%20r%2860%20-1%29&incident_id=0-205872381149450118&edet=22&cinfo=ffffffff&rpinfo=0&cip=20.161.60.19&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-205872381149450118</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-15T03:31:39.320151362Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d68jpleqlta76q9de11gzm9u7c4oe3sby",
+        "full-id": "d68jpleqlta76q9de11gzm9u7c4oe3sby",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 9853\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d68jpleqlta76q9de11gzm9u7c4oe3sby.oast.me.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 9853\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d68jpleqlta76q9de11gzm9u7c4oe3sby.oast.me.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd68jpleqlta76q9de11gzm9u7c4oe3sby.oast.me.\t3600\tIN\tA\t178.128.209.14\n\n;; AUTHORITY SECTION:\nd68jpleqlta76q9de11gzm9u7c4oe3sby.oast.me.\t3600\tIN\tNS\tns1.oast.me.\nd68jpleqlta76q9de11gzm9u7c4oe3sby.oast.me.\t3600\tIN\tNS\tns2.oast.me.\n\n;; ADDITIONAL SECTION:\nns1.oast.me.\t3600\tIN\tA\t178.128.209.14\nns2.oast.me.\t3600\tIN\tA\t178.128.209.14\n",
+        "remote-address": "198.143.37.21",
+        "timestamp": "2026-02-15T03:31:33.798487115Z"
+      },
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.entreprises.gouv.fr",
+      "matched-at": "www.entreprises.gouv.fr:443",
+      "extracted-results": [
+        "DHIMYOTIS"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-15T03:34:01.629516642Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "vuln"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.entreprises.gouv.fr",
+      "matched-at": "www.entreprises.gouv.fr:443",
+      "extracted-results": [
+        "www.entreprises.gouv.fr",
+        "entreprises.gouv.fr",
+        "www.metrologie.entreprises.gouv.fr",
+        "www.sbdu.entreprises.gouv.fr",
+        "cnac.entreprises.gouv.fr",
+        "sbdu.entreprises.gouv.fr",
+        "metrologie.entreprises.gouv.fr",
+        "www.cnac.entreprises.gouv.fr"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-15T03:34:01.629713088Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.entreprises.gouv.fr",
+      "matched-at": "www.entreprises.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-15T03:34:01.940396689Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.entreprises.gouv.fr",
+      "matched-at": "www.entreprises.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-15T03:34:02.666711233Z",
+      "matcher-status": true
+    }
+  ]
+]
