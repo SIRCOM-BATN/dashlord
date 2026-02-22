@@ -1,0 +1,603 @@
+[
+  [
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa",
+          "discovery"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.modernisation.gouv.fr.",
+      "matched-at": "www.modernisation.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 19955\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.modernisation.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 19955\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.modernisation.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.modernisation.gouv.fr.\t541\tIN\tCNAME\trl9kc8i.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
+      "timestamp": "2026-02-22T04:05:18.908257218Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/dns-saas-service-detection.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
+      "template-id": "dns-saas-service-detection",
+      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
+      "info": {
+        "name": "DNS SaaS Service Detection",
+        "author": [
+          "noah @thesubtlety",
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "service",
+          "discovery"
+        ],
+        "description": "A CNAME DNS record was discovered",
+        "reference": [
+          "https://ns1.com/resources/cname",
+          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
+          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "www.modernisation.gouv.fr.",
+      "matched-at": "www.modernisation.gouv.fr",
+      "extracted-results": [
+        "rl9kc8i.ng.impervadns.net."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 57285\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.modernisation.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 57285\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.modernisation.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.modernisation.gouv.fr.\t600\tIN\tCNAME\trl9kc8i.ng.impervadns.net.\n",
+      "timestamp": "2026-02-22T04:05:18.98218502Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.modernisation.gouv.fr",
+      "matched-at": "https://www.modernisation.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3064998=PhqqZUxqTIS97QdtLneJ/YuAmmkAAAAAQUIPAAAAAAAjZ5y80p6PwLzmZmdFq6m/; expires=Sun, 21 Feb 2027 07:03:28 GMT; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None incap_ses_1844_3064998=q8deSqcG4C1UsLyp2TSXGYuAmmkAAAAAflPvC4IcMeafDc+TAJibsg==; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.modernisation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.modernisation.gouv.fr/\r\nSet-Cookie: visid_incap_3064998=PhqqZUxqTIS97QdtLneJ/YuAmmkAAAAAQUIPAAAAAAAjZ5y80p6PwLzmZmdFq6m/; expires=Sun, 21 Feb 2027 07:03:28 GMT; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1844_3064998=q8deSqcG4C1UsLyp2TSXGYuAmmkAAAAAflPvC4IcMeafDc+TAJibsg==; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 55-193828048-0 0NNN RT(1771733132109 15) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U9\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-22T04:05:32.153111858Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.modernisation.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.modernisation.gouv.fr",
+      "matched-at": "https://www.modernisation.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.modernisation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.modernisation.gouv.fr/\r\nSet-Cookie: visid_incap_3064998=PhqqZUxqTIS97QdtLneJ/YuAmmkAAAAAQUIPAAAAAAAjZ5y80p6PwLzmZmdFq6m/; expires=Sun, 21 Feb 2027 07:03:28 GMT; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1844_3064998=q8deSqcG4C1UsLyp2TSXGYuAmmkAAAAAflPvC4IcMeafDc+TAJibsg==; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 55-193828048-0 0NNN RT(1771733132109 15) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U9\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-22T04:05:32.209862058Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.modernisation.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.modernisation.gouv.fr",
+      "matched-at": "https://www.modernisation.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3064998=sTdbuGWESkadjPMbPpPP+YuAmmkAAAAAQUIPAAAAAAD29Lz+BYRgkF2dMQF5tB1P; expires=Sun, 21 Feb 2027 07:03:28 GMT; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None incap_ses_1844_3064998=L5LGSKVKzXD3r7yp2TSXGYuAmmkAAAAA2uFQprk0xXfkPvva1AwiuQ==; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.modernisation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.modernisation.gouv.fr/\r\nSet-Cookie: visid_incap_3064998=sTdbuGWESkadjPMbPpPP+YuAmmkAAAAAQUIPAAAAAAD29Lz+BYRgkF2dMQF5tB1P; expires=Sun, 21 Feb 2027 07:03:28 GMT; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1844_3064998=L5LGSKVKzXD3r7yp2TSXGYuAmmkAAAAA2uFQprk0xXfkPvva1AwiuQ==; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 48-140566736-0 0NNN RT(1771733132051 33) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U9\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-22T04:05:32.715320486Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.modernisation.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.modernisation.gouv.fr",
+      "matched-at": "https://www.modernisation.gouv.fr",
+      "extracted-results": [
+        "visid_incap_3064998=xl2uqaDpSr+Xl8QY4vMy04uAmmkAAAAAQUIPAAAAAADQJOZNANbKI3h6LyMcbnJ5; expires=Sun, 21 Feb 2027 07:03:27 GMT; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None incap_ses_1844_3064998=ricVPe0M1mSHr7yp2TSXGYuAmmkAAAAAft2vX+Y8t1L9dNeNt5nS9g==; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.modernisation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.modernisation.gouv.fr/\r\nSet-Cookie: visid_incap_3064998=xl2uqaDpSr+Xl8QY4vMy04uAmmkAAAAAQUIPAAAAAADQJOZNANbKI3h6LyMcbnJ5; expires=Sun, 21 Feb 2027 07:03:27 GMT; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1844_3064998=ricVPe0M1mSHr7yp2TSXGYuAmmkAAAAAft2vX+Y8t1L9dNeNt5nS9g==; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 54-185295132-0 0NNN RT(1771733131995 37) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U9\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-22T04:05:33.328406753Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.modernisation.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.modernisation.gouv.fr",
+      "matched-at": "https://www.modernisation.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.modernisation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.modernisation.gouv.fr/\r\nSet-Cookie: visid_incap_3064998=xl2uqaDpSr+Xl8QY4vMy04uAmmkAAAAAQUIPAAAAAADQJOZNANbKI3h6LyMcbnJ5; expires=Sun, 21 Feb 2027 07:03:27 GMT; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1844_3064998=ricVPe0M1mSHr7yp2TSXGYuAmmkAAAAAft2vX+Y8t1L9dNeNt5nS9g==; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 54-185295132-0 0NNN RT(1771733131995 37) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U9\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-22T04:05:33.353504254Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.modernisation.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/external-service-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/external-service-interaction",
+      "template-id": "external-service-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/external-service-interaction.yaml",
+      "info": {
+        "name": "External Service Interaction",
+        "author": [
+          "andreluna"
+        ],
+        "tags": [
+          "miscellaneous",
+          "http",
+          "misc",
+          "oast",
+          "vuln"
+        ],
+        "description": "External Service interaction via Host Header Injection.",
+        "reference": [
+          "https://portswigger.net/kb/issues/00300210_external-service-interaction-http",
+          "https://success.qualys.com/support/s/article/000006843",
+          "https://owasp.org/www-project-web-security-testing-guide/latest/4-web_application_security_testing/07-input_validation_testing/17-testing_for_host_header_injection"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-918",
+            "cwe-406"
+          ]
+        }
+      },
+      "type": "http",
+      "host": "https://www.modernisation.gouv.fr",
+      "matched-at": "https://www.modernisation.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d6d80vnckv1nh5nh0sngp3k4b98qkfomx.oast.site\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 711\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1036-57425882-0 0NNN RT(1771733333275 10) q(0 -1 -1 -1) r(67 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1036-57425882-0%200NNN%20RT%281771733333275%2010%29%20q%280%20-1%20-1%20-1%29%20r%2867%20-1%29&incident_id=0-312855283501371684&edet=22&cinfo=ffffffff&rpinfo=0&cip=9.234.151.121&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-312855283501371684</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-22T04:09:00.02721887Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d6d80vnckv1nh5nh0sngp3k4b98qkfomx",
+        "full-id": "d6d80vnckv1nh5nh0sngp3k4b98qkfomx",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 13793\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d6d80vnckv1nh5nh0sngp3k4b98qkfomx.oast.site.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 13793\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d6d80vnckv1nh5nh0sngp3k4b98qkfomx.oast.site.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd6d80vnckv1nh5nh0sngp3k4b98qkfomx.oast.site.\t3600\tIN\tA\t178.128.16.97\n\n;; AUTHORITY SECTION:\nd6d80vnckv1nh5nh0sngp3k4b98qkfomx.oast.site.\t3600\tIN\tNS\tns1.oast.site.\nd6d80vnckv1nh5nh0sngp3k4b98qkfomx.oast.site.\t3600\tIN\tNS\tns2.oast.site.\n\n;; ADDITIONAL SECTION:\nns1.oast.site.\t3600\tIN\tA\t178.128.16.97\nns2.oast.site.\t3600\tIN\tA\t178.128.16.97\n",
+        "remote-address": "198.143.37.69",
+        "timestamp": "2026-02-22T04:08:53.586431787Z"
+      },
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Host: d6d80vnckv1nh5nh0sngp3k4b98qkfomx.oast.site' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.modernisation.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/tls-sni-proxy.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-sni-proxy",
+      "template-id": "tls-sni-proxy",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/tls-sni-proxy.yaml",
+      "info": {
+        "name": "TLS SNI Proxy Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "misconfig",
+          "ssrf",
+          "oast",
+          "tls",
+          "sni",
+          "proxy",
+          "vuln"
+        ],
+        "reference": [
+          "https://www.invicti.com/blog/web-security/ssrf-vulnerabilities-caused-by-sni-proxy-misconfigurations/",
+          "https://www.bamsoftware.com/computers/sniproxy/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://www.modernisation.gouv.fr",
+      "matched-at": "https://www.modernisation.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.modernisation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.modernisation.gouv.fr/\r\nSet-Cookie: visid_incap_3064998=MMiilXpgT0KhYWo6/2g4MomBmmkAAAAAQUIPAAAAAACS0k2SUq7LEBVsKnzWuJCR; expires=Sun, 21 Feb 2027 07:03:28 GMT; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1844_3064998=GRv5W+XYcj4q4sOp2TSXGYmBmmkAAAAAQG+rmEmGZp/8Mt210gR+qg==; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 59-205279603-0 0NNN RT(1771733386331 14) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U9\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-22T04:09:46.349421824Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d6d80vnckv1nh5nh0sngp5fwd8pzw9fme",
+        "full-id": "d6d80vnckv1nh5nh0sngp5fwd8pzw9fme",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 48851\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d6d80vnckv1nh5nh0sngp5fwd8pzw9fme.oast.site.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 48851\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d6d80vnckv1nh5nh0sngp5fwd8pzw9fme.oast.site.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd6d80vnckv1nh5nh0sngp5fwd8pzw9fme.oast.site.\t3600\tIN\tA\t178.128.16.97\n\n;; AUTHORITY SECTION:\nd6d80vnckv1nh5nh0sngp5fwd8pzw9fme.oast.site.\t3600\tIN\tNS\tns1.oast.site.\nd6d80vnckv1nh5nh0sngp5fwd8pzw9fme.oast.site.\t3600\tIN\tNS\tns2.oast.site.\n\n;; ADDITIONAL SECTION:\nns1.oast.site.\t3600\tIN\tA\t178.128.16.97\nns2.oast.site.\t3600\tIN\tA\t178.128.16.97\n",
+        "remote-address": "198.143.37.69",
+        "timestamp": "2026-02-22T04:09:40.565114899Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: www.modernisation.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.modernisation.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc",
+          "discovery"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "incapsula",
+      "type": "http",
+      "host": "https://www.modernisation.gouv.fr",
+      "matched-at": "https://www.modernisation.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: www.modernisation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.modernisation.gouv.fr/\r\nSet-Cookie: visid_incap_3064998=0CvV5u9IRXGEbKTaEHEmTqyBmmkAAAAAQUIPAAAAAAB+5e1Ew2dcODCmUf0yxBFD; expires=Sun, 21 Feb 2027 07:03:29 GMT; HttpOnly; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1844_3064998=/QE1UsX4u1p/2sSp2TSXGayBmmkAAAAAe6BNjmuwVvoj220hogAdcQ==; path=/; Domain=.modernisation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 45-115346873-0 0NNN RT(1771733420863 9) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-22T04:10:20.882124696Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.modernisation.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.modernisation.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/vulnerabilities/generic/request-based-interaction.yaml",
+      "template-url": "https://templates.nuclei.sh/public/request-based-interaction",
+      "template-id": "request-based-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/vulnerabilities/generic/request-based-interaction.yaml",
+      "info": {
+        "name": "OOB Request Based Interaction",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "oast",
+          "ssrf",
+          "generic",
+          "vuln"
+        ],
+        "description": "The remote server fetched a spoofed DNS Name from the request.",
+        "reference": [
+          "https://portswigger.net/research/cracking-the-lens-targeting-https-hidden-attack-surface"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 5
+        }
+      },
+      "matcher-name": "dns",
+      "type": "http",
+      "host": "https://www.modernisation.gouv.fr",
+      "matched-at": "https://www.modernisation.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: d6d80vnckv1nh5nh0sngfqftuaqineqec.oast.site\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 711\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1047-130197344-0 0NNN RT(1771733427611 9) q(0 -1 -1 -1) r(56 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1047-130197344-0%200NNN%20RT%281771733427611%209%29%20q%280%20-1%20-1%20-1%29%20r%2856%20-1%29&incident_id=0-675878714066866479&edet=22&cinfo=ffffffff&rpinfo=0&cip=9.234.151.121&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-675878714066866479</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-22T04:10:33.276201598Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "d6d80vnckv1nh5nh0sngfqftuaqineqec",
+        "full-id": "d6d80vnckv1nh5nh0sngfqftuaqineqec",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 19774\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d6d80vnckv1nh5nh0sngfqftuaqineqec.oast.site.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 19774\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d6d80vnckv1nh5nh0sngfqftuaqineqec.oast.site.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd6d80vnckv1nh5nh0sngfqftuaqineqec.oast.site.\t3600\tIN\tA\t178.128.16.97\n\n;; AUTHORITY SECTION:\nd6d80vnckv1nh5nh0sngfqftuaqineqec.oast.site.\t3600\tIN\tNS\tns1.oast.site.\nd6d80vnckv1nh5nh0sngfqftuaqineqec.oast.site.\t3600\tIN\tNS\tns2.oast.site.\n\n;; ADDITIONAL SECTION:\nns1.oast.site.\t3600\tIN\tA\t178.128.16.97\nns2.oast.site.\t3600\tIN\tA\t178.128.16.97\n",
+        "remote-address": "198.143.37.69",
+        "timestamp": "2026-02-22T04:10:27.793496164Z"
+      },
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.modernisation.gouv.fr",
+      "matched-at": "www.modernisation.gouv.fr:443",
+      "extracted-results": [
+        "Certigna"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-22T04:12:31.074837557Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "vuln"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.modernisation.gouv.fr",
+      "matched-at": "www.modernisation.gouv.fr:443",
+      "extracted-results": [
+        "www.modernisation.gouv.fr",
+        "modernisation.gouv.fr"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-22T04:12:31.075013063Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.modernisation.gouv.fr",
+      "matched-at": "www.modernisation.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-22T04:12:31.535346673Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.modernisation.gouv.fr",
+      "matched-at": "www.modernisation.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-02-22T04:12:31.725174997Z",
+      "matcher-status": true
+    }
+  ]
+]
