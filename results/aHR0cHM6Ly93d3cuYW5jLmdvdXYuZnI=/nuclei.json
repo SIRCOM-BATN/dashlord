@@ -1,44 +1,6 @@
 [
   [
     {
-      "template": "dns/caa-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
-      "template-id": "caa-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
-      "info": {
-        "name": "CAA Record",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "caa",
-          "discovery"
-        ],
-        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
-        "reference": [
-          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "www.anc.gouv.fr.",
-      "matched-at": "www.anc.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 38278\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.anc.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 38278\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.anc.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.anc.gouv.fr.\t600\tIN\tCNAME\trj5w95t.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
-      "timestamp": "2026-02-22T05:47:54.858898758Z",
-      "matcher-status": true
-    },
-    {
       "template": "dns/dns-saas-service-detection.yaml",
       "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
       "template-id": "dns-saas-service-detection",
@@ -71,317 +33,252 @@
       "extracted-results": [
         "rj5w95t.ng.impervadns.net."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 28213\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.anc.gouv.fr.\tIN\t CNAME\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 28213\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.anc.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.anc.gouv.fr.\t600\tIN\tCNAME\trj5w95t.ng.impervadns.net.\n",
-      "timestamp": "2026-02-22T05:47:54.864348075Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 40488\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.anc.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 40488\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.anc.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.anc.gouv.fr.\t600\tIN\tCNAME\trj5w95t.ng.impervadns.net.\n",
+      "timestamp": "2026-03-01T05:59:35.19756298Z",
       "matcher-status": true
     },
     {
-      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
-      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
-      "template-id": "missing-cookie-samesite-strict",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
       "info": {
-        "name": "Missing Cookie SameSite Strict",
-        "author": [
-          "lucky0x0d",
-          "pulsesecurity.co.nz"
-        ],
-        "tags": [
-          "misconfig",
-          "samesite",
-          "cookie",
-          "vuln"
-        ],
-        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
-        "reference": [
-          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1,
-          "verified": true
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ],
-          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
-        }
-      },
-      "type": "http",
-      "host": "https://www.anc.gouv.fr",
-      "matched-at": "https://www.anc.gouv.fr/",
-      "extracted-results": [
-        "visid_incap_3077027=DssdAxMrSCS6ZQKMsWAhoJGYmmkAAAAAQUIPAAAAAADQQttRUNcTl6TiWHhpUARQ; expires=Sun, 21 Feb 2027 07:03:31 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None incap_ses_1401_3077027=jqfHM2cnoV66BXGCmFpxE5GYmmkAAAAA3bDXvPWpveg0xGyohIvO7A==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None"
-      ],
-      "request": "GET / HTTP/1.1\r\nHost: www.anc.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.anc.gouv.fr/\r\nSet-Cookie: visid_incap_3077027=DssdAxMrSCS6ZQKMsWAhoJGYmmkAAAAAQUIPAAAAAADQQttRUNcTl6TiWHhpUARQ; expires=Sun, 21 Feb 2027 07:03:31 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1401_3077027=jqfHM2cnoV66BXGCmFpxE5GYmmkAAAAA3bDXvPWpveg0xGyohIvO7A==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-63245566-0 0NNN RT(1771739281740 6) q(0 -1 -1 -1) r(1 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T05:48:01.759024109Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.anc.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/technologies/tech-detect.yaml",
-      "template-url": "https://templates.nuclei.sh/public/tech-detect",
-      "template-id": "tech-detect",
-      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
-      "info": {
-        "name": "Wappalyzer Technology Detection",
-        "author": [
-          "hakluke",
-          "righettod",
-          "matejsmycka"
-        ],
-        "tags": [
-          "tech",
-          "discovery"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "Imperva",
-      "type": "http",
-      "host": "https://www.anc.gouv.fr",
-      "matched-at": "https://www.anc.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.anc.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.anc.gouv.fr/\r\nSet-Cookie: visid_incap_3077027=DssdAxMrSCS6ZQKMsWAhoJGYmmkAAAAAQUIPAAAAAADQQttRUNcTl6TiWHhpUARQ; expires=Sun, 21 Feb 2027 07:03:31 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1401_3077027=jqfHM2cnoV66BXGCmFpxE5GYmmkAAAAA3bDXvPWpveg0xGyohIvO7A==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-63245566-0 0NNN RT(1771739281740 6) q(0 -1 -1 -1) r(1 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T05:48:01.827893154Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.anc.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
-      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
-      "template-id": "missing-cookie-samesite-strict",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
-      "info": {
-        "name": "Missing Cookie SameSite Strict",
-        "author": [
-          "lucky0x0d",
-          "pulsesecurity.co.nz"
-        ],
-        "tags": [
-          "misconfig",
-          "samesite",
-          "cookie",
-          "vuln"
-        ],
-        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
-        "reference": [
-          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1,
-          "verified": true
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ],
-          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
-        }
-      },
-      "type": "http",
-      "host": "https://www.anc.gouv.fr",
-      "matched-at": "https://www.anc.gouv.fr/",
-      "extracted-results": [
-        "visid_incap_3077027=WmtbuI4ITfKrcNfeMzy0sJGYmmkAAAAAQUIPAAAAAAB7gpIPJymLQxaZhuCl6vwY; expires=Sun, 21 Feb 2027 07:03:09 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None incap_ses_1401_3077027=9pWxK+3QmTuxBXGCmFpxE5GYmmkAAAAAKvGz0M9y31SLPywRq3CLQQ==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None"
-      ],
-      "request": "GET / HTTP/1.1\r\nHost: www.anc.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.anc.gouv.fr/\r\nSet-Cookie: visid_incap_3077027=WmtbuI4ITfKrcNfeMzy0sJGYmmkAAAAAQUIPAAAAAAB7gpIPJymLQxaZhuCl6vwY; expires=Sun, 21 Feb 2027 07:03:09 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1401_3077027=9pWxK+3QmTuxBXGCmFpxE5GYmmkAAAAAKvGz0M9y31SLPywRq3CLQQ==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 13-96235962-0 0NNN RT(1771739281725 11) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T05:48:02.372179034Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.anc.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
-      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
-      "template-id": "missing-cookie-samesite-strict",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
-      "info": {
-        "name": "Missing Cookie SameSite Strict",
-        "author": [
-          "lucky0x0d",
-          "pulsesecurity.co.nz"
-        ],
-        "tags": [
-          "misconfig",
-          "samesite",
-          "cookie",
-          "vuln"
-        ],
-        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
-        "reference": [
-          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1,
-          "verified": true
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ],
-          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
-        }
-      },
-      "type": "http",
-      "host": "https://www.anc.gouv.fr",
-      "matched-at": "https://www.anc.gouv.fr",
-      "extracted-results": [
-        "visid_incap_3077027=DJ3y1MbMRs6Byh6VQUEbgJGYmmkAAAAAQUIPAAAAAAC/kkCP7xnvvsKwAqDwxKXg; expires=Sun, 21 Feb 2027 07:03:31 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None incap_ses_1401_3077027=gSkAIR5CU2ulBXGCmFpxE5GYmmkAAAAAY9hk5lkocTSclFtThyA7sQ==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None"
-      ],
-      "request": "GET / HTTP/1.1\r\nHost: www.anc.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.anc.gouv.fr/\r\nSet-Cookie: visid_incap_3077027=DJ3y1MbMRs6Byh6VQUEbgJGYmmkAAAAAQUIPAAAAAAC/kkCP7xnvvsKwAqDwxKXg; expires=Sun, 21 Feb 2027 07:03:31 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1401_3077027=gSkAIR5CU2ulBXGCmFpxE5GYmmkAAAAAY9hk5lkocTSclFtThyA7sQ==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-63245561-0 0NNN RT(1771739281713 7) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T05:48:02.993975354Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.anc.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/technologies/tech-detect.yaml",
-      "template-url": "https://templates.nuclei.sh/public/tech-detect",
-      "template-id": "tech-detect",
-      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
-      "info": {
-        "name": "Wappalyzer Technology Detection",
-        "author": [
-          "hakluke",
-          "righettod",
-          "matejsmycka"
-        ],
-        "tags": [
-          "tech",
-          "discovery"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "Imperva",
-      "type": "http",
-      "host": "https://www.anc.gouv.fr",
-      "matched-at": "https://www.anc.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: www.anc.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.anc.gouv.fr/\r\nSet-Cookie: visid_incap_3077027=DJ3y1MbMRs6Byh6VQUEbgJGYmmkAAAAAQUIPAAAAAAC/kkCP7xnvvsKwAqDwxKXg; expires=Sun, 21 Feb 2027 07:03:31 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1401_3077027=gSkAIR5CU2ulBXGCmFpxE5GYmmkAAAAAY9hk5lkocTSclFtThyA7sQ==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-63245561-0 0NNN RT(1771739281713 7) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T05:48:03.019697482Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.anc.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/miscellaneous/external-service-interaction.yaml",
-      "template-url": "https://templates.nuclei.sh/public/external-service-interaction",
-      "template-id": "external-service-interaction",
-      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/external-service-interaction.yaml",
-      "info": {
-        "name": "External Service Interaction",
-        "author": [
-          "andreluna"
-        ],
-        "tags": [
-          "miscellaneous",
-          "http",
-          "misc",
-          "oast",
-          "vuln"
-        ],
-        "description": "External Service interaction via Host Header Injection.",
-        "reference": [
-          "https://portswigger.net/kb/issues/00300210_external-service-interaction-http",
-          "https://success.qualys.com/support/s/article/000006843",
-          "https://owasp.org/www-project-web-security-testing-guide/latest/4-web_application_security_testing/07-input_validation_testing/17-testing_for_host_header_injection"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-918",
-            "cwe-406"
-          ]
-        }
-      },
-      "type": "http",
-      "host": "https://www.anc.gouv.fr",
-      "matched-at": "https://www.anc.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: d6d9h2nckv1nhnk6j60gbrfboczem7te6.oast.fun\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 711\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1008-17936151-0 0NNN RT(1771739495328 12) q(0 -1 -1 -1) r(51 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1008-17936151-0%200NNN%20RT%281771739495328%2012%29%20q%280%20-1%20-1%20-1%29%20r%2851%20-1%29&incident_id=0-95449180024671816&edet=22&cinfo=ffffffff&rpinfo=0&cip=135.232.208.112&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-95449180024671816</iframe></body></html>",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T05:51:40.397488461Z",
-      "interaction": {
-        "protocol": "dns",
-        "unique-id": "d6d9h2nckv1nhnk6j60gbrfboczem7te6",
-        "full-id": "d6d9h2nckv1nhnk6j60gbrfboczem7te6",
-        "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 24693\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d6d9h2nckv1nhnk6j60gbrfboczem7te6.oast.fun.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 24693\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d6d9h2nckv1nhnk6j60gbrfboczem7te6.oast.fun.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd6d9h2nckv1nhnk6j60gbrfboczem7te6.oast.fun.\t3600\tIN\tA\t206.189.156.69\n\n;; AUTHORITY SECTION:\nd6d9h2nckv1nhnk6j60gbrfboczem7te6.oast.fun.\t3600\tIN\tNS\tns1.oast.fun.\nd6d9h2nckv1nhnk6j60gbrfboczem7te6.oast.fun.\t3600\tIN\tNS\tns2.oast.fun.\n\n;; ADDITIONAL SECTION:\nns1.oast.fun.\t3600\tIN\tA\t206.189.156.69\nns2.oast.fun.\t3600\tIN\tA\t206.189.156.69\n",
-        "remote-address": "198.143.32.27",
-        "timestamp": "2026-02-22T05:51:35.499591698Z"
-      },
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Host: d6d9h2nckv1nhnk6j60gbrfboczem7te6.oast.fun' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.anc.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/tls-sni-proxy.yaml",
-      "template-url": "https://templates.nuclei.sh/public/tls-sni-proxy",
-      "template-id": "tls-sni-proxy",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/tls-sni-proxy.yaml",
-      "info": {
-        "name": "TLS SNI Proxy Detection",
+        "name": "CAA Record",
         "author": [
           "pdteam"
         ],
         "tags": [
+          "dns",
+          "caa",
+          "discovery"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.anc.gouv.fr.",
+      "matched-at": "www.anc.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 8811\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.anc.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 8811\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.anc.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.anc.gouv.fr.\t600\tIN\tCNAME\trj5w95t.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
+      "timestamp": "2026-03-01T05:59:35.261144644Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
           "misconfig",
-          "ssrf",
-          "oast",
-          "tls",
-          "sni",
-          "proxy",
+          "samesite",
+          "cookie",
           "vuln"
         ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
         "reference": [
-          "https://www.invicti.com/blog/web-security/ssrf-vulnerabilities-caused-by-sni-proxy-misconfigurations/",
-          "https://www.bamsoftware.com/computers/sniproxy/"
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.anc.gouv.fr",
+      "matched-at": "https://www.anc.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3077027=62hmuiZ2SNiPie+aM/qRhtXVo2kAAAAAQUIPAAAAAAB1FMmgKCmcheBHv2FhcvHs; expires=Sun, 28 Feb 2027 06:51:40 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None incap_ses_642_3077027=1fDvC+2/Y2xpjoBKINjoCNXVo2kAAAAARln+ZgfYAvh2cqD0JeUM4g==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.anc.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.anc.gouv.fr/\r\nSet-Cookie: visid_incap_3077027=62hmuiZ2SNiPie+aM/qRhtXVo2kAAAAAQUIPAAAAAAB1FMmgKCmcheBHv2FhcvHs; expires=Sun, 28 Feb 2027 06:51:40 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_642_3077027=1fDvC+2/Y2xpjoBKINjoCNXVo2kAAAAARln+ZgfYAvh2cqD0JeUM4g==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 9-18295735-0 0NNN RT(1772344790086 7) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-03-01T05:59:50.106273725Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.anc.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
         ],
         "severity": "info",
         "metadata": {
           "max-request": 1
         }
       },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.anc.gouv.fr",
+      "matched-at": "https://www.anc.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.anc.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.anc.gouv.fr/\r\nSet-Cookie: visid_incap_3077027=62hmuiZ2SNiPie+aM/qRhtXVo2kAAAAAQUIPAAAAAAB1FMmgKCmcheBHv2FhcvHs; expires=Sun, 28 Feb 2027 06:51:40 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_642_3077027=1fDvC+2/Y2xpjoBKINjoCNXVo2kAAAAARln+ZgfYAvh2cqD0JeUM4g==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 9-18295735-0 0NNN RT(1772344790086 7) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-03-01T05:59:50.155825979Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.anc.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.anc.gouv.fr",
+      "matched-at": "https://www.anc.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3077027=hJ8wnauITjWYibl0BWGK9dXVo2kAAAAAQUIPAAAAAACNMsg4ATfIoD67Np/hDKZf; expires=Sun, 28 Feb 2027 06:17:16 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None incap_ses_354_3077027=VcyFdZY5qTE8O+GasqnpBNXVo2kAAAAAXzP0iO9J22g+hU3xN5Ac+g==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.anc.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.anc.gouv.fr/\r\nSet-Cookie: visid_incap_3077027=hJ8wnauITjWYibl0BWGK9dXVo2kAAAAAQUIPAAAAAACNMsg4ATfIoD67Np/hDKZf; expires=Sun, 28 Feb 2027 06:17:16 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_354_3077027=VcyFdZY5qTE8O+GasqnpBNXVo2kAAAAAXzP0iO9J22g+hU3xN5Ac+g==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 7-12441238-0 0NNN RT(1772344790073 8) q(0 -1 -1 -1) r(1 -1) B13(3,30037,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-03-01T05:59:50.688217742Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.anc.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
       "type": "http",
       "host": "https://www.anc.gouv.fr",
       "matched-at": "https://www.anc.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: www.anc.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.anc.gouv.fr/\r\nSet-Cookie: visid_incap_3077027=qNi4p3QDQjuXviYKioCHaZ6ZmmkAAAAAQUIPAAAAAABxsnIlu01z4UEKWYrxEEGL; expires=Sun, 21 Feb 2027 07:03:11 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1401_3077027=llWlA4kBO0rUsXGCmFpxE56ZmmkAAAAAV1mh/DHlPgCAeaYereDXDQ==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 12-79917184-0 0NNN RT(1771739550926 9) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "extracted-results": [
+        "visid_incap_3077027=Q/skAaklSCy0UdnP7eyXPdXVo2kAAAAAQUIPAAAAAADyXa0vXqXA9UTVfu+fhXKc; expires=Sun, 28 Feb 2027 06:51:38 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None incap_ses_642_3077027=L0YtYxqyQVVRjoBKINjoCNXVo2kAAAAAuChtipK1jd21HL0a4PRzrA==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.anc.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.anc.gouv.fr/\r\nSet-Cookie: visid_incap_3077027=Q/skAaklSCy0UdnP7eyXPdXVo2kAAAAAQUIPAAAAAADyXa0vXqXA9UTVfu+fhXKc; expires=Sun, 28 Feb 2027 06:51:38 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_642_3077027=L0YtYxqyQVVRjoBKINjoCNXVo2kAAAAAuChtipK1jd21HL0a4PRzrA==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 14-56947829-0 0NNN RT(1772344790058 8) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T05:52:30.936829302Z",
-      "interaction": {
-        "protocol": "dns",
-        "unique-id": "d6d9h2nckv1nhnk6j60gowxnbuy8555pg",
-        "full-id": "d6d9h2nckv1nhnk6j60gowxnbuy8555pg",
-        "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 57272\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d6d9h2nckv1nhnk6j60gowxnbuy8555pg.oast.fun.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 57272\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d6d9h2nckv1nhnk6j60gowxnbuy8555pg.oast.fun.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd6d9h2nckv1nhnk6j60gowxnbuy8555pg.oast.fun.\t3600\tIN\tA\t206.189.156.69\n\n;; AUTHORITY SECTION:\nd6d9h2nckv1nhnk6j60gowxnbuy8555pg.oast.fun.\t3600\tIN\tNS\tns1.oast.fun.\nd6d9h2nckv1nhnk6j60gowxnbuy8555pg.oast.fun.\t3600\tIN\tNS\tns2.oast.fun.\n\n;; ADDITIONAL SECTION:\nns1.oast.fun.\t3600\tIN\tA\t206.189.156.69\nns2.oast.fun.\t3600\tIN\tA\t206.189.156.69\n",
-        "remote-address": "107.154.186.25",
-        "timestamp": "2026-02-22T05:52:25.629714162Z"
+      "timestamp": "2026-03-01T05:59:51.339284682Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.anc.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
       },
-      "curl-command": "curl -X 'GET' -d '' -H 'Host: www.anc.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.anc.gouv.fr'",
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.anc.gouv.fr",
+      "matched-at": "https://www.anc.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.anc.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.anc.gouv.fr/\r\nSet-Cookie: visid_incap_3077027=Q/skAaklSCy0UdnP7eyXPdXVo2kAAAAAQUIPAAAAAADyXa0vXqXA9UTVfu+fhXKc; expires=Sun, 28 Feb 2027 06:51:38 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_642_3077027=L0YtYxqyQVVRjoBKINjoCNXVo2kAAAAAuChtipK1jd21HL0a4PRzrA==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 14-56947829-0 0NNN RT(1772344790058 8) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-03-01T05:59:51.364943883Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.anc.gouv.fr'",
       "matcher-status": true
     },
     {
@@ -421,55 +318,10 @@
       "host": "https://www.anc.gouv.fr",
       "matched-at": "https://www.anc.gouv.fr/",
       "request": "POST / HTTP/1.1\r\nHost: www.anc.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.anc.gouv.fr/\r\nSet-Cookie: visid_incap_3077027=7yo42iHyTfy64GpEeo/atbGZmmkAAAAAQUIPAAAAAADdtTVv4w4rk5/nNx3pBj0j; expires=Sun, 21 Feb 2027 08:05:46 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_640_3077027=Urw4dk/jPGWZj6YGI73hCLGZmmkAAAAAIrsXxsjm6KgNwqefphrF5g==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 16-89539312-0 0NNN RT(1771739569708 8) q(0 -1 -1 -1) r(1 -1) B13(3,30037,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.anc.gouv.fr/\r\nSet-Cookie: visid_incap_3077027=HnWmcJnBTvKX+pUHz3Fci+LWo2kAAAAAQUIPAAAAAAAY5AoF0U2Zj9Iw9a4ibP82; expires=Sun, 28 Feb 2027 06:17:15 GMT; HttpOnly; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_354_3077027=Cm6RVKsT2Dvm7eKasqnpBOLWo2kAAAAAO6RYtArsagVUfCtEVn3zow==; path=/; Domain=.anc.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 12-33157708-0 0NNN RT(1772345059203 5) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T05:52:49.723688149Z",
+      "timestamp": "2026-03-01T06:04:19.218916401Z",
       "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.anc.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.anc.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/vulnerabilities/generic/request-based-interaction.yaml",
-      "template-url": "https://templates.nuclei.sh/public/request-based-interaction",
-      "template-id": "request-based-interaction",
-      "template-path": "/home/runner/nuclei-templates/http/vulnerabilities/generic/request-based-interaction.yaml",
-      "info": {
-        "name": "OOB Request Based Interaction",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "oast",
-          "ssrf",
-          "generic",
-          "vuln"
-        ],
-        "description": "The remote server fetched a spoofed DNS Name from the request.",
-        "reference": [
-          "https://portswigger.net/research/cracking-the-lens-targeting-https-hidden-attack-surface"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 5
-        }
-      },
-      "matcher-name": "dns",
-      "type": "http",
-      "host": "https://www.anc.gouv.fr",
-      "matched-at": "https://www.anc.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: d6d9h2nckv1nhnk6j60gw7h7wf5w48yfk.oast.fun\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 714\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1017-105722225-0 0NNN RT(1771739577468 10) q(0 -1 -1 -1) r(54 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1017-105722225-0%200NNN%20RT%281771739577468%2010%29%20q%280%20-1%20-1%20-1%29%20r%2854%20-1%29&incident_id=0-572374932776816273&edet=22&cinfo=ffffffff&rpinfo=0&cip=135.232.208.112&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-572374932776816273</iframe></body></html>",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T05:53:02.875201321Z",
-      "interaction": {
-        "protocol": "dns",
-        "unique-id": "d6d9h2nckv1nhnk6j60gw7h7wf5w48yfk",
-        "full-id": "d6d9h2nckv1nhnk6j60gw7h7wf5w48yfk",
-        "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 6341\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d6d9h2nckv1nhnk6j60gw7h7wf5w48yfk.oast.fun.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 6341\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d6d9h2nckv1nhnk6j60gw7h7wf5w48yfk.oast.fun.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd6d9h2nckv1nhnk6j60gw7h7wf5w48yfk.oast.fun.\t3600\tIN\tA\t206.189.156.69\n\n;; AUTHORITY SECTION:\nd6d9h2nckv1nhnk6j60gw7h7wf5w48yfk.oast.fun.\t3600\tIN\tNS\tns1.oast.fun.\nd6d9h2nckv1nhnk6j60gw7h7wf5w48yfk.oast.fun.\t3600\tIN\tNS\tns2.oast.fun.\n\n;; ADDITIONAL SECTION:\nns1.oast.fun.\t3600\tIN\tA\t206.189.156.69\nns2.oast.fun.\t3600\tIN\tA\t206.189.156.69\n",
-        "remote-address": "107.154.186.25",
-        "timestamp": "2026-02-22T05:52:57.634416841Z"
-      },
       "matcher-status": true
     },
     {
@@ -500,7 +352,7 @@
         "Certigna"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T05:55:05.625926877Z",
+      "timestamp": "2026-03-01T06:06:28.285966528Z",
       "matcher-status": true
     },
     {
@@ -533,7 +385,7 @@
         "anc.gouv.fr"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T05:55:05.626074062Z",
+      "timestamp": "2026-03-01T06:06:28.286158346Z",
       "matcher-status": true
     },
     {
@@ -565,7 +417,7 @@
         "tls12"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T05:55:05.877605717Z",
+      "timestamp": "2026-03-01T06:06:28.522662098Z",
       "matcher-status": true
     },
     {
@@ -597,7 +449,7 @@
         "tls13"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T05:55:06.101691948Z",
+      "timestamp": "2026-03-01T06:06:28.754736094Z",
       "matcher-status": true
     }
   ]
