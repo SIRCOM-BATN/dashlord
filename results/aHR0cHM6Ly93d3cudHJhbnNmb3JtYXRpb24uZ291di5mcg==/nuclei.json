@@ -1,44 +1,6 @@
 [
   [
     {
-      "template": "dns/dns-saas-service-detection.yaml",
-      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
-      "template-id": "dns-saas-service-detection",
-      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
-      "info": {
-        "name": "DNS SaaS Service Detection",
-        "author": [
-          "noah @thesubtlety",
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "service",
-          "discovery"
-        ],
-        "description": "A CNAME DNS record was discovered",
-        "reference": [
-          "https://ns1.com/resources/cname",
-          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
-          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "type": "dns",
-      "host": "www.transformation.gouv.fr.",
-      "matched-at": "www.transformation.gouv.fr",
-      "extracted-results": [
-        "8blqdqe.ng.impervadns.net."
-      ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 50175\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.transformation.gouv.fr.\tIN\t CNAME\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 50175\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.transformation.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.transformation.gouv.fr.\t600\tIN\tCNAME\t8blqdqe.ng.impervadns.net.\n",
-      "timestamp": "2026-02-22T04:34:01.986907109Z",
-      "matcher-status": true
-    },
-    {
       "template": "dns/caa-fingerprint.yaml",
       "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
       "template-id": "caa-fingerprint",
@@ -71,317 +33,252 @@
       "type": "dns",
       "host": "www.transformation.gouv.fr.",
       "matched-at": "www.transformation.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 24433\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.transformation.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 24433\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.transformation.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.transformation.gouv.fr.\t600\tIN\tCNAME\t8blqdqe.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
-      "timestamp": "2026-02-22T04:34:02.017649472Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 36419\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.transformation.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 36419\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.transformation.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.transformation.gouv.fr.\t600\tIN\tCNAME\t8blqdqe.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
+      "timestamp": "2026-03-01T04:46:20.727944941Z",
       "matcher-status": true
     },
     {
-      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
-      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
-      "template-id": "missing-cookie-samesite-strict",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template": "dns/dns-saas-service-detection.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
+      "template-id": "dns-saas-service-detection",
+      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
       "info": {
-        "name": "Missing Cookie SameSite Strict",
+        "name": "DNS SaaS Service Detection",
         "author": [
-          "lucky0x0d",
-          "pulsesecurity.co.nz"
-        ],
-        "tags": [
-          "misconfig",
-          "samesite",
-          "cookie",
-          "vuln"
-        ],
-        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
-        "reference": [
-          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1,
-          "verified": true
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ],
-          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
-        }
-      },
-      "type": "http",
-      "host": "https://www.transformation.gouv.fr",
-      "matched-at": "https://www.transformation.gouv.fr/",
-      "extracted-results": [
-        "visid_incap_3064996=Wd122GMcRne5TzJR2iGfMkCHmmkAAAAAQUIPAAAAAAC+e6ngoPUmlp5H2K5noNdt; expires=Sun, 21 Feb 2027 06:14:18 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None incap_ses_262_3064996=7z6XGEsGcx7x0Ie2HNCiA0CHmmkAAAAAoYPJKlvVC6u+a4Iadx+VIg==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None"
-      ],
-      "request": "GET / HTTP/1.1\r\nHost: www.transformation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.transformation.gouv.fr/\r\nSet-Cookie: visid_incap_3064996=Wd122GMcRne5TzJR2iGfMkCHmmkAAAAAQUIPAAAAAAC+e6ngoPUmlp5H2K5noNdt; expires=Sun, 21 Feb 2027 06:14:18 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_262_3064996=7z6XGEsGcx7x0Ie2HNCiA0CHmmkAAAAAoYPJKlvVC6u+a4Iadx+VIg==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 2-36071630-0 0NNN RT(1771734848890 18) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T04:34:08.925222046Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.transformation.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/technologies/tech-detect.yaml",
-      "template-url": "https://templates.nuclei.sh/public/tech-detect",
-      "template-id": "tech-detect",
-      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
-      "info": {
-        "name": "Wappalyzer Technology Detection",
-        "author": [
-          "hakluke",
-          "righettod",
-          "matejsmycka"
-        ],
-        "tags": [
-          "tech",
-          "discovery"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "Imperva",
-      "type": "http",
-      "host": "https://www.transformation.gouv.fr",
-      "matched-at": "https://www.transformation.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.transformation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.transformation.gouv.fr/\r\nSet-Cookie: visid_incap_3064996=Wd122GMcRne5TzJR2iGfMkCHmmkAAAAAQUIPAAAAAAC+e6ngoPUmlp5H2K5noNdt; expires=Sun, 21 Feb 2027 06:14:18 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_262_3064996=7z6XGEsGcx7x0Ie2HNCiA0CHmmkAAAAAoYPJKlvVC6u+a4Iadx+VIg==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 2-36071630-0 0NNN RT(1771734848890 18) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T04:34:09.041948119Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.transformation.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
-      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
-      "template-id": "missing-cookie-samesite-strict",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
-      "info": {
-        "name": "Missing Cookie SameSite Strict",
-        "author": [
-          "lucky0x0d",
-          "pulsesecurity.co.nz"
-        ],
-        "tags": [
-          "misconfig",
-          "samesite",
-          "cookie",
-          "vuln"
-        ],
-        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
-        "reference": [
-          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1,
-          "verified": true
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ],
-          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
-        }
-      },
-      "type": "http",
-      "host": "https://www.transformation.gouv.fr",
-      "matched-at": "https://www.transformation.gouv.fr/",
-      "extracted-results": [
-        "visid_incap_3064996=WsBOnu9TQRedVbMHNLq2a0CHmmkAAAAAQUIPAAAAAAAIRN9NZSaEaBvTmodxb09h; expires=Sun, 21 Feb 2027 06:43:45 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None incap_ses_685_3064996=eEEUIr5vHivoR/f9ZZyBCUCHmmkAAAAACyac8PlRbYeTMdGrGX5ZCw==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None"
-      ],
-      "request": "GET / HTTP/1.1\r\nHost: www.transformation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.transformation.gouv.fr/\r\nSet-Cookie: visid_incap_3064996=WsBOnu9TQRedVbMHNLq2a0CHmmkAAAAAQUIPAAAAAAAIRN9NZSaEaBvTmodxb09h; expires=Sun, 21 Feb 2027 06:43:45 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_685_3064996=eEEUIr5vHivoR/f9ZZyBCUCHmmkAAAAACyac8PlRbYeTMdGrGX5ZCw==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 7-12938561-0 0NNN RT(1771734848838 23) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T04:34:09.56667149Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.transformation.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
-      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
-      "template-id": "missing-cookie-samesite-strict",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
-      "info": {
-        "name": "Missing Cookie SameSite Strict",
-        "author": [
-          "lucky0x0d",
-          "pulsesecurity.co.nz"
-        ],
-        "tags": [
-          "misconfig",
-          "samesite",
-          "cookie",
-          "vuln"
-        ],
-        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
-        "reference": [
-          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1,
-          "verified": true
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ],
-          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
-        }
-      },
-      "type": "http",
-      "host": "https://www.transformation.gouv.fr",
-      "matched-at": "https://www.transformation.gouv.fr",
-      "extracted-results": [
-        "visid_incap_3064996=d4g+bLKIScu0RyFO/atN6kCHmmkAAAAAQUIPAAAAAAD9NP83Y88ltumL8r4D40qN; expires=Sun, 21 Feb 2027 06:14:18 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None incap_ses_262_3064996=Q/G7CsoCvmnV0Ie2HNCiA0CHmmkAAAAAfsnYGJjtI8pvEYNP0g1Ujg==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None"
-      ],
-      "request": "GET / HTTP/1.1\r\nHost: www.transformation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.transformation.gouv.fr/\r\nSet-Cookie: visid_incap_3064996=d4g+bLKIScu0RyFO/atN6kCHmmkAAAAAQUIPAAAAAAD9NP83Y88ltumL8r4D40qN; expires=Sun, 21 Feb 2027 06:14:18 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_262_3064996=Q/G7CsoCvmnV0Ie2HNCiA0CHmmkAAAAAfsnYGJjtI8pvEYNP0g1Ujg==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 4-41820505-0 0NNN RT(1771734848795 14) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T04:34:10.171358004Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.transformation.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/technologies/tech-detect.yaml",
-      "template-url": "https://templates.nuclei.sh/public/tech-detect",
-      "template-id": "tech-detect",
-      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
-      "info": {
-        "name": "Wappalyzer Technology Detection",
-        "author": [
-          "hakluke",
-          "righettod",
-          "matejsmycka"
-        ],
-        "tags": [
-          "tech",
-          "discovery"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "Imperva",
-      "type": "http",
-      "host": "https://www.transformation.gouv.fr",
-      "matched-at": "https://www.transformation.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: www.transformation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.transformation.gouv.fr/\r\nSet-Cookie: visid_incap_3064996=d4g+bLKIScu0RyFO/atN6kCHmmkAAAAAQUIPAAAAAAD9NP83Y88ltumL8r4D40qN; expires=Sun, 21 Feb 2027 06:14:18 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_262_3064996=Q/G7CsoCvmnV0Ie2HNCiA0CHmmkAAAAAfsnYGJjtI8pvEYNP0g1Ujg==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 4-41820505-0 0NNN RT(1771734848795 14) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T04:34:10.198411637Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.transformation.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/miscellaneous/external-service-interaction.yaml",
-      "template-url": "https://templates.nuclei.sh/public/external-service-interaction",
-      "template-id": "external-service-interaction",
-      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/external-service-interaction.yaml",
-      "info": {
-        "name": "External Service Interaction",
-        "author": [
-          "andreluna"
-        ],
-        "tags": [
-          "miscellaneous",
-          "http",
-          "misc",
-          "oast",
-          "vuln"
-        ],
-        "description": "External Service interaction via Host Header Injection.",
-        "reference": [
-          "https://portswigger.net/kb/issues/00300210_external-service-interaction-http",
-          "https://success.qualys.com/support/s/article/000006843",
-          "https://owasp.org/www-project-web-security-testing-guide/latest/4-web_application_security_testing/07-input_validation_testing/17-testing_for_host_header_injection"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-918",
-            "cwe-406"
-          ]
-        }
-      },
-      "type": "http",
-      "host": "https://www.transformation.gouv.fr",
-      "matched-at": "https://www.transformation.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: d6d8eefckv1n746g3tp0w3obgbq54545u.oast.pro\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 713\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1016-102005720-0 0NNN RT(1771734917351 20) q(0 -1 -1 -1) r(54 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1016-102005720-0%200NNN%20RT%281771734917351%2020%29%20q%280%20-1%20-1%20-1%29%20r%2854%20-1%29&incident_id=0-576957534035578512&edet=22&cinfo=ffffffff&rpinfo=0&cip=172.212.167.86&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-576957534035578512</iframe></body></html>",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T04:35:22.803541203Z",
-      "interaction": {
-        "protocol": "dns",
-        "unique-id": "d6d8eefckv1n746g3tp0w3obgbq54545u",
-        "full-id": "d6d8eefckv1n746g3tp0w3obgbq54545u",
-        "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 45646\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d6d8eefckv1n746g3tp0w3obgbq54545u.oast.pro.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 45646\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d6d8eefckv1n746g3tp0w3obgbq54545u.oast.pro.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd6d8eefckv1n746g3tp0w3obgbq54545u.oast.pro.\t3600\tIN\tA\t178.128.212.209\n\n;; AUTHORITY SECTION:\nd6d8eefckv1n746g3tp0w3obgbq54545u.oast.pro.\t3600\tIN\tNS\tns1.oast.pro.\nd6d8eefckv1n746g3tp0w3obgbq54545u.oast.pro.\t3600\tIN\tNS\tns2.oast.pro.\n\n;; ADDITIONAL SECTION:\nns1.oast.pro.\t3600\tIN\tA\t178.128.212.209\nns2.oast.pro.\t3600\tIN\tA\t178.128.212.209\n",
-        "remote-address": "107.154.186.28",
-        "timestamp": "2026-02-22T04:35:17.534111738Z"
-      },
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Host: d6d8eefckv1n746g3tp0w3obgbq54545u.oast.pro' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.transformation.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/tls-sni-proxy.yaml",
-      "template-url": "https://templates.nuclei.sh/public/tls-sni-proxy",
-      "template-id": "tls-sni-proxy",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/tls-sni-proxy.yaml",
-      "info": {
-        "name": "TLS SNI Proxy Detection",
-        "author": [
+          "noah @thesubtlety",
           "pdteam"
         ],
         "tags": [
-          "misconfig",
-          "ssrf",
-          "oast",
-          "tls",
-          "sni",
-          "proxy",
-          "vuln"
+          "dns",
+          "service",
+          "discovery"
         ],
+        "description": "A CNAME DNS record was discovered",
         "reference": [
-          "https://www.invicti.com/blog/web-security/ssrf-vulnerabilities-caused-by-sni-proxy-misconfigurations/",
-          "https://www.bamsoftware.com/computers/sniproxy/"
+          "https://ns1.com/resources/cname",
+          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
+          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
         ],
         "severity": "info",
         "metadata": {
           "max-request": 1
         }
       },
+      "type": "dns",
+      "host": "www.transformation.gouv.fr.",
+      "matched-at": "www.transformation.gouv.fr",
+      "extracted-results": [
+        "8blqdqe.ng.impervadns.net."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 33364\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.transformation.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 33364\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.transformation.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.transformation.gouv.fr.\t600\tIN\tCNAME\t8blqdqe.ng.impervadns.net.\n",
+      "timestamp": "2026-03-01T04:46:21.695251072Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.transformation.gouv.fr",
+      "matched-at": "https://www.transformation.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3064996=vKFkgfijS5KraWTQHFb6dqTEo2kAAAAAQUIPAAAAAAAq9k/CC7cPSdDkdgdzc9XX; expires=Sun, 28 Feb 2027 06:20:02 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None incap_ses_1326_3064996=gDR0IpdwWRIZgSY5fuZmEqTEo2kAAAAAcmT2EQ13uxoNrSDP9bBDWw==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.transformation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.transformation.gouv.fr/\r\nSet-Cookie: visid_incap_3064996=vKFkgfijS5KraWTQHFb6dqTEo2kAAAAAQUIPAAAAAAAq9k/CC7cPSdDkdgdzc9XX; expires=Sun, 28 Feb 2027 06:20:02 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1326_3064996=gDR0IpdwWRIZgSY5fuZmEqTEo2kAAAAAcmT2EQ13uxoNrSDP9bBDWw==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 12-27818282-0 0NNN RT(1772340388627 10) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-03-01T04:46:28.647326821Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.transformation.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.transformation.gouv.fr",
+      "matched-at": "https://www.transformation.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.transformation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.transformation.gouv.fr/\r\nSet-Cookie: visid_incap_3064996=vKFkgfijS5KraWTQHFb6dqTEo2kAAAAAQUIPAAAAAAAq9k/CC7cPSdDkdgdzc9XX; expires=Sun, 28 Feb 2027 06:20:02 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1326_3064996=gDR0IpdwWRIZgSY5fuZmEqTEo2kAAAAAcmT2EQ13uxoNrSDP9bBDWw==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 12-27818282-0 0NNN RT(1772340388627 10) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-03-01T04:46:28.690312776Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.transformation.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.transformation.gouv.fr",
+      "matched-at": "https://www.transformation.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3064996=mvZU1LqeSmmfmzCpDBfZA6TEo2kAAAAAQUIPAAAAAADPuKiwFERao+z0y9N4c6rS; expires=Sun, 28 Feb 2027 06:20:02 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None incap_ses_1326_3064996=ZybEflGh3DsAgSY5fuZmEqTEo2kAAAAAj7U5NBJL5dpxTrWjao3VGg==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.transformation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.transformation.gouv.fr/\r\nSet-Cookie: visid_incap_3064996=mvZU1LqeSmmfmzCpDBfZA6TEo2kAAAAAQUIPAAAAAADPuKiwFERao+z0y9N4c6rS; expires=Sun, 28 Feb 2027 06:20:02 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1326_3064996=ZybEflGh3DsAgSY5fuZmEqTEo2kAAAAAj7U5NBJL5dpxTrWjao3VGg==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-20908739-0 0NNN RT(1772340388610 9) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-03-01T04:46:29.205920438Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.transformation.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
       "type": "http",
       "host": "https://www.transformation.gouv.fr",
       "matched-at": "https://www.transformation.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: www.transformation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.transformation.gouv.fr/\r\nSet-Cookie: visid_incap_3064996=mazjvDe0SIGf0+zMsgw7y5yHmmkAAAAAQUIPAAAAAAAJ7e5fGwsxCfclvjdXX1H+; expires=Sun, 21 Feb 2027 06:14:32 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_262_3064996=IiokFU4GIRpX+oe2HNCiA5yHmmkAAAAANl/198rFn1JoWhiKDKyx6A==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 6-7005179-0 0NNN RT(1771734941084 25) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "extracted-results": [
+        "visid_incap_3064996=fRLgAivzS42gQRunNxDYHaTEo2kAAAAAQUIPAAAAAAB69L3d5pCqYHCc8xQbJMad; expires=Sun, 28 Feb 2027 06:20:02 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None incap_ses_1326_3064996=F/JDa0DEqETrgCY5fuZmEqTEo2kAAAAAFHD/MtdZQzSElhtsuf0uKA==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.transformation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.transformation.gouv.fr/\r\nSet-Cookie: visid_incap_3064996=fRLgAivzS42gQRunNxDYHaTEo2kAAAAAQUIPAAAAAAB69L3d5pCqYHCc8xQbJMad; expires=Sun, 28 Feb 2027 06:20:02 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1326_3064996=F/JDa0DEqETrgCY5fuZmEqTEo2kAAAAAFHD/MtdZQzSElhtsuf0uKA==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-20908736-0 0NNN RT(1772340388593 8) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T04:35:41.116748904Z",
-      "interaction": {
-        "protocol": "dns",
-        "unique-id": "d6d8eefckv1n746g3tp0a58o1tkwwjsd4",
-        "full-id": "d6d8eefckv1n746g3tp0a58o1tkwwjsd4",
-        "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 57976\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d6d8eefckv1n746g3tp0a58o1tkwwjsd4.oast.pro.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 57976\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d6d8eefckv1n746g3tp0a58o1tkwwjsd4.oast.pro.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd6d8eefckv1n746g3tp0a58o1tkwwjsd4.oast.pro.\t3600\tIN\tA\t178.128.212.209\n\n;; AUTHORITY SECTION:\nd6d8eefckv1n746g3tp0a58o1tkwwjsd4.oast.pro.\t3600\tIN\tNS\tns1.oast.pro.\nd6d8eefckv1n746g3tp0a58o1tkwwjsd4.oast.pro.\t3600\tIN\tNS\tns2.oast.pro.\n\n;; ADDITIONAL SECTION:\nns1.oast.pro.\t3600\tIN\tA\t178.128.212.209\nns2.oast.pro.\t3600\tIN\tA\t178.128.212.209\n",
-        "remote-address": "107.154.186.28",
-        "timestamp": "2026-02-22T04:35:35.513364977Z"
+      "timestamp": "2026-03-01T04:46:29.882973034Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.transformation.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
       },
-      "curl-command": "curl -X 'GET' -d '' -H 'Host: www.transformation.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.transformation.gouv.fr'",
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.transformation.gouv.fr",
+      "matched-at": "https://www.transformation.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.transformation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.transformation.gouv.fr/\r\nSet-Cookie: visid_incap_3064996=fRLgAivzS42gQRunNxDYHaTEo2kAAAAAQUIPAAAAAAB69L3d5pCqYHCc8xQbJMad; expires=Sun, 28 Feb 2027 06:20:02 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1326_3064996=F/JDa0DEqETrgCY5fuZmEqTEo2kAAAAAFHD/MtdZQzSElhtsuf0uKA==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 11-20908736-0 0NNN RT(1772340388593 8) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-03-01T04:46:29.908285257Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.transformation.gouv.fr'",
       "matcher-status": true
     },
     {
@@ -421,55 +318,10 @@
       "host": "https://www.transformation.gouv.fr",
       "matched-at": "https://www.transformation.gouv.fr/",
       "request": "POST / HTTP/1.1\r\nHost: www.transformation.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
-      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.transformation.gouv.fr/\r\nSet-Cookie: visid_incap_3064996=uMy+4sQrSvm32MgKz423F7WHmmkAAAAAQUIPAAAAAAApfhSyiqeTNKAv8UuJ+erV; expires=Sun, 21 Feb 2027 06:42:40 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_685_3064996=6ShkTquYGxmsvPf9ZZyBCbWHmmkAAAAAR8pi0fTnU1dGGjiuFhWmtQ==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 17-118717716-0 0NNN RT(1771734966135 18) q(0 -1 -1 -1) r(0 -1) B13(3,30037,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.transformation.gouv.fr/\r\nSet-Cookie: visid_incap_3064996=c0YK8U2WRwSOho6YZ6nlQN7Fo2kAAAAAQUIPAAAAAAC1Aijyey4kihQ2f7r683kJ; expires=Sun, 28 Feb 2027 06:25:09 GMT; HttpOnly; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_1329_3064996=EDz4emtV9hsA4tYnAY9xEt7Fo2kAAAAAS2k5bz7VeEhqCemrsHplwQ==; path=/; Domain=.transformation.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 7-32783460-0 0NNN RT(1772340703154 9) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
       "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T04:36:06.16758693Z",
+      "timestamp": "2026-03-01T04:51:43.171328006Z",
       "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.transformation.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.transformation.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/vulnerabilities/generic/request-based-interaction.yaml",
-      "template-url": "https://templates.nuclei.sh/public/request-based-interaction",
-      "template-id": "request-based-interaction",
-      "template-path": "/home/runner/nuclei-templates/http/vulnerabilities/generic/request-based-interaction.yaml",
-      "info": {
-        "name": "OOB Request Based Interaction",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "oast",
-          "ssrf",
-          "generic",
-          "vuln"
-        ],
-        "description": "The remote server fetched a spoofed DNS Name from the request.",
-        "reference": [
-          "https://portswigger.net/research/cracking-the-lens-targeting-https-hidden-attack-surface"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 5
-        }
-      },
-      "matcher-name": "dns",
-      "type": "http",
-      "host": "https://www.transformation.gouv.fr",
-      "matched-at": "https://www.transformation.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: d6d8eefckv1n746g3tp0i1qyrzfj7ecpi.oast.pro\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 712\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1009-27127216-0 0NNN RT(1771734975832 17) q(0 -1 -1 -1) r(57 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1009-27127216-0%200NNN%20RT%281771734975832%2017%29%20q%280%20-1%20-1%20-1%29%20r%2857%20-1%29&incident_id=0-144276829187214793&edet=22&cinfo=ffffffff&rpinfo=0&cip=172.212.167.86&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-144276829187214793</iframe></body></html>",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T04:36:21.558766629Z",
-      "interaction": {
-        "protocol": "dns",
-        "unique-id": "d6d8eefckv1n746g3tp0i1qyrzfj7ecpi",
-        "full-id": "d6d8eefckv1n746g3tp0i1qyrzfj7ecpi",
-        "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 42918\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;d6d8eefckv1n746g3tp0i1qyrzfj7ecpi.oast.pro.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 42918\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;d6d8eefckv1n746g3tp0i1qyrzfj7ecpi.oast.pro.\tIN\t CNAME\n\n;; ANSWER SECTION:\nd6d8eefckv1n746g3tp0i1qyrzfj7ecpi.oast.pro.\t3600\tIN\tA\t178.128.212.209\n\n;; AUTHORITY SECTION:\nd6d8eefckv1n746g3tp0i1qyrzfj7ecpi.oast.pro.\t3600\tIN\tNS\tns1.oast.pro.\nd6d8eefckv1n746g3tp0i1qyrzfj7ecpi.oast.pro.\t3600\tIN\tNS\tns2.oast.pro.\n\n;; ADDITIONAL SECTION:\nns1.oast.pro.\t3600\tIN\tA\t178.128.212.209\nns2.oast.pro.\t3600\tIN\tA\t178.128.212.209\n",
-        "remote-address": "198.143.32.4",
-        "timestamp": "2026-02-22T04:36:16.089290598Z"
-      },
       "matcher-status": true
     },
     {
@@ -500,7 +352,7 @@
         "DHIMYOTIS"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T04:38:31.21988446Z",
+      "timestamp": "2026-03-01T04:53:49.677339162Z",
       "matcher-status": true
     },
     {
@@ -532,7 +384,7 @@
         "transformation.gouv.fr"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T04:38:31.220067501Z",
+      "timestamp": "2026-03-01T04:53:49.677518725Z",
       "matcher-status": true
     },
     {
@@ -564,7 +416,7 @@
         "tls12"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T04:38:32.084947178Z",
+      "timestamp": "2026-03-01T04:53:49.728015418Z",
       "matcher-status": true
     },
     {
@@ -596,7 +448,7 @@
         "tls13"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2026-02-22T04:38:33.062357597Z",
+      "timestamp": "2026-03-01T04:53:50.80121903Z",
       "matcher-status": true
     }
   ]
