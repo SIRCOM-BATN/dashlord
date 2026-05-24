@@ -1,3 +1,457 @@
 [
-  []
+  [
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa",
+          "discovery"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.asfl.finances.gouv.fr.",
+      "matched-at": "www.asfl.finances.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 18707\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.asfl.finances.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 18707\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.asfl.finances.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.asfl.finances.gouv.fr.\t600\tIN\tCNAME\tx3vbody.ng.impervadns.net.\n\n;; AUTHORITY SECTION:\nimpervadns.net.\t900\tIN\tSOA\tns1.impervadns.net. hostmaster.incapsula.com. 3001 86400 7200 3600000 600\n",
+      "timestamp": "2026-05-24T06:12:10.9810942Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/dns-saas-service-detection.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
+      "template-id": "dns-saas-service-detection",
+      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
+      "info": {
+        "name": "DNS SaaS Service Detection",
+        "author": [
+          "noah @thesubtlety",
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "service",
+          "discovery"
+        ],
+        "description": "A CNAME DNS record was discovered",
+        "reference": [
+          "https://ns1.com/resources/cname",
+          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
+          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "www.asfl.finances.gouv.fr.",
+      "matched-at": "www.asfl.finances.gouv.fr",
+      "extracted-results": [
+        "x3vbody.ng.impervadns.net."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 29032\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.asfl.finances.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 29032\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.asfl.finances.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.asfl.finances.gouv.fr.\t600\tIN\tCNAME\tx3vbody.ng.impervadns.net.\n",
+      "timestamp": "2026-05-24T06:12:11.010118276Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.asfl.finances.gouv.fr",
+      "matched-at": "https://www.asfl.finances.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3164287=l/2u6evnTX+qaphiyhCD9cGWEmoAAAAAQUIPAAAAAAB/v0NEKcfnI7jVECFL7Tbz; expires=Sun, 23 May 2027 06:17:43 GMT; HttpOnly; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None incap_ses_198_3164287=y4ezADNljCKuavRxK3C/AsGWEmoAAAAAThcEVmh8FKx/uWPcaEe02Q==; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.asfl.finances.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.asfl.finances.gouv.fr/\r\nSet-Cookie: visid_incap_3164287=l/2u6evnTX+qaphiyhCD9cGWEmoAAAAAQUIPAAAAAAB/v0NEKcfnI7jVECFL7Tbz; expires=Sun, 23 May 2027 06:17:43 GMT; HttpOnly; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_198_3164287=y4ezADNljCKuavRxK3C/AsGWEmoAAAAAThcEVmh8FKx/uWPcaEe02Q==; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 54-113646761-0 0NNN RT(1779603137944 13) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-05-24T06:12:17.96859728Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.asfl.finances.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.asfl.finances.gouv.fr",
+      "matched-at": "https://www.asfl.finances.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.asfl.finances.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.asfl.finances.gouv.fr/\r\nSet-Cookie: visid_incap_3164287=l/2u6evnTX+qaphiyhCD9cGWEmoAAAAAQUIPAAAAAAB/v0NEKcfnI7jVECFL7Tbz; expires=Sun, 23 May 2027 06:17:43 GMT; HttpOnly; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_198_3164287=y4ezADNljCKuavRxK3C/AsGWEmoAAAAAThcEVmh8FKx/uWPcaEe02Q==; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 54-113646761-0 0NNN RT(1779603137944 13) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-05-24T06:12:18.004996042Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.asfl.finances.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.asfl.finances.gouv.fr",
+      "matched-at": "https://www.asfl.finances.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3164287=ESSujujSTPKbuT+PZa1hUsGWEmoAAAAAQUIPAAAAAADlA1adnVDx/jKqg4miZjaX; expires=Sun, 23 May 2027 06:17:43 GMT; HttpOnly; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None incap_ses_198_3164287=P2DNLbxO8BSMavRxK3C/AsGWEmoAAAAAsAV1RHjkQYdC8mGAm16Dlg==; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.asfl.finances.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.asfl.finances.gouv.fr/\r\nSet-Cookie: visid_incap_3164287=ESSujujSTPKbuT+PZa1hUsGWEmoAAAAAQUIPAAAAAADlA1adnVDx/jKqg4miZjaX; expires=Sun, 23 May 2027 06:17:43 GMT; HttpOnly; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_198_3164287=P2DNLbxO8BSMavRxK3C/AsGWEmoAAAAAsAV1RHjkQYdC8mGAm16Dlg==; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 55-122644748-0 0NNN RT(1779603137909 17) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-05-24T06:12:18.529043721Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.asfl.finances.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.asfl.finances.gouv.fr",
+      "matched-at": "https://www.asfl.finances.gouv.fr",
+      "extracted-results": [
+        "visid_incap_3164287=f2XgOK3DRViywtWBU1VGA8GWEmoAAAAAQUIPAAAAAAAmyatkGVbLrzSjd+vY8y9h; expires=Sun, 23 May 2027 06:17:43 GMT; HttpOnly; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None incap_ses_198_3164287=zhM1FXmVhzdhavRxK3C/AsGWEmoAAAAA55rBawkJoNuY0zMbpQ/ohA==; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.asfl.finances.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.asfl.finances.gouv.fr/\r\nSet-Cookie: visid_incap_3164287=f2XgOK3DRViywtWBU1VGA8GWEmoAAAAAQUIPAAAAAAAmyatkGVbLrzSjd+vY8y9h; expires=Sun, 23 May 2027 06:17:43 GMT; HttpOnly; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_198_3164287=zhM1FXmVhzdhavRxK3C/AsGWEmoAAAAA55rBawkJoNuY0zMbpQ/ohA==; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 54-113646749-0 0NNN RT(1779603137876 15) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-05-24T06:12:19.165145417Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.asfl.finances.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.asfl.finances.gouv.fr",
+      "matched-at": "https://www.asfl.finances.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.asfl.finances.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.asfl.finances.gouv.fr/\r\nSet-Cookie: visid_incap_3164287=f2XgOK3DRViywtWBU1VGA8GWEmoAAAAAQUIPAAAAAAAmyatkGVbLrzSjd+vY8y9h; expires=Sun, 23 May 2027 06:17:43 GMT; HttpOnly; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_198_3164287=zhM1FXmVhzdhavRxK3C/AsGWEmoAAAAA55rBawkJoNuY0zMbpQ/ohA==; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 54-113646749-0 0NNN RT(1779603137876 15) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-05-24T06:12:19.222079174Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.asfl.finances.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc",
+          "discovery"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "incapsula",
+      "type": "http",
+      "host": "https://www.asfl.finances.gouv.fr",
+      "matched-at": "https://www.asfl.finances.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: www.asfl.finances.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.asfl.finances.gouv.fr/\r\nSet-Cookie: visid_incap_3164287=x8agWzNPRre3znOw5ZVXO8iXEmoAAAAAQUIPAAAAAABCwk7QbeOQCZDrdDUSmx8n; expires=Sun, 23 May 2027 06:17:44 GMT; HttpOnly; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None\r\nSet-Cookie: incap_ses_198_3164287=X0cwaRJePhcT+fZxK3C/AsiXEmoAAAAAsSTOz2RTM91+LKMm3tDEXQ==; path=/; Domain=.asfl.finances.gouv.fr; Secure; SameSite=None\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 61-182481398-0 0NNN RT(1779603400738 19) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-05-24T06:16:40.766400735Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.asfl.finances.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.asfl.finances.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.asfl.finances.gouv.fr",
+      "matched-at": "www.asfl.finances.gouv.fr:443",
+      "extracted-results": [
+        "DHIMYOTIS"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-05-24T06:18:59.840777661Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "vuln"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.asfl.finances.gouv.fr",
+      "matched-at": "www.asfl.finances.gouv.fr:443",
+      "extracted-results": [
+        "www.asfl.finances.gouv.fr",
+        "asfl.finances.gouv.fr",
+        "www.alpaf.finances.gouv.fr",
+        "alpaf.finances.gouv.fr"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-05-24T06:18:59.840956888Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.asfl.finances.gouv.fr",
+      "matched-at": "www.asfl.finances.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-05-24T06:18:59.944485559Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.asfl.finances.gouv.fr",
+      "matched-at": "www.asfl.finances.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "45.223.57.83",
+      "timestamp": "2026-05-24T06:19:01.095980818Z",
+      "matcher-status": true
+    }
+  ]
 ]
