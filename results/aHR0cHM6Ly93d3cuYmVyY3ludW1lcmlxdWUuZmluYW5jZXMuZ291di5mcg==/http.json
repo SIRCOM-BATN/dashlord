@@ -1,16 +1,16 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "D+",
+    "grade": "B+",
     "error": null,
-    "score": 40,
+    "score": 80,
     "statusCode": 200,
-    "testsFailed": 3,
-    "testsPassed": 7,
+    "testsFailed": 1,
+    "testsPassed": 9,
     "testsQuantity": 10,
     "responseHeaders": {
       "server": "nginx",
-      "date": "Sun, 26 Jul 2026 03:14:41 GMT",
+      "date": "Sun, 02 Aug 2026 03:10:48 GMT",
       "content-type": "text/html; charset=UTF-8",
       "connection": "close",
       "cache-control": "max-age=600",
@@ -18,12 +18,12 @@
       "content-language": "fr",
       "x-content-type-options": "nosniff",
       "x-frame-options": "SAMEORIGIN",
-      "expires": "Sun, 26 Jul 2026 03:24:41 GMT",
+      "expires": "Sun, 02 Aug 2026 03:20:48 GMT",
       "last-modified": "Tue, 16 Jun 2026 03:05:24 GMT",
       "etag": "\"1781579124\"",
       "vary": "Cookie,Accept-Encoding",
       "x-drupal-cache": "MISS",
-      "x-proxy-cache": "UPDATING",
+      "x-proxy-cache": "HIT",
       "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:; font-src 'self' data: https:;frame-ancestors 'self' https://*.safire.fonction-publique.gouv.fr;",
       "referrer-policy": "same-origin",
       "allow": "GET, POST, HEAD",
@@ -34,9 +34,14 @@
       "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
       "x-xss-protection": "1;mode=block",
       "upgrade-insecure-requests": "1",
+      "set-cookie": [
+        "visid_incap_3065004=xZFI+OEbTYiMA8SwxtycLji1bmoAAAAAQUIPAAAAAADVWDcofgiQPtbPeV10ybIv; expires=Sun, 01 Aug 2027 06:26:05 GMT; HttpOnly; path=/; Domain=.bercynumerique.finances.gouv.fr; Secure; SameSite=None",
+        "nlbi_3065004=gzXpNHbFJX5Eq4PIN44ROwAAAABdEWeEEY0dTo4ZpaAsdWVH; HttpOnly; path=/; Domain=.bercynumerique.finances.gouv.fr; Secure; SameSite=None",
+        "incap_ses_354_3065004=N3SUPct4fioC3Fws06npBDi1bmoAAAAADQn77lJwnToDsBu4r81Azw==; path=/; Domain=.bercynumerique.finances.gouv.fr; Secure; SameSite=None"
+      ],
       "x-cdn": "Imperva",
       "transfer-encoding": "chunked",
-      "x-iinfo": "51-321205774-321205776 NNYN CT(181 367 0) RT(1785035680444 4) q(0 0 5 -1) r(7 9) U12"
+      "x-iinfo": "17-71523627-71523631 NNYN CT(124 275 0) RT(1785640248214 9) q(0 0 4 0) r(6 7) U12"
     }
   },
   "tests": {
@@ -91,30 +96,36 @@
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
-      "pass": false,
-      "result": "cookies-without-secure-flag",
-      "scoreModifier": -20,
+      "pass": true,
+      "result": "cookies-secure-with-httponly-sessions-and-samesite",
+      "scoreModifier": 5,
       "data": {
         "visid_incap_3065004": {
           "domain": "bercynumerique.finances.gouv.fr",
-          "expires": "2027-07-25T06:24:09.000Z",
+          "expires": "2027-08-01T06:26:05.000Z",
           "httponly": true,
           "path": "/",
-          "port": null
+          "port": null,
+          "samesite": "none",
+          "secure": true
         },
         "nlbi_3065004": {
           "domain": "bercynumerique.finances.gouv.fr",
           "httponly": true,
           "path": "/",
-          "port": null
+          "port": null,
+          "samesite": "none",
+          "secure": true
         },
-        "incap_ses_395_3065004": {
+        "incap_ses_354_3065004": {
           "domain": "bercynumerique.finances.gouv.fr",
           "path": "/",
-          "port": null
+          "port": null,
+          "samesite": "none",
+          "secure": true
         }
       },
-      "sameSite": false
+      "sameSite": true
     },
     "cross-origin-resource-sharing": {
       "expectation": "cross-origin-resource-sharing-not-implemented",
@@ -147,13 +158,13 @@
     },
     "strict-transport-security": {
       "expectation": "hsts-implemented-max-age-at-least-six-months",
-      "pass": false,
-      "result": "hsts-not-implemented-no-https",
-      "scoreModifier": -20,
-      "data": null,
-      "includeSubDomains": false,
-      "maxAge": null,
-      "preload": false,
+      "pass": true,
+      "result": "hsts-implemented-max-age-at-least-six-months",
+      "scoreModifier": 0,
+      "data": "max-age=31536000; includeSubDomains; preload",
+      "includeSubDomains": true,
+      "maxAge": 31536000,
+      "preload": true,
       "preloaded": false
     },
     "subresource-integrity": {
