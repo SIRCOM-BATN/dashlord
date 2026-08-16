@@ -1,0 +1,462 @@
+[
+  [
+    {
+      "template": "dns/txt-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/txt-fingerprint",
+      "template-id": "txt-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/txt-fingerprint.yaml",
+      "info": {
+        "name": "DNS TXT Record Detected",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "txt",
+          "discovery"
+        ],
+        "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
+        "reference": [
+          "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.igf.finances.gouv.fr.",
+      "matched-at": "www.igf.finances.gouv.fr",
+      "extracted-results": [
+        "\"google-site-verification=WgTbWHR8nunbe-m2BRIWojf32VxEzDtGpXLVyntfdFo\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 25821\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.igf.finances.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 25821\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.igf.finances.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nwww.igf.finances.gouv.fr.\t600\tIN\tTXT\t\"google-site-verification=WgTbWHR8nunbe-m2BRIWojf32VxEzDtGpXLVyntfdFo\"\n",
+      "timestamp": "2026-08-16T04:34:15.752426466Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa",
+          "discovery"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.igf.finances.gouv.fr.",
+      "matched-at": "www.igf.finances.gouv.fr",
+      "extracted-results": [
+        "sectigo.com\"www.igf.finances.gouv.fr.\t600\tIN\tCAA\t0 issue \"certigna.com"
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 36670\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.igf.finances.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 36670\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.igf.finances.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.igf.finances.gouv.fr.\t600\tIN\tCAA\t0 issue \"sectigo.com\"\nwww.igf.finances.gouv.fr.\t600\tIN\tCAA\t0 issue \"certigna.com\"\n",
+      "timestamp": "2026-08-16T04:34:15.908566926Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.igf.finances.gouv.fr",
+      "matched-at": "https://www.igf.finances.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3344260=Tt+bzk5cSDyvv7OyQtdAIM49gWoAAAAAQUIPAAAAAAA3HDrpSNuh7bNkeNYECamG; expires=Sun, 15 Aug 2027 19:22:48 GMT; HttpOnly; path=/; Domain=.igf.finances.gouv.fr incap_ses_1022_3344260=rzbDdrXJm15eKneKod8uDs49gWoAAAAAvqWoWzxIefCPRjyy+uyOUQ==; path=/; Domain=.igf.finances.gouv.fr"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.igf.finances.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.igf.finances.gouv.fr/\r\nSet-Cookie: visid_incap_3344260=Tt+bzk5cSDyvv7OyQtdAIM49gWoAAAAAQUIPAAAAAAA3HDrpSNuh7bNkeNYECamG; expires=Sun, 15 Aug 2027 19:22:48 GMT; HttpOnly; path=/; Domain=.igf.finances.gouv.fr\r\nSet-Cookie: incap_ses_1022_3344260=rzbDdrXJm15eKneKod8uDs49gWoAAAAAvqWoWzxIefCPRjyy+uyOUQ==; path=/; Domain=.igf.finances.gouv.fr\r\nX-Iinfo: 51-26249050-0 0NNN RT(1786854862897 33) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.150.83",
+      "timestamp": "2026-08-16T04:34:22.951226042Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.igf.finances.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.igf.finances.gouv.fr",
+      "matched-at": "https://www.igf.finances.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.igf.finances.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.igf.finances.gouv.fr/\r\nSet-Cookie: visid_incap_3344260=Tt+bzk5cSDyvv7OyQtdAIM49gWoAAAAAQUIPAAAAAAA3HDrpSNuh7bNkeNYECamG; expires=Sun, 15 Aug 2027 19:22:48 GMT; HttpOnly; path=/; Domain=.igf.finances.gouv.fr\r\nSet-Cookie: incap_ses_1022_3344260=rzbDdrXJm15eKneKod8uDs49gWoAAAAAvqWoWzxIefCPRjyy+uyOUQ==; path=/; Domain=.igf.finances.gouv.fr\r\nX-Iinfo: 51-26249050-0 0NNN RT(1786854862897 33) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U18\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.150.83",
+      "timestamp": "2026-08-16T04:34:22.981529518Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.igf.finances.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.igf.finances.gouv.fr",
+      "matched-at": "https://www.igf.finances.gouv.fr/",
+      "extracted-results": [
+        "visid_incap_3344260=B7tNW1lLSKyDpdYaT4KS4809gWoAAAAAQUIPAAAAAADZYlEH0kwtOyKNUrbZ+UH2; expires=Sun, 15 Aug 2027 19:19:30 GMT; HttpOnly; path=/; Domain=.igf.finances.gouv.fr incap_ses_1022_3344260=/Tiecv8s9BBhKXeKod8uDs09gWoAAAAArboMa4rfBteLWStGIAR4tA==; path=/; Domain=.igf.finances.gouv.fr"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.igf.finances.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.igf.finances.gouv.fr/\r\nSet-Cookie: visid_incap_3344260=B7tNW1lLSKyDpdYaT4KS4809gWoAAAAAQUIPAAAAAADZYlEH0kwtOyKNUrbZ+UH2; expires=Sun, 15 Aug 2027 19:19:30 GMT; HttpOnly; path=/; Domain=.igf.finances.gouv.fr\r\nSet-Cookie: incap_ses_1022_3344260=/Tiecv8s9BBhKXeKod8uDs09gWoAAAAArboMa4rfBteLWStGIAR4tA==; path=/; Domain=.igf.finances.gouv.fr\r\nX-Iinfo: 50-26644683-0 0NNN RT(1786854862823 27) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U18\r\n\r\n",
+      "ip": "45.223.150.83",
+      "timestamp": "2026-08-16T04:34:23.572703723Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.igf.finances.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://www.igf.finances.gouv.fr",
+      "matched-at": "https://www.igf.finances.gouv.fr",
+      "extracted-results": [
+        "visid_incap_3344260=XN0zfrVnTzSrAN/4adL6rc09gWoAAAAAQUIPAAAAAAAj62xkhpEbG3jxd25ZfLbd; expires=Sun, 15 Aug 2027 19:22:50 GMT; HttpOnly; path=/; Domain=.igf.finances.gouv.fr incap_ses_1022_3344260=L7qFQo/aGEF1KHeKod8uDs09gWoAAAAAF8v5dij1EjPfjitf9M3xtw==; path=/; Domain=.igf.finances.gouv.fr"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.igf.finances.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.igf.finances.gouv.fr/\r\nSet-Cookie: visid_incap_3344260=XN0zfrVnTzSrAN/4adL6rc09gWoAAAAAQUIPAAAAAAAj62xkhpEbG3jxd25ZfLbd; expires=Sun, 15 Aug 2027 19:22:50 GMT; HttpOnly; path=/; Domain=.igf.finances.gouv.fr\r\nSet-Cookie: incap_ses_1022_3344260=L7qFQo/aGEF1KHeKod8uDs09gWoAAAAAF8v5dij1EjPfjitf9M3xtw==; path=/; Domain=.igf.finances.gouv.fr\r\nX-Iinfo: 32-15995956-0 0NNN RT(1786854862743 26) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U18\r\n\r\n",
+      "ip": "45.223.150.83",
+      "timestamp": "2026-08-16T04:34:24.196584707Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.igf.finances.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "https://www.igf.finances.gouv.fr",
+      "matched-at": "https://www.igf.finances.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.igf.finances.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.igf.finances.gouv.fr/\r\nSet-Cookie: visid_incap_3344260=XN0zfrVnTzSrAN/4adL6rc09gWoAAAAAQUIPAAAAAAAj62xkhpEbG3jxd25ZfLbd; expires=Sun, 15 Aug 2027 19:22:50 GMT; HttpOnly; path=/; Domain=.igf.finances.gouv.fr\r\nSet-Cookie: incap_ses_1022_3344260=L7qFQo/aGEF1KHeKod8uDs09gWoAAAAAF8v5dij1EjPfjitf9M3xtw==; path=/; Domain=.igf.finances.gouv.fr\r\nX-Iinfo: 32-15995956-0 0NNN RT(1786854862743 26) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U18\r\n\r\n",
+      "ip": "45.223.150.83",
+      "timestamp": "2026-08-16T04:34:24.223524006Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.igf.finances.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx",
+          "s4e-io"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc",
+          "discovery"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "incapsula",
+      "type": "http",
+      "host": "https://www.igf.finances.gouv.fr",
+      "matched-at": "https://www.igf.finances.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: www.igf.finances.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.igf.finances.gouv.fr/\r\nSet-Cookie: visid_incap_3344260=3gy+5UfSQrKFXENjj5OlcRU+gWoAAAAAQUIPAAAAAACEofsQr4DHrhUfiDCoEcQh; expires=Sun, 15 Aug 2027 19:19:30 GMT; HttpOnly; path=/; Domain=.igf.finances.gouv.fr\r\nSet-Cookie: incap_ses_1022_3344260=e4UtLRnC5HsQC3qKod8uDhU+gWoAAAAAF3SInTnVoeICZg49b/THEg==; path=/; Domain=.igf.finances.gouv.fr\r\nX-Iinfo: 50-26663136-0 0NNN RT(1786854933862 36) q(0 -1 -1 -1) r(0 -1) B13(4,200,0) U6\r\n\r\n\r\n<HTML><HEAD><TITLE>Loading</TITLE></HEAD><BODY bgcolor=\"#ffffff\"><H3 style=\"color: #ffffff\">Loading</H3></BODY></HTML>\r\n",
+      "ip": "45.223.150.83",
+      "timestamp": "2026-08-16T04:35:33.91582442Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.igf.finances.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.igf.finances.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.igf.finances.gouv.fr",
+      "matched-at": "www.igf.finances.gouv.fr:443",
+      "extracted-results": [
+        "Sectigo Limited"
+      ],
+      "ip": "45.223.150.83",
+      "timestamp": "2026-08-16T04:38:33.565019014Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "vuln"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "www.igf.finances.gouv.fr",
+      "matched-at": "www.igf.finances.gouv.fr:443",
+      "extracted-results": [
+        "www.igf.finances.gouv.fr",
+        "igf.finances.gouv.fr"
+      ],
+      "ip": "45.223.150.83",
+      "timestamp": "2026-08-16T04:38:33.565191745Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.igf.finances.gouv.fr",
+      "matched-at": "www.igf.finances.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "45.223.150.83",
+      "timestamp": "2026-08-16T04:38:33.935607389Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "www.igf.finances.gouv.fr",
+      "matched-at": "www.igf.finances.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "45.223.150.83",
+      "timestamp": "2026-08-16T04:38:34.068658375Z",
+      "matcher-status": true
+    }
+  ]
+]
