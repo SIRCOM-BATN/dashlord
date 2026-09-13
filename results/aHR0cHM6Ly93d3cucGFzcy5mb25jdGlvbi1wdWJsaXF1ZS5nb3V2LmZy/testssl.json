@@ -345,8 +345,8 @@
               "id"           : "cert_expirationStatus",
               "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
               "port"         : "443",
-              "severity"     : "OK",
-              "finding"      : "61 >= 60 days"
+              "severity"     : "MEDIUM",
+              "finding"      : "expires < 60 days (54)"
           }
 ,         {
               "id"           : "cert_notBefore",
@@ -359,7 +359,7 @@
               "id"           : "cert_notAfter",
               "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
               "port"         : "443",
-              "severity"     : "OK",
+              "severity"     : "MEDIUM",
               "finding"      : "2026-11-06 23:59"
           }
 ,         {
@@ -500,14 +500,21 @@
               "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "403 Forbidden ('/')"
+              "finding"      : "200 OK ('/')"
           }
 ,         {
               "id"           : "HTTP_clock_skew",
               "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "Got no HTTP time, maybe try different URL?"
+              "finding"      : "0 seconds from localtime"
+          }
+,         {
+              "id"           : "HTTP_headerTime",
+              "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "1789276428"
           }
 ,         {
               "id"           : "HSTS_time",
@@ -542,7 +549,7 @@
               "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "No Server banner line in header, interesting!"
+              "finding"      : "nginx"
           }
 ,         {
               "id"           : "banner_application",
@@ -556,28 +563,70 @@
               "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "2 at '/' (maybe missed the application)"
+              "finding"      : "3 at '/'"
           }
 ,         {
               "id"           : "cookie_secure",
               "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
               "port"         : "443",
               "severity"     : "OK",
-              "finding"      : "All (2) at '/' marked as secure"
+              "finding"      : "All (3) at '/' marked as secure"
           }
 ,         {
               "id"           : "cookie_httponly",
               "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "2/2 at '/' marked as HttpOnly (maybe missed the application)"
+              "finding"      : "3/3 at '/' marked as HttpOnly"
+          }
+,         {
+              "id"           : "X-Frame-Options",
+              "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "SAMEORIGIN"
+          }
+,         {
+              "id"           : "X-Content-Type-Options",
+              "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "nosniff"
+          }
+,         {
+              "id"           : "Content-Security-Policy",
+              "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;"
+          }
+,         {
+              "id"           : "X-XSS-Protection",
+              "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "1;mode=block"
+          }
+,         {
+              "id"           : "Access-Control-Allow-Origin",
+              "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "*"
+          }
+,         {
+              "id"           : "Referrer-Policy",
+              "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "same-origin"
           }
 ,         {
               "id"           : "Cache-Control",
               "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "no-cache, no-store"
+              "finding"      : "max-age=600, public"
           }
 ,         {
               "id"           : "banner_reverseproxy",
@@ -653,10 +702,10 @@
               "id"           : "BREACH",
               "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
               "port"         : "443",
-              "severity"     : "OK",
+              "severity"     : "MEDIUM",
               "cve"          : "CVE-2013-3587",
               "cwe"          : "CWE-310",
-              "finding"      : "not vulnerable, no gzip/deflate/compress/br HTTP compression  - only supplied '/' tested"
+              "finding"      : "potentially VULNERABLE, gzip HTTP compression detected  - only supplied '/' tested"
           }
 ,         {
               "id"           : "POODLE_SSL",
@@ -1084,6 +1133,6 @@
               "ip"           : "www.pass.fonction-publique.gouv.fr/45.223.57.83",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "52"
+              "finding"      : "62"
           }
 ]
