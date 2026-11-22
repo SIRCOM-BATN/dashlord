@@ -1,37 +1,88 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "D",
+    "grade": "C+",
     "error": null,
-    "score": 30,
-    "statusCode": 403,
-    "testsFailed": 4,
-    "testsPassed": 6,
+    "score": 60,
+    "statusCode": 200,
+    "testsFailed": 2,
+    "testsPassed": 8,
     "testsQuantity": 10,
     "responseHeaders": {
-      "content-type": "text/html",
-      "cache-control": "no-cache, no-store",
+      "server": "nginx",
+      "date": "Sun, 22 Nov 2026 06:55:06 GMT",
+      "content-type": "text/html; charset=UTF-8",
+      "transfer-encoding": "chunked",
       "connection": "close",
-      "content-length": "891",
-      "x-iinfo": "52-279329654-0 0NNN RT(1794724895438 15) q(0 -1 -1 -1) r(0 -1) B17(11,13978214,0) U18",
+      "cache-control": "max-age=600, public",
+      "x-drupal-dynamic-cache": "HIT",
+      "content-language": "fr",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "SAMEORIGIN",
+      "expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+      "last-modified": "Sun, 22 Nov 2026 04:00:22 GMT",
+      "etag": "\"1795320022-gzip\"",
+      "vary": "Cookie,Accept-Encoding",
+      "x-drupal-cache": "HIT",
+      "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src https: ; child-src https: platform.twitter.com; img-src https: data:;",
+      "referrer-policy": "same-origin",
+      "allow": "GET, POST, HEAD",
+      "access-control-allow-methods": "GET, POST, OPTIONS",
+      "access-control-allow-origin": "*",
+      "access-control-allow-headers": "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range",
+      "access-control-expose-headers": "Content-Length,Content-Range",
       "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "x-xss-protection": "1;mode=block",
+      "upgrade-insecure-requests": "1",
       "set-cookie": [
-        "visid_incap_3059893=0Mu0a7hjSeKJMkwdk7+FSB9U+WoAAAAAQUIPAAAAAACdK4OOlxpsUR7M/RejBcDM; expires=Sun, 14 Nov 2027 07:20:53 GMT; HttpOnly; path=/; Domain=.pass.fonction-publique.gouv.fr; Secure; SameSite=None",
-        "incap_ses_187_3059893=e8LVRq4vjAsPDd692FuYAh9U+WoAAAAACAl7P5obsz5+Leui/J3fzw==; path=/; Domain=.pass.fonction-publique.gouv.fr; Secure; SameSite=None"
-      ]
+        "visid_incap_3059893=TpgXwR+aQ2qrFzuwGnDXOMmRAmsAAAAAQUIPAAAAAAA8Iw4/hdDNjL214cBZW09z; expires=Mon, 22 Nov 2027 06:29:52 GMT; HttpOnly; path=/; Domain=.pass.fonction-publique.gouv.fr; Secure; SameSite=None",
+        "nlbi_3059893=2BRhRee1ikiRySlBh3gVkQAAAADv37tPTA5qM+8ftpTEcqYb; HttpOnly; path=/; Domain=.pass.fonction-publique.gouv.fr; Secure; SameSite=None",
+        "incap_ses_409_3059893=IyoKCRMhrwKfhGLlYA+tBcqRAmsAAAAAKXBk3YXGqyYkxk1uM9/NwQ==; path=/; Domain=.pass.fonction-publique.gouv.fr; Secure; SameSite=None"
+      ],
+      "x-cdn": "Imperva",
+      "x-iinfo": "14-66138-66139 NNNN CT(126 165 0) RT(1795330506218 19) q(0 0 3 1) r(5 5) U12"
     }
   },
   "tests": {
     "content-security-policy": {
       "expectation": "csp-implemented-with-no-unsafe",
       "pass": false,
-      "result": "csp-not-implemented",
-      "scoreModifier": -25,
-      "data": null,
-      "http": false,
+      "result": "csp-implemented-with-unsafe-inline",
+      "scoreModifier": -20,
+      "data": {
+        "default-src": [
+          "'unsafe-eval'",
+          "'unsafe-inline'",
+          "https:"
+        ],
+        "object-src": [
+          "https:"
+        ],
+        "child-src": [
+          "https:",
+          "platform.twitter.com"
+        ],
+        "img-src": [
+          "data:",
+          "https:"
+        ]
+      },
+      "http": true,
       "meta": false,
-      "policy": null,
-      "numPolicies": 0
+      "policy": {
+        "antiClickjacking": false,
+        "defaultNone": false,
+        "insecureBaseUri": true,
+        "insecureFormAction": true,
+        "insecureSchemeActive": false,
+        "insecureSchemePassive": false,
+        "strictDynamic": false,
+        "unsafeEval": true,
+        "unsafeInline": true,
+        "unsafeInlineStyle": true,
+        "unsafeObjects": true
+      },
+      "numPolicies": 1
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
@@ -41,14 +92,22 @@
       "data": {
         "visid_incap_3059893": {
           "domain": "pass.fonction-publique.gouv.fr",
-          "expires": "2027-11-14T07:20:53.000Z",
+          "expires": "2027-11-22T06:29:52.000Z",
           "httponly": true,
           "path": "/",
           "port": null,
           "samesite": "none",
           "secure": true
         },
-        "incap_ses_187_3059893": {
+        "nlbi_3059893": {
+          "domain": "pass.fonction-publique.gouv.fr",
+          "httponly": true,
+          "path": "/",
+          "port": null,
+          "samesite": "none",
+          "secure": true
+        },
+        "incap_ses_409_3059893": {
           "domain": "pass.fonction-publique.gouv.fr",
           "path": "/",
           "port": null,
@@ -80,10 +139,10 @@
     "referrer-policy": {
       "expectation": "referrer-policy-private",
       "pass": true,
-      "result": "referrer-policy-not-implemented",
-      "scoreModifier": 0,
-      "data": null,
-      "http": false,
+      "result": "referrer-policy-private",
+      "scoreModifier": 5,
+      "data": "same-origin",
+      "http": true,
       "meta": false
     },
     "strict-transport-security": {
@@ -106,17 +165,17 @@
     },
     "x-content-type-options": {
       "expectation": "x-content-type-options-nosniff",
-      "pass": false,
-      "result": "x-content-type-options-not-implemented",
-      "scoreModifier": -5,
-      "data": null
+      "pass": true,
+      "result": "x-content-type-options-nosniff",
+      "scoreModifier": 0,
+      "data": "nosniff"
     },
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
-      "pass": false,
-      "result": "x-frame-options-not-implemented",
-      "scoreModifier": -20,
-      "data": null
+      "pass": true,
+      "result": "x-frame-options-sameorigin-or-deny",
+      "scoreModifier": 0,
+      "data": "SAMEORIGIN"
     },
     "cross-origin-resource-policy": {
       "expectation": "corp-implemented-with-same-site",
