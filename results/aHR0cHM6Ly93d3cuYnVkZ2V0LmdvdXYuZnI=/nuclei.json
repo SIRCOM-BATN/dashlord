@@ -1,77 +1,6 @@
 [
   [
     {
-      "template": "http/cves/2010/CVE-2010-0738.yaml",
-      "template-url": "https://cloud.projectdiscovery.io/public/CVE-2010-0738",
-      "template-id": "CVE-2010-0738",
-      "template-path": "/home/runner/nuclei-templates/http/cves/2010/CVE-2010-0738.yaml",
-      "info": {
-        "name": "JBoss JMX/Web Console - Authentication Bypass via HTTP Verb Tampering",
-        "author": [
-          "securin"
-        ],
-        "tags": [
-          "cve",
-          "cve2010",
-          "jboss",
-          "auth-bypass",
-          "verb-tampering",
-          "jmx",
-          "kev",
-          "vkev"
-        ],
-        "description": "JBoss EAP 4.2 (before 4.2.0.CP09) and 4.3 (before 4.3.0.CP08) only enforce authentication for GET/POST on the JMX and Web consoles because the web.xml security-constraint enumerates only those verbs in <http-method>. Non-standard verbs such as HEAD skip the constraint, granting unauthenticated access to MBean operations (which can lead to remote code execution).\n",
-        "impact": "Attackers can send requests to the JMX-Console GET handler using other HTTP methods, potentially leading to unauthorized access or control.\n",
-        "reference": [
-          "https://access.redhat.com/solutions/30744",
-          "https://github.com/joaomatosf/jexboss",
-          "https://nvd.nist.gov/vuln/detail/CVE-2010-0738"
-        ],
-        "severity": "critical",
-        "metadata": {
-          "fofa-query": "title=\"JBoss\" && body=\"/jmx-console/\"",
-          "max-request": 6,
-          "product": "jboss_enterprise_application_platform",
-          "shodan-query": [
-            "http.html:\"/jmx-console/\"",
-            "http.title:\"jboss\"",
-            "cpe:\"cpe:2.3:a:redhat:jboss_enterprise_application_platform\""
-          ],
-          "vendor": "redhat",
-          "verified": true
-        },
-        "classification": {
-          "cve-id": [
-            "cve-2010-0738"
-          ],
-          "cwe-id": [
-            "cwe-288"
-          ],
-          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "cvss-score": 9.8,
-          "epss-score": 0.73815,
-          "epss-percentile": 0.9948
-        },
-        "remediation": "Update to version 4.2.0.CP09 or later for 4.2, and 4.3.0.CP08 or later for 4.3, or apply security patches provided by Red Hat.\n"
-      },
-      "matcher-name": "jmx-console-verb-bypass",
-      "type": "http",
-      "host": "www.budget.gouv.fr",
-      "port": "443",
-      "scheme": "https",
-      "url": "https://www.budget.gouv.fr",
-      "matched-at": "https://www.budget.gouv.fr/jmx-console/HtmlAdaptor?action=inspectMBean&name=jboss.system:type=ServerInfo",
-      "extracted-results": [
-        "jmx-console verb-tampering: HEAD=200 GET=403"
-      ],
-      "request": "GET /jmx-console/HtmlAdaptor?action=inspectMBean&name=jboss.system:type=ServerInfo HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCookie: ***\r\nReferer: https://www.budget.gouv.fr\r\nX-Forwarded-For: 127.0.0.1\r\nX-Originating-IP: 127.0.0.1\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 886\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 54-208057287-0 0NNN RT(1794721868548 11) q(0 -1 -1 0) r(0 -1) B17(11,10564165,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=54-208057287-0%200NNN%20RT%281794721868548%2011%29%20q%280%20-1%20-1%200%29%20r%280%20-1%29%20B17%2811%2c10564165%2c0%29%20U18&incident_id=198000461101067446-954915802807929782&edet=17&cinfo=ffffffff&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 198000461101067446-954915802807929782</iframe></body></html>",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:51:08.572388663Z",
-      "curl-command": "curl -X 'GET' -d '' -H 'Cookie: ***' -H 'Host: www.budget.gouv.fr' -H 'Referer: https://www.budget.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' -H 'X-Forwarded-For: 127.0.0.1' -H 'X-Originating-IP: 127.0.0.1' 'https://www.budget.gouv.fr/jmx-console/HtmlAdaptor?action=inspectMBean&name=jboss.system:type=ServerInfo'",
-      "matcher-status": true
-    },
-    {
       "template": "http/misconfiguration/cookies-without-httponly.yaml",
       "template-url": "https://cloud.projectdiscovery.io/public/cookies-without-httponly",
       "template-id": "cookies-without-httponly",
@@ -114,11 +43,62 @@
       "url": "https://www.budget.gouv.fr",
       "matched-at": "www.budget.gouv.fr",
       "extracted-results": [
-        "incap_ses_198_3058694"
+        "incap_ses_679_3058694"
       ],
       "request": "content = template.http_all_headers\nconst setCookieLines = content\n    .split(/\\r\\n/)\n    .filter(line => line.trim().toLowerCase().startsWith('set-cookie:'***\n\nconst nonHttpOnlyCookies = setCookieLines.filter(line => !line.toLowerCase().includes('httponly'));\n\nconst cookieNames = nonHttpOnlyCookies.map(line => {\n    const match = line.match(/set-cookie:***\n    return match ? match[1] : null;\n}).filter(Boolean);\ncookieNames",
-      "response": "[incap_ses_198_3058694]",
-      "timestamp": "2026-11-15T05:51:57.781823005Z",
+      "response": "[incap_ses_679_3058694]",
+      "timestamp": "2026-11-22T06:06:46.825985094Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/tls-sni-proxy.yaml",
+      "template-url": "https://cloud.projectdiscovery.io/public/tls-sni-proxy",
+      "template-id": "tls-sni-proxy",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/tls-sni-proxy.yaml",
+      "info": {
+        "name": "TLS SNI Proxy Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "misconfig",
+          "ssrf",
+          "oast",
+          "tls",
+          "sni",
+          "proxy",
+          "vuln"
+        ],
+        "reference": [
+          "https://www.invicti.com/blog/web-security/ssrf-vulnerabilities-caused-by-sni-proxy-misconfigurations/",
+          "https://www.bamsoftware.com/computers/sniproxy/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "www.budget.gouv.fr",
+      "port": "443",
+      "scheme": "https",
+      "url": "https://www.budget.gouv.fr",
+      "matched-at": "https://www.budget.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 771\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 35-15122127-0 0NNN RT(1795327614859 648) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=35-15122127-0%200NNN%20RT%281795327614859%20648%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=959000100278455879-78710227859341987&edet=15&cinfo=08000000&rpinfo=0&cip=20.83.53.71&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 959000100278455879-78710227859341987</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-11-22T06:06:58.720532431Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "dc18cdcc92e4uudjr3g0njrn8d1cqiwe4",
+        "full-id": "dc18cdcc92e4uudjr3g0njrn8d1cqiwe4",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 26343\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;dc18cdcc92e4uudjr3g0njrn8d1cqiwe4.oast.fun.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 26343\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;dc18cdcc92e4uudjr3g0njrn8d1cqiwe4.oast.fun.\tIN\t CNAME\n\n;; ANSWER SECTION:\ndc18cdcc92e4uudjr3g0njrn8d1cqiwe4.oast.fun.\t3600\tIN\tA\t206.189.156.69\n\n;; AUTHORITY SECTION:\ndc18cdcc92e4uudjr3g0njrn8d1cqiwe4.oast.fun.\t3600\tIN\tNS\tns1.oast.fun.\ndc18cdcc92e4uudjr3g0njrn8d1cqiwe4.oast.fun.\t3600\tIN\tNS\tns2.oast.fun.\n\n;; ADDITIONAL SECTION:\nns1.oast.fun.\t3600\tIN\tA\t206.189.156.69\nns2.oast.fun.\t3600\tIN\tA\t206.189.156.69\n",
+        "remote-address": "45.60.27.6",
+        "timestamp": "2026-11-22T06:06:54.791524258Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: www.budget.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
       "matcher-status": true
     },
     {
@@ -162,56 +142,11 @@
       "url": "https://www.budget.gouv.fr",
       "matched-at": "https://www.budget.gouv.fr",
       "request": "POST / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 777\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 57-254213623-0 0NNN RT(1794721925517 19) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U6\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=57-254213623-0%200NNN%20RT%281794721925517%2019%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U6&incident_id=198000461100487444-1153197361779313593&edet=15&cinfo=08000000&rpinfo=0&cip=20.169.78.219&mth=POST\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 198000461100487444-1153197361779313593</iframe></body></html>",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 772\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 17-29231269-0 0NNN RT(1795327631670 12) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U6\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=17-29231269-0%200NNN%20RT%281795327631670%2012%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U6&incident_id=679000290078930047-168096773672732497&edet=15&cinfo=08000000&rpinfo=0&cip=20.83.53.71&mth=POST\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 679000290078930047-168096773672732497</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:52:05.549602755Z",
+      "timestamp": "2026-11-22T06:07:11.692504887Z",
       "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.budget.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
       "matcher-status": true
-    },
-    {
-      "template-id": "tls-sni-proxy",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/tls-sni-proxy.yaml",
-      "info": {
-        "name": "TLS SNI Proxy Detection",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "misconfig",
-          "ssrf",
-          "oast",
-          "tls",
-          "sni",
-          "proxy",
-          "vuln"
-        ],
-        "reference": [
-          "https://www.invicti.com/blog/web-security/ssrf-vulnerabilities-caused-by-sni-proxy-misconfigurations/",
-          "https://www.bamsoftware.com/computers/sniproxy/"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "type": "http",
-      "host": "www.budget.gouv.fr",
-      "port": "443",
-      "scheme": "https",
-      "url": "https://www.budget.gouv.fr",
-      "timestamp": "2026-11-15T05:52:07.685742156Z",
-      "interaction": {
-        "protocol": "dns",
-        "unique-id": "dbskgiqt7v5kr7q6k15gh1nw4mhfdsz51",
-        "full-id": "dbskgiqt7v5kr7q6k15gh1nw4mhfdsz51",
-        "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 62107\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;dbskgiqt7v5kr7q6k15gh1nw4mhfdsz51.oast.live.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 62107\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;dbskgiqt7v5kr7q6k15gh1nw4mhfdsz51.oast.live.\tIN\t CNAME\n\n;; ANSWER SECTION:\ndbskgiqt7v5kr7q6k15gh1nw4mhfdsz51.oast.live.\t3600\tIN\tA\t178.128.210.172\n\n;; AUTHORITY SECTION:\ndbskgiqt7v5kr7q6k15gh1nw4mhfdsz51.oast.live.\t3600\tIN\tNS\tns1.oast.live.\ndbskgiqt7v5kr7q6k15gh1nw4mhfdsz51.oast.live.\t3600\tIN\tNS\tns2.oast.live.\n\n;; ADDITIONAL SECTION:\nns1.oast.live.\t3600\tIN\tA\t178.128.210.172\nns2.oast.live.\t3600\tIN\tA\t178.128.210.172\n",
-        "remote-address": "198.143.56.12",
-        "timestamp": "2026-11-15T05:52:01.774696557Z"
-      },
-      "matcher-status": true,
-      "error": "GET https://www.budget.gouv.fr giving up after 2 attempts: Get \"https://www.budget.gouv.fr\": cause=\"tls: unrecognized name\" chain=\"could not tls handshake\""
     },
     {
       "template": "http/vulnerabilities/generic/request-based-interaction.yaml",
@@ -251,19 +186,19 @@
       "scheme": "https",
       "url": "https://www.budget.gouv.fr",
       "matched-at": "https://www.budget.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: dbskgiqt7v5kr7q6k15g14jrphfi6hjpm.oast.live\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 711\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1041-69208588-0 0NNN RT(1794721930518 17) q(0 -1 -1 -1) r(50 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1041-69208588-0%200NNN%20RT%281794721930518%2017%29%20q%280%20-1%20-1%20-1%29%20r%2850%20-1%29&incident_id=0-330094405946313641&edet=22&cinfo=ffffffff&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-330094405946313641</iframe></body></html>",
+      "request": "GET / HTTP/1.1\r\nHost: dc18cdcc92e4uudjr3g03u5ihrxud7y3j.oast.fun\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nCache-Control: no-transform\r\nAccept: */*\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 709\r\nCache-Control: no-cache, no-store\r\nConnection: close\r\nContent-Type: text/html\r\nX-Iinfo: 1050-61294536-0 0NNN RT(1795327635327 18) q(0 -1 -1 -1) r(57 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1050-61294536-0%200NNN%20RT%281795327635327%2018%29%20q%280%20-1%20-1%20-1%29%20r%2857%20-1%29&incident_id=0-296029186420572850&edet=22&cinfo=ffffffff&rpinfo=0&cip=20.83.53.71&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-296029186420572850</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:52:15.511376777Z",
+      "timestamp": "2026-11-22T06:07:20.975302766Z",
       "interaction": {
         "protocol": "dns",
-        "unique-id": "dbskgiqt7v5kr7q6k15g14jrphfi6hjpm",
-        "full-id": "dbskgiqt7v5kr7q6k15g14jrphfi6hjpm",
+        "unique-id": "dc18cdcc92e4uudjr3g03u5ihrxud7y3j",
+        "full-id": "dc18cdcc92e4uudjr3g03u5ihrxud7y3j",
         "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 16001\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;dbskgiqt7v5kr7q6k15g14jrphfi6hjpm.oast.live.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 16001\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;dbskgiqt7v5kr7q6k15g14jrphfi6hjpm.oast.live.\tIN\t CNAME\n\n;; ANSWER SECTION:\ndbskgiqt7v5kr7q6k15g14jrphfi6hjpm.oast.live.\t3600\tIN\tA\t178.128.210.172\n\n;; AUTHORITY SECTION:\ndbskgiqt7v5kr7q6k15g14jrphfi6hjpm.oast.live.\t3600\tIN\tNS\tns1.oast.live.\ndbskgiqt7v5kr7q6k15g14jrphfi6hjpm.oast.live.\t3600\tIN\tNS\tns2.oast.live.\n\n;; ADDITIONAL SECTION:\nns1.oast.live.\t3600\tIN\tA\t178.128.210.172\nns2.oast.live.\t3600\tIN\tA\t178.128.210.172\n",
-        "remote-address": "198.143.56.12",
-        "timestamp": "2026-11-15T05:52:10.720536571Z"
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 30936\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;dc18cdcc92e4uudjr3g03u5ihrxud7y3j.oast.fun.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 30936\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;dc18cdcc92e4uudjr3g03u5ihrxud7y3j.oast.fun.\tIN\t CNAME\n\n;; ANSWER SECTION:\ndc18cdcc92e4uudjr3g03u5ihrxud7y3j.oast.fun.\t3600\tIN\tA\t206.189.156.69\n\n;; AUTHORITY SECTION:\ndc18cdcc92e4uudjr3g03u5ihrxud7y3j.oast.fun.\t3600\tIN\tNS\tns1.oast.fun.\ndc18cdcc92e4uudjr3g03u5ihrxud7y3j.oast.fun.\t3600\tIN\tNS\tns2.oast.fun.\n\n;; ADDITIONAL SECTION:\nns1.oast.fun.\t3600\tIN\tA\t206.189.156.69\nns2.oast.fun.\t3600\tIN\tA\t206.189.156.69\n",
+        "remote-address": "45.60.27.6",
+        "timestamp": "2026-11-22T06:07:15.500062486Z"
       },
       "matcher-status": true
     },
@@ -297,7 +232,7 @@
         "tls12"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:53:29.510470035Z",
+      "timestamp": "2026-11-22T06:08:39.220299752Z",
       "matcher-status": true
     },
     {
@@ -330,7 +265,184 @@
         "tls13"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:53:29.611618447Z",
+      "timestamp": "2026-11-22T06:08:39.333957286Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://cloud.projectdiscovery.io/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "www.budget.gouv.fr",
+      "port": "443",
+      "scheme": "https",
+      "url": "https://www.budget.gouv.fr",
+      "matched-at": "https://www.budget.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 880\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 12-12264935-0 0NNN RT(1795327722479 26) q(0 -1 -1 0) r(0 -1) B17(11,6022111,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"><script type=\"text/javascript\" src=\"/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3\"></script></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=12-12264935-0%200NNN%20RT%281795327722479%2026%29%20q%280%20-1%20-1%200%29%20r%280%20-1%29%20B17%2811%2c6022111%2c0%29%20U18&incident_id=679000290079134325-72191751680886604&edet=17&cinfo=ffffffff&rpinfo=0&cip=20.83.53.71&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 679000290079134325-72191751680886604</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-11-22T06:08:42.552800536Z",
+      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Cookie: ***' -H 'Referer: https://www.budget.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template-url": "https://cloud.projectdiscovery.io/public/missing-cookie-samesite-strict",
+      "template-id": "missing-cookie-samesite-strict",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "info": {
+        "name": "Missing Cookie SameSite Strict",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz"
+        ],
+        "tags": [
+          "misconfig",
+          "samesite",
+          "cookie",
+          "vuln"
+        ],
+        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
+        "reference": [
+          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "www.budget.gouv.fr",
+      "port": "443",
+      "scheme": "https",
+      "url": "https://www.budget.gouv.fr",
+      "matched-at": "https://www.budget.gouv.fr",
+      "extracted-results": [
+        "visid_incap_3058694=PmmQs1ZZSIe4SJ6dBNf9AOmGAmsAAAAAQUIPAAAAAABpLPwzhEL2pdCPugeXZc+x; expires=Sun, 21 Nov 2027 06:34:55 GMT; HttpOnly; path=/; Domain=.budget.gouv.fr; Secure; SameSite=None incap_ses_679_3058694=ArkpZ4EFWRl10o2UKktsCemGAmsAAAAAvn0uKbVwkgei/N8NgT7vgQ==; path=/; Domain=.budget.gouv.fr; Secure; SameSite=None"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.budget.gouv.fr/\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 17-29240509-0 0NNN RT(1795327722439 15) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-11-22T06:08:42.933239853Z",
+      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Cookie: ***' -H 'Referer: https://www.budget.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://cloud.projectdiscovery.io/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod",
+          "matejsmycka"
+        ],
+        "tags": [
+          "tech",
+          "discovery"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "Imperva",
+      "type": "http",
+      "host": "www.budget.gouv.fr",
+      "port": "443",
+      "scheme": "https",
+      "url": "https://www.budget.gouv.fr",
+      "matched-at": "https://www.budget.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 302 Found\r\nConnection: close\r\nContent-Length: 122\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nLocation: https://www.budget.gouv.fr/\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 17-29240509-0 0NNN RT(1795327722439 15) q(0 -1 -1 -1) r(0 -1) B13(0,50093,0) U18\r\n\r\n",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-11-22T06:08:42.958711367Z",
+      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Cookie: ***' -H 'Referer: https://www.budget.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/external-service-interaction.yaml",
+      "template-url": "https://cloud.projectdiscovery.io/public/external-service-interaction",
+      "template-id": "external-service-interaction",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/external-service-interaction.yaml",
+      "info": {
+        "name": "External Service Interaction",
+        "author": [
+          "andreluna"
+        ],
+        "tags": [
+          "miscellaneous",
+          "http",
+          "misc",
+          "oast",
+          "vuln"
+        ],
+        "description": "External Service interaction via Host Header Injection.",
+        "reference": [
+          "https://portswigger.net/kb/issues/00300210_external-service-interaction-http",
+          "https://success.qualys.com/support/s/article/000006843",
+          "https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/17-Testing_for_Host_Header_Injection"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-918"
+          ]
+        }
+      },
+      "type": "http",
+      "host": "www.budget.gouv.fr",
+      "port": "443",
+      "scheme": "https",
+      "url": "https://www.budget.gouv.fr",
+      "matched-at": "https://www.budget.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: dc18cdcc92e4uudjr3g0f3mwqygmuauag.oast.fun\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 709\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1018-31796447-0 0NNN RT(1795327746429 28) q(0 -1 -1 -1) r(89 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1018-31796447-0%200NNN%20RT%281795327746429%2028%29%20q%280%20-1%20-1%20-1%29%20r%2889%20-1%29&incident_id=0-182451610937919314&edet=22&cinfo=ffffffff&rpinfo=0&cip=20.83.53.71&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-182451610937919314</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-11-22T06:09:15.408276655Z",
+      "interaction": {
+        "protocol": "dns",
+        "unique-id": "dc18cdcc92e4uudjr3g0f3mwqygmuauag",
+        "full-id": "dc18cdcc92e4uudjr3g0f3mwqygmuauag",
+        "q-type": "CNAME",
+        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 1456\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;dc18cdcc92e4uudjr3g0f3mwqygmuauag.oast.fun.\tIN\t CNAME\n",
+        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 1456\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;dc18cdcc92e4uudjr3g0f3mwqygmuauag.oast.fun.\tIN\t CNAME\n\n;; ANSWER SECTION:\ndc18cdcc92e4uudjr3g0f3mwqygmuauag.oast.fun.\t3600\tIN\tA\t206.189.156.69\n\n;; AUTHORITY SECTION:\ndc18cdcc92e4uudjr3g0f3mwqygmuauag.oast.fun.\t3600\tIN\tNS\tns1.oast.fun.\ndc18cdcc92e4uudjr3g0f3mwqygmuauag.oast.fun.\t3600\tIN\tNS\tns2.oast.fun.\n\n;; ADDITIONAL SECTION:\nns1.oast.fun.\t3600\tIN\tA\t206.189.156.69\nns2.oast.fun.\t3600\tIN\tA\t206.189.156.69\n",
+        "remote-address": "107.154.186.27",
+        "timestamp": "2026-11-22T06:09:06.578390715Z"
+      },
+      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Host: dc18cdcc92e4uudjr3g0f3mwqygmuauag.oast.fun' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr/'",
       "matcher-status": true
     },
     {
@@ -379,113 +491,9 @@
       "url": "https://www.budget.gouv.fr",
       "matched-at": "https://www.budget.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 777\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 61-286123283-0 0NNN RT(1794722023517 16) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=61-286123283-0%200NNN%20RT%281794722023517%2016%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=198000461100487444-1284007840683789245&edet=15&cinfo=08000000&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 198000461100487444-1284007840683789245</iframe></body></html>",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 772\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 49-56514871-0 0NNN RT(1795327783421 23) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=49-56514871-0%200NNN%20RT%281795327783421%2023%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=959000100278455879-278537914927743665&edet=15&cinfo=08000000&rpinfo=0&cip=20.83.53.71&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 959000100278455879-278537914927743665</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:53:43.538655078Z",
-      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://cloud.projectdiscovery.io/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani",
-          "celbahraoui",
-          "safejulian"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic",
-          "vuln"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ]
-        }
-      },
-      "matcher-name": "cross-origin-embedder-policy",
-      "type": "http",
-      "host": "www.budget.gouv.fr",
-      "port": "443",
-      "scheme": "https",
-      "url": "https://www.budget.gouv.fr",
-      "matched-at": "https://www.budget.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 777\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 61-286123283-0 0NNN RT(1794722023517 16) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=61-286123283-0%200NNN%20RT%281794722023517%2016%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=198000461100487444-1284007840683789245&edet=15&cinfo=08000000&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 198000461100487444-1284007840683789245</iframe></body></html>",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:53:43.53906206Z",
-      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://cloud.projectdiscovery.io/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani",
-          "celbahraoui",
-          "safejulian"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic",
-          "vuln"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ]
-        }
-      },
-      "matcher-name": "content-security-policy",
-      "type": "http",
-      "host": "www.budget.gouv.fr",
-      "port": "443",
-      "scheme": "https",
-      "url": "https://www.budget.gouv.fr",
-      "matched-at": "https://www.budget.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 777\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 61-286123283-0 0NNN RT(1794722023517 16) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=61-286123283-0%200NNN%20RT%281794722023517%2016%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=198000461100487444-1284007840683789245&edet=15&cinfo=08000000&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 198000461100487444-1284007840683789245</iframe></body></html>",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:53:43.539331979Z",
+      "timestamp": "2026-11-22T06:09:43.451104704Z",
       "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
       "matcher-status": true
     },
@@ -535,9 +543,9 @@
       "url": "https://www.budget.gouv.fr",
       "matched-at": "https://www.budget.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 777\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 61-286123283-0 0NNN RT(1794722023517 16) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=61-286123283-0%200NNN%20RT%281794722023517%2016%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=198000461100487444-1284007840683789245&edet=15&cinfo=08000000&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 198000461100487444-1284007840683789245</iframe></body></html>",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 772\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 49-56514871-0 0NNN RT(1795327783421 23) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=49-56514871-0%200NNN%20RT%281795327783421%2023%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=959000100278455879-278537914927743665&edet=15&cinfo=08000000&rpinfo=0&cip=20.83.53.71&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 959000100278455879-278537914927743665</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:53:43.539575419Z",
+      "timestamp": "2026-11-22T06:09:43.451405127Z",
       "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
       "matcher-status": true
     },
@@ -579,7 +587,7 @@
           ]
         }
       },
-      "matcher-name": "x-permitted-cross-domain-policies",
+      "matcher-name": "cross-origin-embedder-policy",
       "type": "http",
       "host": "www.budget.gouv.fr",
       "port": "443",
@@ -587,165 +595,9 @@
       "url": "https://www.budget.gouv.fr",
       "matched-at": "https://www.budget.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 777\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 61-286123283-0 0NNN RT(1794722023517 16) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=61-286123283-0%200NNN%20RT%281794722023517%2016%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=198000461100487444-1284007840683789245&edet=15&cinfo=08000000&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 198000461100487444-1284007840683789245</iframe></body></html>",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 772\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 49-56514871-0 0NNN RT(1795327783421 23) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=49-56514871-0%200NNN%20RT%281795327783421%2023%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=959000100278455879-278537914927743665&edet=15&cinfo=08000000&rpinfo=0&cip=20.83.53.71&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 959000100278455879-278537914927743665</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:53:43.539825239Z",
-      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://cloud.projectdiscovery.io/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani",
-          "celbahraoui",
-          "safejulian"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic",
-          "vuln"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ]
-        }
-      },
-      "matcher-name": "referrer-policy",
-      "type": "http",
-      "host": "www.budget.gouv.fr",
-      "port": "443",
-      "scheme": "https",
-      "url": "https://www.budget.gouv.fr",
-      "matched-at": "https://www.budget.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 777\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 61-286123283-0 0NNN RT(1794722023517 16) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=61-286123283-0%200NNN%20RT%281794722023517%2016%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=198000461100487444-1284007840683789245&edet=15&cinfo=08000000&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 198000461100487444-1284007840683789245</iframe></body></html>",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:53:43.540374331Z",
-      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://cloud.projectdiscovery.io/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani",
-          "celbahraoui",
-          "safejulian"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic",
-          "vuln"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ]
-        }
-      },
-      "matcher-name": "cross-origin-opener-policy",
-      "type": "http",
-      "host": "www.budget.gouv.fr",
-      "port": "443",
-      "scheme": "https",
-      "url": "https://www.budget.gouv.fr",
-      "matched-at": "https://www.budget.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 777\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 61-286123283-0 0NNN RT(1794722023517 16) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=61-286123283-0%200NNN%20RT%281794722023517%2016%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=198000461100487444-1284007840683789245&edet=15&cinfo=08000000&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 198000461100487444-1284007840683789245</iframe></body></html>",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:53:43.540617791Z",
-      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://cloud.projectdiscovery.io/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani",
-          "celbahraoui",
-          "safejulian"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic",
-          "vuln"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ]
-        }
-      },
-      "matcher-name": "cross-origin-resource-policy",
-      "type": "http",
-      "host": "www.budget.gouv.fr",
-      "port": "443",
-      "scheme": "https",
-      "url": "https://www.budget.gouv.fr",
-      "matched-at": "https://www.budget.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 777\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 61-286123283-0 0NNN RT(1794722023517 16) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=61-286123283-0%200NNN%20RT%281794722023517%2016%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=198000461100487444-1284007840683789245&edet=15&cinfo=08000000&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 198000461100487444-1284007840683789245</iframe></body></html>",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:53:43.540836103Z",
+      "timestamp": "2026-11-22T06:09:43.451576145Z",
       "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
       "matcher-status": true
     },
@@ -795,84 +647,51 @@
       "url": "https://www.budget.gouv.fr",
       "matched-at": "https://www.budget.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 777\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 61-286123283-0 0NNN RT(1794722023517 16) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=61-286123283-0%200NNN%20RT%281794722023517%2016%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=198000461100487444-1284007840683789245&edet=15&cinfo=08000000&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 198000461100487444-1284007840683789245</iframe></body></html>",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 772\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 49-56514871-0 0NNN RT(1795327783421 23) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=49-56514871-0%200NNN%20RT%281795327783421%2023%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=959000100278455879-278537914927743665&edet=15&cinfo=08000000&rpinfo=0&cip=20.83.53.71&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 959000100278455879-278537914927743665</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:53:43.541101636Z",
+      "timestamp": "2026-11-22T06:09:43.451721714Z",
       "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
       "matcher-status": true
     },
     {
-      "template": "http/misconfiguration/missing-cookie-samesite-strict.yaml",
-      "template-url": "https://cloud.projectdiscovery.io/public/missing-cookie-samesite-strict",
-      "template-id": "missing-cookie-samesite-strict",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-cookie-samesite-strict.yaml",
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://cloud.projectdiscovery.io/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
       "info": {
-        "name": "Missing Cookie SameSite Strict",
+        "name": "HTTP Missing Security Headers",
         "author": [
-          "lucky0x0d",
-          "pulsesecurity.co.nz"
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani",
+          "celbahraoui",
+          "safejulian"
         ],
         "tags": [
           "misconfig",
-          "samesite",
-          "cookie",
+          "headers",
+          "generic",
           "vuln"
         ],
-        "description": "Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.\n",
-        "reference": [
-          "https://pulsesecurity.co.nz/articles/samesite-lax-csrf"
-        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
         "severity": "info",
         "metadata": {
-          "max-request": 1,
-          "verified": true
+          "max-request": 1
         },
         "classification": {
           "cve-id": null,
           "cwe-id": [
             "cwe-693"
-          ],
-          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+          ]
         }
       },
-      "type": "http",
-      "host": "www.budget.gouv.fr",
-      "port": "443",
-      "scheme": "https",
-      "url": "https://www.budget.gouv.fr",
-      "matched-at": "https://www.budget.gouv.fr",
-      "extracted-results": [
-        "visid_incap_3058694=77PcOTDMS4qwWa/81skq2u9I+WoAAAAAQUIPAAAAAAA7f1RhoSoRKdcLeI7AjLEE; expires=Sun, 14 Nov 2027 06:24:15 GMT; HttpOnly; path=/; Domain=.budget.gouv.fr; Secure; SameSite=None incap_ses_198_3058694=ytNYEFzhwC5vME3NXnC/Au9I+WoAAAAALKx/C0ZFGk7vKt/6d8ExQA==; path=/; Domain=.budget.gouv.fr; Secure; SameSite=None"
-      ],
-      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 777\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 61-286125533-0 0NNN RT(1794722031619 13) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=61-286125533-0%200NNN%20RT%281794722031619%2013%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=198000461100487444-1284017878022359997&edet=15&cinfo=08000000&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 198000461100487444-1284017878022359997</iframe></body></html>",
-      "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:53:51.660927748Z",
-      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/technologies/tech-detect.yaml",
-      "template-url": "https://cloud.projectdiscovery.io/public/tech-detect",
-      "template-id": "tech-detect",
-      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
-      "info": {
-        "name": "Wappalyzer Technology Detection",
-        "author": [
-          "hakluke",
-          "righettod",
-          "matejsmycka"
-        ],
-        "tags": [
-          "tech",
-          "discovery"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "Imperva",
+      "matcher-name": "x-permitted-cross-domain-policies",
       "type": "http",
       "host": "www.budget.gouv.fr",
       "port": "443",
@@ -880,35 +699,39 @@
       "url": "https://www.budget.gouv.fr",
       "matched-at": "https://www.budget.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 777\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 61-286125533-0 0NNN RT(1794722031619 13) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=61-286125533-0%200NNN%20RT%281794722031619%2013%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=198000461100487444-1284017878022359997&edet=15&cinfo=08000000&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 198000461100487444-1284017878022359997</iframe></body></html>",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 772\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 49-56514871-0 0NNN RT(1795327783421 23) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=49-56514871-0%200NNN%20RT%281795327783421%2023%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=959000100278455879-278537914927743665&edet=15&cinfo=08000000&rpinfo=0&cip=20.83.53.71&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 959000100278455879-278537914927743665</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:53:51.702438018Z",
+      "timestamp": "2026-11-22T06:09:43.45186483Z",
       "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
       "matcher-status": true
     },
     {
-      "template": "http/miscellaneous/external-service-interaction.yaml",
-      "template-url": "https://cloud.projectdiscovery.io/public/external-service-interaction",
-      "template-id": "external-service-interaction",
-      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/external-service-interaction.yaml",
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://cloud.projectdiscovery.io/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
       "info": {
-        "name": "External Service Interaction",
+        "name": "HTTP Missing Security Headers",
         "author": [
-          "andreluna"
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani",
+          "celbahraoui",
+          "safejulian"
         ],
         "tags": [
-          "miscellaneous",
-          "http",
-          "misc",
-          "oast",
+          "misconfig",
+          "headers",
+          "generic",
           "vuln"
         ],
-        "description": "External Service interaction via Host Header Injection.",
-        "reference": [
-          "https://portswigger.net/kb/issues/00300210_external-service-interaction-http",
-          "https://success.qualys.com/support/s/article/000006843",
-          "https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/17-Testing_for_Host_Header_Injection"
-        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
         "severity": "info",
         "metadata": {
           "max-request": 1
@@ -916,31 +739,178 @@
         "classification": {
           "cve-id": null,
           "cwe-id": [
-            "cwe-918"
+            "cwe-693"
           ]
         }
       },
+      "matcher-name": "referrer-policy",
       "type": "http",
       "host": "www.budget.gouv.fr",
       "port": "443",
       "scheme": "https",
       "url": "https://www.budget.gouv.fr",
-      "matched-at": "https://www.budget.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: dbskgiqt7v5kr7q6k15gxeb4cqrjok4po.oast.live\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 714\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nX-Iinfo: 1059-267467602-0 0NNN RT(1794722037650 13) q(0 -1 -1 -1) r(53 -1)\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=27&xinfo=1059-267467602-0%200NNN%20RT%281794722037650%2013%29%20q%280%20-1%20-1%20-1%29%20r%2853%20-1%29&incident_id=0-1208274665173552059&edet=22&cinfo=ffffffff&rpinfo=0&cip=20.169.78.219&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 0-1208274665173552059</iframe></body></html>",
+      "matched-at": "https://www.budget.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 772\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 49-56514871-0 0NNN RT(1795327783421 23) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=49-56514871-0%200NNN%20RT%281795327783421%2023%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=959000100278455879-278537914927743665&edet=15&cinfo=08000000&rpinfo=0&cip=20.83.53.71&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 959000100278455879-278537914927743665</iframe></body></html>",
       "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:54:02.9105044Z",
-      "interaction": {
-        "protocol": "dns",
-        "unique-id": "dbskgiqt7v5kr7q6k15gxeb4cqrjok4po",
-        "full-id": "dbskgiqt7v5kr7q6k15gxeb4cqrjok4po",
-        "q-type": "CNAME",
-        "raw-request": ";; opcode: QUERY, status: NOERROR, id: 20035\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;dbskgiqt7v5kr7q6k15gxeb4cqrjok4po.oast.live.\tIN\t CNAME\n",
-        "raw-response": ";; opcode: QUERY, status: NOERROR, id: 20035\n;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2\n\n;; QUESTION SECTION:\n;dbskgiqt7v5kr7q6k15gxeb4cqrjok4po.oast.live.\tIN\t CNAME\n\n;; ANSWER SECTION:\ndbskgiqt7v5kr7q6k15gxeb4cqrjok4po.oast.live.\t3600\tIN\tA\t178.128.210.172\n\n;; AUTHORITY SECTION:\ndbskgiqt7v5kr7q6k15gxeb4cqrjok4po.oast.live.\t3600\tIN\tNS\tns1.oast.live.\ndbskgiqt7v5kr7q6k15gxeb4cqrjok4po.oast.live.\t3600\tIN\tNS\tns2.oast.live.\n\n;; ADDITIONAL SECTION:\nns1.oast.live.\t3600\tIN\tA\t178.128.210.172\nns2.oast.live.\t3600\tIN\tA\t178.128.210.172\n",
-        "remote-address": "198.143.56.12",
-        "timestamp": "2026-11-15T05:53:57.85038734Z"
+      "timestamp": "2026-11-22T06:09:43.452093225Z",
+      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://cloud.projectdiscovery.io/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani",
+          "celbahraoui",
+          "safejulian"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic",
+          "vuln"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ]
+        }
       },
-      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'Host: dbskgiqt7v5kr7q6k15gxeb4cqrjok4po.oast.live' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr/'",
+      "matcher-name": "cross-origin-opener-policy",
+      "type": "http",
+      "host": "www.budget.gouv.fr",
+      "port": "443",
+      "scheme": "https",
+      "url": "https://www.budget.gouv.fr",
+      "matched-at": "https://www.budget.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 772\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 49-56514871-0 0NNN RT(1795327783421 23) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=49-56514871-0%200NNN%20RT%281795327783421%2023%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=959000100278455879-278537914927743665&edet=15&cinfo=08000000&rpinfo=0&cip=20.83.53.71&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 959000100278455879-278537914927743665</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-11-22T06:09:43.452241108Z",
+      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://cloud.projectdiscovery.io/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani",
+          "celbahraoui",
+          "safejulian"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic",
+          "vuln"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ]
+        }
+      },
+      "matcher-name": "cross-origin-resource-policy",
+      "type": "http",
+      "host": "www.budget.gouv.fr",
+      "port": "443",
+      "scheme": "https",
+      "url": "https://www.budget.gouv.fr",
+      "matched-at": "https://www.budget.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 772\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 49-56514871-0 0NNN RT(1795327783421 23) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=49-56514871-0%200NNN%20RT%281795327783421%2023%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=959000100278455879-278537914927743665&edet=15&cinfo=08000000&rpinfo=0&cip=20.83.53.71&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 959000100278455879-278537914927743665</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-11-22T06:09:43.452387759Z",
+      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://cloud.projectdiscovery.io/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani",
+          "celbahraoui",
+          "safejulian"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic",
+          "vuln"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ]
+        }
+      },
+      "matcher-name": "content-security-policy",
+      "type": "http",
+      "host": "www.budget.gouv.fr",
+      "port": "443",
+      "scheme": "https",
+      "url": "https://www.budget.gouv.fr",
+      "matched-at": "https://www.budget.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: www.budget.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nContent-Length: 772\r\nCache-Control: no-cache, no-store\r\nContent-Type: text/html\r\nSet-Cookie: ***\r\nSet-Cookie: ***\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\r\nX-Iinfo: 49-56514871-0 0NNN RT(1795327783421 23) q(0 -1 -1 -1) r(0 -1) B15(8,881081,0) U18\r\n\r\n<html style=\"height:100%\"><head><META NAME=\"ROBOTS\" CONTENT=\"NOINDEX, NOFOLLOW\"><meta name=\"format-detection\" content=\"telephone=no\"><meta name=\"viewport\" content=\"initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"></head><body style=\"margin:0px;height:100%\"><iframe id=\"main-iframe\" src=\"/_Incapsula_Resource?CWUDNSAI=23&xinfo=49-56514871-0%200NNN%20RT%281795327783421%2023%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%288%2c881081%2c0%29%20U18&incident_id=959000100278455879-278537914927743665&edet=15&cinfo=08000000&rpinfo=0&cip=20.83.53.71&mth=GET\" frameborder=0 width=\"100%\" height=\"100%\" marginheight=\"0px\" marginwidth=\"0px\">Request unsuccessful. Incapsula incident ID: 959000100278455879-278537914927743665</iframe></body></html>",
+      "ip": "45.223.57.83",
+      "timestamp": "2026-11-22T06:09:43.45254757Z",
+      "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.budget.gouv.fr'",
       "matcher-status": true
     },
     {
@@ -972,7 +942,7 @@
         "Sectigo Limited"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:54:07.774115916Z",
+      "timestamp": "2026-11-22T06:09:44.781310002Z",
       "matcher-status": true
     },
     {
@@ -1005,7 +975,7 @@
         "budget.gouv.fr"
       ],
       "ip": "45.223.57.83",
-      "timestamp": "2026-11-15T05:54:07.774320269Z",
+      "timestamp": "2026-11-22T06:09:44.781488481Z",
       "matcher-status": true
     },
     {
@@ -1041,9 +1011,9 @@
       "extracted-results": [
         "x3nl79c.ng.impervadns.net"
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 4205\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.budget.gouv.fr.\tIN\t CNAME\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 4205\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.budget.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.budget.gouv.fr.\t600\tIN\tCNAME\tx3nl79c.ng.impervadns.net.\n",
-      "timestamp": "2026-11-15T05:54:07.791741805Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 19121\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.budget.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 19121\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.budget.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.budget.gouv.fr.\t600\tIN\tCNAME\tx3nl79c.ng.impervadns.net.\n",
+      "timestamp": "2026-11-22T06:09:45.424022554Z",
       "matcher-status": true
     }
   ]
